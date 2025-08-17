@@ -11,25 +11,35 @@ import { MonacoEditorLanguageClientWrapper } from 'monaco-editor-wrapper';
 import getKeybindingsServiceOverride from '@codingame/monaco-vscode-keybindings-service-override';
 import { LogLevel } from '@codingame/monaco-vscode-api';
 import { BrowserMessageReader, BrowserMessageWriter } from 'vscode-languageclient/browser';
-import workerUrl from './lsp-worker.js?worker&url';
 import { configureDefaultWorkerFactory } from 'monaco-editor-wrapper/workers/workerLoaders';
 
-import typstLanguageConfig from './assets/typst.configuration.json?raw';
-import typstTextmateGrammar from './assets/typst.tmLanguage.json?raw';
+import workerUrl from './lsp-worker.js?worker&url';
+
+import typstLanguageConfig from './assets/typst-configuration.json?raw';
+import typstTextmateGrammar from './assets/typst-textmate-grammar.json?raw';
+import tinymistPackage from './assets/tinymist-package.json';
 
 const editorContainer = ref(null)
 let wrapper = null;
 
-let text = '= Hello Tinymist\n\nThis is a *test* document with some content.\n\n= Section\n\nLet me write some code:\n\n```typst\nlet x = 1\n#x\n```\n\nHover over any text to see LSP features work.'
-const documentUri = 'file:///workspace/example.typ'
+let text = `
+#fff
 
-const checkStarted = () => {
-    if (wrapper?.isStarted() ?? false) {
-        alert('Editor was already started!\nPlease reload the page to test the alternative editor.');
-        return true;
-    }
-    return false;
-};
+= Test
+Welcome to the \`tinymist-wasm\` playground!
+
+This is a *test*.
+
+#let x = 1
+
+#let f(x, y) = x + y
+
+#f(1, 2)
+
+`
+
+const documentUri = '/workspace/main.typ'
+
 
 async function setupClient(
     worker,
@@ -39,7 +49,7 @@ async function setupClient(
     extensionFilesOrContents.set('/typst-textmate-grammar.json', typstTextmateGrammar);
     extensionFilesOrContents.set('/typst-configuration.json', typstLanguageConfig);
 
-    return {
+    const config = {
         $type: 'extended',
         htmlContainer: editorContainer.value,
         logLevel: LogLevel.Debug,
@@ -53,7 +63,8 @@ async function setupClient(
                     'editor.guides.bracketPairsHorizontal': 'active',
                     'editor.wordBasedSuggestions': 'off',
                     'editor.experimental.asyncTokenization': false,
-                    'vitest.disableWorkspaceWarning': true
+                    'vitest.disableWorkspaceWarning': true,
+                    "editor.codeLens": false
                 })
             }
         },
@@ -66,17 +77,29 @@ async function setupClient(
                     vscode: '*'
                 },
                 contributes: {
+                    configuration: tinymistPackage.contributes.configuration,
+                    configurationDefaults: tinymistPackage.contributes.configurationDefaults,
                     languages: [{
                         id: 'typst',
+                        configuration: './typst-configuration.json',
                         extensions: ['.typ'],
-                        aliases: ['typst', 'Typst'],
-                        configuration: './typst-configuration.json'
+                        aliases: [
+                            "Typst",
+                            "typst",
+                            "typ"
+                        ],
                     }],
                     grammars: [{
                         language: 'typst',
                         scopeName: 'source.typst',
-                        path: './typst-textmate-grammar.json'
-                    }]
+                        path: './typst-textmate-grammar.json',
+                        tokenTypes: tinymistPackage.contributes.grammars[0].tokenTypes,
+                        balancedBracketScopes: tinymistPackage.contributes.grammars[0].balancedBracketScopes,
+                        unbalancedBracketScopes: tinymistPackage.contributes.grammars[0].unbalancedBracketScopes,
+                    }],
+                    // semanticTokenTypes: tinymistPackage.contributes.semanticTokenTypes,
+                    // semanticTokenModifiers: tinymistPackage.contributes.semanticTokenModifiers,
+                    semanticTokenScopes: tinymistPackage.contributes.semanticTokenScopes,
                 }
             },
             filesOrContents: extensionFilesOrContents
@@ -112,11 +135,12 @@ async function setupClient(
             }
         }
     };
+
+    // console.log(config)
+    return config;
 };
 
-
 async function startTinymistClient() {
-    if (checkStarted()) return;
     let worker = new Worker(workerUrl, {
         type: 'module',
         name: 'Tinymist LS',
@@ -124,7 +148,11 @@ async function startTinymistClient() {
     const reader = new BrowserMessageReader(worker);
     const writer = new BrowserMessageWriter(worker);
     reader.listen((message) => {
-        console.log('Received message from worker:', message);
+        if ('method' in message && message.method == 'tmLog') {
+            console.log('[Tinymist WASM Log]', message.params.data)
+            return
+        }
+        console.log('LSP -> Editor:', message);
     });
 
     const config = await setupClient(
@@ -141,6 +169,7 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
+    wrapper.dispose();
 })
 </script>
 
@@ -159,7 +188,6 @@ h1 {
     color: white;
     text-align: center;
 }
-
 
 #editor {
     flex: 1;

@@ -2,12 +2,10 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
-import vsixPlugin from '@codingame/monaco-vscode-rollup-vsix-plugin';
 import importMetaUrlPlugin from '@codingame/esbuild-import-meta-url-plugin';
 
 export default defineConfig({
   plugins: [
-    vsixPlugin(),
     vue(),
     vueDevTools(),
   ],
@@ -55,7 +53,8 @@ export default defineConfig({
       'vscode-textmate',
       'vscode-oniguruma',
       'vscode-languageclient',
-      'vscode-languageserver/browser.js']
+      'vscode-languageserver/browser.js'
+    ],
   },
   resolve: {
     alias: {
