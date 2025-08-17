@@ -145,6 +145,24 @@ async function startTinymistClient() {
         type: 'module',
         name: 'Tinymist LS',
     });
+
+    /// Waits for the server worker to be ready before returning the client
+    await new Promise((resolve, reject) => {
+        function onReady(e) {
+            if (e.data.method !== "serverWorkerReady") return;
+            worker.removeEventListener("message", onReady);
+            resolve(true);
+            clearTimeout(workerTimeout);
+        }
+
+        const workerTimeout = setTimeout(() => {
+            worker.removeEventListener("message", onReady);
+            reject(new Error("failed to initialize server worker: timeout"));
+        }, 60000 * 5);
+
+        worker.addEventListener("message", onReady);
+    });
+
     const reader = new BrowserMessageReader(worker);
     const writer = new BrowserMessageWriter(worker);
     reader.listen((message) => {
