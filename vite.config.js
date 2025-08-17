@@ -68,7 +68,7 @@ export default defineConfig({
     fs: {
       allow: [
         '.',
-        '/home/paran3xus/projects/rust/tinymist/crates/tinymist/pkg/'
+        '../../rust/tinymist/crates/tinymist/pkg/'
       ],
     },
   }
