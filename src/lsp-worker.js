@@ -1,246 +1,91 @@
+import {
+    createConnection,
+    BrowserMessageReader,
+    BrowserMessageWriter,
+} from "vscode-languageserver/browser";
+import { InitializeRequest } from "vscode-languageserver";
 import init, { TinymistLanguageServer } from "tinymist";
 
-class TinymistLSPWorker {
+class TinymistServer {
     constructor() {
-        this.server = null;
-        this.requestHandlers = new Map();
-        this.initialized = false;
+        this.connection = createConnection(
+            new BrowserMessageReader(self),
+            new BrowserMessageWriter(self),
+        );
+        this.bridge = null;
         this.events = [];
         this.fileCache = new Map();
-        this.currentDocumentContent = '';
     }
 
-    async initialize() {
-        try {
-            await init();
-            console.log('Tinymist WASM initialized');
+    async start() {
+        await init();
+        console.log(`tinymist ${TinymistLanguageServer.version()} wasm is loaded...`);
 
-            this.server = new TinymistLanguageServer({
-                sendEvent: (event) => {
-                    this.events.push(event);
-                },
-                sendRequest: async ({ id, method, params }) => {
-                    try {
-                        const response = await this.sendRequestToMain(method, params);
-                        this.server.on_response({ id, result: response });
-                    } catch (error) {
-                        this.server.on_response({
+        this.initializeBridge();
+        this.setupConnectionHandlers();
+
+        this.connection.sendNotification("serverWorkerReady");
+        this.connection.listen();
+    }
+
+    initializeBridge() {
+        this.bridge = new TinymistLanguageServer({
+            sendEvent: (event) => {
+                console.log("do sendEvent", event);
+                this.events.push(event)
+            },
+            sendRequest: ({ id, method, params }) => {
+                console.log("do sendRequest", id, method, params);
+                this.connection
+                    .sendRequest(method, params)
+                    .then((result) => this.bridge?.on_response({ id, result }))
+                    .catch((err) =>
+                        this.bridge?.on_response({
                             id,
-                            error: {
-                                code: -32603,
-                                message: error.toString()
-                            }
-                        });
-                    }
-                },
-                sendNotification: ({ method, params }) => {
-                    this.postMessage({
-                        type: 'notification',
-                        method,
-                        params
-                    });
-                },
-                fsContent: (path) => {
-                    console.log('Requesting file content:', path);
-                    return this.getFileContent(path);
-                }
-            });
-
-            this.postMessage({ type: 'status', status: 'ready' });
-
-        } catch (error) {
-            console.error('Failed to initialize Tinymist:', error);
-            this.postMessage({ type: 'error', error: error.message });
-        }
+                            error: { code: -32603, message: err.toString() }
+                        }),
+                    );
+            },
+            fsContent: (path) => this.getFsContent(path),
+            sendNotification: ({ method, params }) => {
+                console.log("do sendNotification", method, params);
+                this.connection.sendNotification(method, params)
+            },
+        });
     }
-    getFileContent(path) {
-        console.log('Getting file content for:', path);
+
+    getFsContent(path) {
+        console.log("do fsContent", path);
 
         if (this.fileCache.has(path)) {
-            const cached = this.fileCache.get(path);
-            return cached;
+            console.log("File content found in cache:", path);
+            return this.fileCache.get(path);
         }
 
-        // main document
-        if (path === 'file:///workspace/example.typ') {
-            const content = {
-                content: this.currentDocumentContent,
-                exists: true
-            };
-            return content;
-        }
-
-        // others
-        if (path.startsWith('file:///workspace/')) {
-            const content = { content: '', exists: false };
-            this.fileCache.set(path, content);
-            return content;
-        }
-
-        // others
-        const content = { content: '', exists: false };
-        this.fileCache.set(path, content);
-        return content;
+        return { content: '', exists: false };
     }
 
-
-    sendRequestToMain(method, params) {
-        return new Promise((resolve, reject) => {
-            const id = Date.now() + Math.random();
-            const timeout = setTimeout(() => {
-                this.requestHandlers.delete(id);
-                reject(new Error('Request timeout'));
-            }, 10000);
-
-            this.requestHandlers.set(id, { resolve, reject, timeout });
-
-            this.postMessage({
-                type: 'request',
-                id,
-                method,
-                params
-            });
-        });
-    }
-
-    async handleMessage(event) {
-        const { data } = event;
-
-        try {
-            if (data.type === 'response') {
-                const handler = this.requestHandlers.get(data.id);
-                if (handler) {
-                    clearTimeout(handler.timeout);
-                    this.requestHandlers.delete(data.id);
-
-                    if (data.error) {
-                        handler.reject(new Error(data.error.message));
-                    } else {
-                        handler.resolve(data.result);
-                    }
-                }
-                return;
+    setupConnectionHandlers() {
+        const handleResponse = (res) => {
+            for (const event of this.events.splice(0)) {
+                this.bridge?.on_event(event);
             }
+            return res;
+        };
 
-            if (data.type === 'updateFileContent') {
-                this.updateFileContent(data.uri, data.content);
-                return;
-            }
+        this.connection.onInitialize((params) =>
+            handleResponse(this.bridge?.on_request(InitializeRequest.method, params))
+        );
 
-            if (data.type === 'openDocument') {
-                this.currentDocumentContent = data.content;
-                this.fileCache.delete('file:///workspace/example.typ'); // clear cache
-                console.log('Document opened, content length:', data.content.length);
-                return;
-            }
+        this.connection.onRequest((method, params) =>
+            handleResponse(this.bridge?.on_request(method, params))
+        );
 
-            if (!this.server) {
-                console.warn('Server not initialized, ignoring message:', data);
-                return;
-            }
-
-            let result = null;
-
-            // handle msg
-            if (data.method) {
-                if (data.id !== undefined) {
-                    // request -> wait for results
-                    try {
-                        result = await Promise.resolve(
-                            this.server.on_request(data.method, data.params || {})
-                        );
-                    } catch (error) {
-                        console.error('Error in on_request:', error);
-                        this.postMessage({
-                            jsonrpc: '2.0',
-                            id: data.id,
-                            error: {
-                                code: -32603,
-                                message: error.message
-                            }
-                        });
-                        return;
-                    }
-                } else {
-                    // notification -> no need to wait
-                    try {
-                        await Promise.resolve(
-                            this.server.on_notification(data.method, data.params || {})
-                        );
-                    } catch (error) {
-                        console.error('Error in on_notification:', error);
-                        return;
-                    }
-                }
-            }
-
-            await this.processEvents();
-
-            // request -> send response
-            if (data.id !== undefined) {
-                this.postMessage({
-                    jsonrpc: '2.0',
-                    id: data.id,
-                    result: result
-                });
-            }
-
-        } catch (error) {
-            console.error('Error handling message:', error);
-
-            if (data.id !== undefined) {
-                this.postMessage({
-                    jsonrpc: '2.0',
-                    id: data.id,
-                    error: {
-                        code: -32603,
-                        message: error.message
-                    }
-                });
-            }
-        }
-    }
-
-    async processEvents() {
-        const events = this.events.splice(0);
-        for (const event of events) {
-            try {
-                await Promise.resolve(this.server.on_event(event));
-            } catch (error) {
-                console.error('Error processing event:', error);
-            }
-        }
-    }
-
-    updateFileContent(uri, content) {
-        if (uri === 'file:///workspace/example.typ') {
-            this.currentDocumentContent = content;
-        }
-
-        this.fileCache.set(uri, {
-            content: content,
-            exists: true
-        });
-    }
-
-    postMessage(message) {
-        try {
-            JSON.parse(JSON.stringify(message));
-            self.postMessage(message);
-        } catch (error) {
-            console.error('Message not serializable:', message, error);
-            self.postMessage({
-                type: 'error',
-                error: 'Message serialization failed: ' + error.message
-            });
-        }
+        this.connection.onNotification((method, params) =>
+            handleResponse(this.bridge?.on_notification(method, params))
+        );
     }
 }
 
-const worker = new TinymistLSPWorker();
-
-self.onmessage = async (event) => {
-    await worker.handleMessage(event);
-};
-
-worker.initialize();
+const server = new TinymistServer();
+server.start();

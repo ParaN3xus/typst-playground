@@ -12,16 +12,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "monaco-editor": "^0.52.2",
-    "monaco-editor-textmate": "^4.0.0",
-    "monaco-languageclient": "^9.8.0",
-    "monaco-textmate": "^3.0.1",
-    "onigasm": "^2.2.5",
+    "@codingame/esbuild-import-meta-url-plugin": "^1.0.3",
+    "@codingame/monaco-vscode-api": "^20.1.1",
+    "@codingame/monaco-vscode-keybindings-service-override": "^20.1.1",
+    "@codingame/monaco-vscode-rollup-vsix-plugin": "^20.1.1",
+    "monaco-editor-wrapper": "^6.11.0",
+    "monaco-languageclient": "^9.10.0",
     "tinymist": "link:../../rust/tinymist/crates/tinymist/pkg",
-    "vite-plugin-wasm": "^3.5.0",
-    "vscode-languageserver-protocol": "^3.17.5",
-    "vscode-oniguruma": "^2.0.1",
-    "vscode-textmate": "^9.2.0",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
     "vue": "^3.5.18"
   },
   "devDependencies": {

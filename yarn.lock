@@ -261,986 +261,1479 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.27.1"
 
-"@codingame/monaco-vscode-0094ae09-a688-53e7-bacc-93e26f7f49db-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-0094ae09-a688-53e7-bacc-93e26f7f49db-common/-/monaco-vscode-0094ae09-a688-53e7-bacc-93e26f7f49db-common-18.1.3.tgz#ad4630e2091c19ae8ccda71fea604ae47763cb4b"
-  integrity sha512-HJvIQWbe7SOCypt6sgWqmeKeCcQ6S6vDwSwLn4yEjAb6hosfFj6pxXi5oRR9BOyp5JTvadzw/xtkj4/t0BC+Hw==
+"@codingame/esbuild-import-meta-url-plugin@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@codingame/esbuild-import-meta-url-plugin/-/esbuild-import-meta-url-plugin-1.0.3.tgz#68e03f0c8e8cb9b9bc2e5d70f12da0d789c6e846"
+  integrity sha512-SAIOsWZteIWYAk04BCqQ+ugu8KiJm8EplQbMvxJl905uZv3r+21+XjtGg/zzrbxlVAY1cP+hGAG7z7sBPmy63w==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    esbuild ">=0.19.x"
+    import-meta-resolve "^4.0.0"
 
-"@codingame/monaco-vscode-0b087f42-a5a3-5eb9-9bfd-1eebc1bba163-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-0b087f42-a5a3-5eb9-9bfd-1eebc1bba163-common/-/monaco-vscode-0b087f42-a5a3-5eb9-9bfd-1eebc1bba163-common-18.1.3.tgz#5edef60bd555b0dced0633455299aee8eba294f8"
-  integrity sha512-GHOb3InFWTFpVAzd+O73giA2Ru6xciTmkuNYbLl776jgqMmzlHuTNtWEXURzjDDsfKQVbGm0nTqe4Je7v9E7kg==
+"@codingame/monaco-vscode-08d1b4da-daf2-5f0d-8c50-ca6a6986c50f-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-08d1b4da-daf2-5f0d-8c50-ca6a6986c50f-common/-/monaco-vscode-08d1b4da-daf2-5f0d-8c50-ca6a6986c50f-common-20.1.1.tgz#08850528f4b3c92b0dbcee0ab7f699f96feaccff"
+  integrity sha512-+2wOU0KAvfbXkRMbbf7YRzEihLSy2IXGKNC75An76MFEzxq9CsRA6SaBrKnQ9kI19jpHIM0dEq09M3kajzHg8w==
   dependencies:
-    "@codingame/monaco-vscode-7bbc9e7d-eeae-55fc-8bf9-dc2f66e0dc73-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common" "20.1.1"
 
-"@codingame/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common/-/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common-18.1.3.tgz#518708d6ef4422d60fd27fa45c9c00e0f50cd454"
-  integrity sha512-P7deCRc6kwox2xs/7ktxfOw/9JD5lWKINaA6ISiiLdIsMf44NaBvjXunWBM7Z8pd3SFrrAyxqKBWlNu1hmjI3A==
+"@codingame/monaco-vscode-0af61f78-dfc5-57ba-8d32-66268c8de38d-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-0af61f78-dfc5-57ba-8d32-66268c8de38d-common/-/monaco-vscode-0af61f78-dfc5-57ba-8d32-66268c8de38d-common-20.1.1.tgz#ee4b76daad2205f3f3be1c9fadbdf66f5c7f95f3"
+  integrity sha512-94THZma/KIcsjja+fL4iXYrs4mGVq0AWzyx2kyT/sRY1hAJe5A92fckW+GMhHoOXQyX/l5coWtaTifo3QtCLZw==
   dependencies:
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-b994942c-360d-5b68-8a33-77d4bde6b714-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
 
-"@codingame/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common/-/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common-18.1.3.tgz#8b45b4ef5143493c04297b1a751b99a1aebdb34d"
-  integrity sha512-/a8uYSyiFLwmTKva6/JA1tEyacxldULl0e+XLEiMprec34+V6JlQxJ+pOfqk0O1jU2G+FJIomBiLdsDrdRZlhw==
+"@codingame/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common/-/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common-20.1.1.tgz#2fb2c57b94216b3220b708206159d211fcee1659"
+  integrity sha512-FX+CdJEfmIclifIfZpX9yD97iNbYcz0P8YyfeYgIdJlLRO919g0wFeDxlF7hiwg554rCYnWow2NE6bvVnbfCnA==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
 
-"@codingame/monaco-vscode-15626ec7-b165-51e1-8caf-7bcc2ae9b95a-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-15626ec7-b165-51e1-8caf-7bcc2ae9b95a-common/-/monaco-vscode-15626ec7-b165-51e1-8caf-7bcc2ae9b95a-common-18.1.3.tgz#00c9f2847ebf1fdfbe032862ed0ecf51f522478f"
-  integrity sha512-CblbOEgtnQSeeQoecVTV3vYL3yKE01ag2k3EeegzyiVh+KXiuPV0OHPl85GTDHjghD4FRoSGPr2j0U93UnIcyA==
+"@codingame/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common/-/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common-20.1.1.tgz#7ad8d2ffced0f491255b8742b248eeda02bb7909"
+  integrity sha512-XkMipKikqlcbV+w0jOoAgGdJ1JFDV3revJT1gfQRFhN9QUDr2XX7rMkaqfH82Hav+/m+ZBHbb1M6/TB5kJ9p4g==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common" "20.1.1"
 
-"@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common/-/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common-18.1.3.tgz#a7e00b023cf4b37e4f754c24aba8698499405e0f"
-  integrity sha512-LuPoeUq7u8xaSJeHKA55KirzCZbiLAUzYHD3Lu1ZbIUsEPuoVgE6jIKpPDAapGzsjz8yFI86CzW9sFi0hL42fQ==
+"@codingame/monaco-vscode-1021b67c-93e5-5c78-a270-cbdb2574d980-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-1021b67c-93e5-5c78-a270-cbdb2574d980-common/-/monaco-vscode-1021b67c-93e5-5c78-a270-cbdb2574d980-common-20.1.1.tgz#69250066f01ac1542e638beb144564d4d6d5a840"
+  integrity sha512-7stMuGQL05TvTDxgL4q02p2OmSJg2FFZJRgEPwX3VkgJxrcilH3YQ7Dg3/tpy5/c65yuIfxHdyD3h+L10G4Hbw==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-1ba786a5-b7d7-5d26-8a85-ae48ee2a74a4-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-1ba786a5-b7d7-5d26-8a85-ae48ee2a74a4-common/-/monaco-vscode-1ba786a5-b7d7-5d26-8a85-ae48ee2a74a4-common-18.1.3.tgz#f953c583aa389d243883252bd7d455064ce5f9d8"
-  integrity sha512-6CtI8Y2PpqQpOnY9C9HVxCpsj9KmWar96dD8Fnr3zGXaeyiAMAPad2NSC8grOZ+ISkt/OgRW73OQlZJSLxd3Hg==
+"@codingame/monaco-vscode-15626ec7-b165-51e1-8caf-7bcc2ae9b95a-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-15626ec7-b165-51e1-8caf-7bcc2ae9b95a-common/-/monaco-vscode-15626ec7-b165-51e1-8caf-7bcc2ae9b95a-common-20.1.1.tgz#8b0935cd72cd57440c0969f1fa8f3d5f9542c685"
+  integrity sha512-USnAJbpFoj4jyZU749NY71ELNK8rsJ30gUof7qEDalCL+TfY2hyGJ6u17jpr8XQ76JFzmiyTJzaRvAlSzj+gkg==
   dependencies:
-    "@codingame/monaco-vscode-93784a59-b4cf-520c-8339-f8104d3a4f3e-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-1cb11a73-359e-5a2f-9e95-6989cc9858ee-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-1cb11a73-359e-5a2f-9e95-6989cc9858ee-common/-/monaco-vscode-1cb11a73-359e-5a2f-9e95-6989cc9858ee-common-18.1.3.tgz#e2960973135e28a2e2e9ea5697fe39eb4ed18151"
-  integrity sha512-QC6s1KtwSlFTOCYkgMhau3bFL/0mmjWTHyyH7s888ehVxTjQ4tZEejN8ibkDsYfcwor+vEdpnAoDOJiCWIM8pA==
+"@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common/-/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common-20.1.1.tgz#cc7919bc87bce8bed98e4f0132777a68506e957b"
+  integrity sha512-G2XYugB68su+86L67hA2+p+HmnH7XFQTwvMS7wl5ChVgBLE3GWXH58ac0pAhRLHOOMkicE21xZ5098pgFOQnVw==
   dependencies:
-    "@codingame/monaco-vscode-4372ad43-a220-5e78-83e6-95a9cfd64384-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-c87fff3a-2aa9-52ab-ba4d-17e8d1e5e185-common" "18.1.3"
-    "@codingame/monaco-vscode-f5d4b045-44e8-55a8-b683-308656a412fa-common" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-1cc4ea0a-c5b6-54ed-bb60-078a99119b55-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-1cc4ea0a-c5b6-54ed-bb60-078a99119b55-common/-/monaco-vscode-1cc4ea0a-c5b6-54ed-bb60-078a99119b55-common-18.1.3.tgz#be4233621e8aad3467a0ec5d41a6c47233f835b1"
-  integrity sha512-/PaKLciS5XeyJ+RnSXRtpSm4nvZvBW9ItY5PZ4UIy06VGPY4lqVdR0a0goIv1njgygjAPKm3w2BIQTOF4HzREQ==
+"@codingame/monaco-vscode-1b4486de-4fe4-59c4-9e6d-34f265ff6625-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-1b4486de-4fe4-59c4-9e6d-34f265ff6625-common/-/monaco-vscode-1b4486de-4fe4-59c4-9e6d-34f265ff6625-common-20.1.1.tgz#411f5a320d10fb8e9212e4ed11b2aa4f4f67ae5f"
+  integrity sha512-2gHIzry0O5gU4xKrGWpRA81u3VRvQEYhqKOoSshBOmVZLSQENp6qmTnBdfTW9s7vDiNVEQZdzBYcHyzswF7O3Q==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common" "18.1.3"
+    "@codingame/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common" "20.1.1"
+    "@codingame/monaco-vscode-422642f2-7e3a-5c1c-9e1e-1d3ef1817346-common" "20.1.1"
+    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "20.1.1"
+    "@codingame/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common" "20.1.1"
+    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
 
-"@codingame/monaco-vscode-210e86a9-a91b-5273-b05d-390c776dde1f-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-210e86a9-a91b-5273-b05d-390c776dde1f-common/-/monaco-vscode-210e86a9-a91b-5273-b05d-390c776dde1f-common-18.1.3.tgz#854007555f6b5092c5b39f6082d7a4f6382100f0"
-  integrity sha512-Kbot4Rb19wBW2mLks2GbNerHG1VPtsGZaZJIeUm++EW4BQEQ1M7EiAPZ6eoOaW6NvNl2ZK5j4ioOc5mr+xeXVw==
+"@codingame/monaco-vscode-23aade48-f094-5c08-9555-97fc9cca96c9-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-23aade48-f094-5c08-9555-97fc9cca96c9-common/-/monaco-vscode-23aade48-f094-5c08-9555-97fc9cca96c9-common-20.1.1.tgz#851f0bd974c416471663a78a93ab5af2cf65d869"
+  integrity sha512-9RE0Bz6d0twuBEjsPJ7hSeE93z+TQ0c8UWHlOScNjSc9tVyzYhjs3dMECiHDadhaviRtS/WLpB5sKsQ2BbbnVw==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-249dc928-1da3-51c1-82d0-45e0ba9d08a1-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-249dc928-1da3-51c1-82d0-45e0ba9d08a1-common/-/monaco-vscode-249dc928-1da3-51c1-82d0-45e0ba9d08a1-common-18.1.3.tgz#af8b12b06bd303cce776dbe8467661760da6f37d"
-  integrity sha512-6FguOn0F88gO6UDcZqlBG6jsJAHXFRUKf0aJGngUJVT08YkTKh8ycAPlntU3zBKaG80k7mM/OvNJzgXO5Y7kKQ==
+"@codingame/monaco-vscode-249dc928-1da3-51c1-82d0-45e0ba9d08a1-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-249dc928-1da3-51c1-82d0-45e0ba9d08a1-common/-/monaco-vscode-249dc928-1da3-51c1-82d0-45e0ba9d08a1-common-20.1.1.tgz#bb9f72c70ab72535683c35edab579c0db49b8795"
+  integrity sha512-/LkOalfUgLeFS6srAeCE1YAdr1/IuNT0aLRfMAX9LqxPEeJOyhEur97eKwLfWe5i7A7iDxNeK26vcgiqGsfgJg==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-256d5b78-0649-50e9-8354-2807f95f68f4-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-256d5b78-0649-50e9-8354-2807f95f68f4-common/-/monaco-vscode-256d5b78-0649-50e9-8354-2807f95f68f4-common-18.1.3.tgz#4a1e2cac775780fb329d2e89a197e7b1f5960520"
-  integrity sha512-NhM1Z0oeyLylu8qT4vZhDlOEYt6mRdr/s3UKYRW5VSFF8yyCFwZumVNxloGuTVInWLkG5mvWHA53BrfvDDxjIQ==
+"@codingame/monaco-vscode-256d5b78-0649-50e9-8354-2807f95f68f4-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-256d5b78-0649-50e9-8354-2807f95f68f4-common/-/monaco-vscode-256d5b78-0649-50e9-8354-2807f95f68f4-common-20.1.1.tgz#1f2a0551cc9faacae66bd081569f5395284ce540"
+  integrity sha512-Oar4v0k292M5+eODTAiMSd+mL4TTsAbUJxzQ+nheSuQ+NZ+n6aKorLGt/cz6RPXA1aurc5rq1qyT6YE3ogWlaA==
   dependencies:
-    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common/-/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common-18.1.3.tgz#358fb791088573a1f2ed42f97436a49bee9404e9"
-  integrity sha512-QnIntEFOqNn4tttiUwfcZgzz+hfEB2tvUd0P1NRAeBD16riXaaVzkN1s7gxBxv3cFL4mrq7Xd1h8BAPElAXcFQ==
+"@codingame/monaco-vscode-262ed59d-4f76-57cd-9e9f-1877f26ae049-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-262ed59d-4f76-57cd-9e9f-1877f26ae049-common/-/monaco-vscode-262ed59d-4f76-57cd-9e9f-1877f26ae049-common-20.1.1.tgz#2e82c01d4c91b95ffd983ab9e5601360df33376c"
+  integrity sha512-Bz4DnqO0e3BXmWzh5DnLlFhdKTyT4pVtL8EwhLcTdkF+mtY+/VUQbruNYOSJi+ObgEjOihxcRTjpsHb+9eFeVQ==
   dependencies:
-    "@codingame/monaco-vscode-0b087f42-a5a3-5eb9-9bfd-1eebc1bba163-common" "18.1.3"
-    "@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common" "18.1.3"
-    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common" "18.1.3"
+    "@codingame/monaco-vscode-6883db80-c313-54eb-8fbc-5872c56b0326-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-2f06fe84-148e-5e6b-a7ca-c7989c5f128a-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-2f06fe84-148e-5e6b-a7ca-c7989c5f128a-common/-/monaco-vscode-2f06fe84-148e-5e6b-a7ca-c7989c5f128a-common-18.1.3.tgz#fda03a55275719dcb63f347232b44179ece4a621"
-  integrity sha512-6/e71/feyFf0gEm6R07hzc7JepOQeAMRSe/KhqJCQEZ3hHXGr0+CaKLLWQtGUnDD/KNm0WwKFeQFpPWcnK0dhg==
+"@codingame/monaco-vscode-2a22c7b4-b906-5914-8cd1-3ed912fb738f-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-2a22c7b4-b906-5914-8cd1-3ed912fb738f-common/-/monaco-vscode-2a22c7b4-b906-5914-8cd1-3ed912fb738f-common-20.1.1.tgz#f070e456cdb9449b1e5f948f6f9f936613f5e00d"
+  integrity sha512-AgRy37/e8lEMzI6cXCnBIzYL2lZO27KrmT8NtMR2/lFRWoUH6dpPFmhe09C3IHrYoUJ5FIl1bnyEHbEtKTWeWQ==
   dependencies:
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common/-/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common-18.1.3.tgz#45f84a0f4e01dddfa4a8bbad23cb2e4e7f2e9194"
-  integrity sha512-inHcfBzEaOw7SAFXxwNIxeh2D61Aa2xZknnMBD6JTAnt0qRmrSoNPR6Tu4e6GeLyoxx5ligvqg2SZhZOSOwrpg==
+"@codingame/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common/-/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common-20.1.1.tgz#9933b578cbb0351611e3205771e796a0da981467"
+  integrity sha512-1ZN7qCjj+oURAfXf6+mvBrZ8eEC6WIBDgglyIY2BUxYtuQn1ZnrVrAc2bOoOmQYczSg8YmvrjeALUWKzLm0ukw==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common" "20.1.1"
+    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-3a35f433-1297-5707-ab58-c261b8180e6d-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-3a35f433-1297-5707-ab58-c261b8180e6d-common/-/monaco-vscode-3a35f433-1297-5707-ab58-c261b8180e6d-common-18.1.3.tgz#586d62d4725e5cda93b6498c6931d46ebda8862b"
-  integrity sha512-F+n2jH08UEFVf8ZQEH9xiZroOlO8mvOEaBmTfZkAVW499Yq8ooBVZxVKXio4y9cp/ebdvywcJPsllVWdF8m8+Q==
+"@codingame/monaco-vscode-2f06fe84-148e-5e6b-a7ca-c7989c5f128a-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-2f06fe84-148e-5e6b-a7ca-c7989c5f128a-common/-/monaco-vscode-2f06fe84-148e-5e6b-a7ca-c7989c5f128a-common-20.1.1.tgz#2a0430196958dc8f76472cabd7ce5aa694be76e2"
+  integrity sha512-PAz/DDftkKHbTk/AZHJkifi6AQXaz3vmg9eHnlHwu+PpjjOFKnDqC4IIPz9BHcngoPdda/UltlevxKuIiildrg==
   dependencies:
-    "@codingame/monaco-vscode-69cd7d65-4465-53e8-9718-bc4f6df50f7d-common" "18.1.3"
-    "@codingame/monaco-vscode-7adbeffb-8051-54a9-8c9b-b62ce9e5836f-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common" "18.1.3"
-    marked "14.0.0"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-3cf6a388-482f-5484-a806-0525ad9ad8af-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-3cf6a388-482f-5484-a806-0525ad9ad8af-common/-/monaco-vscode-3cf6a388-482f-5484-a806-0525ad9ad8af-common-18.1.3.tgz#3f124a10d9ec4cf08749f975b78ab36a599fed88"
-  integrity sha512-D2dv5d1kkdzg23YSxm0Ml/tkWBh6Wu9eWK7ZydqLPC7NvZzHEFL819a5yRWEO1vtH3/M63rb11XLv5g0dGavJA==
+"@codingame/monaco-vscode-3109a756-1f83-5d09-945b-9f0fcad928f0-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-3109a756-1f83-5d09-945b-9f0fcad928f0-common/-/monaco-vscode-3109a756-1f83-5d09-945b-9f0fcad928f0-common-20.1.1.tgz#26dad5f6980b52b296eff8432b3324b4fdce1aea"
+  integrity sha512-wqGwIq39nFBvLwyPd0QEgIKTJJdXP4T6elOyAn+9XVH6DQAjbsrvZdVveD3kWai81gHAGc19Em9S7TdC/ZZavQ==
   dependencies:
-    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common" "18.1.3"
-    "@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-c3c61c00-c254-5856-9dc9-d7929c1f9062-common" "18.1.3"
-    "@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common" "18.1.3"
-    "@codingame/monaco-vscode-f48982c4-9e82-55e2-b800-20e6d1e6096f-common" "18.1.3"
+    "@codingame/monaco-vscode-ac93482b-2178-52df-a200-ba0d1a4963fb-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-bc6d9a89-1625-5010-b57e-ff44151144fe-common" "20.1.1"
 
-"@codingame/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common/-/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common-18.1.3.tgz#443ed7afd4ebcf578bb9f9af9a1c39af5a84efdf"
-  integrity sha512-v/I+LwzCtYbJiWhYRswpKoSt79RgD710X4H5Q7YgBK3xsisq3hmvdy5CdBXjcOMOU4gMnVUeeVD3P+i+Hva+JA==
+"@codingame/monaco-vscode-33833ac7-3af3-5e9d-8fb9-11838d852c59-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-33833ac7-3af3-5e9d-8fb9-11838d852c59-common/-/monaco-vscode-33833ac7-3af3-5e9d-8fb9-11838d852c59-common-20.1.1.tgz#64ce94363d6556404cfed1434cf092cdab1ca29d"
+  integrity sha512-/0l2sm7BzkBxLswQdcJQ4eAeZwc7f6TqQ93v7m67INET4cCW9eVgp+IpnrJclrcSH6fWA0Ep+YoX9h18d61MWw==
   dependencies:
-    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "18.1.3"
-    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-422642f2-7e3a-5c1c-9e1e-1d3ef1817346-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-422642f2-7e3a-5c1c-9e1e-1d3ef1817346-common/-/monaco-vscode-422642f2-7e3a-5c1c-9e1e-1d3ef1817346-common-18.1.3.tgz#a10188f7730136f8a30e88eff29893c7c8333ed1"
-  integrity sha512-5os2MqReKx9BJlHMbGJmJsXPnkYtiOlTZr2vjLFSQ907xULFiaqbnM0Qdmz+TOrAMX4MX/9GIX43z+lOCAUfnA==
+"@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common/-/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common-20.1.1.tgz#1438bf0f9b441ca3b39cb4597f381e0b11968d4d"
+  integrity sha512-4A9Qxy4hgvuRyJF1X5RkF4qnA5RyTpTLouq1b+shC4sB9zD9N+BCaD7CluHmiCF/DE+KV7zRjyJNCVxpezU6bw==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-4372ad43-a220-5e78-83e6-95a9cfd64384-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-4372ad43-a220-5e78-83e6-95a9cfd64384-common/-/monaco-vscode-4372ad43-a220-5e78-83e6-95a9cfd64384-common-18.1.3.tgz#69c3fb1f41ff0c9057ba2f070122532495663376"
-  integrity sha512-6LUnsErqhAhMmUl2gy/ygwX3L1HSsZ3X61ax4fvFpGwX+c+kZTyXNsuqginCpDwWIShB+5eTdEjA9RkxnIG3ig==
+"@codingame/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common/-/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common-20.1.1.tgz#74a83503bf00f1abe848b18a280916d3325923ee"
+  integrity sha512-xT3YVQdDJLmbRSYclimo8qWTuf/tTvsgu1hyJOSEPERdDi/d26qJsgNP/uVGYM2gqNWBH9GIt02wWkwDCQY5JQ==
   dependencies:
-    "@codingame/monaco-vscode-4ee27008-17b4-593f-9c09-19e8e3077f51-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "20.1.1"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-47472025-cc45-5680-86cd-09ceaba921a1-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-47472025-cc45-5680-86cd-09ceaba921a1-common/-/monaco-vscode-47472025-cc45-5680-86cd-09ceaba921a1-common-18.1.3.tgz#16cb194e94edb51382f4f3d8c393804b99fee91d"
-  integrity sha512-SvD4MF63G3jRrRxoV6JVd4RUfLA3cFB2zl1P1ezJUXGH6c9h5jlxZO+u2D6Fe3BqJuZAIRK4CDUcu6XBmaJR5Q==
+"@codingame/monaco-vscode-422642f2-7e3a-5c1c-9e1e-1d3ef1817346-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-422642f2-7e3a-5c1c-9e1e-1d3ef1817346-common/-/monaco-vscode-422642f2-7e3a-5c1c-9e1e-1d3ef1817346-common-20.1.1.tgz#02ea395dd98eded28321a0ba2660cfab31c0c18d"
+  integrity sha512-WwUgu1U9y5FfvnI1CIWK6EQ+cc4d+HO79KSILeY0YAy8+wwHaxXqB2F9OiuyUMH5twwuz/vRh7CE/BB6juvZTQ==
   dependencies:
-    "@codingame/monaco-vscode-3cf6a388-482f-5484-a806-0525ad9ad8af-common" "18.1.3"
-    "@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common" "18.1.3"
-    "@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-f48982c4-9e82-55e2-b800-20e6d1e6096f-common" "18.1.3"
-    "@codingame/monaco-vscode-f5d4b045-44e8-55a8-b683-308656a412fa-common" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common/-/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common-18.1.3.tgz#e9aeba27c8616020b670524d550bd7b800c385eb"
-  integrity sha512-691nOngAaBZ/iesJ5FvznPsiqYU7LIYJCIPJnm3MLOEmbzUGiA+RFZzjQfCkd+xR5i7whDQakpShmhe7SqPbSQ==
+"@codingame/monaco-vscode-494be54c-bd37-5b3c-af70-02f086e28768-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-494be54c-bd37-5b3c-af70-02f086e28768-common/-/monaco-vscode-494be54c-bd37-5b3c-af70-02f086e28768-common-20.1.1.tgz#a76943fed7327b94d6a50b021939023701dc6f7b"
+  integrity sha512-ZBiIkuUNNjWGmVwiP/bn2ouPzJRRuMEBQ+AnMsXRs/0hjHm6bc27h4tH60Lr47xRhU290vEhgGgMr46zNl3unQ==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-4ee27008-17b4-593f-9c09-19e8e3077f51-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-4ee27008-17b4-593f-9c09-19e8e3077f51-common/-/monaco-vscode-4ee27008-17b4-593f-9c09-19e8e3077f51-common-18.1.3.tgz#da838e0d12f87e9f74822bcfa8bacce6a1979efb"
-  integrity sha512-wylddLLfzZs6XkYotn6weum0hfKHQ5/GqkNuxlHzPlqJaZFTuVXcOKoYahtGt8ADE2rUhLbpqdDPqjkPmtJnXQ==
+"@codingame/monaco-vscode-4a316137-39d1-5d77-8b53-112db3547c1e-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-4a316137-39d1-5d77-8b53-112db3547c1e-common/-/monaco-vscode-4a316137-39d1-5d77-8b53-112db3547c1e-common-20.1.1.tgz#239312f6ad93900525aebdc619e783694524bd5e"
+  integrity sha512-etNKR87zyPMHUJxtp5b5hjS6jSZiWuvm91TdA3NFAV7qpRfnufQMdsC9d15PIdWkH64j8iCsFCPGeR++rIpGXg==
   dependencies:
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
+    "@codingame/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common" "20.1.1"
 
-"@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common/-/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common-18.1.3.tgz#4eee78b5a8ba5264bf6b646ed5e52e04f5dd5e37"
-  integrity sha512-uhCNvXJbeLlLL6lGwqrImSKsdrc1VjwFUStXNB5NJXXkxpYMhcWVDnpF/a9Im7pPxTLLAQ7GDup7uZptWmL52A==
+"@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common/-/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common-20.1.1.tgz#83088cddbb66f0a3644d4017674010be111a58e3"
+  integrity sha512-tE2aGVOHOuSz76nA3NbJQ8TDoh18w83eJNh1lLOR0/11QV5rBmod6FbmshtMD2RoK2/cowdllV7AA3e2UgQv3A==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-5452e2b7-9081-5f95-839b-4ab3544ce28f-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-5452e2b7-9081-5f95-839b-4ab3544ce28f-common/-/monaco-vscode-5452e2b7-9081-5f95-839b-4ab3544ce28f-common-18.1.3.tgz#ff275b8fa662996d00a8ec78445341971779cc0b"
-  integrity sha512-Nd5Jz+j3AT4+hftiyb/7AXEC5qGuOxcVdM8gc30BHMLqtaEfOHwFK2SxqIFJUeIqhdIj8q4cculmmXOudNatAw==
+"@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common/-/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common-20.1.1.tgz#9cc563dfd79faf85004b45b5772475c51d6f751a"
+  integrity sha512-irWtdKotDmxkHG7nz5/qTLR6FAqRIzhg9N/4uQwnPZHVotb00qPoaLiDBkRM45kYOe9VytqhNpi/lA7dkTpeTg==
   dependencies:
-    "@codingame/monaco-vscode-1cc4ea0a-c5b6-54ed-bb60-078a99119b55-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-571c8352-7953-5038-9f09-e03bb6219a0e-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-571c8352-7953-5038-9f09-e03bb6219a0e-common/-/monaco-vscode-571c8352-7953-5038-9f09-e03bb6219a0e-common-18.1.3.tgz#0e61bc49cf77c9c9917a7bfd9d20e647a6eca47b"
-  integrity sha512-PMHm6wXqiLrm0TXOFRcWAlzg1nAK/+4rHPfO5SEbbSpM1ASGZAr6OzdVcqsaOMMihctryjU2szolTMcpnxXnKw==
+"@codingame/monaco-vscode-523730aa-81e6-55d7-9916-87ad537fe087-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-523730aa-81e6-55d7-9916-87ad537fe087-common/-/monaco-vscode-523730aa-81e6-55d7-9916-87ad537fe087-common-20.1.1.tgz#9bcc0200b423d11846a47fb2e26d7d5363c6007b"
+  integrity sha512-D7WC+e8lOvcNEEHAlCuw977iQm0lyXco8dv69Yf/9nGxXzQojQSB5Fz3wzzLTq+enEtyCkxbQJ8oIvF8R0N3uQ==
   dependencies:
-    "@codingame/monaco-vscode-249dc928-1da3-51c1-82d0-45e0ba9d08a1-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common" "20.1.1"
+    "@codingame/monaco-vscode-ac93482b-2178-52df-a200-ba0d1a4963fb-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
 
-"@codingame/monaco-vscode-6845754f-e617-5ed9-8aaa-6ca3653a9532-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-6845754f-e617-5ed9-8aaa-6ca3653a9532-common/-/monaco-vscode-6845754f-e617-5ed9-8aaa-6ca3653a9532-common-18.1.3.tgz#652cbf36f6b80fb262a3e9231317d10d8ac45c00"
-  integrity sha512-ju0/cwJ2VdFfjNtnn9+zm71p6B3Ka6dnGWB0n8j0ms3LZ0GEcVFF66xKoufyd5I3iJI9WD/NESUtRBJq8V0Xcw==
+"@codingame/monaco-vscode-5452e2b7-9081-5f95-839b-4ab3544ce28f-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-5452e2b7-9081-5f95-839b-4ab3544ce28f-common/-/monaco-vscode-5452e2b7-9081-5f95-839b-4ab3544ce28f-common-20.1.1.tgz#76d37d8f2eb927f822979d06f4b7b9bab8690454"
+  integrity sha512-9zENixxinuONi2jr/85yvHwMM4iVN8YQ8buNqxA8snTyp1h05u8sWs18fjOcBF26ICrvZRyy27vB40BnRPGOnA==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-0af61f78-dfc5-57ba-8d32-66268c8de38d-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-69cd7d65-4465-53e8-9718-bc4f6df50f7d-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-69cd7d65-4465-53e8-9718-bc4f6df50f7d-common/-/monaco-vscode-69cd7d65-4465-53e8-9718-bc4f6df50f7d-common-18.1.3.tgz#422c2e42ecab076ec1efcb807c455b1c2e56720b"
-  integrity sha512-8/beoPg81mSYVLK5h80/0Fx8wPr2QTEE3Z9SMPrcEVqY0sMEB2WrJDqnJVhTENOcOUaln/BgwnBKroJWeCq6vw==
+"@codingame/monaco-vscode-571c8352-7953-5038-9f09-e03bb6219a0e-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-571c8352-7953-5038-9f09-e03bb6219a0e-common/-/monaco-vscode-571c8352-7953-5038-9f09-e03bb6219a0e-common-20.1.1.tgz#2652dad3a573b59ae2d7a5387d5da330bcd7fdfc"
+  integrity sha512-edaFu0lOelHm+ryi3Pwf7yuvru3hxFt9etfm6vRhHJVEecMVtKk3jP7+kqY86Axwx62UdBbVAN4z/Xvoz8RtTw==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-249dc928-1da3-51c1-82d0-45e0ba9d08a1-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-6bf85d7b-e6e3-54e9-9bc1-7e08d663f0f6-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-6bf85d7b-e6e3-54e9-9bc1-7e08d663f0f6-common/-/monaco-vscode-6bf85d7b-e6e3-54e9-9bc1-7e08d663f0f6-common-18.1.3.tgz#1bdcccc2444ab046ec8c7cbfd24c639a70c54044"
-  integrity sha512-aRLR9+cABqQYPix1V3zTb42EC9MR4fwbf5MjZprdEBscqb9ogDNuLddMArfXbNoCxsLr40X6cyH7nfbNMkrnlA==
+"@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common/-/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common-20.1.1.tgz#0344d178172be3b0f90c21b843fa6c6d513a2804"
+  integrity sha512-D29zUhvYd86ICic/8YIaKrQkV8r5NUOvl2qkxw1YNkyf3o//7DOj04lkyZIZYDZNa96BU4raDBGSd01FXFlXNQ==
   dependencies:
-    "@codingame/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common" "18.1.3"
-    "@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-96e83782-7f38-572e-8787-02e981f1c54f-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-6c0f93b9-169c-58c3-a9cb-7d60698eb52c-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-6c0f93b9-169c-58c3-a9cb-7d60698eb52c-common/-/monaco-vscode-6c0f93b9-169c-58c3-a9cb-7d60698eb52c-common-18.1.3.tgz#c285347111142d4296cb047dc51d5342cf3f5c4b"
-  integrity sha512-3EuK3nkpNTqAgtlwBbJU1UkWGEdkgJYeGmCfoDnBCR/alwk6cQfmDD32zYIgwScLPskGA3Fj65TwwDr7ANhXVg==
+"@codingame/monaco-vscode-615ce609-8555-545a-a549-47bd9f80e9f8-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-615ce609-8555-545a-a549-47bd9f80e9f8-common/-/monaco-vscode-615ce609-8555-545a-a549-47bd9f80e9f8-common-20.1.1.tgz#70e07d4e40647ada7710e38f579481be875e7ec3"
+  integrity sha512-428z6G8w0wNK+cntuxVNXwJ6FqNXjw8dyY/F55AV+mSnPkexxKky1qMnT+W+AaYMdVEhqiQpcoT9X4f+DEacRA==
   dependencies:
-    "@codingame/monaco-vscode-1cb11a73-359e-5a2f-9e95-6989cc9858ee-common" "18.1.3"
-    "@codingame/monaco-vscode-210e86a9-a91b-5273-b05d-390c776dde1f-common" "18.1.3"
-    "@codingame/monaco-vscode-3a35f433-1297-5707-ab58-c261b8180e6d-common" "18.1.3"
-    "@codingame/monaco-vscode-7adbeffb-8051-54a9-8c9b-b62ce9e5836f-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-c465110a-57c0-59d7-a6b2-be0a4db7e517-common" "18.1.3"
-    "@codingame/monaco-vscode-f5d4b045-44e8-55a8-b683-308656a412fa-common" "18.1.3"
+    "@codingame/monaco-vscode-08d1b4da-daf2-5f0d-8c50-ca6a6986c50f-common" "20.1.1"
+    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-622c0cca-d5fa-59b6-b730-0715afcf93ee-common" "20.1.1"
+    "@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
+    "@codingame/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common" "20.1.1"
 
-"@codingame/monaco-vscode-7adbeffb-8051-54a9-8c9b-b62ce9e5836f-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-7adbeffb-8051-54a9-8c9b-b62ce9e5836f-common/-/monaco-vscode-7adbeffb-8051-54a9-8c9b-b62ce9e5836f-common-18.1.3.tgz#691b48ab302074443bc8638827e5ed6931dad70e"
-  integrity sha512-isKwOTY0KphGfI8wXDlZwNttci99aW7RwvilZZftvNNvk+xowQcySHwqrHkUOZYfWG5m3nMi6mH8uG8jOX/b1Q==
+"@codingame/monaco-vscode-622c0cca-d5fa-59b6-b730-0715afcf93ee-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-622c0cca-d5fa-59b6-b730-0715afcf93ee-common/-/monaco-vscode-622c0cca-d5fa-59b6-b730-0715afcf93ee-common-20.1.1.tgz#df5e035bd5d86446c9ad2fd8bc340210db401346"
+  integrity sha512-QdKTMQe8ewnA4Jf6q7u8+0YDv1DBS1eH9/EvDRExOGaIrkdvkNEIiEr2MfzP1BT+TLalfgIOdbaFDSKmKtF/rg==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-7bbc9e7d-eeae-55fc-8bf9-dc2f66e0dc73-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-7bbc9e7d-eeae-55fc-8bf9-dc2f66e0dc73-common/-/monaco-vscode-7bbc9e7d-eeae-55fc-8bf9-dc2f66e0dc73-common-18.1.3.tgz#b5e7d918d1922a53d4ff8c2d6eaea9ae899e1fbe"
-  integrity sha512-bRZdYqY/1kI5WSvR7pv1a7D3hLcuoSA9/TBN+F0QZ4h4IkaD4Snwu+uGKOX0XOsbWaIbNKJdUfAGBYUBMN3RiQ==
+"@codingame/monaco-vscode-670aae94-7f88-54d7-90ea-6fcbef423557-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-670aae94-7f88-54d7-90ea-6fcbef423557-common/-/monaco-vscode-670aae94-7f88-54d7-90ea-6fcbef423557-common-20.1.1.tgz#a25faa6fb0447afdcf2f433cc8bb270ff6a1e5f9"
+  integrity sha512-dI6zBZt4ekBhg01bJGpA/sW9ZZQF9Kp7OWb/V4+sPyIXWHIsgTVwdnEdNtuUstKtMS2/drRK+amHpcXrsg3GXQ==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
 
-"@codingame/monaco-vscode-7f39b6f1-3542-5430-8760-0f404d7a7cee-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-7f39b6f1-3542-5430-8760-0f404d7a7cee-common/-/monaco-vscode-7f39b6f1-3542-5430-8760-0f404d7a7cee-common-18.1.3.tgz#a90cb9326179decad728b2a8a3d95a86372f1d02"
-  integrity sha512-psXDcF13Z8+QFt0Uk+Dk1yuVxKUBHNDMAfDd4hDMZzIITzBus/ZveSXogRoryPUU2KcUNa0zx5jlbMINFgdDmQ==
+"@codingame/monaco-vscode-6845754f-e617-5ed9-8aaa-6ca3653a9532-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-6845754f-e617-5ed9-8aaa-6ca3653a9532-common/-/monaco-vscode-6845754f-e617-5ed9-8aaa-6ca3653a9532-common-20.1.1.tgz#823072d80408bc3df62a71eadf810d4728faaf57"
+  integrity sha512-uD5WPIShUsOoyAGUR2ncq8ZnyP7Ww/GhZfOG9blZJ4yzHBEnZBgbmFdI6lOG6/mGQMjZQjCwjnqf6aFyNMfdSw==
   dependencies:
-    "@codingame/monaco-vscode-4372ad43-a220-5e78-83e6-95a9cfd64384-common" "18.1.3"
-    "@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common/-/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common-18.1.3.tgz#18dfc31a7b13fcff8b9d396c952a902a97f948d1"
-  integrity sha512-Io7qXcmU44AILpS9shVnW1LSz6hgEuuR9AF5gw+N9SyN//AHAjK78Y8IC8OO/ZP+itfS06r+IKMBOqIT9sF1Hw==
+"@codingame/monaco-vscode-6883db80-c313-54eb-8fbc-5872c56b0326-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-6883db80-c313-54eb-8fbc-5872c56b0326-common/-/monaco-vscode-6883db80-c313-54eb-8fbc-5872c56b0326-common-20.1.1.tgz#ac3aa4b1323a607a94248fb511bfd919c03c887f"
+  integrity sha512-wEhnvvB+bVpqByn9UMk5PVJmOfJT+friAFd8JU22B75Xf4hyljwBveKsi14VnrVTRtqh+MP/ez26e55Qd2ikbQ==
   dependencies:
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-897bebad-39df-57cb-8a57-36a271d038be-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-897bebad-39df-57cb-8a57-36a271d038be-common/-/monaco-vscode-897bebad-39df-57cb-8a57-36a271d038be-common-18.1.3.tgz#7f8613a9837b293969124977f33e6637692dba6a"
-  integrity sha512-O7ruiIJEpspj2+lvFxtT6FDsBBB6S0ekr1PH2MNtMZsCFSy2kM6UeK6grLQhyDN66tUOk0V14y+mUmKAc4UeiA==
+"@codingame/monaco-vscode-6980eeab-47bb-5a48-8e15-32caf0785565-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-6980eeab-47bb-5a48-8e15-32caf0785565-common/-/monaco-vscode-6980eeab-47bb-5a48-8e15-32caf0785565-common-20.1.1.tgz#f5d3c4d86200d26effb72e1697e868a3bc02ceb7"
+  integrity sha512-2IgUfrEWAOCaAiItOjGYqwbBHPvrjPtBx8D2bExB8+Bjo1JQIbyp6bdpp5WZ9ZY0vUMXITn1PA8dcuRumFwlPw==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common" "20.1.1"
+    "@codingame/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common" "20.1.1"
+    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-615ce609-8555-545a-a549-47bd9f80e9f8-common" "20.1.1"
+    "@codingame/monaco-vscode-622c0cca-d5fa-59b6-b730-0715afcf93ee-common" "20.1.1"
+    "@codingame/monaco-vscode-6bf85d7b-e6e3-54e9-9bc1-7e08d663f0f6-common" "20.1.1"
+    "@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common" "20.1.1"
+    "@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common" "20.1.1"
+    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-8a9062f2-d169-567b-848e-a2530c97ea18-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-8a9062f2-d169-567b-848e-a2530c97ea18-common/-/monaco-vscode-8a9062f2-d169-567b-848e-a2530c97ea18-common-18.1.3.tgz#23c93fd116e6ae82094ac970b76e7e94360f83fc"
-  integrity sha512-Px2BvDnz4EA1buW1HygUDVfhiMberd+7WjXxz/ZWzYbFj1lWZHniLIAunJh2ErDmYruZiw8K1qaNZ28UXf2uyQ==
+"@codingame/monaco-vscode-6bf85d7b-e6e3-54e9-9bc1-7e08d663f0f6-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-6bf85d7b-e6e3-54e9-9bc1-7e08d663f0f6-common/-/monaco-vscode-6bf85d7b-e6e3-54e9-9bc1-7e08d663f0f6-common-20.1.1.tgz#7fab852888e793a1faef0e06b8d61c21af1b7339"
+  integrity sha512-gPtUcrA9Dsc0PRy1osR3IN8TlFBERzuSzIbqA1nVjWMXHuwfnXgHUUTo4I7W1uSx7C4DK8B1xgJOOUnbNN+yqQ==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common" "20.1.1"
+    "@codingame/monaco-vscode-96e83782-7f38-572e-8787-02e981f1c54f-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common" "20.1.1"
 
-"@codingame/monaco-vscode-8ccb7637-50ea-5359-97bf-00015d7fe567-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-8ccb7637-50ea-5359-97bf-00015d7fe567-common/-/monaco-vscode-8ccb7637-50ea-5359-97bf-00015d7fe567-common-18.1.3.tgz#9d7828eb7880976f89df0ac0b4aea4f176e2d6b3"
-  integrity sha512-sAgkkbuPSZ0rKX974k4n74U4vkg+PZnmoGBpBjRP/98cmBm/rETuE2BkLf4TvZJOLA5KXkRIErg8CuwZyx3cWA==
+"@codingame/monaco-vscode-6db1b967-5327-5c5c-8c17-bd92774c0fb2-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-6db1b967-5327-5c5c-8c17-bd92774c0fb2-common/-/monaco-vscode-6db1b967-5327-5c5c-8c17-bd92774c0fb2-common-20.1.1.tgz#4717a11ce703f0ff089f2af2c50b5b9d3cf34fa0"
+  integrity sha512-UgC+Iyc8Xoyxikhz36fYZFjOVMbgR9DqqFh141+7j12yCCHRnZRXxj14espKcwz2Rua0iS5PVhI+EvxE43WmjQ==
   dependencies:
-    "@codingame/monaco-vscode-210e86a9-a91b-5273-b05d-390c776dde1f-common" "18.1.3"
-    "@codingame/monaco-vscode-4ee27008-17b4-593f-9c09-19e8e3077f51-common" "18.1.3"
-    "@codingame/monaco-vscode-897bebad-39df-57cb-8a57-36a271d038be-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-8d39d04c-3201-5bd6-be79-eed8d17a5ad0-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-8d39d04c-3201-5bd6-be79-eed8d17a5ad0-common/-/monaco-vscode-8d39d04c-3201-5bd6-be79-eed8d17a5ad0-common-18.1.3.tgz#c58df2a376f14e405b1d9527d59909dc86663814"
-  integrity sha512-e26pexUKPD5KJlr6DxGNlWtZxXMDDA0r1WMkyWYS2JSdt/ay/QGTDW9AV9OEsUZEHhitlDDuMZeGaf4yw68bFg==
+"@codingame/monaco-vscode-6f931a91-88ea-5232-897f-a17ec3929ba5-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-6f931a91-88ea-5232-897f-a17ec3929ba5-common/-/monaco-vscode-6f931a91-88ea-5232-897f-a17ec3929ba5-common-20.1.1.tgz#aea67dac247d478b08fe9dcbb80e5bf4ae0e16c7"
+  integrity sha512-fs/9tij9IIExwLBuT691jzetMd8imeMHXkMkgpefQIe1jewBpkBXvO/QCt2pzws1HTbW1JYQFf20Lc4AhYGfxQ==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-262ed59d-4f76-57cd-9e9f-1877f26ae049-common" "20.1.1"
+    "@codingame/monaco-vscode-670aae94-7f88-54d7-90ea-6fcbef423557-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
 
-"@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common/-/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common-18.1.3.tgz#5567594e29e38ef7471a420ae906585e746962d9"
-  integrity sha512-iMuHHVnhzMxApBshHOMGYB2HOkGbfyqtSvfcTEwtk+HroJ4z7RXWY4UwWnsul2siDCS6R651rP2XXhmzRY7jLA==
+"@codingame/monaco-vscode-72a1b7d3-3f58-5545-9b7e-f579bd003081-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-72a1b7d3-3f58-5545-9b7e-f579bd003081-common/-/monaco-vscode-72a1b7d3-3f58-5545-9b7e-f579bd003081-common-20.1.1.tgz#d35b224f3560a0807cc47cceaa79819281f50b5d"
+  integrity sha512-lNsYsEnPdQ9Mzk2S2bPHhxgk56JKSsAPTH5JnVdl6HTS74jbsrQs/IANtTEgyr3T3miFksvdB0agHbkVdww1Dg==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-f24e325c-2ce0-5bba-8236-bfc4f53180ab-common" "20.1.1"
 
-"@codingame/monaco-vscode-93784a59-b4cf-520c-8339-f8104d3a4f3e-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-93784a59-b4cf-520c-8339-f8104d3a4f3e-common/-/monaco-vscode-93784a59-b4cf-520c-8339-f8104d3a4f3e-common-18.1.3.tgz#24329d93534ecf7cd3e4dc54c0fc7b1f57513f2a"
-  integrity sha512-ssSWmBjR2+KiQqKE5ZKU1O8KcbFlPFBP6yY4Vv92zVF9DjRouH6/gSzdQGYeoM0mIV4EptSFziBJxN1wiUSDsA==
+"@codingame/monaco-vscode-7869cfe8-f42c-5721-9f2b-7d04a6a41f16-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-7869cfe8-f42c-5721-9f2b-7d04a6a41f16-common/-/monaco-vscode-7869cfe8-f42c-5721-9f2b-7d04a6a41f16-common-20.1.1.tgz#f3bbe8c5003cae9b63e46d9e4bf2fbb01ae6dca0"
+  integrity sha512-hlig1L6J9oLDNkIt2ej0ZjUBxbfIUg6vJKQQpwS7yhCezShXC7XwVEv3bo1i8i4NcTr1CEvEFQO9B55W5JvISw==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-937ecbdf-94c7-5b16-aefa-ad78ae557a93-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-937ecbdf-94c7-5b16-aefa-ad78ae557a93-common/-/monaco-vscode-937ecbdf-94c7-5b16-aefa-ad78ae557a93-common-18.1.3.tgz#a422e43fb3e945f5b55059bfa4ac694f0a3bb675"
-  integrity sha512-41ZdBeYk5Om7dzP8XnzN8PXE5IPfAxxbIE+wiaVl4LECM0SbTpXeE/KIpdOZlHCE02f91P35nYZXR2O0uw9hig==
+"@codingame/monaco-vscode-7f39b6f1-3542-5430-8760-0f404d7a7cee-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-7f39b6f1-3542-5430-8760-0f404d7a7cee-common/-/monaco-vscode-7f39b6f1-3542-5430-8760-0f404d7a7cee-common-20.1.1.tgz#b0c9bc10b016897e6e29725eb89c94d03456f945"
+  integrity sha512-zSZgVx4iW9XSLiU9om2xp1A2FVCb2wK2Tzr5O/Kc81aJ1x5j83zQPowKNM+kQqNt54unsREbmFtIHnpYX5GDfw==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-670aae94-7f88-54d7-90ea-6fcbef423557-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-95ea5c7c-15cf-50aa-8e24-38039b06b4a6-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-95ea5c7c-15cf-50aa-8e24-38039b06b4a6-common/-/monaco-vscode-95ea5c7c-15cf-50aa-8e24-38039b06b4a6-common-18.1.3.tgz#79f5250679ee56c4066dedd94b5dde2f9a36c704"
-  integrity sha512-UIaGVrrx8SOPEG86tvg+OXnh7xbrmxpIU+yFNdY672cjrBbfoPg7YCH0t+iD30Ky7IB//H8OY7R7qfbk8N06Gw==
+"@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common/-/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common-20.1.1.tgz#6def87d2d1a716d494e539d138df706e3e63344d"
+  integrity sha512-9aupBVbWrQSLsNFVaNW5s3iGtk8DWJQmmmS8BJ6oh3WKFwDJRm4wi9YLWvEKygqgMsIzbWUInERCNGaLqLLWew==
   dependencies:
-    "@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-96e83782-7f38-572e-8787-02e981f1c54f-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-96e83782-7f38-572e-8787-02e981f1c54f-common/-/monaco-vscode-96e83782-7f38-572e-8787-02e981f1c54f-common-18.1.3.tgz#160e695f381eedc559fc83187a27ab3bc8cae025"
-  integrity sha512-H6WxwsKcshvL7SlSBZNWHLIchj1gWhMjJHeA+6SPuxHPOvuwtPLm+5olxBZImxje1m9cd9S9Nvw4rWFP0R9Cdw==
+"@codingame/monaco-vscode-897bebad-39df-57cb-8a57-36a271d038be-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-897bebad-39df-57cb-8a57-36a271d038be-common/-/monaco-vscode-897bebad-39df-57cb-8a57-36a271d038be-common-20.1.1.tgz#ffe29427200d16adeaad72bd468b27105dd78c1c"
+  integrity sha512-Rn3JL6CfxiUR5/ec0saL6jmF/QF7iiQMXRUZmbgIwSPNmCrl5qEFwOrJkRhVvpPQh0UCb4sTq7bFJY8J2dP/ZQ==
   dependencies:
-    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "18.1.3"
-    "@codingame/monaco-vscode-69cd7d65-4465-53e8-9718-bc4f6df50f7d-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common/-/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common-18.1.3.tgz#9e7f3353d439100837349e4832e2aec9c1e2d083"
-  integrity sha512-Xg3zqztIlBuCsUjgkuUVy4/XUnfsa+zoG2P/xdMgW2U3WFaT7di/2o3Hywk312uw2aXl/G3mkz8te/aA24y8Ng==
+"@codingame/monaco-vscode-89a82baf-8ded-5b2f-b8af-e5fbd72dc5ad-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-89a82baf-8ded-5b2f-b8af-e5fbd72dc5ad-common/-/monaco-vscode-89a82baf-8ded-5b2f-b8af-e5fbd72dc5ad-common-20.1.1.tgz#d015038e036bd68a71b7b93987958ee59f5ce71e"
+  integrity sha512-jKS155spOMfDRqUY0N617PU6OXfjkSYVg+NjFzIcBX4LLPdP5r818F33PRarGpaC7A8YSp2FNl2ME2osW4WIlQ==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-256d5b78-0649-50e9-8354-2807f95f68f4-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common/-/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common-18.1.3.tgz#2837e9ddf7b679fa6c051119c7077d2772e044e4"
-  integrity sha512-7iR5nVXkk+u9vvSJ/5Vsfz0pGrjoxnG0gKh0MoIuDDOsr4BRiYHCP5aHOzV3eIxdYsyUXlTXWzjxfvUmSm/dgQ==
+"@codingame/monaco-vscode-8ccb7637-50ea-5359-97bf-00015d7fe567-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-8ccb7637-50ea-5359-97bf-00015d7fe567-common/-/monaco-vscode-8ccb7637-50ea-5359-97bf-00015d7fe567-common-20.1.1.tgz#225a4673fece57b403738887439c22367bdad9f9"
+  integrity sha512-7JPhddboBeoKtiV1LiWlS5HQKpkQMLehUDAfYc2ussQ5JP9IlpEw3yx8AGTQ8Q6AcyQk65zJt3iC/gUdSToQew==
   dependencies:
-    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-6db1b967-5327-5c5c-8c17-bd92774c0fb2-common" "20.1.1"
+    "@codingame/monaco-vscode-897bebad-39df-57cb-8a57-36a271d038be-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
 
-"@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common/-/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common-18.1.3.tgz#4bfdd85ba8db9b04b0be4bab138c0c7f87e45be2"
-  integrity sha512-3HNLxqEoyv5DtbzR2No9/cW29wCkQu3Uw7W4C4Ow6wY3G33zpYnMWwL/GxqtJH9dnzcIKbvwg5F5hF87QJhZBA==
+"@codingame/monaco-vscode-96e83782-7f38-572e-8787-02e981f1c54f-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-96e83782-7f38-572e-8787-02e981f1c54f-common/-/monaco-vscode-96e83782-7f38-572e-8787-02e981f1c54f-common-20.1.1.tgz#f4d4a447369ed286a4b83cf1c2b059246226ca02"
+  integrity sha512-/6knyycuNcdqLU0zHhMsDQ3WgHzs2L7AFHNqpm0iiyb1X6ZXEJRPiPCGxBFOoBXHWD2sRlS/Mo6cFqzXAoRPOA==
   dependencies:
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common" "18.1.3"
+    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-ebba7d85-8a22-5735-adf4-8299cd976dce-common" "20.1.1"
+    "@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common" "20.1.1"
 
-"@codingame/monaco-vscode-9ed6fe06-a052-57c2-a234-5d9b94d2e7e0-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9ed6fe06-a052-57c2-a234-5d9b94d2e7e0-common/-/monaco-vscode-9ed6fe06-a052-57c2-a234-5d9b94d2e7e0-common-18.1.3.tgz#1fca13da5a7ce6843a5340c2d0512302b8e5414a"
-  integrity sha512-8u1ZsCEk4/Yw4CFDlUiYYaEfzy52q5QfvhtFvc1C1Pq0F2nJqO8CYzWawb7ySmVv2kotypEbxjw+4Kz9XeT1MA==
+"@codingame/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common/-/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common-20.1.1.tgz#5474c0a03257b304ac610cb7309dd4d472341c76"
+  integrity sha512-JIcBs4val7ACOohop+xQaiQdxkZWtrV3Zp1RhTpW8BWsGT5DbL7dXEiIgBvsy1QayG5RaMcS1BlxRcKU8FuGow==
   dependencies:
-    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "18.1.3"
-    "@codingame/monaco-vscode-93784a59-b4cf-520c-8339-f8104d3a4f3e-common" "18.1.3"
-    "@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-9ee79c1a-3f03-568b-8eac-b02513a98b68-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9ee79c1a-3f03-568b-8eac-b02513a98b68-common/-/monaco-vscode-9ee79c1a-3f03-568b-8eac-b02513a98b68-common-18.1.3.tgz#0fdfb098148a4d3ed4cd38e8fbca9a4afc7fd495"
-  integrity sha512-sdwU5CBy3yP7d0phYAR8LGoyKOgIyE1QRWbcPx5SepxaZKc+CbCXMzaUZCaqrp1JiavyOSOGG0YfE1fDZfXJ7w==
+"@codingame/monaco-vscode-9a934394-0cf8-512d-939b-77e71f69cebb-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9a934394-0cf8-512d-939b-77e71f69cebb-common/-/monaco-vscode-9a934394-0cf8-512d-939b-77e71f69cebb-common-20.1.1.tgz#80b26679ff3ec5e7aaf459bdc39bbb36b69f9ac6"
+  integrity sha512-hWX7bOPEmBxadz3srpsrzUP+BDqBs3HN+AdY/8MKvEJtZHYTBbE3B/4Z7RwsXDsxahnYJSI/wLh345N4+7EMig==
   dependencies:
-    "@codingame/monaco-vscode-8d39d04c-3201-5bd6-be79-eed8d17a5ad0-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common/-/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common-18.1.3.tgz#de60c9f3ceedaaf1afd3a7f11d5f789a643403df"
-  integrity sha512-aYzRZudyJaJ6OjZAH48ED132pOv+8vZywAlSZeN9F29L9f7VnC7ZKVRLFpkewohkNbW/klZxzduXgLas1Hfrbw==
+"@codingame/monaco-vscode-9c84f943-bcb5-5bcf-92a6-91f66a732f26-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9c84f943-bcb5-5bcf-92a6-91f66a732f26-common/-/monaco-vscode-9c84f943-bcb5-5bcf-92a6-91f66a732f26-common-20.1.1.tgz#217d7a5b54ed4e2d3394b81e0aeeb8897676fc3e"
+  integrity sha512-Sx8/4i444gZOAAbTtjpnZkIVOE+x76ilsS9MwNcm/ryArwFo94bLmG89Aan5iDUsM449BTPjsdDRp6b+ezfkUw==
   dependencies:
-    "@codingame/monaco-vscode-4ee27008-17b4-593f-9c09-19e8e3077f51-common" "18.1.3"
-    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "18.1.3"
-    "@codingame/monaco-vscode-69cd7d65-4465-53e8-9718-bc4f6df50f7d-common" "18.1.3"
-    "@codingame/monaco-vscode-95ea5c7c-15cf-50aa-8e24-38039b06b4a6-common" "18.1.3"
-    "@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common" "18.1.3"
-    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common" "18.1.3"
-    "@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common/-/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common-18.1.3.tgz#d2913269fee5741a4c263bdf75294525de25c598"
-  integrity sha512-wl+AR4PcKRG9CSuJsILBrtpCW83xmBqDYqRHo9pU4QB8frRpM59xh8oFW8+mdgSa1cyX6d+owrefXI2a70lOWA==
+"@codingame/monaco-vscode-9d0168a3-519b-57f3-9bcc-89efc41f951a-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9d0168a3-519b-57f3-9bcc-89efc41f951a-common/-/monaco-vscode-9d0168a3-519b-57f3-9bcc-89efc41f951a-common-20.1.1.tgz#e14989f70062338e5893ee9cfdbed2973c5ef45b"
+  integrity sha512-L6gffHawUYf/EHPIdbfzdyVSqPRiNG91GVRUerSWvG16niTHhPOiblpjdnkgFXj4C7RJWaoGHrAqS3uIZfXy0w==
   dependencies:
-    "@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-9a934394-0cf8-512d-939b-77e71f69cebb-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common/-/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common-18.1.3.tgz#ba7e1d6d1d11afd5bcdc23a55ce2b519f03ee0ad"
-  integrity sha512-329x1rsU24qzKwHc5QtFnrfh8Nx1Gqjok7uVpAhgM/dOw75z7kQkDmmGf1/+PsHwwB1uYjqT5mHcNAgChuvaLw==
+"@codingame/monaco-vscode-9ee79c1a-3f03-568b-8eac-b02513a98b68-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9ee79c1a-3f03-568b-8eac-b02513a98b68-common/-/monaco-vscode-9ee79c1a-3f03-568b-8eac-b02513a98b68-common-20.1.1.tgz#e3320418a439223a2db63a2033c7c08fb614ab99"
+  integrity sha512-51k8d4MaMiCU8b9+crcGoPvgdIhvDNzbz9BiKprXpqeQoJaFLlf6bL3eETw2iGfvnxGFyKqj6T13MnrP4+KKdQ==
   dependencies:
-    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-262ed59d-4f76-57cd-9e9f-1877f26ae049-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common/-/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common-18.1.3.tgz#4a4e28f061f2180ffe9c10acb1ecb0abaacad4b7"
-  integrity sha512-DnkZ7Ljx3bMNlzhbhLx7VElBBrQ1AWLhVHYIsJD5hyN4pgduEM96iSUiO92B5f6Z6iPKC3Zcxi0jgTWKIkEaMw==
+"@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common/-/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common-20.1.1.tgz#86e51ff52bc75a2051223e562fae93854e52f7d4"
+  integrity sha512-IxsJBqtr8yca8DtaVXMA204xw2FS3Tm8YtEi6HkwWCt00ZlGR/lNzO4K766tjl6G0P56o5tiAvr6Zm9V2nHi5w==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-bc6d9a89-1625-5010-b57e-ff44151144fe-common" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
+    "@codingame/monaco-vscode-ebba7d85-8a22-5735-adf4-8299cd976dce-common" "20.1.1"
 
-"@codingame/monaco-vscode-api@18.1.3", "@codingame/monaco-vscode-api@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-api/-/monaco-vscode-api-18.1.3.tgz#dfdfab72d6da8f68a005fdea679540361d8e966e"
-  integrity sha512-ZVYh3Vd6Frvcfx/F0QjXontURXET7/J4CMxzn5SKAe6CfqDG0xVMV9VjQ3RHX7tutSV9vWBIZLtic0+X5r0iGA==
+"@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common/-/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common-20.1.1.tgz#ee63ff2396f807a03b90526e7396178900d6d941"
+  integrity sha512-jiEDblyPO+xj+5oqK6XOjy44YY7AvqpgXFDqDh4fRtJHZEKd7ceiiUYDoMi0cKutoSXvngntrqFerQAhEN21PA==
   dependencies:
-    "@codingame/monaco-vscode-base-service-override" "18.1.3"
-    "@codingame/monaco-vscode-environment-service-override" "18.1.3"
-    "@codingame/monaco-vscode-extensions-service-override" "18.1.3"
-    "@codingame/monaco-vscode-files-service-override" "18.1.3"
-    "@codingame/monaco-vscode-host-service-override" "18.1.3"
-    "@codingame/monaco-vscode-layout-service-override" "18.1.3"
-    "@codingame/monaco-vscode-quickaccess-service-override" "18.1.3"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-a3eaa464-944c-5b8f-8886-213068ba4897-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-a3eaa464-944c-5b8f-8886-213068ba4897-common/-/monaco-vscode-a3eaa464-944c-5b8f-8886-213068ba4897-common-20.1.1.tgz#26f7f3d0b57a1f7fa40c0687d677edb89b735d26"
+  integrity sha512-BVKbsgnVW0oMv8cedYRhFoXio79Rc+pZR+8DWh/Z4snjQOPxCf/iraizsdhIxojwRMNts3PjdDPli08A1V0wrQ==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-a654b07e-8806-5425-b124-18f03ba8e11a-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-a654b07e-8806-5425-b124-18f03ba8e11a-common/-/monaco-vscode-a654b07e-8806-5425-b124-18f03ba8e11a-common-20.1.1.tgz#375f783f976998d8f6b9bdb6eed18e4af7bbaea1"
+  integrity sha512-OE6Bhk/lvwI3mSrPJEFubhjkbwJUUGAVLlLEQa2eNj7oezSRzw+i9nYDAVR0yzUkqwOlx3NzXLZ0Y8B7PtN1nA==
+  dependencies:
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common/-/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common-20.1.1.tgz#f201ec94e8998c1b924b61389be38d9fba80f319"
+  integrity sha512-B4PXQ5wM89rv+TuHxCCIZuQM8+LIbiVclKUFPnWYBZ7X2YbfK1mR3tyUZAWBZKKof5yKg8CJCShP3ap82u6jOQ==
+  dependencies:
+    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-a9da9abe-278d-5ce6-9418-99c7c07c5c37-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-a9da9abe-278d-5ce6-9418-99c7c07c5c37-common/-/monaco-vscode-a9da9abe-278d-5ce6-9418-99c7c07c5c37-common-20.1.1.tgz#6cdfc7631c684f889b3aea7eb6d9536a5219860b"
+  integrity sha512-r0C52OHs9yXFNTEObVw7BYWaBGu/MFEKWe/Out9kpQywoEDOkqiAh/5HNm9X8Hgvpjpu9yyxyC+oeowrIzZONA==
+
+"@codingame/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common/-/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common-20.1.1.tgz#8b676298892196448ff7c637673b2994319dbc4a"
+  integrity sha512-Pzg7uoYItq/nlR4dR0+orgMkvS2cKf+Vw9J7EJw9r2bqK2f3WitE8k5H8XXYAse+dW+Gv7Bx7C+vauzKnJ275w==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-ac93482b-2178-52df-a200-ba0d1a4963fb-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-ac93482b-2178-52df-a200-ba0d1a4963fb-common/-/monaco-vscode-ac93482b-2178-52df-a200-ba0d1a4963fb-common-20.1.1.tgz#8d595814a67e52ac6639bc1178610268445d7abc"
+  integrity sha512-7zOMlN+dIR1F1qbaUi5YWczmmaNQD+O+03P3jhuCCNIaR/g5mkGKNZqmYGjumELUM1rA2F8c1VTVWmzt97rjmg==
+  dependencies:
+    "@codingame/monaco-vscode-615ce609-8555-545a-a549-47bd9f80e9f8-common" "20.1.1"
+    "@codingame/monaco-vscode-670aae94-7f88-54d7-90ea-6fcbef423557-common" "20.1.1"
+    "@codingame/monaco-vscode-72a1b7d3-3f58-5545-9b7e-f579bd003081-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-bd0792ac-6043-5ec3-a41a-54ccb922a1f4-common" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common" "20.1.1"
+    "@codingame/monaco-vscode-f24e325c-2ce0-5bba-8236-bfc4f53180ab-common" "20.1.1"
+
+"@codingame/monaco-vscode-acd79e2c-c7e3-5594-873a-427e3006b3d8-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-acd79e2c-c7e3-5594-873a-427e3006b3d8-common/-/monaco-vscode-acd79e2c-c7e3-5594-873a-427e3006b3d8-common-20.1.1.tgz#f335d356a3d7bfd45d581b8cd117a95a6c4f6593"
+  integrity sha512-nm1Dz7IQdXYE3+q6j+3Bvo9ilOrNa+WO0D9+pUmPwWPOHQT3zWvcDkqb7/I/Ukv0xVWrIbyqEIMWZbsh4twDfA==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-api@20.1.1", "@codingame/monaco-vscode-api@^20.1.1", "@codingame/monaco-vscode-api@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-api/-/monaco-vscode-api-20.1.1.tgz#593ff1b7aadfc9a4e23de43cb664a9b6c4f408f6"
+  integrity sha512-qX+x1DSEW+m+Zui486q4FhpPCaMMLmYmx1K7OYSV+ha4i5f3dHvQKWAftMHtQtlo+krBm2lijPJSf45g1k1Suw==
+  dependencies:
+    "@codingame/monaco-vscode-base-service-override" "20.1.1"
+    "@codingame/monaco-vscode-environment-service-override" "20.1.1"
+    "@codingame/monaco-vscode-extensions-service-override" "20.1.1"
+    "@codingame/monaco-vscode-files-service-override" "20.1.1"
+    "@codingame/monaco-vscode-host-service-override" "20.1.1"
+    "@codingame/monaco-vscode-layout-service-override" "20.1.1"
+    "@codingame/monaco-vscode-quickaccess-service-override" "20.1.1"
     "@vscode/iconv-lite-umd" "0.7.0"
     dompurify "3.2.6"
     jschardet "3.1.4"
     marked "14.0.0"
 
-"@codingame/monaco-vscode-b1e8558d-1726-5299-bc75-e43ee6d1a124-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-b1e8558d-1726-5299-bc75-e43ee6d1a124-common/-/monaco-vscode-b1e8558d-1726-5299-bc75-e43ee6d1a124-common-18.1.3.tgz#8b63ca4fcf1a8132ad89d53e43b194d8d5ce2e80"
-  integrity sha512-JaJ1zc2XNSrCWJmczAcKuqVEq16jqNY5btY8KpKQcU72owpFHVZUlw30wpAaaUX/kMUFnNgilA46XuwvLLif1Q==
+"@codingame/monaco-vscode-b994942c-360d-5b68-8a33-77d4bde6b714-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-b994942c-360d-5b68-8a33-77d4bde6b714-common/-/monaco-vscode-b994942c-360d-5b68-8a33-77d4bde6b714-common-20.1.1.tgz#15fb4210b5fffa6ff5e03ee2da564fcbc18abd2f"
+  integrity sha512-9nRw2scO8iAdOx5x1U0iMlOoXZwxzFYuxdpervYxdklLJR5ogGSmCLhjHN4JMt7Ps5hgOlWkBzomQWUZjzw7xA==
   dependencies:
-    "@codingame/monaco-vscode-4ee27008-17b4-593f-9c09-19e8e3077f51-common" "18.1.3"
-    "@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common" "18.1.3"
-    "@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common" "18.1.3"
-    "@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-c3c61c00-c254-5856-9dc9-d7929c1f9062-common" "18.1.3"
-    "@codingame/monaco-vscode-f5d4b045-44e8-55a8-b683-308656a412fa-common" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
 
-"@codingame/monaco-vscode-base-service-override@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-base-service-override/-/monaco-vscode-base-service-override-18.1.3.tgz#d5cc51befd027c42b5469e653ace55f75d3b7040"
-  integrity sha512-QFMJZEicuBVZjgSQZhCNgEejUJ2V4s55GuOVvEhonf8k32f+MUaAWkdMcjOTNQhPsga2BvQpgAW6Q0La+PZ4fw==
+"@codingame/monaco-vscode-base-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-base-service-override/-/monaco-vscode-base-service-override-20.1.1.tgz#a744e32986ba7f66b5ab9bc5f7fdb4d5a92fbb22"
+  integrity sha512-GC9PPlMKwY8U9vNynNBtKye43vEQk+kwZZPZYRsYp420Nf8+ggsc1hHf9zue3buLw9hml5+//cC6G56T4FwCPw==
   dependencies:
-    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "18.1.3"
-    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-93784a59-b4cf-520c-8339-f8104d3a4f3e-common" "18.1.3"
-    "@codingame/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-d987325e-3e05-53aa-b9ff-6f97476f64db-common" "18.1.3"
+    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "20.1.1"
+    "@codingame/monaco-vscode-23aade48-f094-5c08-9555-97fc9cca96c9-common" "20.1.1"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-d987325e-3e05-53aa-b9ff-6f97476f64db-common" "20.1.1"
 
-"@codingame/monaco-vscode-bba55be6-41a2-50cd-a3cc-8bafa35bfa89-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-bba55be6-41a2-50cd-a3cc-8bafa35bfa89-common/-/monaco-vscode-bba55be6-41a2-50cd-a3cc-8bafa35bfa89-common-18.1.3.tgz#74b16e9d361bdc12a4b183cd725b46ff74e4dd41"
-  integrity sha512-DEU7ILAcWzVXn0aD8pU5nY8+FvGEVMkefTF9e2pjioPljdYHbVLY/4tYalMzrt/ShFJiRYtZmknbCePap+CGLQ==
+"@codingame/monaco-vscode-bc6d9a89-1625-5010-b57e-ff44151144fe-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-bc6d9a89-1625-5010-b57e-ff44151144fe-common/-/monaco-vscode-bc6d9a89-1625-5010-b57e-ff44151144fe-common-20.1.1.tgz#2f1af7739377ae63226d7dcc031c39b898ad1776"
+  integrity sha512-8wGfxea1H8ZwTRSIzpc0wgq8wahyxlzOz0HBFe2RxS0/cmCv3mQaQHD+LTL2ARnJJ2Rwc7Jja1h21aAoVrxhkw==
   dependencies:
-    "@codingame/monaco-vscode-4372ad43-a220-5e78-83e6-95a9cfd64384-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-bf94ddb5-e436-506a-9763-5ab86b642508-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-bf94ddb5-e436-506a-9763-5ab86b642508-common/-/monaco-vscode-bf94ddb5-e436-506a-9763-5ab86b642508-common-18.1.3.tgz#9546c4f54ffde5eacd589c93d4cb4b91d9c22094"
-  integrity sha512-gwhnNt7wb4+FtoH5OsVLn4qkjE0gfV2gGmMC5cPkUooDA/+jpo9Xz96AAP1qS5ZFuU9f1hHOKz1/2Y2BY8Pj3Q==
+"@codingame/monaco-vscode-bd0792ac-6043-5ec3-a41a-54ccb922a1f4-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-bd0792ac-6043-5ec3-a41a-54ccb922a1f4-common/-/monaco-vscode-bd0792ac-6043-5ec3-a41a-54ccb922a1f4-common-20.1.1.tgz#2fb873b7b061c70c5604bd487ad25c0da485bb7c"
+  integrity sha512-K2Y3/Y8zWT74gVRGwEqm1bOMP05t/1KPdfSisOIYh58Q8CnTBVD2d6L/zVNlrMod53191T5mVv8A9JN9S3SGHg==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-615ce609-8555-545a-a549-47bd9f80e9f8-common" "20.1.1"
+    "@codingame/monaco-vscode-72a1b7d3-3f58-5545-9b7e-f579bd003081-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
+    "@codingame/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common" "20.1.1"
+    "@codingame/monaco-vscode-f24e325c-2ce0-5bba-8236-bfc4f53180ab-common" "20.1.1"
 
-"@codingame/monaco-vscode-c3c61c00-c254-5856-9dc9-d7929c1f9062-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-c3c61c00-c254-5856-9dc9-d7929c1f9062-common/-/monaco-vscode-c3c61c00-c254-5856-9dc9-d7929c1f9062-common-18.1.3.tgz#cb92b396cca789ad187f5ba1516514cabccf06c9"
-  integrity sha512-dXGyDxIkjnCp4dxvEXxe29BsAIb91fqmt6f+nrPzkTetjlquPm0yLNJVSVo4r0rAkVAK96lal53biSaBSBVe/w==
+"@codingame/monaco-vscode-be143a32-d60a-5489-a1d2-c83ea7eff6bf-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-be143a32-d60a-5489-a1d2-c83ea7eff6bf-common/-/monaco-vscode-be143a32-d60a-5489-a1d2-c83ea7eff6bf-common-20.1.1.tgz#1238b5e4e1a5ade68c70b53eceeefbc429b5a8b6"
+  integrity sha512-XbvhBRg6Q+caeR13hdhQmCXo33RJJxTaxZNsIfIw6nU1rqo1e7m3nRGEXMACLZLJhK0AoHBNq/S/pRmwIis97w==
   dependencies:
-    "@codingame/monaco-vscode-0094ae09-a688-53e7-bacc-93e26f7f49db-common" "18.1.3"
-    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common" "18.1.3"
-    "@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common" "18.1.3"
-    "@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common" "18.1.3"
-    "@codingame/monaco-vscode-f48982c4-9e82-55e2-b800-20e6d1e6096f-common" "18.1.3"
-    "@codingame/monaco-vscode-fc3b1755-9783-51f9-b3e6-45e7ef6fe6e3-common" "18.1.3"
+    "@codingame/monaco-vscode-9a934394-0cf8-512d-939b-77e71f69cebb-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-c465110a-57c0-59d7-a6b2-be0a4db7e517-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-c465110a-57c0-59d7-a6b2-be0a4db7e517-common/-/monaco-vscode-c465110a-57c0-59d7-a6b2-be0a4db7e517-common-18.1.3.tgz#47f9f23d1c9c652929fe2249a77d64c507d86ae9"
-  integrity sha512-1ToeIZdV6hIRx0GSyKWj+kx5GSShLwGlGprlKxzxPUmDdV0zKkAy13uVYJHL2v6+BvJEUI6c7z0h8An9Phfylw==
+"@codingame/monaco-vscode-bf94ddb5-e436-506a-9763-5ab86b642508-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-bf94ddb5-e436-506a-9763-5ab86b642508-common/-/monaco-vscode-bf94ddb5-e436-506a-9763-5ab86b642508-common-20.1.1.tgz#f350811f66eaf53382ab706ea5a4c87b9a50a389"
+  integrity sha512-TylmoQynpMRFjA9RJpCnsKImHMIcnlJuzz2rKyxKGzwk3qhP7oTp36Oss+yIZaj/HbpSWGO8PYNe9G3sdySTLg==
   dependencies:
-    "@codingame/monaco-vscode-1ba786a5-b7d7-5d26-8a85-ae48ee2a74a4-common" "18.1.3"
-    "@codingame/monaco-vscode-3a35f433-1297-5707-ab58-c261b8180e6d-common" "18.1.3"
-    "@codingame/monaco-vscode-3cf6a388-482f-5484-a806-0525ad9ad8af-common" "18.1.3"
-    "@codingame/monaco-vscode-4372ad43-a220-5e78-83e6-95a9cfd64384-common" "18.1.3"
-    "@codingame/monaco-vscode-47472025-cc45-5680-86cd-09ceaba921a1-common" "18.1.3"
-    "@codingame/monaco-vscode-6c0f93b9-169c-58c3-a9cb-7d60698eb52c-common" "18.1.3"
-    "@codingame/monaco-vscode-7adbeffb-8051-54a9-8c9b-b62ce9e5836f-common" "18.1.3"
-    "@codingame/monaco-vscode-8d39d04c-3201-5bd6-be79-eed8d17a5ad0-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-93784a59-b4cf-520c-8339-f8104d3a4f3e-common" "18.1.3"
-    "@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common" "18.1.3"
-    "@codingame/monaco-vscode-9ed6fe06-a052-57c2-a234-5d9b94d2e7e0-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-c87fff3a-2aa9-52ab-ba4d-17e8d1e5e185-common" "18.1.3"
-    "@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common" "18.1.3"
-    "@codingame/monaco-vscode-fab30422-b487-5f4e-8d30-8b4d266e3fcd-common" "18.1.3"
-    marked "14.0.0"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-c87fff3a-2aa9-52ab-ba4d-17e8d1e5e185-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-c87fff3a-2aa9-52ab-ba4d-17e8d1e5e185-common/-/monaco-vscode-c87fff3a-2aa9-52ab-ba4d-17e8d1e5e185-common-18.1.3.tgz#85fc5fe30e65e87ce81a0ca871851d0525e02d39"
-  integrity sha512-6kevMdaj9zbGPcWoEQuy8///HY/wcbcX69hRMJzjb3vuDgrC1ezyGYkG2F5z87M3sHIAL6dPztjXkDsZGFMN2Q==
+"@codingame/monaco-vscode-bulk-edit-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-bulk-edit-service-override/-/monaco-vscode-bulk-edit-service-override-20.1.1.tgz#fb5112e3a2eca8b3552eb32ac5ca3e8c20a032ff"
+  integrity sha512-qRCUCuEE8jEyvEIWpuU3zjLzeCHxUETlDERc62TE6oALIpJLQ/Ryg8g4NuqynhMDmShxSbMNfOibAFXu1prkUA==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "20.1.1"
+    "@codingame/monaco-vscode-670aae94-7f88-54d7-90ea-6fcbef423557-common" "20.1.1"
+    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
 
-"@codingame/monaco-vscode-ce7c734f-7712-563c-9335-d7acb43306af-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-ce7c734f-7712-563c-9335-d7acb43306af-common/-/monaco-vscode-ce7c734f-7712-563c-9335-d7acb43306af-common-18.1.3.tgz#95d9a20ce9e8e3e89c05be4ee78e3e1372f052f2"
-  integrity sha512-XshqhvAlbi+8F91xzBIyJs/kCCyM9aMqw4vRKj6yK5yM3kIdzQw82LbJHch1E09sdnptFhnVftnjip0ylOtQBw==
+"@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common/-/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common-20.1.1.tgz#7b62d8daef8ef293b046c686fb676d3246fe5bf0"
+  integrity sha512-bbxtF2OgWWddom4K/s+XdfUh7KfR0UFvhsev1dX3HJRd2DLegFE6VfQBhQEmNmr1MytJ3uolCQY8O/a3y7+D2Q==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common/-/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common-18.1.3.tgz#a56778baa6c2fad62fec405a219bc2e33b8042ab"
-  integrity sha512-/wN1xYAdNpmLBYf0+fCZI3OG5rbSN9mfqj+o7bX9+CPAoE71pgIIJaQ06i/4hToTYhcuk2+ZAItIgE+6JzljiQ==
+"@codingame/monaco-vscode-ce7c734f-7712-563c-9335-d7acb43306af-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-ce7c734f-7712-563c-9335-d7acb43306af-common/-/monaco-vscode-ce7c734f-7712-563c-9335-d7acb43306af-common-20.1.1.tgz#60a5d30db092d6ef4bdf1cad1b1f9fbdae283c4a"
+  integrity sha512-bOEnifWSDz+HI17ui4XyGb/M5r56kE9xvJaEGNfAOMDZ+p1WsvctioUd6dCBRY+DVDsFr+Et2Sy5XidxoPmXFg==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-configuration-service-override@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-configuration-service-override/-/monaco-vscode-configuration-service-override-18.1.3.tgz#399ea17e8bf6a77023180aa322103ea7d437caf4"
-  integrity sha512-JSDE3CV5BF2zG6l+djuKjQG9/kEicd9ga46PJWmuI8/EoCJIRQqn9q+muYjzC7CFp5p75xTN4+6ofTABUOmY0Q==
+"@codingame/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common/-/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common-20.1.1.tgz#694bb1e86a4c1f6e10ba67e8dcc2cf7007c9a7d8"
+  integrity sha512-Gv4GveSGAlzk9XAGpn/dm6lOtulx1Eo5DdGFpmObrpbIq6m4n2mlD7ANvW6vexZCbgMV294nnTujlfNdNutv9g==
   dependencies:
-    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "18.1.3"
-    "@codingame/monaco-vscode-422642f2-7e3a-5c1c-9e1e-1d3ef1817346-common" "18.1.3"
-    "@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-ce7c734f-7712-563c-9335-d7acb43306af-common" "18.1.3"
-    "@codingame/monaco-vscode-d987325e-3e05-53aa-b9ff-6f97476f64db-common" "18.1.3"
-    "@codingame/monaco-vscode-files-service-override" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-d609a7d3-bf87-551a-884f-550a8b327ec5-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-d609a7d3-bf87-551a-884f-550a8b327ec5-common/-/monaco-vscode-d609a7d3-bf87-551a-884f-550a8b327ec5-common-18.1.3.tgz#2ae10d795188d9013b89c5383644cfe09e27eae9"
-  integrity sha512-lzIXfOzZfprFtH30jxUkFBMpFfENqhrhoPrdQvc4orq0QXi7gzHOxPxzUgl9CTuhjTAZNPxi+sphCJGhVCXsbg==
+"@codingame/monaco-vscode-configuration-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-configuration-service-override/-/monaco-vscode-configuration-service-override-20.1.1.tgz#7db9b9cf8096f6df0d06b1378b62e69e74216c90"
+  integrity sha512-TQMOXCzdP1T651lssyMZ4ub3BPvIOD6de1A7dozFjCcBWvWv62KYEwO2rytPR4QmHig6Izogy0DRob4wM6KrjQ==
   dependencies:
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "20.1.1"
+    "@codingame/monaco-vscode-422642f2-7e3a-5c1c-9e1e-1d3ef1817346-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-ce7c734f-7712-563c-9335-d7acb43306af-common" "20.1.1"
+    "@codingame/monaco-vscode-d987325e-3e05-53aa-b9ff-6f97476f64db-common" "20.1.1"
+    "@codingame/monaco-vscode-f24e325c-2ce0-5bba-8236-bfc4f53180ab-common" "20.1.1"
+    "@codingame/monaco-vscode-files-service-override" "20.1.1"
 
-"@codingame/monaco-vscode-d987325e-3e05-53aa-b9ff-6f97476f64db-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-d987325e-3e05-53aa-b9ff-6f97476f64db-common/-/monaco-vscode-d987325e-3e05-53aa-b9ff-6f97476f64db-common-18.1.3.tgz#f843793d2fe5e37401df03f98fc9519e2fc50a9e"
-  integrity sha512-YbBDEWxpmktYUiAD4jGuK4YOADdI42PblksFQev7nbTfyqQ30BZPMO4Z/MC2+kmgBJ2Z6P/CbIHPEZ4f2K9fmw==
-
-"@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common/-/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common-18.1.3.tgz#d9a7a88f24da5d11c661e94b02b57972f73b4037"
-  integrity sha512-xoRKmTVJmdRtqOPIolNGYQp/ipfeFmfCImcplTK+B87i7PLhzYMH+JLgpNjBiBuJyLpArPS1NhHJsKzIDr3T1A==
+"@codingame/monaco-vscode-d0569cfb-4706-5ad6-b0b0-5115ad8685db-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-d0569cfb-4706-5ad6-b0b0-5115ad8685db-common/-/monaco-vscode-d0569cfb-4706-5ad6-b0b0-5115ad8685db-common-20.1.1.tgz#baf78a415a09c19fc772cbe2dd8c3cf3fc93c97a"
+  integrity sha512-eyJKh+qYRo+0iKNZdXPVLWpJEk9Mviulv1+HkUgplYX7v6v+y4qQ62+AHX4yNIzmGewuaFDfS0/OiyYYlJLjng==
   dependencies:
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-0af61f78-dfc5-57ba-8d32-66268c8de38d-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-b994942c-360d-5b68-8a33-77d4bde6b714-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
 
-"@codingame/monaco-vscode-ea14e352-8f1c-5569-b79a-8a96a53e8abe-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-ea14e352-8f1c-5569-b79a-8a96a53e8abe-common/-/monaco-vscode-ea14e352-8f1c-5569-b79a-8a96a53e8abe-common-18.1.3.tgz#9fefd1c9c743ed66fa264fc57c4e6aa8f310f55e"
-  integrity sha512-FMjL7KNENLT+5DMC4FCS7E2rjrKlv6hD/xzl9KKLUgPS8E62MPBlcQl04JZdyRKOCnf6acLXbiIiB36wDqRJeg==
+"@codingame/monaco-vscode-d26a96d3-122c-5a3d-a04d-deb5ff0f19c0-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-d26a96d3-122c-5a3d-a04d-deb5ff0f19c0-common/-/monaco-vscode-d26a96d3-122c-5a3d-a04d-deb5ff0f19c0-common-20.1.1.tgz#d2883ace27766889852615185c09ebfb6c9837f3"
+  integrity sha512-oQbbAiBjsjeAFhRP4C3+2WzNU2jr8b/EwnCMgV/qTE0AGQVw3RJeIhMO0Ti94wNZJ3Gb+/P0bqMkyt6xEQXPuQ==
   dependencies:
-    "@codingame/monaco-vscode-0094ae09-a688-53e7-bacc-93e26f7f49db-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common" "18.1.3"
+    "@codingame/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common" "20.1.1"
+    "@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-eb7d5efd-2e60-59f8-9ba4-9a8ae8cb2957-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-eb7d5efd-2e60-59f8-9ba4-9a8ae8cb2957-common/-/monaco-vscode-eb7d5efd-2e60-59f8-9ba4-9a8ae8cb2957-common-18.1.3.tgz#893b9d4c9aa541133c13ea8345f1c215fb9ad2e5"
-  integrity sha512-rcvbcg3wMJxFczZ9JR/83aJgf/DR/fDrrP4AcXeYmXpSfAMewHSCZotrDWaMXevzyMrTRFk71DCABxsiR9hY9w==
+"@codingame/monaco-vscode-d481a59e-259c-524e-bee1-76483d75d3a1-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-d481a59e-259c-524e-bee1-76483d75d3a1-common/-/monaco-vscode-d481a59e-259c-524e-bee1-76483d75d3a1-common-20.1.1.tgz#f8e38ad74f4825ba9197873452656dfb51d1396d"
+  integrity sha512-/dyzAe9OLGrxZ6qy3jDLxoJk8hcC4IMWUNUYzBhg96O0yvJAi7zwufHot5Yz+2WW5yNu01ozlVtrc/3sGE3vDg==
   dependencies:
-    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "18.1.3"
-    "@codingame/monaco-vscode-8d39d04c-3201-5bd6-be79-eed8d17a5ad0-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-9ee79c1a-3f03-568b-8eac-b02513a98b68-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common" "18.1.3"
+    "@codingame/monaco-vscode-523730aa-81e6-55d7-9916-87ad537fe087-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-72a1b7d3-3f58-5545-9b7e-f579bd003081-common" "20.1.1"
+    "@codingame/monaco-vscode-ac93482b-2178-52df-a200-ba0d1a4963fb-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
+    "@codingame/monaco-vscode-f24e325c-2ce0-5bba-8236-bfc4f53180ab-common" "20.1.1"
 
-"@codingame/monaco-vscode-eba0b9b3-174c-5dae-9867-a37810ca1808-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-eba0b9b3-174c-5dae-9867-a37810ca1808-common/-/monaco-vscode-eba0b9b3-174c-5dae-9867-a37810ca1808-common-18.1.3.tgz#56937719ba71a1a004253dc8ff58ce9b3c142413"
-  integrity sha512-2gHjmDliIu42KCO1bVWVH4s1ckhZ/20r/LqMFL4Vfl9lS1hq8CyZdXLoQaziJN54Vq7VZg0Fqg3lxuyk75l0ew==
+"@codingame/monaco-vscode-d609a7d3-bf87-551a-884f-550a8b327ec5-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-d609a7d3-bf87-551a-884f-550a8b327ec5-common/-/monaco-vscode-d609a7d3-bf87-551a-884f-550a8b327ec5-common-20.1.1.tgz#b0d5bf0446f240816db5f6fc9e0fe6e64110583d"
+  integrity sha512-iEeefAG380blHSPKa2uFk8WxYiqbW3A2hdoDxtGgFazW4wPWnohxxWzj8oEL89vpVm65CnKkIBrVB0QeYyAnEg==
   dependencies:
-    "@codingame/monaco-vscode-4372ad43-a220-5e78-83e6-95a9cfd64384-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-editor-api@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-editor-api/-/monaco-vscode-editor-api-18.1.3.tgz#c64b7fb9d92bae6d534945ea138b069cb82c5f48"
-  integrity sha512-VSLWmToMS5/CiaP8tRX+JvUqDA2iECX9MZqUkTkaNgK976OPigVjyEdqia+85xwLjYnNLYfbh2YijFAXR3F5eA==
+"@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common/-/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common-20.1.1.tgz#31a321942176c58a4a1c94a985e02d3aa307fc3e"
+  integrity sha512-mtriG+qwAxWbqUT3zYQT9m7NMP1kTL4OhRf2/oDIrnbI7f3Io2nWkoo6ER6+ZMEw0RcVL2mP/oaGuDgbmArqHQ==
   dependencies:
-    "@codingame/monaco-vscode-5452e2b7-9081-5f95-839b-4ab3544ce28f-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-editor-service-override@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-editor-service-override/-/monaco-vscode-editor-service-override-18.1.3.tgz#a232d4832d70bdaf6b4a58b31066a8eefe37db94"
-  integrity sha512-2YQ3rSohlycw56MtEQzRg6OjWHxYUBqOGmEAEafMXaIeul6RANzO+KNTB/ovXSm0kxjfnzuQxMJ+uT8UtAmzOw==
-  dependencies:
-    "@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-b1e8558d-1726-5299-bc75-e43ee6d1a124-common" "18.1.3"
-    "@codingame/monaco-vscode-f5d4b045-44e8-55a8-b683-308656a412fa-common" "18.1.3"
+"@codingame/monaco-vscode-d987325e-3e05-53aa-b9ff-6f97476f64db-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-d987325e-3e05-53aa-b9ff-6f97476f64db-common/-/monaco-vscode-d987325e-3e05-53aa-b9ff-6f97476f64db-common-20.1.1.tgz#b50af68968bb32dd3874b3c0fc44d331652c03f5"
+  integrity sha512-gclg57ML6DKcxVYSnFmelE13lUL0FpbTV0+9bQ8X7Ur/Ga4GUgKyXg2Lg4FEI5RwqneLOWNFvMmSX/ZCmyXRBg==
 
-"@codingame/monaco-vscode-environment-service-override@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-environment-service-override/-/monaco-vscode-environment-service-override-18.1.3.tgz#eb41c9f740327753d57770225b3998a804b85b02"
-  integrity sha512-BTiNazufHF3FfP/ulw+vEFs2v2XT1hfcj7+JEFhpjUp2i7P1pvUTjAllZs22HCCyiief/6qhM8FgB1d6HtbCaA==
+"@codingame/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common/-/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common-20.1.1.tgz#4323ce40551c72f1dc359ae9438cc18ca8a3f350"
+  integrity sha512-1nWqP2X0bPCa2pFOaQ5SO5iaBAaEfoUMOoDb3T1ASGB61jV2VurXZVa2VO/pt/2AfnZrYoccc1rp3siKp+bsrQ==
   dependencies:
-    "@codingame/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-bc6d9a89-1625-5010-b57e-ff44151144fe-common" "20.1.1"
 
-"@codingame/monaco-vscode-extension-api@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-extension-api/-/monaco-vscode-extension-api-18.1.3.tgz#a3f4a14cdc435a14fcd43c7f8d4bb907916af74f"
-  integrity sha512-jv1sRVVIE4MXBcUGgPiDOZQMYOYL277CuJUdzt8GwvirgiEVvWJyl2aql572SgdkKRkAr42Jq5KFlgns0NSMeg==
-  dependencies:
-    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "18.1.3"
-    "@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-extensions-service-override" "18.1.3"
+"@codingame/monaco-vscode-e59ecb8c-db32-5324-8fe4-cf9921fd92b8-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-e59ecb8c-db32-5324-8fe4-cf9921fd92b8-common/-/monaco-vscode-e59ecb8c-db32-5324-8fe4-cf9921fd92b8-common-20.1.1.tgz#8f90a708044fdb85ee9f027de584bb19a99da490"
+  integrity sha512-wZxAGMO07TCzU2UTqTl4UQKBH28gSPPU1tE8W2wrIo9w0yozqlWd4t6s7HXL2QZ+11kJcO+2QE5N9pQndVJpdw==
 
-"@codingame/monaco-vscode-extensions-service-override@18.1.3", "@codingame/monaco-vscode-extensions-service-override@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-extensions-service-override/-/monaco-vscode-extensions-service-override-18.1.3.tgz#93d87d2b53bf6fcb4b12ab60d05d62650f0d9bfa"
-  integrity sha512-GXrQ88rtcjrPmcwLWxO9qC7g6oWtiFeeGa65FvjlDUiu4qf/4vN6ObNHs+YfkmTc6dpx2m8rsIe9SDuU1NgCng==
+"@codingame/monaco-vscode-e72c94ca-257a-5b75-8b68-5a5fa3c18255-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-e72c94ca-257a-5b75-8b68-5a5fa3c18255-common/-/monaco-vscode-e72c94ca-257a-5b75-8b68-5a5fa3c18255-common-20.1.1.tgz#e0f615309a1a118cfa7f058b38cd0b0feb073276"
+  integrity sha512-ve7s0aFI24wa132HncYMhkKvz4mfCL9eSQn/4OP/RCfGJnzwAatOqLSp/X2eRF/lq/lEm3x/iZdXmDKTYOjWiw==
   dependencies:
-    "@codingame/monaco-vscode-1cb11a73-359e-5a2f-9e95-6989cc9858ee-common" "18.1.3"
-    "@codingame/monaco-vscode-1cc4ea0a-c5b6-54ed-bb60-078a99119b55-common" "18.1.3"
-    "@codingame/monaco-vscode-256d5b78-0649-50e9-8354-2807f95f68f4-common" "18.1.3"
-    "@codingame/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common" "18.1.3"
-    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "18.1.3"
-    "@codingame/monaco-vscode-3a35f433-1297-5707-ab58-c261b8180e6d-common" "18.1.3"
-    "@codingame/monaco-vscode-4372ad43-a220-5e78-83e6-95a9cfd64384-common" "18.1.3"
-    "@codingame/monaco-vscode-47472025-cc45-5680-86cd-09ceaba921a1-common" "18.1.3"
-    "@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common" "18.1.3"
-    "@codingame/monaco-vscode-4ee27008-17b4-593f-9c09-19e8e3077f51-common" "18.1.3"
-    "@codingame/monaco-vscode-571c8352-7953-5038-9f09-e03bb6219a0e-common" "18.1.3"
-    "@codingame/monaco-vscode-6845754f-e617-5ed9-8aaa-6ca3653a9532-common" "18.1.3"
-    "@codingame/monaco-vscode-7adbeffb-8051-54a9-8c9b-b62ce9e5836f-common" "18.1.3"
-    "@codingame/monaco-vscode-7f39b6f1-3542-5430-8760-0f404d7a7cee-common" "18.1.3"
-    "@codingame/monaco-vscode-8ccb7637-50ea-5359-97bf-00015d7fe567-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common" "18.1.3"
-    "@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common" "18.1.3"
-    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-bba55be6-41a2-50cd-a3cc-8bafa35bfa89-common" "18.1.3"
-    "@codingame/monaco-vscode-bf94ddb5-e436-506a-9763-5ab86b642508-common" "18.1.3"
-    "@codingame/monaco-vscode-c3c61c00-c254-5856-9dc9-d7929c1f9062-common" "18.1.3"
-    "@codingame/monaco-vscode-eb7d5efd-2e60-59f8-9ba4-9a8ae8cb2957-common" "18.1.3"
-    "@codingame/monaco-vscode-eba0b9b3-174c-5dae-9867-a37810ca1808-common" "18.1.3"
-    "@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common" "18.1.3"
-    "@codingame/monaco-vscode-f48982c4-9e82-55e2-b800-20e6d1e6096f-common" "18.1.3"
-    "@codingame/monaco-vscode-fab30422-b487-5f4e-8d30-8b4d266e3fcd-common" "18.1.3"
-    "@codingame/monaco-vscode-files-service-override" "18.1.3"
+    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-d609a7d3-bf87-551a-884f-550a8b327ec5-common" "20.1.1"
 
-"@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common/-/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common-18.1.3.tgz#6762e20a1156934decaae4a8a02909f883e58a0a"
-  integrity sha512-W/7/VmZgbpk2DZ1VwyxxNgB/lL+WCzld+P++koA01tlPdFnQJB5DNHghKgte+GsGYkgAyJ/5Cm6tHRHiX/5Q4A==
+"@codingame/monaco-vscode-eb7d5efd-2e60-59f8-9ba4-9a8ae8cb2957-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-eb7d5efd-2e60-59f8-9ba4-9a8ae8cb2957-common/-/monaco-vscode-eb7d5efd-2e60-59f8-9ba4-9a8ae8cb2957-common-20.1.1.tgz#8f881d7fbad35ea1afd10060a3f5a7a25461ba93"
+  integrity sha512-KV7PdhRWY2Ob7f/7A6NGH7j42IRrIwUkZQUPZZFCWsYrR3cezbAk+pusgCdYN6JwSaC2fqHGAEe/k89ijw0k3A==
   dependencies:
-    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-937ecbdf-94c7-5b16-aefa-ad78ae557a93-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-262ed59d-4f76-57cd-9e9f-1877f26ae049-common" "20.1.1"
+    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-9ee79c1a-3f03-568b-8eac-b02513a98b68-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
 
-"@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common/-/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common-18.1.3.tgz#5eb52d077dda9fc79bbb550dc1e7491e980b7bf2"
-  integrity sha512-UQoytTOkJmVMTqTjpNwVdkW42uzIGdMTmPTakej/9eeGtdwvIYIL25spcr+wAiHQEfXCepOS6L7ydMxoqn5vFQ==
+"@codingame/monaco-vscode-eba0b9b3-174c-5dae-9867-a37810ca1808-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-eba0b9b3-174c-5dae-9867-a37810ca1808-common/-/monaco-vscode-eba0b9b3-174c-5dae-9867-a37810ca1808-common-20.1.1.tgz#0a29108c938bb76cc12461b6caa04192f8f88eff"
+  integrity sha512-U6exljruGcxvgKXv2HrUUAapxA/QqAzQ9oshe+SZvl32hLFmTUBXbPsMciou5bIbY+g+Pf3j8GeZYd6MQSHaSQ==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-670aae94-7f88-54d7-90ea-6fcbef423557-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-f48982c4-9e82-55e2-b800-20e6d1e6096f-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-f48982c4-9e82-55e2-b800-20e6d1e6096f-common/-/monaco-vscode-f48982c4-9e82-55e2-b800-20e6d1e6096f-common-18.1.3.tgz#b20e4444a7325ffc6069f4b683e997017a6dea2a"
-  integrity sha512-Hq6/lKT4kPucXw3SqH8ROmSy4ewoip8XZLArFy7F6KlDLnVFAFDL1znKVNxh04Dpey0E7yQ2tUAQdlS8/FocTA==
+"@codingame/monaco-vscode-ebba7d85-8a22-5735-adf4-8299cd976dce-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-ebba7d85-8a22-5735-adf4-8299cd976dce-common/-/monaco-vscode-ebba7d85-8a22-5735-adf4-8299cd976dce-common-20.1.1.tgz#bb8823c09db98e08f9e9449045dd1806aac30749"
+  integrity sha512-5VkZZ8fZpJkEa47wYAEuJ5FL9KXYsW4pByJa0WlNwoOb4nIpodrPQlm4Ex7L52SQJ+ezB29nu3VNqRwu31spMg==
   dependencies:
-    "@codingame/monaco-vscode-95ea5c7c-15cf-50aa-8e24-38039b06b4a6-common" "18.1.3"
-    "@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-f5d4b045-44e8-55a8-b683-308656a412fa-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-f5d4b045-44e8-55a8-b683-308656a412fa-common/-/monaco-vscode-f5d4b045-44e8-55a8-b683-308656a412fa-common-18.1.3.tgz#2185868ad1c9fee4c7a5df72fa5fe6fcb3222157"
-  integrity sha512-2zCpzMb+xb7CFMuZRUePvRxZxKdrScL5eydPtIbLpTPQRVNnApsozqoWAcenkk7gQpDTvtjlegPK0b+JZvJ4Tg==
+"@codingame/monaco-vscode-eda30bac-0984-5b42-9362-c68996b85232-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-eda30bac-0984-5b42-9362-c68996b85232-common/-/monaco-vscode-eda30bac-0984-5b42-9362-c68996b85232-common-20.1.1.tgz#c3a05d7c1f9e3a0ca5e8729b9ba3d26f4ebd6a46"
+  integrity sha512-EvASZ7TueiG9bmuZQ5Es4UOfZNYIWH37qU1TVluuIwkvcZlGHnYASC15clxqUc/ZSlGrBysYvgJgjRJYbgA8Ww==
   dependencies:
-    "@codingame/monaco-vscode-4ee27008-17b4-593f-9c09-19e8e3077f51-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common" "18.1.3"
-    "@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common" "18.1.3"
-    "@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-622c0cca-d5fa-59b6-b730-0715afcf93ee-common" "20.1.1"
+    "@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-fab30422-b487-5f4e-8d30-8b4d266e3fcd-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-fab30422-b487-5f4e-8d30-8b4d266e3fcd-common/-/monaco-vscode-fab30422-b487-5f4e-8d30-8b4d266e3fcd-common-18.1.3.tgz#4dc3bda8790b11c8ff5552025617d4c4ca03e9c5"
-  integrity sha512-SOGSgyhAVKYBWeLcm/Y6Cf5unzyCKAJbZ+jP0Bku2QiR7u5sLS56BUeJPXHVFCMk1xHRG/0Y8Ext2ikYaI47AA==
+"@codingame/monaco-vscode-editor-api@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-editor-api/-/monaco-vscode-editor-api-20.1.1.tgz#b0bfed908728658ec531a13d906dd44bb1b8bbd8"
+  integrity sha512-eU3lnl7lCjdJtAWmXjRoWO/euodaCR88B90CgcFm4ku3ocRLdrtNbDDRUxvfQu2mm2tfIc/2IadOQngdztU22A==
   dependencies:
-    "@codingame/monaco-vscode-1cb11a73-359e-5a2f-9e95-6989cc9858ee-common" "18.1.3"
-    "@codingame/monaco-vscode-3a35f433-1297-5707-ab58-c261b8180e6d-common" "18.1.3"
-    "@codingame/monaco-vscode-3cf6a388-482f-5484-a806-0525ad9ad8af-common" "18.1.3"
-    "@codingame/monaco-vscode-4372ad43-a220-5e78-83e6-95a9cfd64384-common" "18.1.3"
-    "@codingame/monaco-vscode-47472025-cc45-5680-86cd-09ceaba921a1-common" "18.1.3"
-    "@codingame/monaco-vscode-7adbeffb-8051-54a9-8c9b-b62ce9e5836f-common" "18.1.3"
-    "@codingame/monaco-vscode-8d39d04c-3201-5bd6-be79-eed8d17a5ad0-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-97284942-b044-5fbb-b53b-3f46d2468746-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-c87fff3a-2aa9-52ab-ba4d-17e8d1e5e185-common" "18.1.3"
-    "@codingame/monaco-vscode-f24b7f0a-ceeb-5877-9148-81eb98a4f5d7-common" "18.1.3"
+    "@codingame/monaco-vscode-5452e2b7-9081-5f95-839b-4ab3544ce28f-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-fc3b1755-9783-51f9-b3e6-45e7ef6fe6e3-common@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-fc3b1755-9783-51f9-b3e6-45e7ef6fe6e3-common/-/monaco-vscode-fc3b1755-9783-51f9-b3e6-45e7ef6fe6e3-common-18.1.3.tgz#c768d80526bc557c473ebd426f096c56e6ca0cf4"
-  integrity sha512-PecY8zwjSp2Xgh7T0H8t3PJHzV1D68ryi6qP5dEn5Q7zw0IBsXAJ4YVFHJ0tvJCMrVJ6wAw2cuE+tmpDsc6WXQ==
+"@codingame/monaco-vscode-editor-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-editor-service-override/-/monaco-vscode-editor-service-override-20.1.1.tgz#3f1b6cad7ad04e97d9ed7703813d32bbcfcf8f36"
+  integrity sha512-tisnLTW1nlIkEiWa1THR0dD8zdRNgYIMGTLyWa6H9lsx06us6EC8ts+yAIjkEqKYnThb/Y5/AOxXyimRdtxoEg==
   dependencies:
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-9c72783f-914c-50be-b9ef-da16356d81a8-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common" "18.1.3"
-    "@codingame/monaco-vscode-f48982c4-9e82-55e2-b800-20e6d1e6096f-common" "18.1.3"
+    "@codingame/monaco-vscode-72a1b7d3-3f58-5545-9b7e-f579bd003081-common" "20.1.1"
+    "@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common" "20.1.1"
+    "@codingame/monaco-vscode-ac93482b-2178-52df-a200-ba0d1a4963fb-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-files-service-override@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-files-service-override/-/monaco-vscode-files-service-override-18.1.3.tgz#843da6a5e0d3470ae5fefce17ab34d4803c7ab0a"
-  integrity sha512-EuZx23+f/vXWMOUBCN7HoosiwqA5q9B6+Z66yzAK8vXqvSBOMb6EJw/vugCgD5LSyEyftUOxMMThsak78IFbAw==
+"@codingame/monaco-vscode-environment-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-environment-service-override/-/monaco-vscode-environment-service-override-20.1.1.tgz#606218d5b0e2c76d92b932256fadcbde42975714"
+  integrity sha512-aTnLqz4S/sSraYERLEEWKWHND/wCxEIEvifpcDGrvIap3v7Pc/sW2drLMnsFRFzLw9JJavo0InwU+OLfDqIZ4A==
   dependencies:
-    "@codingame/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common" "18.1.3"
-    "@codingame/monaco-vscode-15626ec7-b165-51e1-8caf-7bcc2ae9b95a-common" "18.1.3"
-    "@codingame/monaco-vscode-2f06fe84-148e-5e6b-a7ca-c7989c5f128a-common" "18.1.3"
-    "@codingame/monaco-vscode-8a9062f2-d169-567b-848e-a2530c97ea18-common" "18.1.3"
-    "@codingame/monaco-vscode-924e8f00-6faf-5059-b518-e43427d29ab3-common" "18.1.3"
-    "@codingame/monaco-vscode-a4683c2b-a0d2-5112-96ba-eedc605346d2-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common" "18.1.3"
+    "@codingame/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-host-service-override@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-host-service-override/-/monaco-vscode-host-service-override-18.1.3.tgz#78744098c8a2fbe5b4e6710bdac8a40903a83f5f"
-  integrity sha512-afXrOGHdLJOt/Y9NSAKw6Y58jklvakASV4TrQBDZs0KUANYzWAR5uslPRAD5jiVTmQGGLaAXWwb7a4DWgzJCPw==
+"@codingame/monaco-vscode-extension-api@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-extension-api/-/monaco-vscode-extension-api-20.1.1.tgz#b580c5c96f04b09ae9d91d5549e0e47355e4186d"
+  integrity sha512-5qK3sPIZW89kIwLEJNeXSd/zNdN88386+0ESuozg2FLGDCK7Hb3PaKNhBDdOCVN2Z6mXzs5LfjiVmQ70UWkCtA==
   dependencies:
-    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "18.1.3"
-    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common" "18.1.3"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-extensions-service-override" "20.1.1"
 
-"@codingame/monaco-vscode-languages-service-override@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-languages-service-override/-/monaco-vscode-languages-service-override-18.1.3.tgz#88915d810a9d8c439453c224992acee4fdd0d95c"
-  integrity sha512-Kpaztomrh03dVSz8t+2mSh0q9maOx2zemdyC+WRxNf1eJOooOVaB9WJNUfbr8XKULm2gtr1JvzwZ0CV4mn2+Rw==
+"@codingame/monaco-vscode-extensions-service-override@20.1.1", "@codingame/monaco-vscode-extensions-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-extensions-service-override/-/monaco-vscode-extensions-service-override-20.1.1.tgz#78254eaa52d4b4dc8d6480a67f85d74334ba277e"
+  integrity sha512-gS3D92k2EKFazmQxaLSV18vk2aF+jvxCKTf6AJQLhh5j8FJcTPrq4U3Tkw/JF1vFrJxJf3dWY94gZTSpT95qyA==
   dependencies:
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-files-service-override" "18.1.3"
+    "@codingame/monaco-vscode-0af61f78-dfc5-57ba-8d32-66268c8de38d-common" "20.1.1"
+    "@codingame/monaco-vscode-256d5b78-0649-50e9-8354-2807f95f68f4-common" "20.1.1"
+    "@codingame/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common" "20.1.1"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common" "20.1.1"
+    "@codingame/monaco-vscode-571c8352-7953-5038-9f09-e03bb6219a0e-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-622c0cca-d5fa-59b6-b730-0715afcf93ee-common" "20.1.1"
+    "@codingame/monaco-vscode-670aae94-7f88-54d7-90ea-6fcbef423557-common" "20.1.1"
+    "@codingame/monaco-vscode-6845754f-e617-5ed9-8aaa-6ca3653a9532-common" "20.1.1"
+    "@codingame/monaco-vscode-6f931a91-88ea-5232-897f-a17ec3929ba5-common" "20.1.1"
+    "@codingame/monaco-vscode-7f39b6f1-3542-5430-8760-0f404d7a7cee-common" "20.1.1"
+    "@codingame/monaco-vscode-8ccb7637-50ea-5359-97bf-00015d7fe567-common" "20.1.1"
+    "@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common" "20.1.1"
+    "@codingame/monaco-vscode-a654b07e-8806-5425-b124-18f03ba8e11a-common" "20.1.1"
+    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "20.1.1"
+    "@codingame/monaco-vscode-a9da9abe-278d-5ce6-9418-99c7c07c5c37-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-b994942c-360d-5b68-8a33-77d4bde6b714-common" "20.1.1"
+    "@codingame/monaco-vscode-bf94ddb5-e436-506a-9763-5ab86b642508-common" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-d0569cfb-4706-5ad6-b0b0-5115ad8685db-common" "20.1.1"
+    "@codingame/monaco-vscode-eb7d5efd-2e60-59f8-9ba4-9a8ae8cb2957-common" "20.1.1"
+    "@codingame/monaco-vscode-eba0b9b3-174c-5dae-9867-a37810ca1808-common" "20.1.1"
+    "@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common" "20.1.1"
+    "@codingame/monaco-vscode-files-service-override" "20.1.1"
 
-"@codingame/monaco-vscode-layout-service-override@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-layout-service-override/-/monaco-vscode-layout-service-override-18.1.3.tgz#708bdf083b2ffe7fbabb988d2a099ae8e311b40d"
-  integrity sha512-M1SNWE/Dd9xm5wdwTPXkEugbPBUCL6GFMcXWfns+PrqvhEizVYjQV82A5PaMP3vO9xkaYacADUVcBPSWkNHfxQ==
+"@codingame/monaco-vscode-f1bbc6d3-6129-583c-a2ba-c80b832993d2-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-f1bbc6d3-6129-583c-a2ba-c80b832993d2-common/-/monaco-vscode-f1bbc6d3-6129-583c-a2ba-c80b832993d2-common-20.1.1.tgz#ab45be30c828b6ce9b5be0b7c05c34cc68a1219e"
+  integrity sha512-1HpvfVtNCCKNTW+6iAQdFwMZt93h0egUxVpWtkJ47dZXcUfPeCHR8bZK2zp6N56sbx/1h7shpyTO0EDfpG2lYw==
   dependencies:
-    "@codingame/monaco-vscode-6bf85d7b-e6e3-54e9-9bc1-7e08d663f0f6-common" "18.1.3"
-    "@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-localization-service-override@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-localization-service-override/-/monaco-vscode-localization-service-override-18.1.3.tgz#d71d0c2880c8b3e1be06dd3a7b3e3c895be943dc"
-  integrity sha512-NasQQH/sLMdEXS2r9bMFVvmokY6hpUiotURf0Jxp0Y+jAyF/IH5yFQJI4WqF3UB6K7WHIhRFcUxxx6USiiOQgw==
+"@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common/-/monaco-vscode-f22e7e55-aee8-5b52-a6bc-950efd9f5890-common-20.1.1.tgz#4d42103ca449eb560f94b7ecf10fa72aac0f5c7e"
+  integrity sha512-/uCkaUNuqj6j1w8wDqYNduBMJgVs7fTFpek4ZKmx9CX4HP8e8nerk9+gu8lW1QwYDciFvy14zl+YXWQ0O4sPUw==
   dependencies:
-    "@codingame/monaco-vscode-93784a59-b4cf-520c-8339-f8104d3a4f3e-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
 
-"@codingame/monaco-vscode-log-service-override@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-log-service-override/-/monaco-vscode-log-service-override-18.1.3.tgz#c2fcf645a170734bf4b88c965f6ae3a1c564bc07"
-  integrity sha512-f+9BuxPzjQirlJJzduihWvIW6DGRam51Srf6wiz5cZVuRTYcP7+Z5BCDZuazeStGqMX5SpmuT5pV/j4rsMSLqg==
+"@codingame/monaco-vscode-f24e325c-2ce0-5bba-8236-bfc4f53180ab-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-f24e325c-2ce0-5bba-8236-bfc4f53180ab-common/-/monaco-vscode-f24e325c-2ce0-5bba-8236-bfc4f53180ab-common-20.1.1.tgz#481b38d158baf9b0f824226b7e778706cac0067c"
+  integrity sha512-OAfi85KN05sjw9wLNjeBzd2amE1DJ9jhjwNC31CcVPEPIF56WVwPQir8rDpocE68vG5y0XoDBDlpd7lTASFx+g==
   dependencies:
-    "@codingame/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common" "18.1.3"
-    "@codingame/monaco-vscode-environment-service-override" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-model-service-override@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-model-service-override/-/monaco-vscode-model-service-override-18.1.3.tgz#a60b7f93328a92d4d177a2dea3432a73494e5d56"
-  integrity sha512-dJrZzPJfuum9piB0OSMMz1lb/Qo2bflFu5CIApVtsZHbnTtMXL2hizu5l5pDDvaBDl57J64F7nhoXz1YqbLLyg==
+"@codingame/monaco-vscode-f6f55824-df83-5ffc-ac26-50fd4df4fe0e-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-f6f55824-df83-5ffc-ac26-50fd4df4fe0e-common/-/monaco-vscode-f6f55824-df83-5ffc-ac26-50fd4df4fe0e-common-20.1.1.tgz#df2feb97c5f50a7187f3f676ccd6cebd19bc0112"
+  integrity sha512-cOQGPf3vw7m7/BWVSuOzBPtH6XFoi82MZbeV7prFv4Hn6Ih+RW/eQ+fSXAR89lmVNjcuo4wJB20NaxFRVagc0w==
   dependencies:
-    "@codingame/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common" "18.1.3"
-    "@codingame/monaco-vscode-4ee27008-17b4-593f-9c09-19e8e3077f51-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
+    "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-quickaccess-service-override@18.1.3":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-quickaccess-service-override/-/monaco-vscode-quickaccess-service-override-18.1.3.tgz#b140ac4cb3ccce7ce430be9bc86c9f2b1c5ff688"
-  integrity sha512-eDhYCBQA4SpmAjBicfiAAeM0LN/+9RmvA8ziz92rvtOihxr431pk1o8I/rIxyxjdo/Z43rI6weiNzkEZPOTNeQ==
+"@codingame/monaco-vscode-ff9fa663-eae3-5274-8573-c2b918871e4b-common@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-ff9fa663-eae3-5274-8573-c2b918871e4b-common/-/monaco-vscode-ff9fa663-eae3-5274-8573-c2b918871e4b-common-20.1.1.tgz#065b729a18ab917606cc89c4e28a77744971293c"
+  integrity sha512-JIo4TwK0jroW3FFNdfNtkcDM+1S/FS8q2k2Wgv7dx5iKmRIIDNPeXKJYe4rAaYRs+sOwCJR7dawBf3H7iJM6rA==
+
+"@codingame/monaco-vscode-files-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-files-service-override/-/monaco-vscode-files-service-override-20.1.1.tgz#0c192c321a2be2dd566e7375dd6dfe8279a21602"
+  integrity sha512-pOhn4DfATQiHs22tTb9Y+MmLA3ZKfHffrtqNzJ4R5+p2VoZgP2X4Z9nX/vGze3lQcoWuuIyGjcMcjsKY8lp+LA==
   dependencies:
-    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "18.1.3"
-    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "18.1.3"
-    "@codingame/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common" "18.1.3"
-    "@codingame/monaco-vscode-6c0f93b9-169c-58c3-a9cb-7d60698eb52c-common" "18.1.3"
-    "@codingame/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-d609a7d3-bf87-551a-884f-550a8b327ec5-common" "18.1.3"
-    "@codingame/monaco-vscode-dcfc2191-2da1-54c7-8fb7-e92c5d11ecef-common" "18.1.3"
-    "@codingame/monaco-vscode-ea14e352-8f1c-5569-b79a-8a96a53e8abe-common" "18.1.3"
+    "@codingame/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common" "20.1.1"
+    "@codingame/monaco-vscode-15626ec7-b165-51e1-8caf-7bcc2ae9b95a-common" "20.1.1"
+    "@codingame/monaco-vscode-2f06fe84-148e-5e6b-a7ca-c7989c5f128a-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common" "20.1.1"
+
+"@codingame/monaco-vscode-host-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-host-service-override/-/monaco-vscode-host-service-override-20.1.1.tgz#50cfa3fdb93b040095699f9a4c8979c671da8c57"
+  integrity sha512-/BXkuctvhXhYm9e85csXmMVBxo2GiUX73kpqaT97E8UqmwI4G5RWAN3DgjtRIHGQbQ0qyzY09OCdVyB2Z6cZgw==
+  dependencies:
+    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "20.1.1"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-keybindings-service-override@20.1.1", "@codingame/monaco-vscode-keybindings-service-override@^20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-keybindings-service-override/-/monaco-vscode-keybindings-service-override-20.1.1.tgz#08012ef994db0c2a0d784332144f5f1254b126bb"
+  integrity sha512-wbOPGpBRVahdcS57EK9DhEbVS4sFD0GGOxRpX/ICxhu2ypy4dHVtGVPGXNCQZKACaB0Hb2SkWJCDqyzbz45T9g==
+  dependencies:
+    "@codingame/monaco-vscode-2a22c7b4-b906-5914-8cd1-3ed912fb738f-common" "20.1.1"
+    "@codingame/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common" "20.1.1"
+    "@codingame/monaco-vscode-a3eaa464-944c-5b8f-8886-213068ba4897-common" "20.1.1"
+    "@codingame/monaco-vscode-acd79e2c-c7e3-5594-873a-427e3006b3d8-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-d609a7d3-bf87-551a-884f-550a8b327ec5-common" "20.1.1"
+    "@codingame/monaco-vscode-files-service-override" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-cs@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-cs/-/monaco-vscode-language-pack-cs-20.1.1.tgz#2468950468c2b4d00fbe6acd7e389476324330ac"
+  integrity sha512-6js33hdYm/pMD3qcnyWQnVtKzKJv+QLs6e8tEDOciybeq7Fk/d18jXVDiP6l5EQH57UQMYIosQBjWLaew/iGmw==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-de@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-de/-/monaco-vscode-language-pack-de-20.1.1.tgz#cce5c5fa308999dff9ecdbbe29d5923cdf11f838"
+  integrity sha512-oq3gf4JdC95T6cpiNohSSisY0Jg28jY9LhLbcm+dh5H2ITpAi10ZyJwYZH7WgzNa5wMHeMlubGODYHzjJfZeRQ==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-es@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-es/-/monaco-vscode-language-pack-es-20.1.1.tgz#1d519324a81303f56c76c6ad1df0fc47745eed15"
+  integrity sha512-xb2TL/jsI0QZ4JQdCEm75qJkaUjyrob/T4xLuHUFe6Nc1czXQfMiF8yZxHiSiYyFpV15kNL/NK5GJP+8cWAoWw==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-fr@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-fr/-/monaco-vscode-language-pack-fr-20.1.1.tgz#330c148fc7f5ed00518faf4235448ab3d33c9a59"
+  integrity sha512-T4w00kmb/KLonR+WzB5jkWexxn1hT4UpM0xWnPfEz2Hgv3rcIS642ruFXzLBUxOiz2snylX8fRtK7eBWlUdLnA==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-it@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-it/-/monaco-vscode-language-pack-it-20.1.1.tgz#6b966a63fe3c54603599b0559b61c7333d5a2352"
+  integrity sha512-Pwu5OoxUcJaw4yocSIbAtwz46Yask6Gtt7Ue0ytmVfbBZ2I5aHBQUYXWhq1Fv5vl2e8/R650OSqcW1IVqtf7JQ==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-ja@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-ja/-/monaco-vscode-language-pack-ja-20.1.1.tgz#f0b8a022b9a09ab1178df3df5b4929c95533acef"
+  integrity sha512-PQ4MYFfTXwK7VLEubVrZOVgY9ejXneSPKvqIw/i6B5dEEfn9MeYnLnpv1OnXL2fuKsKZiUN/266f3y3iMKc4pQ==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-ko@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-ko/-/monaco-vscode-language-pack-ko-20.1.1.tgz#52aaf13ed099bf3893e6be9355937081deb8c5d8"
+  integrity sha512-/CAZlFlnnEjfs4o+qrKWoH9nupxncuiupdOLaenAWN4nXuAezSLm6eWZmr5xu4AtqQzx74xRsTycc2e5igSKcQ==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-pl@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-pl/-/monaco-vscode-language-pack-pl-20.1.1.tgz#89bcbdae11deeeecf568d1986172cfcfc8e74dda"
+  integrity sha512-zG+gFFumbMpwzHxCICJG3DWlzxSC6b383n/e2jLIumZ8NxbWDzPg+dwrPTUXCGeFfWrKOyA+3y+B03ov4LuObg==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-pt-br@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-pt-br/-/monaco-vscode-language-pack-pt-br-20.1.1.tgz#06e9a992984c243db6e85fad5a33fb629c2bc160"
+  integrity sha512-VTlzkctYeTTwoCqbVTzi80S4COHe8OoIgRe1KX27UikUFbVUaURICR0tqA9X+am01+K/6x7UNWQGJ0VQPJRHYg==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-qps-ploc@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-qps-ploc/-/monaco-vscode-language-pack-qps-ploc-20.1.1.tgz#80e1fd69c5e52dfd553847d4f073b6f848169f1d"
+  integrity sha512-cKMhNIrp0Qn5E6UupSVfAWOmnQAlgLd/WJKKaGDyDomJ+fffLta6e5LfB7S0XAQ6ttBw6LPfa0vmmz+WpPxeOA==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-ru@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-ru/-/monaco-vscode-language-pack-ru-20.1.1.tgz#b8439819a77543d9c4283ffe13d6259d271307f0"
+  integrity sha512-SHg+Lwp3UJA2BPrQoHZ4pwL5lbSQklK18VXH8Ai+Bwuu3M8h6BHMZjgiBI05lQWCUYigayttN0/Amd0v5gAG/Q==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-tr@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-tr/-/monaco-vscode-language-pack-tr-20.1.1.tgz#86faf3f489db63ae7d78229371a32bc95e2223da"
+  integrity sha512-1IyMMyh19XmpL2yuPjE+RY8HzngD2+CbQC1/hs3GrzoYOwSKYBqfDOcU6vqJYJVkkNuE1L2M45tdGanmL2z+Kg==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-zh-hans@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-zh-hans/-/monaco-vscode-language-pack-zh-hans-20.1.1.tgz#838a67ad98ad52149f865ee79ee34cb85fcbfb60"
+  integrity sha512-eHTZmrww0/CTtMoF8iwcJw2tivY+3UGwvVAyWcDPjgjw1IjUoGc7hPZSL/3vDh1IiyNKwveP2V74T0F2olVmkg==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-language-pack-zh-hant@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-language-pack-zh-hant/-/monaco-vscode-language-pack-zh-hant-20.1.1.tgz#cd9bd0d4ab2ae8b3563bafd8f0427ce2f1cd2c94"
+  integrity sha512-xTxKNZ9an8au/FRV/MtDrrUNKtzb5rvF6JHLcKVrwM4f3f1On/3SsviIdoLDI3KOoLaQE58OjgpGy5m8GxI0nA==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-languages-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-languages-service-override/-/monaco-vscode-languages-service-override-20.1.1.tgz#c6b95cf654ffa0edd5d1d721cc270378c0027aba"
+  integrity sha512-WLIBxdrQf3FLTAlP319WrA/LHyT8vpOwT2xCSDvBkA3jNBQE5m+Tb+F2U7cb2rqVL22LjybfXgtdnPPzi9DmDA==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-files-service-override" "20.1.1"
+
+"@codingame/monaco-vscode-layout-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-layout-service-override/-/monaco-vscode-layout-service-override-20.1.1.tgz#1fe10b8385d446e4d3b42ede1a85a538e167afb6"
+  integrity sha512-CPSEi5gs2DwGlmrGuRbn3b6xr9ULdsOZQDVFxlTcXoaNR+uLtIIAaU5aAHUlqiGQ3qpabBn/5cREwnmEqhrlkA==
+  dependencies:
+    "@codingame/monaco-vscode-6bf85d7b-e6e3-54e9-9bc1-7e08d663f0f6-common" "20.1.1"
+    "@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-localization-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-localization-service-override/-/monaco-vscode-localization-service-override-20.1.1.tgz#35662f7d0c9928af58cc2e4bb3c6c0f28a660564"
+  integrity sha512-BowMTYZLezbCQCUu4u30hA5oVwpLuBop+kT4iKxYTb+R08htwvPmKJfK3dyIOrwLeYKLHYnZxVjUY7AvPIMHAQ==
+  dependencies:
+    "@codingame/monaco-vscode-a654b07e-8806-5425-b124-18f03ba8e11a-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-log-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-log-service-override/-/monaco-vscode-log-service-override-20.1.1.tgz#41fe0413f1b0f0caadae7a28fe9b081ea2b9af90"
+  integrity sha512-CGwX17xLqpD9J38aJJ+Rrksl2M68rcFcuPoftBTIJM4plP1h6B48p2EIvIGtRRmdE38aFNohz5PQRa6vgC6NQQ==
+  dependencies:
+    "@codingame/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common" "20.1.1"
+    "@codingame/monaco-vscode-environment-service-override" "20.1.1"
+
+"@codingame/monaco-vscode-model-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-model-service-override/-/monaco-vscode-model-service-override-20.1.1.tgz#abee55b15d6a7b38bade0a74e5d2901cac081456"
+  integrity sha512-1Q5eG4ZYRVOrm+gzgDrR9ytlwVWDtZfQQmxW1szMvnX121Eaqug9sHo1GR80YEmMvsiWy1BIsTSswPRSY/ihYw==
+  dependencies:
+    "@codingame/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+
+"@codingame/monaco-vscode-monarch-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-monarch-service-override/-/monaco-vscode-monarch-service-override-20.1.1.tgz#70365cfd8fcbfcb33e3f9bcb7be0075d217458de"
+  integrity sha512-P+cvjr+yS1vgp4bNKrFF/mxcvquCYnx8jyrwWvaw6/IftAXCKnE6B0OpdRaMw7pIPCy3Z13++bGK4IO0FnhctA==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-quickaccess-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-quickaccess-service-override/-/monaco-vscode-quickaccess-service-override-20.1.1.tgz#98280514a374d950730430a9bfd5eb12e6f151bb"
+  integrity sha512-kdhuOYPSj+IbBLvSRB7Vdc6iNwynyaA5mQJTYEqKZaM1jhHbk87KxTS1WL+0/gaKGL5+0NlF+4MeBgdC177bhA==
+  dependencies:
+    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "20.1.1"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common" "20.1.1"
+    "@codingame/monaco-vscode-9a1a5840-af83-5d07-a156-ba32a36c5c4b-common" "20.1.1"
+    "@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-d609a7d3-bf87-551a-884f-550a8b327ec5-common" "20.1.1"
+    "@codingame/monaco-vscode-eda30bac-0984-5b42-9362-c68996b85232-common" "20.1.1"
+
+"@codingame/monaco-vscode-rollup-vsix-plugin@^20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-rollup-vsix-plugin/-/monaco-vscode-rollup-vsix-plugin-20.1.1.tgz#efd94d5254b3928944bdeeb439a49fd604e08ec9"
+  integrity sha512-q4bGgVkVsG5rzsKz2e3lxGX9yqJ9yBD/j71ZQdosPYyWyRBL4yhVbLkRQpSZ6364VHb41ZawrDAelFEOPyPAcQ==
+  dependencies:
+    "@rollup/pluginutils" "^5.2.0"
+    css-url-parser "^1.1.4"
+    memfs "^4.36.0"
+    mime-types "^3.0.1"
+    thenby "^1.3.4"
+    yauzl "^3.0.0"
+
+"@codingame/monaco-vscode-textmate-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-textmate-service-override/-/monaco-vscode-textmate-service-override-20.1.1.tgz#538531df554486fd06a1532f78b212270ce4ce9f"
+  integrity sha512-ik4x7kKhST5+PuWZKfTsUSkJmivQU7iSoOSybBRkeTG2goI0qSgtSNnkUQRlz8hsX6uICFfdckwgCQT7r1IpIg==
+  dependencies:
+    "@codingame/monaco-vscode-33833ac7-3af3-5e9d-8fb9-11838d852c59-common" "20.1.1"
+    "@codingame/monaco-vscode-9a934394-0cf8-512d-939b-77e71f69cebb-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-be143a32-d60a-5489-a1d2-c83ea7eff6bf-common" "20.1.1"
+    "@codingame/monaco-vscode-files-service-override" "20.1.1"
+    vscode-oniguruma "1.7.0"
+    vscode-textmate "9.2.0"
+
+"@codingame/monaco-vscode-theme-defaults-default-extension@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-theme-defaults-default-extension/-/monaco-vscode-theme-defaults-default-extension-20.1.1.tgz#ccb5e56702f81ff7da983b86003679ab99881da9"
+  integrity sha512-ZQy3zRu4HbkY+36BL5RGfy+g8X1hQGQUSY/PVmweqiq2F6ChKMB2Jgybqn1EF7agBQ03mHj2/vBPuWkogxDZmw==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-theme-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-theme-service-override/-/monaco-vscode-theme-service-override-20.1.1.tgz#5619adaf21d355899c75b7583dd8d2aac5ab820e"
+  integrity sha512-CyPiW4ydI4xvBr8mXFxB7+BpiXfxAEE/TbgoWouQ+gI5bOQ2lExhNVfXWJ9tx7I44T0h+/I7kjWyaxUf53IY/w==
+  dependencies:
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-9a934394-0cf8-512d-939b-77e71f69cebb-common" "20.1.1"
+    "@codingame/monaco-vscode-9d0168a3-519b-57f3-9bcc-89efc41f951a-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-files-service-override" "20.1.1"
+
+"@codingame/monaco-vscode-view-banner-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-view-banner-service-override/-/monaco-vscode-view-banner-service-override-20.1.1.tgz#f214f44b6c43ebc1958351e5efc2478351d3f47b"
+  integrity sha512-9ZkgA1zfBzCRTYTtm/44/S0bx+sa6qqeP4IclHttKD/Ehgoe9HyHFLeOjEnGnApWgjeEi+LwRAha2Tt/pm4CFA==
+  dependencies:
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-view-common-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-view-common-service-override/-/monaco-vscode-view-common-service-override-20.1.1.tgz#0daa5c65b8ca3e3e06a0bd4dd41488b72126224d"
+  integrity sha512-7hGO7L3ZFMFvouKtQFOvbpRV/PUMeZjNjjsMHGOtB8BrLp//c3xDNdkFpIVwe6AzPlauKsKwVwyeaH0WyEopPQ==
+  dependencies:
+    "@codingame/monaco-vscode-0c06bfba-d24d-5c4d-90cd-b40cefb7f811-common" "20.1.1"
+    "@codingame/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common" "20.1.1"
+    "@codingame/monaco-vscode-158b9837-fc78-5d9c-86f5-9134e4358643-common" "20.1.1"
+    "@codingame/monaco-vscode-1b4486de-4fe4-59c4-9e6d-34f265ff6625-common" "20.1.1"
+    "@codingame/monaco-vscode-2a94c04a-b85b-5669-b06b-89c1bfa11cb9-common" "20.1.1"
+    "@codingame/monaco-vscode-3109a756-1f83-5d09-945b-9f0fcad928f0-common" "20.1.1"
+    "@codingame/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common" "20.1.1"
+    "@codingame/monaco-vscode-4a316137-39d1-5d77-8b53-112db3547c1e-common" "20.1.1"
+    "@codingame/monaco-vscode-501b06ab-3f58-516b-8a1a-c29d375d3da4-common" "20.1.1"
+    "@codingame/monaco-vscode-523730aa-81e6-55d7-9916-87ad537fe087-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-615ce609-8555-545a-a549-47bd9f80e9f8-common" "20.1.1"
+    "@codingame/monaco-vscode-670aae94-7f88-54d7-90ea-6fcbef423557-common" "20.1.1"
+    "@codingame/monaco-vscode-6980eeab-47bb-5a48-8e15-32caf0785565-common" "20.1.1"
+    "@codingame/monaco-vscode-6db1b967-5327-5c5c-8c17-bd92774c0fb2-common" "20.1.1"
+    "@codingame/monaco-vscode-72a1b7d3-3f58-5545-9b7e-f579bd003081-common" "20.1.1"
+    "@codingame/monaco-vscode-7869cfe8-f42c-5721-9f2b-7d04a6a41f16-common" "20.1.1"
+    "@codingame/monaco-vscode-7f39b6f1-3542-5430-8760-0f404d7a7cee-common" "20.1.1"
+    "@codingame/monaco-vscode-897bebad-39df-57cb-8a57-36a271d038be-common" "20.1.1"
+    "@codingame/monaco-vscode-89a82baf-8ded-5b2f-b8af-e5fbd72dc5ad-common" "20.1.1"
+    "@codingame/monaco-vscode-8ccb7637-50ea-5359-97bf-00015d7fe567-common" "20.1.1"
+    "@codingame/monaco-vscode-9c84f943-bcb5-5bcf-92a6-91f66a732f26-common" "20.1.1"
+    "@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common" "20.1.1"
+    "@codingame/monaco-vscode-a17e9d37-b6c1-5556-8402-5db73960fae3-common" "20.1.1"
+    "@codingame/monaco-vscode-a654b07e-8806-5425-b124-18f03ba8e11a-common" "20.1.1"
+    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "20.1.1"
+    "@codingame/monaco-vscode-ac93482b-2178-52df-a200-ba0d1a4963fb-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-bc6d9a89-1625-5010-b57e-ff44151144fe-common" "20.1.1"
+    "@codingame/monaco-vscode-bulk-edit-service-override" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-d26a96d3-122c-5a3d-a04d-deb5ff0f19c0-common" "20.1.1"
+    "@codingame/monaco-vscode-d481a59e-259c-524e-bee1-76483d75d3a1-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
+    "@codingame/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common" "20.1.1"
+    "@codingame/monaco-vscode-e59ecb8c-db32-5324-8fe4-cf9921fd92b8-common" "20.1.1"
+    "@codingame/monaco-vscode-e72c94ca-257a-5b75-8b68-5a5fa3c18255-common" "20.1.1"
+    "@codingame/monaco-vscode-f1bbc6d3-6129-583c-a2ba-c80b832993d2-common" "20.1.1"
+    "@codingame/monaco-vscode-f24e325c-2ce0-5bba-8236-bfc4f53180ab-common" "20.1.1"
+    "@codingame/monaco-vscode-ff9fa663-eae3-5274-8573-c2b918871e4b-common" "20.1.1"
+
+"@codingame/monaco-vscode-view-status-bar-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-view-status-bar-service-override/-/monaco-vscode-view-status-bar-service-override-20.1.1.tgz#273360e6206de3236958757c731e0de2b10a80f3"
+  integrity sha512-cOHp8tEtLtbtL645hVwZ5dICKhHDfBuLG57eGrmeKxhTDWTSXA8vriKA+s71U1/C+kNXiDzM+8WFl9bNCqek6A==
+  dependencies:
+    "@codingame/monaco-vscode-0cc5da60-f921-59b9-bd8c-a018e93c0a6f-common" "20.1.1"
+    "@codingame/monaco-vscode-622c0cca-d5fa-59b6-b730-0715afcf93ee-common" "20.1.1"
+    "@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+
+"@codingame/monaco-vscode-view-title-bar-service-override@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-view-title-bar-service-override/-/monaco-vscode-view-title-bar-service-override-20.1.1.tgz#d027c3565bcc48695165c3ab30d89fdf9e12e51d"
+  integrity sha512-/GosKTTIC1EBsAYwqQTi6HZmqTopchQyZQNdsiA7hBG1sjiPLCDvijNOBWrXVmzh1GyjIwB2nlMXICXGXQAoEg==
+  dependencies:
+    "@codingame/monaco-vscode-08d1b4da-daf2-5f0d-8c50-ca6a6986c50f-common" "20.1.1"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-40cada32-7e9c-528a-81fc-766e4da54147-common" "20.1.1"
+    "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
+    "@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common" "20.1.1"
+    "@codingame/monaco-vscode-96e83782-7f38-572e-8787-02e981f1c54f-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common" "20.1.1"
+    "@codingame/monaco-vscode-ebba7d85-8a22-5735-adf4-8299cd976dce-common" "20.1.1"
+
+"@codingame/monaco-vscode-views-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-views-service-override/-/monaco-vscode-views-service-override-20.1.1.tgz#106e76ad8ebd5898e41cb2711a51a81c20e1fdbb"
+  integrity sha512-sz7OACw7PFOBj77+tNoQS6PPCCaH5CCkHYwA4Y3qIKR4QpVGmo0I6VlNxQeDezf8BQtYQJvnuOSLfl07Q7WHww==
+  dependencies:
+    "@codingame/monaco-vscode-6980eeab-47bb-5a48-8e15-32caf0785565-common" "20.1.1"
+    "@codingame/monaco-vscode-6bf85d7b-e6e3-54e9-9bc1-7e08d663f0f6-common" "20.1.1"
+    "@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common" "20.1.1"
+    "@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common" "20.1.1"
+    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
+    "@codingame/monaco-vscode-keybindings-service-override" "20.1.1"
+    "@codingame/monaco-vscode-layout-service-override" "20.1.1"
+    "@codingame/monaco-vscode-quickaccess-service-override" "20.1.1"
+    "@codingame/monaco-vscode-view-common-service-override" "20.1.1"
+
+"@codingame/monaco-vscode-workbench-service-override@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-workbench-service-override/-/monaco-vscode-workbench-service-override-20.1.1.tgz#c79f221e3a799d14ce0afbdaa2ca255fb473b35d"
+  integrity sha512-Ihlas4FPxvcdfAfbvbFniI6PB+OxToZ9l7Wofc8RFEMyYQ1rC8S4gefS1vl5WEwZ4j1DrPkvOZAeWtnLy5r73A==
+  dependencies:
+    "@codingame/monaco-vscode-1021b67c-93e5-5c78-a270-cbdb2574d980-common" "20.1.1"
+    "@codingame/monaco-vscode-256d5b78-0649-50e9-8354-2807f95f68f4-common" "20.1.1"
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-494be54c-bd37-5b3c-af70-02f086e28768-common" "20.1.1"
+    "@codingame/monaco-vscode-6980eeab-47bb-5a48-8e15-32caf0785565-common" "20.1.1"
+    "@codingame/monaco-vscode-85886bdb-61c5-52f1-8eb7-d1d32f6f8cbd-common" "20.1.1"
+    "@codingame/monaco-vscode-9c84f943-bcb5-5bcf-92a6-91f66a732f26-common" "20.1.1"
+    "@codingame/monaco-vscode-9efc1f50-c7de-55d6-8b28-bcc88bd49b5a-common" "20.1.1"
+    "@codingame/monaco-vscode-a8d3bd74-e63e-5327-96e8-4f931661e329-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-caeb744c-8e3f-5c11-80fb-0f057d24d544-common" "20.1.1"
+    "@codingame/monaco-vscode-d941ac7b-412f-57e3-b1bf-f6b0eb253b21-common" "20.1.1"
+    "@codingame/monaco-vscode-f6f55824-df83-5ffc-ac26-50fd4df4fe0e-common" "20.1.1"
+    "@codingame/monaco-vscode-keybindings-service-override" "20.1.1"
+    "@codingame/monaco-vscode-quickaccess-service-override" "20.1.1"
+    "@codingame/monaco-vscode-view-banner-service-override" "20.1.1"
+    "@codingame/monaco-vscode-view-common-service-override" "20.1.1"
+    "@codingame/monaco-vscode-view-status-bar-service-override" "20.1.1"
+    "@codingame/monaco-vscode-view-title-bar-service-override" "20.1.1"
 
 "@esbuild/aix-ppc64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.25.8.tgz#a1414903bb38027382f85f03dda6065056757727"
   integrity sha512-urAvrUedIqEiFR3FYSLTWQgLu5tb+m0qZw0NBEasUeo6wuqatkMDaRT+1uABiGXEu5vqgPd7FGE1BhsAIy9QVA==
 
+"@esbuild/aix-ppc64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.25.9.tgz#bef96351f16520055c947aba28802eede3c9e9a9"
+  integrity sha512-OaGtL73Jck6pBKjNIe24BnFE6agGl+6KxDtTfHhy1HmhthfKouEcOhqpSL64K4/0WCtbKFLOdzD/44cJ4k9opA==
+
 "@esbuild/android-arm64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.25.8.tgz#c859994089e9767224269884061f89dae6fb51c6"
   integrity sha512-OD3p7LYzWpLhZEyATcTSJ67qB5D+20vbtr6vHlHWSQYhKtzUYrETuWThmzFpZtFsBIxRvhO07+UgVA9m0i/O1w==
+
+"@esbuild/android-arm64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.25.9.tgz#d2e70be7d51a529425422091e0dcb90374c1546c"
+  integrity sha512-IDrddSmpSv51ftWslJMvl3Q2ZT98fUSL2/rlUXuVqRXHCs5EUF1/f+jbjF5+NG9UffUDMCiTyh8iec7u8RlTLg==
 
 "@esbuild/android-arm@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.25.8.tgz#96a8f2ca91c6cd29ea90b1af79d83761c8ba0059"
   integrity sha512-RONsAvGCz5oWyePVnLdZY/HHwA++nxYWIX1atInlaW6SEkwq6XkP3+cb825EUcRs5Vss/lGh/2YxAb5xqc07Uw==
 
+"@esbuild/android-arm@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.25.9.tgz#d2a753fe2a4c73b79437d0ba1480e2d760097419"
+  integrity sha512-5WNI1DaMtxQ7t7B6xa572XMXpHAaI/9Hnhk8lcxF4zVN4xstUgTlvuGDorBguKEnZO70qwEcLpfifMLoxiPqHQ==
+
 "@esbuild/android-x64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/android-x64/-/android-x64-0.25.8.tgz#a3a626c4fec4a024a9fa8c7679c39996e92916f0"
   integrity sha512-yJAVPklM5+4+9dTeKwHOaA+LQkmrKFX96BM0A/2zQrbS6ENCmxc4OVoBs5dPkCCak2roAD+jKCdnmOqKszPkjA==
+
+"@esbuild/android-x64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-x64/-/android-x64-0.25.9.tgz#5278836e3c7ae75761626962f902a0d55352e683"
+  integrity sha512-I853iMZ1hWZdNllhVZKm34f4wErd4lMyeV7BLzEExGEIZYsOzqDWDf+y082izYUE8gtJnYHdeDpN/6tUdwvfiw==
 
 "@esbuild/darwin-arm64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/darwin-arm64/-/darwin-arm64-0.25.8.tgz#a5e1252ca2983d566af1c0ea39aded65736fc66d"
   integrity sha512-Jw0mxgIaYX6R8ODrdkLLPwBqHTtYHJSmzzd+QeytSugzQ0Vg4c5rDky5VgkoowbZQahCbsv1rT1KW72MPIkevw==
 
+"@esbuild/darwin-arm64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/darwin-arm64/-/darwin-arm64-0.25.9.tgz#f1513eaf9ec8fa15dcaf4c341b0f005d3e8b47ae"
+  integrity sha512-XIpIDMAjOELi/9PB30vEbVMs3GV1v2zkkPnuyRRURbhqjyzIINwj+nbQATh4H9GxUgH1kFsEyQMxwiLFKUS6Rg==
+
 "@esbuild/darwin-x64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/darwin-x64/-/darwin-x64-0.25.8.tgz#5271b0df2bb12ce8df886704bfdd1c7cc01385d2"
   integrity sha512-Vh2gLxxHnuoQ+GjPNvDSDRpoBCUzY4Pu0kBqMBDlK4fuWbKgGtmDIeEC081xi26PPjn+1tct+Bh8FjyLlw1Zlg==
+
+"@esbuild/darwin-x64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/darwin-x64/-/darwin-x64-0.25.9.tgz#e27dbc3b507b3a1cea3b9280a04b8b6b725f82be"
+  integrity sha512-jhHfBzjYTA1IQu8VyrjCX4ApJDnH+ez+IYVEoJHeqJm9VhG9Dh2BYaJritkYK3vMaXrf7Ogr/0MQ8/MeIefsPQ==
 
 "@esbuild/freebsd-arm64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/freebsd-arm64/-/freebsd-arm64-0.25.8.tgz#d0a0e7fdf19733b8bb1566b81df1aa0bb7e46ada"
   integrity sha512-YPJ7hDQ9DnNe5vxOm6jaie9QsTwcKedPvizTVlqWG9GBSq+BuyWEDazlGaDTC5NGU4QJd666V0yqCBL2oWKPfA==
 
+"@esbuild/freebsd-arm64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/freebsd-arm64/-/freebsd-arm64-0.25.9.tgz#364e3e5b7a1fd45d92be08c6cc5d890ca75908ca"
+  integrity sha512-z93DmbnY6fX9+KdD4Ue/H6sYs+bhFQJNCPZsi4XWJoYblUqT06MQUdBCpcSfuiN72AbqeBFu5LVQTjfXDE2A6Q==
+
 "@esbuild/freebsd-x64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/freebsd-x64/-/freebsd-x64-0.25.8.tgz#2de8b2e0899d08f1cb1ef3128e159616e7e85343"
   integrity sha512-MmaEXxQRdXNFsRN/KcIimLnSJrk2r5H8v+WVafRWz5xdSVmWLoITZQXcgehI2ZE6gioE6HirAEToM/RvFBeuhw==
+
+"@esbuild/freebsd-x64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/freebsd-x64/-/freebsd-x64-0.25.9.tgz#7c869b45faeb3df668e19ace07335a0711ec56ab"
+  integrity sha512-mrKX6H/vOyo5v71YfXWJxLVxgy1kyt1MQaD8wZJgJfG4gq4DpQGpgTB74e5yBeQdyMTbgxp0YtNj7NuHN0PoZg==
 
 "@esbuild/linux-arm64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-arm64/-/linux-arm64-0.25.8.tgz#a4209efadc0c2975716458484a4e90c237c48ae9"
   integrity sha512-WIgg00ARWv/uYLU7lsuDK00d/hHSfES5BzdWAdAig1ioV5kaFNrtK8EqGcUBJhYqotlUByUKz5Qo6u8tt7iD/w==
 
+"@esbuild/linux-arm64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-arm64/-/linux-arm64-0.25.9.tgz#48d42861758c940b61abea43ba9a29b186d6cb8b"
+  integrity sha512-BlB7bIcLT3G26urh5Dmse7fiLmLXnRlopw4s8DalgZ8ef79Jj4aUcYbk90g8iCa2467HX8SAIidbL7gsqXHdRw==
+
 "@esbuild/linux-arm@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-arm/-/linux-arm-0.25.8.tgz#ccd9e291c24cd8d9142d819d463e2e7200d25b19"
   integrity sha512-FuzEP9BixzZohl1kLf76KEVOsxtIBFwCaLupVuk4eFVnOZfU+Wsn+x5Ryam7nILV2pkq2TqQM9EZPsOBuMC+kg==
+
+"@esbuild/linux-arm@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-arm/-/linux-arm-0.25.9.tgz#6ce4b9cabf148274101701d112b89dc67cc52f37"
+  integrity sha512-HBU2Xv78SMgaydBmdor38lg8YDnFKSARg1Q6AT0/y2ezUAKiZvc211RDFHlEZRFNRVhcMamiToo7bDx3VEOYQw==
 
 "@esbuild/linux-ia32@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-ia32/-/linux-ia32-0.25.8.tgz#006ad1536d0c2b28fb3a1cf0b53bcb85aaf92c4d"
   integrity sha512-A1D9YzRX1i+1AJZuFFUMP1E9fMaYY+GnSQil9Tlw05utlE86EKTUA7RjwHDkEitmLYiFsRd9HwKBPEftNdBfjg==
 
+"@esbuild/linux-ia32@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-ia32/-/linux-ia32-0.25.9.tgz#207e54899b79cac9c26c323fc1caa32e3143f1c4"
+  integrity sha512-e7S3MOJPZGp2QW6AK6+Ly81rC7oOSerQ+P8L0ta4FhVi+/j/v2yZzx5CqqDaWjtPFfYz21Vi1S0auHrap3Ma3A==
+
 "@esbuild/linux-loong64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.25.8.tgz#127b3fbfb2c2e08b1397e985932f718f09a8f5c4"
   integrity sha512-O7k1J/dwHkY1RMVvglFHl1HzutGEFFZ3kNiDMSOyUrB7WcoHGf96Sh+64nTRT26l3GMbCW01Ekh/ThKM5iI7hQ==
+
+"@esbuild/linux-loong64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.25.9.tgz#0ba48a127159a8f6abb5827f21198b999ffd1fc0"
+  integrity sha512-Sbe10Bnn0oUAB2AalYztvGcK+o6YFFA/9829PhOCUS9vkJElXGdphz0A3DbMdP8gmKkqPmPcMJmJOrI3VYB1JQ==
 
 "@esbuild/linux-mips64el@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-mips64el/-/linux-mips64el-0.25.8.tgz#837d1449517791e3fa7d82675a2d06d9f56cb340"
   integrity sha512-uv+dqfRazte3BzfMp8PAQXmdGHQt2oC/y2ovwpTteqrMx2lwaksiFZ/bdkXJC19ttTvNXBuWH53zy/aTj1FgGw==
 
+"@esbuild/linux-mips64el@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-mips64el/-/linux-mips64el-0.25.9.tgz#a4d4cc693d185f66a6afde94f772b38ce5d64eb5"
+  integrity sha512-YcM5br0mVyZw2jcQeLIkhWtKPeVfAerES5PvOzaDxVtIyZ2NUBZKNLjC5z3/fUlDgT6w89VsxP2qzNipOaaDyA==
+
 "@esbuild/linux-ppc64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-ppc64/-/linux-ppc64-0.25.8.tgz#aa2e3bd93ab8df084212f1895ca4b03c42d9e0fe"
   integrity sha512-GyG0KcMi1GBavP5JgAkkstMGyMholMDybAf8wF5A70CALlDM2p/f7YFE7H92eDeH/VBtFJA5MT4nRPDGg4JuzQ==
+
+"@esbuild/linux-ppc64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-ppc64/-/linux-ppc64-0.25.9.tgz#0f5805c1c6d6435a1dafdc043cb07a19050357db"
+  integrity sha512-++0HQvasdo20JytyDpFvQtNrEsAgNG2CY1CLMwGXfFTKGBGQT3bOeLSYE2l1fYdvML5KUuwn9Z8L1EWe2tzs1w==
 
 "@esbuild/linux-riscv64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-riscv64/-/linux-riscv64-0.25.8.tgz#a340620e31093fef72767dd28ab04214b3442083"
   integrity sha512-rAqDYFv3yzMrq7GIcen3XP7TUEG/4LK86LUPMIz6RT8A6pRIDn0sDcvjudVZBiiTcZCY9y2SgYX2lgK3AF+1eg==
 
+"@esbuild/linux-riscv64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-riscv64/-/linux-riscv64-0.25.9.tgz#6776edece0f8fca79f3386398b5183ff2a827547"
+  integrity sha512-uNIBa279Y3fkjV+2cUjx36xkx7eSjb8IvnL01eXUKXez/CBHNRw5ekCGMPM0BcmqBxBcdgUWuUXmVWwm4CH9kg==
+
 "@esbuild/linux-s390x@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-s390x/-/linux-s390x-0.25.8.tgz#ddfed266c8c13f5efb3105a0cd47f6dcd0e79e71"
   integrity sha512-Xutvh6VjlbcHpsIIbwY8GVRbwoviWT19tFhgdA7DlenLGC/mbc3lBoVb7jxj9Z+eyGqvcnSyIltYUrkKzWqSvg==
+
+"@esbuild/linux-s390x@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-s390x/-/linux-s390x-0.25.9.tgz#3f6f29ef036938447c2218d309dc875225861830"
+  integrity sha512-Mfiphvp3MjC/lctb+7D287Xw1DGzqJPb/J2aHHcHxflUo+8tmN/6d4k6I2yFR7BVo5/g7x2Monq4+Yew0EHRIA==
 
 "@esbuild/linux-x64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-x64/-/linux-x64-0.25.8.tgz#9a4f78c75c051e8c060183ebb39a269ba936a2ac"
   integrity sha512-ASFQhgY4ElXh3nDcOMTkQero4b1lgubskNlhIfJrsH5OKZXDpUAKBlNS0Kx81jwOBp+HCeZqmoJuihTv57/jvQ==
 
+"@esbuild/linux-x64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-x64/-/linux-x64-0.25.9.tgz#831fe0b0e1a80a8b8391224ea2377d5520e1527f"
+  integrity sha512-iSwByxzRe48YVkmpbgoxVzn76BXjlYFXC7NvLYq+b+kDjyyk30J0JY47DIn8z1MO3K0oSl9fZoRmZPQI4Hklzg==
+
 "@esbuild/netbsd-arm64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/netbsd-arm64/-/netbsd-arm64-0.25.8.tgz#902c80e1d678047926387230bc037e63e00697d0"
   integrity sha512-d1KfruIeohqAi6SA+gENMuObDbEjn22olAR7egqnkCD9DGBG0wsEARotkLgXDu6c4ncgWTZJtN5vcgxzWRMzcw==
+
+"@esbuild/netbsd-arm64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/netbsd-arm64/-/netbsd-arm64-0.25.9.tgz#06f99d7eebe035fbbe43de01c9d7e98d2a0aa548"
+  integrity sha512-9jNJl6FqaUG+COdQMjSCGW4QiMHH88xWbvZ+kRVblZsWrkXlABuGdFJ1E9L7HK+T0Yqd4akKNa/lO0+jDxQD4Q==
 
 "@esbuild/netbsd-x64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/netbsd-x64/-/netbsd-x64-0.25.8.tgz#2d9eb4692add2681ff05a14ce99de54fbed7079c"
   integrity sha512-nVDCkrvx2ua+XQNyfrujIG38+YGyuy2Ru9kKVNyh5jAys6n+l44tTtToqHjino2My8VAY6Lw9H7RI73XFi66Cg==
 
+"@esbuild/netbsd-x64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/netbsd-x64/-/netbsd-x64-0.25.9.tgz#db99858e6bed6e73911f92a88e4edd3a8c429a52"
+  integrity sha512-RLLdkflmqRG8KanPGOU7Rpg829ZHu8nFy5Pqdi9U01VYtG9Y0zOG6Vr2z4/S+/3zIyOxiK6cCeYNWOFR9QP87g==
+
 "@esbuild/openbsd-arm64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/openbsd-arm64/-/openbsd-arm64-0.25.8.tgz#89c3b998c6de739db38ab7fb71a8a76b3fa84a45"
   integrity sha512-j8HgrDuSJFAujkivSMSfPQSAa5Fxbvk4rgNAS5i3K+r8s1X0p1uOO2Hl2xNsGFppOeHOLAVgYwDVlmxhq5h+SQ==
+
+"@esbuild/openbsd-arm64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/openbsd-arm64/-/openbsd-arm64-0.25.9.tgz#afb886c867e36f9d86bb21e878e1185f5d5a0935"
+  integrity sha512-YaFBlPGeDasft5IIM+CQAhJAqS3St3nJzDEgsgFixcfZeyGPCd6eJBWzke5piZuZ7CtL656eOSYKk4Ls2C0FRQ==
 
 "@esbuild/openbsd-x64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/openbsd-x64/-/openbsd-x64-0.25.8.tgz#2f01615cf472b0e48c077045cfd96b5c149365cc"
   integrity sha512-1h8MUAwa0VhNCDp6Af0HToI2TJFAn1uqT9Al6DJVzdIBAd21m/G0Yfc77KDM3uF3T/YaOgQq3qTJHPbTOInaIQ==
 
+"@esbuild/openbsd-x64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/openbsd-x64/-/openbsd-x64-0.25.9.tgz#30855c9f8381fac6a0ef5b5f31ac6e7108a66ecf"
+  integrity sha512-1MkgTCuvMGWuqVtAvkpkXFmtL8XhWy+j4jaSO2wxfJtilVCi0ZE37b8uOdMItIHz4I6z1bWWtEX4CJwcKYLcuA==
+
 "@esbuild/openharmony-arm64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/openharmony-arm64/-/openharmony-arm64-0.25.8.tgz#a201f720cd2c3ebf9a6033fcc3feb069a54b509a"
   integrity sha512-r2nVa5SIK9tSWd0kJd9HCffnDHKchTGikb//9c7HX+r+wHYCpQrSgxhlY6KWV1nFo1l4KFbsMlHk+L6fekLsUg==
+
+"@esbuild/openharmony-arm64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/openharmony-arm64/-/openharmony-arm64-0.25.9.tgz#2f2144af31e67adc2a8e3705c20c2bd97bd88314"
+  integrity sha512-4Xd0xNiMVXKh6Fa7HEJQbrpP3m3DDn43jKxMjxLLRjWnRsfxjORYJlXPO4JNcXtOyfajXorRKY9NkOpTHptErg==
 
 "@esbuild/sunos-x64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/sunos-x64/-/sunos-x64-0.25.8.tgz#07046c977985a3334667f19e6ab3a01a80862afb"
   integrity sha512-zUlaP2S12YhQ2UzUfcCuMDHQFJyKABkAjvO5YSndMiIkMimPmxA+BYSBikWgsRpvyxuRnow4nS5NPnf9fpv41w==
 
+"@esbuild/sunos-x64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/sunos-x64/-/sunos-x64-0.25.9.tgz#69b99a9b5bd226c9eb9c6a73f990fddd497d732e"
+  integrity sha512-WjH4s6hzo00nNezhp3wFIAfmGZ8U7KtrJNlFMRKxiI9mxEK1scOMAaa9i4crUtu+tBr+0IN6JCuAcSBJZfnphw==
+
 "@esbuild/win32-arm64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/win32-arm64/-/win32-arm64-0.25.8.tgz#4a5470caf0d16127c05d4833d4934213c69392d1"
   integrity sha512-YEGFFWESlPva8hGL+zvj2z/SaK+pH0SwOM0Nc/d+rVnW7GSTFlLBGzZkuSU9kFIGIo8q9X3ucpZhu8PDN5A2sQ==
+
+"@esbuild/win32-arm64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/win32-arm64/-/win32-arm64-0.25.9.tgz#d789330a712af916c88325f4ffe465f885719c6b"
+  integrity sha512-mGFrVJHmZiRqmP8xFOc6b84/7xa5y5YvR1x8djzXpJBSv/UsNK6aqec+6JDjConTgvvQefdGhFDAs2DLAds6gQ==
 
 "@esbuild/win32-ia32@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/win32-ia32/-/win32-ia32-0.25.8.tgz#3de3e8470b7b328d99dbc3e9ec1eace207e5bbc4"
   integrity sha512-hiGgGC6KZ5LZz58OL/+qVVoZiuZlUYlYHNAmczOm7bs2oE1XriPFi5ZHHrS8ACpV5EjySrnoCKmcbQMN+ojnHg==
 
+"@esbuild/win32-ia32@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/win32-ia32/-/win32-ia32-0.25.9.tgz#52fc735406bd49688253e74e4e837ac2ba0789e3"
+  integrity sha512-b33gLVU2k11nVx1OhX3C8QQP6UHQK4ZtN56oFWvVXvz2VkDoe6fbG8TOgHFxEvqeqohmRnIHe5A1+HADk4OQww==
+
 "@esbuild/win32-x64@0.25.8":
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.25.8.tgz#610d7ea539d2fcdbe39237b5cc175eb2c4451f9c"
   integrity sha512-cn3Yr7+OaaZq1c+2pe+8yxC8E144SReCQjN6/2ynubzYjvyqZjTXfQJpAcQpsdJq3My7XADANiYGHoFC69pLQw==
+
+"@esbuild/win32-x64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.25.9.tgz#585624dc829cfb6e7c0aa6c3ca7d7e6daa87e34f"
+  integrity sha512-PPOl1mi6lpLNQxnGoyAfschAodRFYXJ+9fs6WHXz7CSWKbOqiMZsubC+BQsVKuul+3vKLuwTHsS2c2y9EoKwxQ==
 
 "@jridgewell/gen-mapping@^0.3.12", "@jridgewell/gen-mapping@^0.3.5":
   version "0.3.12"
@@ -1268,6 +1761,49 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@jsonjoy.com/base64@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@jsonjoy.com/base64/-/base64-1.1.2.tgz#cf8ea9dcb849b81c95f14fc0aaa151c6b54d2578"
+  integrity sha512-q6XAnWQDIMA3+FTiOYajoYqySkO+JSat0ytXGSuRdq9uXE7o92gzuQwQM14xaCRlBLGq3v5miDGC4vkVTn54xA==
+
+"@jsonjoy.com/buffers@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jsonjoy.com/buffers/-/buffers-1.0.0.tgz#ade6895b7d3883d70f87b5743efaa12c71dfef7a"
+  integrity sha512-NDigYR3PHqCnQLXYyoLbnEdzMMvzeiCWo1KOut7Q0CoIqg9tUAPKJ1iq/2nFhc5kZtexzutNY0LFjdwWL3Dw3Q==
+
+"@jsonjoy.com/codegen@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jsonjoy.com/codegen/-/codegen-1.0.0.tgz#5c23f796c47675f166d23b948cdb889184b93207"
+  integrity sha512-E8Oy+08cmCf0EK/NMxpaJZmOxPqM+6iSe2S4nlSBrPZOORoDJILxtbSUEDKQyTamm/BVAhIGllOBNU79/dwf0g==
+
+"@jsonjoy.com/json-pack@^1.0.3":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@jsonjoy.com/json-pack/-/json-pack-1.11.0.tgz#3d40d3d8042f5e9eeb005658a76b788e8ca84ac0"
+  integrity sha512-nLqSTAYwpk+5ZQIoVp7pfd/oSKNWlEdvTq2LzVA4r2wtWZg6v+5u0VgBOaDJuUfNOuw/4Ysq6glN5QKSrOCgrA==
+  dependencies:
+    "@jsonjoy.com/base64" "^1.1.2"
+    "@jsonjoy.com/buffers" "^1.0.0"
+    "@jsonjoy.com/codegen" "^1.0.0"
+    "@jsonjoy.com/json-pointer" "^1.0.1"
+    "@jsonjoy.com/util" "^1.9.0"
+    hyperdyperid "^1.2.0"
+    thingies "^2.5.0"
+
+"@jsonjoy.com/json-pointer@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@jsonjoy.com/json-pointer/-/json-pointer-1.0.1.tgz#3b710158e8a212708a2886ea5e38d92e2ea4f4a0"
+  integrity sha512-tJpwQfuBuxqZlyoJOSZcqf7OUmiYQ6MiPNmOv4KbZdXE/DdvBSSAwhos0zIlJU/AXxC8XpuO8p08bh2fIl+RKA==
+  dependencies:
+    "@jsonjoy.com/util" "^1.3.0"
+
+"@jsonjoy.com/util@^1.3.0", "@jsonjoy.com/util@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@jsonjoy.com/util/-/util-1.9.0.tgz#7ee95586aed0a766b746cd8d8363e336c3c47c46"
+  integrity sha512-pLuQo+VPRnN8hfPqUTLTHk126wuYdXVxE6aDmjSeV4NCAgyxWbiOIeNJVtID3h1Vzpoi9m4jXezf73I6LgabgQ==
+  dependencies:
+    "@jsonjoy.com/buffers" "^1.0.0"
+    "@jsonjoy.com/codegen" "^1.0.0"
+
 "@polka/url@^1.0.0-next.24":
   version "1.0.0-next.29"
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.29.tgz#5a40109a1ab5f84d6fd8fc928b19f367cbe7e7b1"
@@ -1277,6 +1813,15 @@
   version "1.0.0-beta.29"
   resolved "https://registry.yarnpkg.com/@rolldown/pluginutils/-/pluginutils-1.0.0-beta.29.tgz#f8fc9a8788757dccba0d3b7fee93183621773d4c"
   integrity sha512-NIJgOsMjbxAXvoGq/X0gD7VPMQ8j9g0BiDaNjVNVjvl+iKXxL3Jre0v31RmBYeLEmkbj2s02v8vFTbUXi5XS2Q==
+
+"@rollup/pluginutils@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.2.0.tgz#eac25ca5b0bdda4ba735ddaca5fbf26bd435f602"
+  integrity sha512-qWJ2ZTbmumwiLFomfzTyt5Kng4hwPi9rwCYN4SHb6eaRU1KNO4ccxINHr/VhH4GgPlt1XfSTLX2LBTme8ne4Zw==
+  dependencies:
+    "@types/estree" "^1.0.0"
+    estree-walker "^2.0.2"
+    picomatch "^4.0.2"
 
 "@rollup/rollup-android-arm-eabi@4.46.2":
   version "4.46.2"
@@ -1388,7 +1933,7 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/merge-streams/-/merge-streams-4.0.0.tgz#abb11d99aeb6d27f1b563c38147a72d50058e339"
   integrity sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==
 
-"@types/estree@1.0.8":
+"@types/estree@1.0.8", "@types/estree@^1.0.0":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.8.tgz#958b91c991b1867ced318bedea0e215ee050726e"
   integrity sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==
@@ -1585,6 +2130,11 @@ browserslist@^4.24.0:
     node-releases "^2.0.19"
     update-browserslist-db "^1.1.3"
 
+buffer-crc32@~0.2.3:
+  version "0.2.13"
+  resolved "https://registry.yarnpkg.com/buffer-crc32/-/buffer-crc32-0.2.13.tgz#0d333e3f00eac50aa1454abd30ef8c2a5d9a7242"
+  integrity sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==
+
 bundle-name@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/bundle-name/-/bundle-name-4.1.0.tgz#f3b96b34160d6431a19d7688135af7cfb8797889"
@@ -1617,6 +2167,11 @@ cross-spawn@^7.0.6:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
+
+css-url-parser@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/css-url-parser/-/css-url-parser-1.1.4.tgz#a0cd4fefada38eeb26da6036d9af0b5e42edb65e"
+  integrity sha512-gIpYB7ZqfIsd+/kJ8CE4pesAbIUEaZM+30Ylfl7rr0zJONslIchmi3utzY64qHIOhD/wXDrcSo7jU2VDqG7GiQ==
 
 csstype@^3.1.3:
   version "3.1.3"
@@ -1669,6 +2224,38 @@ error-stack-parser-es@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/error-stack-parser-es/-/error-stack-parser-es-1.0.5.tgz#e6a1655dd12f39bb3a85bf4c7088187d78740327"
   integrity sha512-5qucVt2XcuGMcEGgWI7i+yZpmpByQ8J1lHhcL7PwqCwu9FPP3VUXzT4ltHe5i2z9dePwEHcDVOAfSnHsOlCXRA==
+
+esbuild@>=0.19.x:
+  version "0.25.9"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.25.9.tgz#15ab8e39ae6cdc64c24ff8a2c0aef5b3fd9fa976"
+  integrity sha512-CRbODhYyQx3qp7ZEwzxOk4JBqmD/seJrzPa/cGjY1VtIn5E09Oi9/dB4JwctnfZ8Q8iT7rioVv5k/FNT/uf54g==
+  optionalDependencies:
+    "@esbuild/aix-ppc64" "0.25.9"
+    "@esbuild/android-arm" "0.25.9"
+    "@esbuild/android-arm64" "0.25.9"
+    "@esbuild/android-x64" "0.25.9"
+    "@esbuild/darwin-arm64" "0.25.9"
+    "@esbuild/darwin-x64" "0.25.9"
+    "@esbuild/freebsd-arm64" "0.25.9"
+    "@esbuild/freebsd-x64" "0.25.9"
+    "@esbuild/linux-arm" "0.25.9"
+    "@esbuild/linux-arm64" "0.25.9"
+    "@esbuild/linux-ia32" "0.25.9"
+    "@esbuild/linux-loong64" "0.25.9"
+    "@esbuild/linux-mips64el" "0.25.9"
+    "@esbuild/linux-ppc64" "0.25.9"
+    "@esbuild/linux-riscv64" "0.25.9"
+    "@esbuild/linux-s390x" "0.25.9"
+    "@esbuild/linux-x64" "0.25.9"
+    "@esbuild/netbsd-arm64" "0.25.9"
+    "@esbuild/netbsd-x64" "0.25.9"
+    "@esbuild/openbsd-arm64" "0.25.9"
+    "@esbuild/openbsd-x64" "0.25.9"
+    "@esbuild/openharmony-arm64" "0.25.9"
+    "@esbuild/sunos-x64" "0.25.9"
+    "@esbuild/win32-arm64" "0.25.9"
+    "@esbuild/win32-ia32" "0.25.9"
+    "@esbuild/win32-x64" "0.25.9"
 
 esbuild@^0.25.0:
   version "0.25.8"
@@ -1730,11 +2317,6 @@ execa@^9.6.0:
     strip-final-newline "^4.0.0"
     yoctocolors "^2.1.1"
 
-fast-plist@^0.1.2:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/fast-plist/-/fast-plist-0.1.3.tgz#328cd9335e93a2479ac90814a1302437574ea925"
-  integrity sha512-d9cEfo/WcOezgPLAC/8t8wGb6YOD6JTCPMw2QcG2nAdFmyY+9rTUizCTaGjIZAloWENTEUMAPpkUAIJJJ0i96A==
-
 fdir@^6.4.4, fdir@^6.4.6:
   version "6.4.6"
   resolved "https://registry.yarnpkg.com/fdir/-/fdir-6.4.6.tgz#2b268c0232697063111bbf3f64810a2a741ba281"
@@ -1774,6 +2356,16 @@ human-signals@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-8.0.1.tgz#f08bb593b6d1db353933d06156cedec90abe51fb"
   integrity sha512-eKCa6bwnJhvxj14kZk5NCPc6Hb6BdsU9DZcOnmQKSnO1VKrfV0zCvtttPZUsBvjmNDn8rpcJfpwSYnHBjc95MQ==
+
+hyperdyperid@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/hyperdyperid/-/hyperdyperid-1.2.0.tgz#59668d323ada92228d2a869d3e474d5a33b69e6b"
+  integrity sha512-Y93lCzHYgGWdrJ66yIktxiaGULYc6oGiABxhcO5AufBeOyoIdZF7bIfLaOrbM0iGIOXQQgxxRrFEnb+Y6w1n4A==
+
+import-meta-resolve@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/import-meta-resolve/-/import-meta-resolve-4.1.0.tgz#f9db8bead9fafa61adb811db77a2bf22c5399706"
+  integrity sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw==
 
 is-docker@^3.0.0:
   version "3.0.0"
@@ -1863,6 +2455,28 @@ marked@14.0.0:
   resolved "https://registry.yarnpkg.com/marked/-/marked-14.0.0.tgz#79a1477358a59e0660276f8fec76de2c33f35d83"
   integrity sha512-uIj4+faQ+MgHgwUW1l2PsPglZLOLOT1uErt06dAPtx2kjteLAkbsd/0FiYg/MGS+i7ZKLb7w2WClxHkzOOuryQ==
 
+memfs@^4.36.0:
+  version "4.36.0"
+  resolved "https://registry.yarnpkg.com/memfs/-/memfs-4.36.0.tgz#b9fa8d97ddda3cb8c06908bceec956560c33d979"
+  integrity sha512-mfBfzGUdoEw5AZwG8E965ej3BbvW2F9LxEWj4uLxF6BEh1dO2N9eS3AGu9S6vfenuQYrVjsbUOOZK7y3vz4vyQ==
+  dependencies:
+    "@jsonjoy.com/json-pack" "^1.0.3"
+    "@jsonjoy.com/util" "^1.3.0"
+    tree-dump "^1.0.1"
+    tslib "^2.0.0"
+
+mime-db@^1.54.0:
+  version "1.54.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.54.0.tgz#cddb3ee4f9c64530dff640236661d42cb6a314f5"
+  integrity sha512-aU5EJuIN2WDemCcAp2vFBfp/m4EAhWJnUNSSw0ixs7/kXbd6Pg64EmwJkNdFhB8aWt1sH2CTXrLxo/iAGV3oPQ==
+
+mime-types@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-3.0.1.tgz#b1d94d6997a9b32fd69ebaed0db73de8acb519ce"
+  integrity sha512-xRc4oEhT6eaBpU1XF7AjpOFD+xQmXNB5OVKwp4tqCuBpHLS/ZbBDrc07mYTDqVMg6PfxUjjNp85O6Cd2Z/5HWA==
+  dependencies:
+    mime-db "^1.54.0"
+
 minimatch@^5.1.0:
   version "5.1.6"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.6.tgz#1cfcb8cf5522ea69952cd2af95ae09477f122a96"
@@ -1875,40 +2489,58 @@ mitt@^3.0.1:
   resolved "https://registry.yarnpkg.com/mitt/-/mitt-3.0.1.tgz#ea36cf0cc30403601ae074c8f77b7092cdab36d1"
   integrity sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==
 
-monaco-editor-textmate@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/monaco-editor-textmate/-/monaco-editor-textmate-4.0.0.tgz#f85a8916989dac01791fff1f001e56fdb2907ab4"
-  integrity sha512-Clwup5LJzVfwURQrS+odSEC5/hZBEG36pQnvBKt4OtBndF8r2xLeXUZcK/AqEBK2u0Npy7frFp9hG7m66Ol9hA==
-
-monaco-editor@^0.52.2:
-  version "0.52.2"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.52.2.tgz#53c75a6fcc6802684e99fd1b2700299857002205"
-  integrity sha512-GEQWEZmfkOGLdd3XK8ryrfWz3AIP8YymVXiPHEdewrUq7mh0qrKrfHLNCXcbB6sTnMLnOZ3ztSiKcciFUkIJwQ==
-
-monaco-languageclient@^9.8.0:
-  version "9.8.0"
-  resolved "https://registry.yarnpkg.com/monaco-languageclient/-/monaco-languageclient-9.8.0.tgz#972fed13a52c092a57fa52357f9069dc6617d2a0"
-  integrity sha512-xQ82vs0xWdeaxDK0lXJdN81CGC0gzMOVhmr7bN71y+tFezsToAW0+tt+IpQbyw1i3lQQxjdh1ci+Hu5CCx43ew==
+monaco-editor-wrapper@^6.11.0:
+  version "6.11.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor-wrapper/-/monaco-editor-wrapper-6.11.0.tgz#a8c1a72fcea0b5dd9046477dedb7e69a752a7cd4"
+  integrity sha512-eWvJO4t2Mcjq+MOQwOyJw75Cvg12Txws4RQN0bTYQFnbmWp5RSD9p6yZwivatQJILIMUTviJe7S+Qz2Wgi6/zQ==
   dependencies:
-    "@codingame/monaco-vscode-api" "~18.1.0"
-    "@codingame/monaco-vscode-configuration-service-override" "~18.1.0"
-    "@codingame/monaco-vscode-editor-api" "~18.1.0"
-    "@codingame/monaco-vscode-editor-service-override" "~18.1.0"
-    "@codingame/monaco-vscode-extension-api" "~18.1.0"
-    "@codingame/monaco-vscode-extensions-service-override" "~18.1.0"
-    "@codingame/monaco-vscode-languages-service-override" "~18.1.0"
-    "@codingame/monaco-vscode-localization-service-override" "~18.1.0"
-    "@codingame/monaco-vscode-log-service-override" "~18.1.0"
-    "@codingame/monaco-vscode-model-service-override" "~18.1.0"
-    vscode "npm:@codingame/monaco-vscode-extension-api@~18.1.0"
+    "@codingame/monaco-vscode-api" "~20.1.1"
+    "@codingame/monaco-vscode-editor-api" "~20.1.1"
+    "@codingame/monaco-vscode-editor-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-extension-api" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-cs" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-de" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-es" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-fr" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-it" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-ja" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-ko" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-pl" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-pt-br" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-qps-ploc" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-ru" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-tr" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-zh-hans" "~20.1.1"
+    "@codingame/monaco-vscode-language-pack-zh-hant" "~20.1.1"
+    "@codingame/monaco-vscode-monarch-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-textmate-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-theme-defaults-default-extension" "~20.1.1"
+    "@codingame/monaco-vscode-theme-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-views-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-workbench-service-override" "~20.1.1"
+    monaco-languageclient "~9.10.0"
+    vscode "npm:@codingame/monaco-vscode-extension-api@~20.1.1"
     vscode-languageclient "~9.0.1"
+    vscode-languageserver-protocol "~3.17.5"
+    vscode-ws-jsonrpc "~3.5.0"
 
-monaco-textmate@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/monaco-textmate/-/monaco-textmate-3.0.1.tgz#b6d26d266aa12edaff7069dae0d6e3747cba5cd7"
-  integrity sha512-ZxxY3OsqUczYP1sGqo97tu+CJmMBwuSW+dL0WEBdDhOZ5G1zntw72hvBc68ZQAirosWvbDKgN1dL5k173QtFww==
+monaco-languageclient@^9.10.0, monaco-languageclient@~9.10.0:
+  version "9.10.0"
+  resolved "https://registry.yarnpkg.com/monaco-languageclient/-/monaco-languageclient-9.10.0.tgz#8e68d12e1838c0d4fbedc4da482b65a22b04f1f2"
+  integrity sha512-Jht3OKVERogZaK1lgmLwMtXgzTrQ9oWZwP5jOekswbXG3AhHB00af8A7DuhdKS/wPF/xyQXsQ/1bPwg+gFeHbA==
   dependencies:
-    fast-plist "^0.1.2"
+    "@codingame/monaco-vscode-api" "~20.1.1"
+    "@codingame/monaco-vscode-configuration-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-editor-api" "~20.1.1"
+    "@codingame/monaco-vscode-editor-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-extension-api" "~20.1.1"
+    "@codingame/monaco-vscode-extensions-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-languages-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-localization-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-log-service-override" "~20.1.1"
+    "@codingame/monaco-vscode-model-service-override" "~20.1.1"
+    vscode "npm:@codingame/monaco-vscode-extension-api@~20.1.1"
+    vscode-languageclient "~9.0.1"
 
 mrmime@^2.0.0:
   version "2.0.1"
@@ -1948,13 +2580,6 @@ ohash@^2.0.11:
   resolved "https://registry.yarnpkg.com/ohash/-/ohash-2.0.11.tgz#60b11e8cff62ca9dee88d13747a5baa145f5900b"
   integrity sha512-RdR9FQrFwNBNXAr4GixM8YaRZRJ5PUWbKYbE5eOsrwAjJW0q2REGcf79oYPsLyskQCZG1PLN+S/K1V00joZAoQ==
 
-onigasm@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/onigasm/-/onigasm-2.2.5.tgz#cc4d2a79a0fa0b64caec1f4c7ea367585a676892"
-  integrity sha512-F+th54mPc0l1lp1ZcFMyL/jTs2Tlq4SqIHKIXGZOR/VkHkF9A7Fr5rRr5+ZG/lWeRsyrClLYRq7s/yFQ/XhWCA==
-  dependencies:
-    lru-cache "^5.1.1"
-
 open@^10.2.0:
   version "10.2.0"
   resolved "https://registry.yarnpkg.com/open/-/open-10.2.0.tgz#b9d855be007620e80b6fb05fac98141fe62db73c"
@@ -1984,6 +2609,11 @@ pathe@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/pathe/-/pathe-2.0.3.tgz#3ecbec55421685b70a9da872b2cff3e1cbed1716"
   integrity sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==
+
+pend@~1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
+  integrity sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==
 
 perfect-debounce@^1.0.0:
   version "1.0.0"
@@ -2113,6 +2743,16 @@ superjson@^2.2.2:
   dependencies:
     copy-anything "^3.0.2"
 
+thenby@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/thenby/-/thenby-1.3.4.tgz#81581f6e1bb324c6dedeae9bfc28e59b1a2201cc"
+  integrity sha512-89Gi5raiWA3QZ4b2ePcEwswC3me9JIg+ToSgtE0JWeCynLnLxNr/f9G+xfo9K+Oj4AFdom8YNJjibIARTJmapQ==
+
+thingies@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/thingies/-/thingies-2.5.0.tgz#5f7b882c933b85989f8466b528a6247a6881e04f"
+  integrity sha512-s+2Bwztg6PhWUD7XMfeYm5qliDdSiZm7M7n8KjTkIsm3l/2lgVRc2/Gx/v+ZX8lT4FMA+i8aQvhcWylldc+ZNw==
+
 tinyglobby@^0.2.14:
   version "0.2.14"
   resolved "https://registry.yarnpkg.com/tinyglobby/-/tinyglobby-0.2.14.tgz#5280b0cf3f972b050e74ae88406c0a6a58f4079d"
@@ -2129,6 +2769,16 @@ totalist@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/totalist/-/totalist-3.0.1.tgz#ba3a3d600c915b1a97872348f79c127475f6acf8"
   integrity sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==
+
+tree-dump@^1.0.1:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tree-dump/-/tree-dump-1.0.3.tgz#2f0e42e77354714418ed7ab44291e435ccdb0f80"
+  integrity sha512-il+Cv80yVHFBwokQSfd4bldvr1Md951DpgAGfmhydt04L+YzHgubm2tQ7zueWDcGENKHq0ZvGFR/hjvNXilHEg==
+
+tslib@^2.0.0:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
+  integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
 
 unicorn-magic@^0.3.0:
   version "0.3.0"
@@ -2207,11 +2857,6 @@ vite-plugin-vue-inspector@^5.3.2:
     kolorist "^1.8.0"
     magic-string "^0.30.4"
 
-vite-plugin-wasm@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-wasm/-/vite-plugin-wasm-3.5.0.tgz#c72af91b1e3687e12f1c339a12e25937b5813ae5"
-  integrity sha512-X5VWgCnqiQEGb+omhlBVsvTfxikKtoOgAzQ95+BZ8gQ+VfMHIjSHr0wyvXFQCa0eKQ0fKyaL0kWcEnYqBac4lQ==
-
 vite@^7.0.6:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/vite/-/vite-7.1.1.tgz#a2c25f31742fd9f8b223d809df1ce3026e813fcf"
@@ -2231,7 +2876,12 @@ vscode-jsonrpc@8.2.0:
   resolved "https://registry.yarnpkg.com/vscode-jsonrpc/-/vscode-jsonrpc-8.2.0.tgz#f43dfa35fb51e763d17cd94dcca0c9458f35abf9"
   integrity sha512-C+r0eKJUIfiDIfwJhria30+TYWPtuHJXHtI7J0YlOmKAo7ogxP20T0zxB7HZQIFhIyvoBPwWskjxrvAtfjyZfA==
 
-vscode-languageclient@~9.0.1:
+vscode-jsonrpc@~8.2.1:
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/vscode-jsonrpc/-/vscode-jsonrpc-8.2.1.tgz#a322cc0f1d97f794ffd9c4cd2a898a0bde097f34"
+  integrity sha512-kdjOSJ2lLIn7r1rtrMbbNCHjyMPfRnowdKjBQ+mGq6NAW5QY2bEZC/khaC5OR8svbbjvLEaIXkOq45e2X9BIbQ==
+
+vscode-languageclient@^9.0.1, vscode-languageclient@~9.0.1:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/vscode-languageclient/-/vscode-languageclient-9.0.1.tgz#cdfe20267726c8d4db839dc1e9d1816e1296e854"
   integrity sha512-JZiimVdvimEuHh5olxhxkht09m3JzUGwggb5eRUkzzJhZ2KjCN0nh55VfiED9oez9DyF8/fz1g1iBV3h+0Z2EA==
@@ -2240,7 +2890,7 @@ vscode-languageclient@~9.0.1:
     semver "^7.3.7"
     vscode-languageserver-protocol "3.17.5"
 
-vscode-languageserver-protocol@3.17.5, vscode-languageserver-protocol@^3.17.5:
+vscode-languageserver-protocol@3.17.5, vscode-languageserver-protocol@~3.17.5:
   version "3.17.5"
   resolved "https://registry.yarnpkg.com/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.17.5.tgz#864a8b8f390835572f4e13bd9f8313d0e3ac4bea"
   integrity sha512-mb1bvRJN8SVznADSGWM9u/b07H7Ecg0I3OgXDuLdn307rl/J3A9YD6/eYOssqhecL27hK1IPZAsaqh00i/Jljg==
@@ -2253,25 +2903,39 @@ vscode-languageserver-types@3.17.5:
   resolved "https://registry.yarnpkg.com/vscode-languageserver-types/-/vscode-languageserver-types-3.17.5.tgz#3273676f0cf2eab40b3f44d085acbb7f08a39d8a"
   integrity sha512-Ld1VelNuX9pdF39h2Hgaeb5hEZM2Z3jUrrMgWQAu82jMtZp7p3vJT3BzToKtZI7NgQssZje5o0zryOrhQvzQAg==
 
-vscode-oniguruma@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/vscode-oniguruma/-/vscode-oniguruma-2.0.1.tgz#1196a343635ff8d42eb880e325b5f4e70731c02f"
-  integrity sha512-poJU8iHIWnC3vgphJnrLZyI3YdqRlR27xzqDmpPXYzA93R4Gk8z7T6oqDzDoHjoikA2aS82crdXFkjELCdJsjQ==
+vscode-languageserver@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/vscode-languageserver/-/vscode-languageserver-9.0.1.tgz#500aef82097eb94df90d008678b0b6b5f474015b"
+  integrity sha512-woByF3PDpkHFUreUa7Hos7+pUWdeWMXRd26+ZX2A8cFx6v/JPTtd4/uN0/jB6XQHYaOlHbio03NTHCqrgG5n7g==
+  dependencies:
+    vscode-languageserver-protocol "3.17.5"
 
-vscode-textmate@^9.2.0:
+vscode-oniguruma@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/vscode-oniguruma/-/vscode-oniguruma-1.7.0.tgz#439bfad8fe71abd7798338d1cd3dc53a8beea94b"
+  integrity sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==
+
+vscode-textmate@9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-9.2.0.tgz#be2b04b3f8853135b2d67274670540215c5bb92b"
   integrity sha512-rkvG4SraZQaPSN/5XjwKswdU0OP9MF28QjrYzUBbhb8QyG3ljB1Ky996m++jiI7KdiAP2CkBiQZd9pqEDTClqA==
 
-"vscode@npm:@codingame/monaco-vscode-extension-api@~18.1.0":
-  version "18.1.3"
-  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-extension-api/-/monaco-vscode-extension-api-18.1.3.tgz#a3f4a14cdc435a14fcd43c7f8d4bb907916af74f"
-  integrity sha512-jv1sRVVIE4MXBcUGgPiDOZQMYOYL277CuJUdzt8GwvirgiEVvWJyl2aql572SgdkKRkAr42Jq5KFlgns0NSMeg==
+vscode-ws-jsonrpc@~3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/vscode-ws-jsonrpc/-/vscode-ws-jsonrpc-3.5.0.tgz#d41735762aece5d2d3a4f3784fc29238ccd78b4f"
+  integrity sha512-13ZDy7Od4AfEPK2HIfY3DtyRi4FVsvFql1yobVJrpIoHOKGGJpIjVvIJpMxkrHzCZzWlYlg+WEu2hrYkCTvM0Q==
   dependencies:
-    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "18.1.3"
-    "@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common" "18.1.3"
-    "@codingame/monaco-vscode-api" "18.1.3"
-    "@codingame/monaco-vscode-extensions-service-override" "18.1.3"
+    vscode-jsonrpc "~8.2.1"
+
+"vscode@npm:@codingame/monaco-vscode-extension-api@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-extension-api/-/monaco-vscode-extension-api-20.1.1.tgz#b580c5c96f04b09ae9d91d5549e0e47355e4186d"
+  integrity sha512-5qK3sPIZW89kIwLEJNeXSd/zNdN88386+0ESuozg2FLGDCK7Hb3PaKNhBDdOCVN2Z6mXzs5LfjiVmQ70UWkCtA==
+  dependencies:
+    "@codingame/monaco-vscode-34a0ffd3-b9f5-5699-b43b-38af5732f38a-common" "20.1.1"
+    "@codingame/monaco-vscode-4a3ac544-9a61-534c-88df-756262793ef7-common" "20.1.1"
+    "@codingame/monaco-vscode-api" "20.1.1"
+    "@codingame/monaco-vscode-extensions-service-override" "20.1.1"
 
 vue@^3.5.18:
   version "3.5.18"
@@ -2302,6 +2966,14 @@ yallist@^3.0.2:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.1.1.tgz#dbb7daf9bfd8bac9ab45ebf602b8cbad0d5d08fd"
   integrity sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==
+
+yauzl@^3.0.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-3.2.0.tgz#7b6cb548f09a48a6177ea0be8ece48deb7da45c0"
+  integrity sha512-Ow9nuGZE+qp1u4JIPvg+uCiUr7xGQWdff7JQSk5VGYTAZMDe2q8lxJ10ygv10qmSj031Ty/6FNJpLO4o1Sgc+w==
+  dependencies:
+    buffer-crc32 "~0.2.3"
+    pend "~1.2.0"
 
 yoctocolors@^2.1.1:
   version "2.1.1"
