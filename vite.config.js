@@ -7,7 +7,7 @@ import importMetaUrlPlugin from '@codingame/esbuild-import-meta-url-plugin';
 export default defineConfig({
   plugins: [
     vue(),
-    // vueDevTools(),
+    vueDevTools(),
   ],
   optimizeDeps: {
     esbuildOptions: {
