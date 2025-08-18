@@ -1,0 +1,56 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.splitpanes {
+  background-color: #2b2b2b;
+}
+
+.splitpanes__splitter {
+  position: relative;
+}
+
+.splitpanes--vertical > .splitpanes__splitter:before {
+  left: -4px;
+  right: -4px;
+}
+
+.splitpanes--horizontal > .splitpanes__splitter:before {
+  top: -4px;
+  bottom: -4px;
+}
+
+.splitpanes__splitter:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: background-color 0.3s ease;
+  z-index: 999;
+}
+
+.splitpanes__splitter:hover:before {
+  background-color: rgba(0, 120, 212, 0.6);
+}
+
+.splitpanes__splitter:active:before {
+  background-color: rgb(0, 120, 212);
+}
+
+.splitpanes--vertical > .splitpanes__splitter {
+  width: 0.5px;
+  min-width: 0.5px;
+  max-width: 0.5px;
+}
+.splitpanes--horizontal > .splitpanes__splitter {
+  height: 0.5px;
+  min-height: 0.5px;
+  max-height: 0.5px;
+}

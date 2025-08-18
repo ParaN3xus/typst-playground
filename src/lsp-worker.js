@@ -150,6 +150,7 @@ class TinymistServer {
         console.log("Reading file", path);
 
         try {
+            console.log("file exists, returning", path);
             if (this.vfs.has(path)) {
                 const content = this.vfs.get(path).content;
                 const base64String = Buffer.from(content).toString('base64');
