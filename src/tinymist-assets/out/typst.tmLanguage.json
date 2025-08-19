@@ -877,7 +877,178 @@
         "blockRaw": {
             "patterns": [
                 {
+                    "include": "#batchfile"
+                },
+                {
+                    "include": "#bibtex"
+                },
+                {
+                    "include": "#c"
+                },
+                {
+                    "include": "#clojure"
+                },
+                {
+                    "include": "#coffee"
+                },
+                {
+                    "include": "#cpp"
+                },
+                {
+                    "include": "#css"
+                },
+                {
+                    "include": "#cs"
+                },
+                {
+                    "include": "#dart"
+                },
+                {
+                    "include": "#diff"
+                },
+                {
+                    "include": "#dockerfile"
+                },
+                {
+                    "include": "#elixir"
+                },
+                {
+                    "include": "#erlang"
+                },
+                {
+                    "include": "#fs"
+                },
+                {
+                    "include": "#git-commit"
+                },
+                {
+                    "include": "#git-rebase"
+                },
+                {
+                    "include": "#go"
+                },
+                {
+                    "include": "#groovy"
+                },
+                {
+                    "include": "#handlebars"
+                },
+                {
+                    "include": "#html"
+                },
+                {
+                    "include": "#ini"
+                },
+                {
+                    "include": "#java"
+                },
+                {
+                    "include": "#js"
+                },
+                {
+                    "include": "#jsonc"
+                },
+                {
+                    "include": "#json"
+                },
+                {
+                    "include": "#julia"
+                },
+                {
+                    "include": "#latex"
+                },
+                {
+                    "include": "#less"
+                },
+                {
+                    "include": "#log"
+                },
+                {
+                    "include": "#lua"
+                },
+                {
+                    "include": "#makefile"
+                },
+                {
+                    "include": "#markdown"
+                },
+                {
+                    "include": "#objc"
+                },
+                {
+                    "include": "#perl"
+                },
+                {
+                    "include": "#perl6"
+                },
+                {
+                    "include": "#php"
+                },
+                {
+                    "include": "#powershell"
+                },
+                {
+                    "include": "#pug"
+                },
+                {
+                    "include": "#r"
+                },
+                {
+                    "include": "#regexp"
+                },
+                {
+                    "include": "#re"
+                },
+                {
+                    "include": "#ruby"
+                },
+                {
+                    "include": "#scss"
+                },
+                {
+                    "include": "#sql"
+                },
+                {
+                    "include": "#swift"
+                },
+                {
                     "include": "#typst"
+                },
+                {
+                    "include": "#typst-code"
+                },
+                {
+                    "include": "#xml"
+                },
+                {
+                    "include": "#xsl"
+                },
+                {
+                    "include": "#yaml"
+                },
+                {
+                    "include": "#python"
+                },
+                {
+                    "include": "#rust"
+                },
+                {
+                    "include": "#scala"
+                },
+                {
+                    "include": "#shell"
+                },
+                {
+                    "include": "#ts"
+                },
+                {
+                    "include": "#tsx"
+                },
+                {
+                    "include": "#twig"
+                },
+                {
+                    "include": "#vb"
                 },
                 {
                     "include": "#blockRawGeneral"

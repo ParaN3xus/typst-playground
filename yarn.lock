@@ -781,7 +781,7 @@
   dependencies:
     "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-api@20.1.1", "@codingame/monaco-vscode-api@^20.1.1", "@codingame/monaco-vscode-api@~20.1.1":
+"@codingame/monaco-vscode-api@20.1.1", "@codingame/monaco-vscode-api@~20.1.1":
   version "20.1.1"
   resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-api/-/monaco-vscode-api-20.1.1.tgz#593ff1b7aadfc9a4e23de43cb664a9b6c4f408f6"
   integrity sha512-qX+x1DSEW+m+Zui486q4FhpPCaMMLmYmx1K7OYSV+ha4i5f3dHvQKWAftMHtQtlo+krBm2lijPJSf45g1k1Suw==
@@ -1052,7 +1052,7 @@
     "@codingame/monaco-vscode-abed5a84-8a82-5f84-9412-88a736235bae-common" "20.1.1"
     "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-explorer-service-override@^20.1.1":
+"@codingame/monaco-vscode-explorer-service-override@~20.1.1":
   version "20.1.1"
   resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-explorer-service-override/-/monaco-vscode-explorer-service-override-20.1.1.tgz#e66b7bb71cb1e7afbe2869c293576bdbe9738197"
   integrity sha512-QZrtOLcMytiCnPkryvLHzIw3jracDMO67qxk87uITxANCEPFC8WHwxyMgQ1xxv9lrBLpiyPn1ZPBEJ2JRbkAwg==
@@ -1167,7 +1167,7 @@
     "@codingame/monaco-vscode-60014c9d-b815-501d-83a9-4b08725c2ec2-common" "20.1.1"
     "@codingame/monaco-vscode-api" "20.1.1"
 
-"@codingame/monaco-vscode-keybindings-service-override@20.1.1", "@codingame/monaco-vscode-keybindings-service-override@^20.1.1":
+"@codingame/monaco-vscode-keybindings-service-override@20.1.1", "@codingame/monaco-vscode-keybindings-service-override@~20.1.1":
   version "20.1.1"
   resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-keybindings-service-override/-/monaco-vscode-keybindings-service-override-20.1.1.tgz#08012ef994db0c2a0d784332144f5f1254b126bb"
   integrity sha512-wbOPGpBRVahdcS57EK9DhEbVS4sFD0GGOxRpX/ICxhu2ypy4dHVtGVPGXNCQZKACaB0Hb2SkWJCDqyzbz45T9g==
@@ -1313,7 +1313,7 @@
     "@codingame/monaco-vscode-cea4d01f-6526-5c2f-8b09-b168fead499f-common" "20.1.1"
     "@codingame/monaco-vscode-environment-service-override" "20.1.1"
 
-"@codingame/monaco-vscode-markers-service-override@^20.1.1":
+"@codingame/monaco-vscode-markers-service-override@~20.1.1":
   version "20.1.1"
   resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-markers-service-override/-/monaco-vscode-markers-service-override-20.1.1.tgz#d7ee53d532d9596167c86d5f720bbad346946d2f"
   integrity sha512-F++gcehjnS4Lu2wzQknHYJIm2Laqgn35bCWceYJM0EdSkSKRQgBxaAMqXB7IiL72Ral1G4bz2GBj08LITw/XPg==
@@ -1467,7 +1467,7 @@
     "@codingame/monaco-vscode-dbfe5f85-b426-55ed-a79b-5f811b395762-common" "20.1.1"
     "@codingame/monaco-vscode-ebba7d85-8a22-5735-adf4-8299cd976dce-common" "20.1.1"
 
-"@codingame/monaco-vscode-views-service-override@^20.1.1", "@codingame/monaco-vscode-views-service-override@~20.1.1":
+"@codingame/monaco-vscode-views-service-override@~20.1.1":
   version "20.1.1"
   resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-views-service-override/-/monaco-vscode-views-service-override-20.1.1.tgz#106e76ad8ebd5898e41cb2711a51a81c20e1fdbb"
   integrity sha512-sz7OACw7PFOBj77+tNoQS6PPCCaH5CCkHYwA4Y3qIKR4QpVGmo0I6VlNxQeDezf8BQtYQJvnuOSLfl07Q7WHww==

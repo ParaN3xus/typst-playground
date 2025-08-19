@@ -35,18 +35,17 @@ import { LogLevel } from '@codingame/monaco-vscode-api';
 import { MonacoEditorLanguageClientWrapper } from 'monaco-editor-wrapper';
 import { configureDefaultWorkerFactory } from 'monaco-editor-wrapper/workers/workerLoaders';
 
+import '@codingame/monaco-vscode-theme-defaults-default-extension';
+
 import { Parts, attachPart, onDidChangeSideBarPosition } from "@codingame/monaco-vscode-views-service-override";
-import getKeybindingsServiceOverride from "@codingame/monaco-vscode-keybindings-service-override";
-import getMarkersServiceOverride from "@codingame/monaco-vscode-markers-service-override";
-import getExplorerServiceOverride from "@codingame/monaco-vscode-explorer-service-override";
+import getKeybindingsServiceOverride from '@codingame/monaco-vscode-keybindings-service-override'
+import getMarkersServiceOverride from '@codingame/monaco-vscode-markers-service-override';
+import getExplorerServiceOverride from '@codingame/monaco-vscode-explorer-service-override'
 
 import { createFileSystemProvider } from "./fs-provider.js";
-
 import workerUrl from './lsp-worker.js?worker&url';
 
-import typstLanguageConfig from './assets/typst-configuration.json?raw';
-import typstTextmateGrammar from './assets/typst-textmate-grammar.json?raw';
-import tinymistPackage from './assets/tinymist-package.json';
+import tinymistPackage from './tinymist-assets/package.json';
 
 const workbenchContainer = ref(null)
 const sidebarContainer = ref(null)
@@ -58,13 +57,35 @@ let wrapper = null;
 const workspaceUri = vscode.Uri.file("/workspace");
 const defaultFilePath = "/workspace/main.typ"
 
+async function loadExtensionAssets() {
+  const assetMap = {
+    './syntaxes/language-configuration.json': () => import('./tinymist-assets/syntaxes/language-configuration.json?raw'),
+    './syntaxes/typst-markdown-injection.json': () => import('./tinymist-assets/syntaxes/typst-markdown-injection.json?raw'),
+    './out/typst.tmLanguage.json': () => import('./tinymist-assets/out/typst.tmLanguage.json?raw'),
+    './out/typst-code.tmLanguage.json': () => import('./tinymist-assets/out/typst-code.tmLanguage.json?raw'),
+    './icons/ti-white.png': () => import('./tinymist-assets/icons/ti-white.png?raw'),
+    './icons/ti.png': () => import('./tinymist-assets/icons/ti.png?raw'),
+    './icons/typst-small.png': () => import('./tinymist-assets/icons/typst-small.png?raw'),
+  };
+
+  const extensionFilesOrContents = new Map();
+
+  await Promise.all(
+    Object.entries(assetMap).map(async ([key, importFn]) => {
+      const { default: content } = await importFn();
+      extensionFilesOrContents.set(key, content);
+      // console.log("loaded", key)
+    })
+  );
+
+  return extensionFilesOrContents;
+}
+
 async function getClientConfig(
   worker,
   messageTransports
 ) {
-  const extensionFilesOrContents = new Map();
-  extensionFilesOrContents.set('/typst-textmate-grammar.json', typstTextmateGrammar);
-  extensionFilesOrContents.set('/typst-configuration.json', typstLanguageConfig);
+  const extensionFilesOrContents = await loadExtensionAssets();
 
   const config = {
     $type: 'extended',
@@ -80,11 +101,12 @@ async function getClientConfig(
       userConfiguration: {
         json: JSON.stringify({
           'workbench.colorTheme': 'Default Dark Modern',
+          'workbench.iconTheme': 'vs-minimal',
           'editor.guides.bracketPairsHorizontal': 'active',
           'editor.wordBasedSuggestions': 'off',
           'editor.experimental.asyncTokenization': false,
           'vitest.disableWorkspaceWarning': true,
-          "editor.codeLens": false
+          'editor.codeLens': false,
         })
       },
       viewsConfig: {
@@ -116,24 +138,8 @@ async function getClientConfig(
         contributes: {
           configuration: tinymistPackage.contributes.configuration,
           configurationDefaults: tinymistPackage.contributes.configurationDefaults,
-          languages: [{
-            id: 'typst',
-            configuration: './typst-configuration.json',
-            extensions: ['.typ'],
-            aliases: [
-              "Typst",
-              "typst",
-              "typ"
-            ],
-          }],
-          grammars: [{
-            language: 'typst',
-            scopeName: 'source.typst',
-            path: './typst-textmate-grammar.json',
-            tokenTypes: tinymistPackage.contributes.grammars[0].tokenTypes,
-            balancedBracketScopes: tinymistPackage.contributes.grammars[0].balancedBracketScopes,
-            unbalancedBracketScopes: tinymistPackage.contributes.grammars[0].unbalancedBracketScopes,
-          }],
+          languages: tinymistPackage.contributes.languages,
+          grammars: tinymistPackage.contributes.grammars,
           // semanticTokenTypes: tinymistPackage.contributes.semanticTokenTypes,
           // semanticTokenModifiers: tinymistPackage.contributes.semanticTokenModifiers,
           semanticTokenScopes: tinymistPackage.contributes.semanticTokenScopes,
