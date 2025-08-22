@@ -344,7 +344,15 @@ async function startTinymistClient() {
   await doPreview();
 };
 
+function handleBeforeUnload(event) {
+  event.preventDefault()
+  event.returnValue = ''
+  return 'Are you sure to leave? You changes won\'t be saved.'
+}
+
 onMounted(async () => {
+  window.addEventListener('beforeunload', handleBeforeUnload)
+
   startTinymistClient()
 })
 
