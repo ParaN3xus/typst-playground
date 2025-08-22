@@ -3,11 +3,13 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import importMetaUrlPlugin from '@codingame/esbuild-import-meta-url-plugin';
+import { fontLoader } from './utils/load-fonts.mjs'
 
 export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
+    fontLoader()
   ],
   optimizeDeps: {
     esbuildOptions: {

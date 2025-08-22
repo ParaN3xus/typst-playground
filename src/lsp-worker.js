@@ -7,6 +7,7 @@ import { InitializeRequest } from "vscode-languageserver";
 import init, { TinymistLanguageServer, ProxyContext } from "tinymist";
 import { Buffer } from 'buffer';
 import { normalize } from 'pathe';
+import fonts from 'virtual:fonts'
 
 class VFS {
     constructor() {
@@ -59,7 +60,7 @@ class VFS {
 }
 
 class TinymistServer {
-    constructor() {
+    constructor(fonts) {
         const reader = new BrowserMessageReader(self);
         const writer = new BrowserMessageWriter(self);
         this.connection = createConnection(
@@ -68,7 +69,7 @@ class TinymistServer {
         );
 
         reader.listen((message) => {
-            // console.log('Editor -> LSP:', message);
+            console.log('Editor -> LSP:', message);
         });
         this.bridge = null;
         this.events = [];
@@ -76,6 +77,7 @@ class TinymistServer {
         this.packageRegistry = null;
         this.proxyContext = null;
         this.resolvePackage = null;
+        this.fonts = fonts;
     }
 
     async start() {
@@ -142,7 +144,8 @@ class TinymistServer {
             sendNotification: ({ method, params }) => {
                 this.connection.sendNotification(method, params)
             },
-            resolveFn: this.resolvePackage
+            resolveFn: this.resolvePackage,
+            extraFonts: this.fonts
         });
     }
 
@@ -191,5 +194,5 @@ class TinymistServer {
     }
 }
 
-const server = new TinymistServer();
+const server = new TinymistServer(await Promise.all(fonts.map(font => font.getData())));
 server.start();
