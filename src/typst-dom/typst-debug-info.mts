@@ -91,7 +91,7 @@ export function resolveSourceLeaf(
       return [curElem, point.index];
     }
     const children = castChildrenToSourceMappingElement(curElem);
-    console.log(point, children);
+    // console.log(point, children);
     if (point.index >= children.length) {
       return undefined;
     }
@@ -148,7 +148,7 @@ export function installEditorJumpToHandler(windowElem: HTMLElement, docRoot: HTM
     if (!backgroundRect) {
       return undefined;
     }
-    console.log(mayPageElem, pageElem, backgroundRect);
+    // console.log(mayPageElem, pageElem, backgroundRect);
 
     const pageRect = backgroundRect.getBoundingClientRect();
     const pageX = x - pageRect.left;
@@ -159,7 +159,7 @@ export function installEditorJumpToHandler(windowElem: HTMLElement, docRoot: HTM
     const dataWidthS = pageElem.getAttribute("data-page-width")!;
     const dataHeightS = pageElem.getAttribute("data-page-height")!;
 
-    console.log(pageNumber, dataWidthS, dataHeightS);
+    // console.log(pageNumber, dataWidthS, dataHeightS);
 
     if (!pageNumber || !dataWidthS || !dataHeightS) {
       return undefined;

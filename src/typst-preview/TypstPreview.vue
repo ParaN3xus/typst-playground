@@ -47,7 +47,6 @@ async function initPreview(path) {
         if (e.kind != 2) {
             return
         }
-        console.warn(e.selections[0].active.character)
         await runLSPCommand("tinymist.scrollPreview", ["default_preview",
             {
                 event: "panelScrollTo",
