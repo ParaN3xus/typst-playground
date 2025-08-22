@@ -6,11 +6,22 @@ import importMetaUrlPlugin from '@codingame/esbuild-import-meta-url-plugin';
 import { assetsLoader } from './utils/load-assets.mjs'
 
 export default defineConfig({
+  base: '/typst-playground/',
   plugins: [
     vue(),
     vueDevTools(),
     assetsLoader()
   ],
+  build: {
+    rollupOptions: {
+      external: ['virtual:fonts'],
+      output: {
+        globals: {
+          'virtual:fonts': 'fonts'
+        }
+      }
+    }
+  },
   optimizeDeps: {
     esbuildOptions: {
       plugins: [
@@ -64,6 +75,9 @@ export default defineConfig({
     },
   },
   worker: {
+    rollupOptions: {
+      external: ['virtual:fonts']
+    },
     format: 'es'
   },
   server: {
