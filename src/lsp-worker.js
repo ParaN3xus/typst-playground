@@ -256,13 +256,17 @@ class TinymistServer {
             }))
         );
 
-        this.connection.onRequest((method, params) =>
-            handleResponse(this.bridge?.on_request(method, params))
-        );
+        this.connection.onRequest((method, params) => {
+            return handleResponse(this.bridge?.on_request(method, params))
+        });
 
-        this.connection.onNotification((method, params) =>
-            handleResponse(this.bridge?.on_notification(method, params))
-        );
+        this.connection.onNotification((method, params) => {
+            if (method === 'workspace/didChangeConfiguration') {
+                console.log("skipping")
+                return
+            }
+            return handleResponse(this.bridge?.on_notification(method, params))
+        });
     }
 }
 
