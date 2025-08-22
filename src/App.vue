@@ -289,7 +289,7 @@ async function startTinymistClient() {
     function onReady(e) {
       if (e.data.method !== "client/registerCapability") return;
       count++;
-      if (count >= 2) {
+      if (count >= 3) {
         worker.removeEventListener("message", onReady);
         resolve(true);
         clearTimeout(workerTimeout);
