@@ -94,6 +94,6 @@ export function assetsLoader() {
                     export default [${exports}]
                 `
             }
-        }
+        },
     }
 }
