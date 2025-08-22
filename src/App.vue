@@ -11,7 +11,7 @@
 
       <Pane :size="40">
         <Splitpanes :horizontal="true" :maximize-panes="false">
-          <Pane :size="33" min-size="30">
+          <Pane :size="65" min-size="30">
             <div id="editors" ref="editorsContainer">
             </div>
           </Pane>
@@ -55,6 +55,10 @@ import tinymistPackage from './assets/tinymist-assets/package.json';
 
 import { createFileSystemProvider } from "./fs-provider.js";
 import TypstPreview from './typst-preview/TypstPreview.vue';
+import typFiles from 'virtual:typ-files'
+
+import { resolve } from 'pathe';
+
 
 const workbenchContainer = ref(null)
 const sidebarContainer = ref(null)
@@ -67,7 +71,8 @@ const writer = ref(null)
 
 let wrapper = null;
 
-const workspaceUri = vscode.Uri.file("/workspace");
+const workspacePath = "/workspace"
+const workspaceUri = vscode.Uri.file(workspacePath);
 const defaultFilePath = "/workspace/main.typ"
 
 async function doPreview() {
@@ -218,61 +223,17 @@ const viewsInit = async () => {
 
 async function loadDefaultWorkspace(fileSystemProvider) {
   await fileSystemProvider.createDirectory(workspaceUri);
-  const defaultUri = await fileSystemProvider.addFileToWorkspace(
-    defaultFilePath,
-    `
-= Test
-Welcome to the \`tinymist-wasm\` playground!
-
-This is a *test*.
-
-#let x = 1
-
-#let f(x, y) = x + y
-
-#f(1, 2)
-
-#pagebreak()
-= Test
-Welcome to the \`tinymist-wasm\` playground!
-
-This is a *test*.
-
-#let x = 1
-
-#let f(x, y) = x + y
-
-#f(1, 2)
-
-#pagebreak()
-= Test
-Welcome to the \`tinymist-wasm\` playground!
-
-This is a *test*.
-
-#let x = 1
-
-#let f(x, y) = x + y
-
-#f(1, 2)
-
-#pagebreak()
-= Test
-Welcome to the \`tinymist-wasm\` playground!
-
-This is a *test*.
-
-#let x = 1
-
-#let f(x, y) = x + y
-
-#f(1, 2)
-
-#pagebreak()
-`,
-  );
-
-  return defaultUri;
+  let res = null;
+  for (const typFile of typFiles) {
+    let doc = await fileSystemProvider.addFileToWorkspace(
+      resolve(workspacePath, typFile.path),
+      typFile.content
+    );
+    if (typFile.path === "main.typ") {
+      res = doc
+    }
+  }
+  return res
 }
 
 async function startTinymistClient() {
@@ -316,10 +277,11 @@ async function startTinymistClient() {
   wrapper = new MonacoEditorLanguageClientWrapper();
   const fileSystemProvider = await createFileSystemProvider();
 
-  let defaultUri = await loadDefaultWorkspace(fileSystemProvider);
   await wrapper.init(config);
 
-  await vscode.window.showTextDocument(defaultUri, { preserveFocus: true });
+  let defaultDocument = await loadDefaultWorkspace(fileSystemProvider);
+  await vscode.window.showTextDocument(defaultDocument, { preserveFocus: true });
+
   await wrapper.startLanguageClients();
 
   await new Promise((resolve, reject) => {

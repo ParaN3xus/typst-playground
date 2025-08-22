@@ -38,7 +38,7 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
       },
     );
 
-    // await vscode.workspace.openTextDocument(uri);
+    await vscode.workspace.openTextDocument(uri);
     return uri;
   }
 
