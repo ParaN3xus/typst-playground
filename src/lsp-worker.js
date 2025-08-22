@@ -58,7 +58,6 @@ class VFS {
         return this.files.size;
     }
 }
-
 class TinymistServer {
     constructor(fonts) {
         const reader = new BrowserMessageReader(self);
@@ -78,6 +77,7 @@ class TinymistServer {
         this.proxyContext = null;
         this.resolvePackage = null;
         this.fonts = fonts;
+        this.packageResolveCache = new Map();
     }
 
     async start() {
@@ -94,34 +94,101 @@ class TinymistServer {
 
     initializePackageRegistry() {
         this.resolvePackage = (spec) => {
+            const packageKey = `${spec.namespace}/${spec.name}-${spec.version}`;
+            const packageRoot = `/packages/${spec.namespace}/${spec.name}/${spec.version}`;
+
+            if (this.vfs.has(`${packageRoot}/.resolved`)) {
+                console.log(`Package ${packageKey} already resolved, returning cached result`);
+                return packageRoot;
+            }
+
+            if (this.packageResolveCache.has(packageKey)) {
+                console.log(`Package ${packageKey} is being resolved, waiting...`);
+                throw new Error(`Package ${packageKey} is being downloaded, please retry`);
+            }
+
             const url = `https://packages.typst.org/${spec.namespace}/${spec.name}-${spec.version}.tar.gz`;
             console.log(`Downloading: ${url}`);
 
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', url, false);
-            xhr.responseType = 'arraybuffer';
+            const resolvePromise = this.downloadAndExtractPackage(url, packageRoot);
+            this.packageResolveCache.set(packageKey, resolvePromise);
 
-            xhr.send();
+            resolvePromise.finally(() => {
+                this.packageResolveCache.delete(packageKey);
+            });
 
-            if (xhr.status !== 200) {
-                throw new Error(`Download failed: ${xhr.status} ${xhr.statusText}`);
+            try {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url, false);
+                xhr.responseType = 'arraybuffer';
+                xhr.send();
+
+                if (xhr.status !== 200) {
+                    this.packageResolveCache.delete(packageKey);
+                    throw new Error(`Download failed: ${xhr.status} ${xhr.statusText}`);
+                }
+
+                const tarGzData = new Uint8Array(xhr.response);
+                console.log(`Downloaded: ${tarGzData.length} bytes`);
+
+                const callback = (filename, fileContent, mtime) => {
+                    const vfsPath = `${packageRoot}/${filename}`;
+                    this.vfs.set(vfsPath, fileContent, mtime);
+                };
+
+                this.proxyContext.untar(tarGzData, callback);
+
+                this.vfs.set(`${packageRoot}/.resolved`, new Uint8Array(0), Date.now());
+
+                console.log(`Package ${packageKey} resolved successfully`);
+                return packageRoot;
+
+            } catch (error) {
+                this.packageResolveCache.delete(packageKey);
+                throw error;
             }
-
-            const tarGzData = new Uint8Array(xhr.response);
-            console.log(`Downloaded: ${tarGzData.length} bytes`);
-
-            const packageRoot = `/packages/${spec.namespace}/${spec.name}/${spec.version}`
-            const callback = (filename, fileContent, mtime) => {
-                const vfsPath = `${packageRoot}/${filename}`;
-                this.vfs.set(vfsPath, fileContent, mtime);
-            };
-
-            this.proxyContext.untar(tarGzData, callback);
-
-            return packageRoot
         };
 
         this.proxyContext = new ProxyContext({});
+    }
+
+    async downloadAndExtractPackage(url, packageRoot) {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = 'arraybuffer';
+
+            xhr.onload = () => {
+                if (xhr.status !== 200) {
+                    reject(new Error(`Download failed: ${xhr.status} ${xhr.statusText}`));
+                    return;
+                }
+
+                try {
+                    const tarGzData = new Uint8Array(xhr.response);
+                    console.log(`Downloaded: ${tarGzData.length} bytes`);
+
+                    const callback = (filename, fileContent, mtime) => {
+                        const vfsPath = `${packageRoot}/${filename}`;
+                        this.vfs.set(vfsPath, fileContent, mtime);
+                    };
+
+                    this.proxyContext.untar(tarGzData, callback);
+
+                    this.vfs.set(`${packageRoot}/.resolved`, new Uint8Array(0), Date.now());
+
+                    resolve(packageRoot);
+                } catch (error) {
+                    reject(error);
+                }
+            };
+
+            xhr.onerror = () => {
+                reject(new Error('Network error'));
+            };
+
+            xhr.send();
+        });
     }
 
     initializeBridge() {
