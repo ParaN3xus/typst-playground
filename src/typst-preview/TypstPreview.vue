@@ -78,7 +78,7 @@ defineExpose({
 #typst-container-main {
     flex: 1;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
     position: relative;
 }
 
@@ -101,6 +101,10 @@ defineExpose({
 #typst-app.invert-colors .typst-image:hover,
 #typst-app.invert-colors.normal-image .typst-image {
     filter: invert(1) hue-rotate(180deg);
+}
+
+.typst-doc {
+    fill: #2b2b2b;
 }
 
 .hide-scrollbar-x {
