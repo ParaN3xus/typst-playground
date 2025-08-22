@@ -86,7 +86,7 @@ defineExpose({
     width: fit-content;
     margin: 0;
     transform-origin: 0 0;
-    background-color: #fff;
+    background-color: #2b2b2b;
 }
 
 #typst-app.invert-colors {

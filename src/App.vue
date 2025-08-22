@@ -289,7 +289,7 @@ async function startTinymistClient() {
     function onReady(e) {
       if (e.data.method !== "client/registerCapability") return;
       count++;
-      if (count >= 3) {
+      if (count >= 2) {
         worker.removeEventListener("message", onReady);
         resolve(true);
         clearTimeout(workerTimeout);
@@ -328,5 +328,17 @@ onUnmounted(() => {
   display: flex;
   height: 100vh;
   width: 100%;
+}
+
+#editors {
+  height: 100%;
+}
+
+#panel {
+  height: 100%;
+}
+
+#sidebar {
+  height: 100%;
 }
 </style>
