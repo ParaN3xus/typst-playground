@@ -6,7 +6,7 @@ import importMetaUrlPlugin from '@codingame/esbuild-import-meta-url-plugin';
 import { assetsLoader } from './utils/load-assets.mjs'
 
 export default defineConfig({
-  base: '/typst-playground',
+  base: process.env.BUILD_PATH || '/',
   plugins: [
     vue(),
     vueDevTools(),
