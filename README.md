@@ -36,6 +36,7 @@ yarn link
 git clone https://github.com/ParaN3xus/typst-playground/
 cd typst-playground
 yarn
+yarn link tinymist
 yarn build
 ```
 ## License
