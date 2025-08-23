@@ -13,7 +13,7 @@ export default defineConfig({
     assetsLoader()
   ],
   optimizeDeps: {
-    esbuildOptions: {
+    rollupOptions: {
       plugins: [
         importMetaUrlPlugin
       ]
