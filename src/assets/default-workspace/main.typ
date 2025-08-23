@@ -13,7 +13,7 @@ Current Status:
 - [x] Monaco Editor basic editing functionality
 - [x] tinymist LSP language service
 - [x] typst-preview preview functionality
-- [/] typst-preview componentization
+- [x] typst-preview componentization
 - [ ] Load fonts from workspace
 - [ ] Optimize startup speed
 - [ ] Clean up redundant logs
@@ -33,7 +33,7 @@ Current Status:
 - [x] Monaco Editor 基础编辑功能
 - [x] tinymist LSP 语言服务
 - [x] typst-preview 预览功能
-- [/] typst-preview 组件化
+- [x] typst-preview 组件化
 - [ ] 从 workspace 加载字体
 - [ ] 优化启动速度
 - [ ] 多余日志清理

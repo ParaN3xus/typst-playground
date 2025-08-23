@@ -11,7 +11,7 @@ Try it now: https://paran3xus.github.io/typst-playground/
 - [x] Monaco Editor basic editing functionality
 - [x] tinymist LSP language service
 - [x] typst-preview preview functionality
-- [ ] typst-preview componentization
+- [x] typst-preview componentization
 - [ ] Load fonts from workspace
 - [ ] Optimize startup speed
 - [ ] Clean up redundant logs
