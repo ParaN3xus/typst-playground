@@ -25,7 +25,7 @@ const COMMA = enc.encode(",");
 
 
 import { triggerRipple } from "../typst-dom/typst-animation.mts";
-import { createResizeObservable, getRelatedElements, ignoredEvent, INVERT_COLORS_STRATEGY, isTypstPreviewPageInner, sendWebSocketMessage, isTypstPreviewMessage } from "./utils"
+import { createResizeObservable, getRelatedElements, ignoredEvent, INVERT_COLORS_STRATEGY, isTypstPreviewPageInner, sendWebSocketMessage, isTypstPreviewMessage } from "./utils.mts"
 import { Ref } from "vue";
 import { StrategyKey, StrategyMap, TypstPosition, TypstPreviewDocumentRootElement, TypstPreviewHookedElement, TypstPreviewWindowElement } from "./types";
 

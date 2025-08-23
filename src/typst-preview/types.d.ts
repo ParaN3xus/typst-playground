@@ -1,7 +1,7 @@
 import { Message } from "vscode-jsonrpc/lib/common/messages";
 import { TypstDocument } from "../typst-dom/index.mts";
 import { TypstPreviewDocument } from "../typst-dom/index.preview.mts";
-import { INVERT_COLORS_STRATEGY } from "./utils";
+import { INVERT_COLORS_STRATEGY } from "./utils.mts";
 
 
 export interface TypstPreviewWindowElement extends HTMLElement {

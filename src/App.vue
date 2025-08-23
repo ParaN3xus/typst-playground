@@ -49,11 +49,11 @@ import getKeybindingsServiceOverride from '@codingame/monaco-vscode-keybindings-
 import getMarkersServiceOverride from '@codingame/monaco-vscode-markers-service-override';
 import getExplorerServiceOverride from '@codingame/monaco-vscode-explorer-service-override'
 
-import workerUrl from './lsp-worker.js?worker&url';
+import workerUrl from './lsp-worker.mjs?worker&url';
 
 import tinymistPackage from './assets/tinymist-assets/package.json';
 
-import { createFileSystemProvider } from "./fs-provider.js";
+import { createFileSystemProvider } from "./fs-provider.mts";
 import TypstPreview from './typst-preview/TypstPreview.vue';
 import typFiles from 'virtual:typ-files'
 

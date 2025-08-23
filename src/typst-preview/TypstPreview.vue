@@ -16,7 +16,7 @@ import { PreviewMode } from "../typst-dom/typst-doc.mjs";
 import * as vscode from "vscode";
 import { normalize } from 'pathe';
 
-import { usePreviewComponent } from './preview.ts';
+import { usePreviewComponent } from './preview.mts';
 
 const props = defineProps({
     reader: BrowserMessageReader,
