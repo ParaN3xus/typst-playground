@@ -152,8 +152,8 @@ async function getClientConfig(
     extensions: [{
       config: {
         name: 'tinymist-wasm',
-        publisher: 'Myriad-Dreamin',
-        version: '1.0.0',
+        publisher: tinymistPackage.publisher,
+        version: tinymistPackage.version,
         engines: {
           vscode: '*'
         },
