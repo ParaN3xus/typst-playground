@@ -1,27 +1,31 @@
 <template>
-    <div id="preview" ref="previewWindowElem">
+    <div id="preview" ref="windowElem">
         <div id="typst-container-top">
         </div>
-        <div id="typst-container-main" ref="previewOutterElem">
-            <div id="typst-app" ref="previewHookedElem"></div>
+        <div id="typst-container-main" ref="outerElem">
+            <div id="typst-app" ref="hookedElem"></div>
         </div>
     </div>
 </template>
 <script setup>
 import { BrowserMessageReader, BrowserMessageWriter } from 'vscode-languageclient/browser';
 import { ref, onMounted, onUnmounted } from 'vue'
-import { initPreviewInner, PreviewMode } from './preview.ts'
+
+import { PreviewMode } from "../typst-dom/typst-doc.mjs";
+
 import * as vscode from "vscode";
 import { normalize } from 'pathe';
+
+import { usePreviewComponent } from './preview.ts';
 
 const props = defineProps({
     reader: BrowserMessageReader,
     writer: BrowserMessageWriter,
 })
 
-const previewHookedElem = ref(null)
-const previewWindowElem = ref(null)
-const previewOutterElem = ref(null)
+const hookedElem = ref(null)
+const windowElem = ref(null)
+const outerElem = ref(null)
 
 async function runLSPCommand(command, args) {
     const request = {
@@ -37,17 +41,27 @@ async function runLSPCommand(command, args) {
 }
 
 async function initPreview(path) {
+    const { initPreviewInner } = usePreviewComponent(
+        props.reader,
+        props.writer,
+        hookedElem,
+        windowElem,
+        outerElem
+    );
+
     runLSPCommand(
         'tinymist.doStartPreview',
         [[path]]
     )
-    await initPreviewInner(previewWindowElem.value, previewOutterElem.value, previewHookedElem.value, PreviewMode.Doc, false, props.reader, props.writer);
+    await initPreviewInner();
 
     vscode.window.onDidChangeTextEditorSelection(async e => {
         if (e.kind != 2) {
             return
         }
-        await runLSPCommand("tinymist.scrollPreview", ["default_preview",
+        // console.warn("111111")
+        await runLSPCommand("tinymist.scrollPreview", [
+            "default_preview",
             {
                 event: "panelScrollTo",
                 filepath: normalize(e.textEditor.document.fileName),
