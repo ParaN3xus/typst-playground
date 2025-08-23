@@ -1,29 +1,43 @@
 # Typst Playground
 
-This template should help get you started developing with Vue 3 in Vite.
+This is `typst-playground`, a project that attempts to recreate the online editing experience of [typst.app]("https://typst.app/") based on [tinymist]("https://github.com/myriad-dreamin/tinymist") and [typst.ts]("https://github.com/Myriad-Dreamin/typst.ts").
 
-## Recommended IDE Setup
+Try it now: https://paran3xus.github.io/typst-playground/
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+> [!NOTE]
+> It takes time to load fonts on your first visit.
 
-## Customize configuration
+## Current Status:
+- [x] Monaco Editor basic editing functionality
+- [x] tinymist LSP language service
+- [x] typst-preview preview functionality
+- [ ] typst-preview componentization
+- [ ] Load fonts from workspace
+- [ ] Optimize startup speed
+- [ ] Clean up redundant logs
+- [ ] Eliminate tinymist compilation warnings
+- [ ] Merge changes into tinymist mainline
+- [ ] Automated build
+- [ ] Save workspace to pastebin and load workspace from pastebin
+- [ ] Multi-user editing
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
+## Build
+### Build Tinymist WASM
 ```sh
+git clone -b tinymist-wasm https://github.com/ParaN3xus/tinymist.git
+cd tinymist-wasm/crates/tinymist
 yarn
+yarn build
+yarn link
 ```
 
-### Compile and Hot-Reload for Development
-
+### Build typst-playground
 ```sh
-yarn dev
-```
-
-### Compile and Minify for Production
-
-```sh
+git clone https://github.com/ParaN3xus/typst-playground/
+cd typst-playground
+yarn
 yarn build
 ```
+## License
+
+This project is licensed under GPLv3.
