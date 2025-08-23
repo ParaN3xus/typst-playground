@@ -18,6 +18,9 @@ export default defineConfig({
         importMetaUrlPlugin
       ]
     },
+    esbuildOptions: {
+      plugins: [importMetaUrlPlugin]
+    },
     include: [
       '@codingame/monaco-vscode-api',
       '@codingame/monaco-vscode-configuration-service-override',
@@ -28,20 +31,6 @@ export default defineConfig({
       '@codingame/monaco-vscode-extensions-service-override',
       '@codingame/monaco-vscode-files-service-override',
       '@codingame/monaco-vscode-keybindings-service-override',
-      '@codingame/monaco-vscode-language-pack-cs',
-      '@codingame/monaco-vscode-language-pack-de',
-      '@codingame/monaco-vscode-language-pack-es',
-      '@codingame/monaco-vscode-language-pack-fr',
-      '@codingame/monaco-vscode-language-pack-it',
-      '@codingame/monaco-vscode-language-pack-ja',
-      '@codingame/monaco-vscode-language-pack-ko',
-      '@codingame/monaco-vscode-language-pack-pl',
-      '@codingame/monaco-vscode-language-pack-pt-br',
-      '@codingame/monaco-vscode-language-pack-qps-ploc',
-      '@codingame/monaco-vscode-language-pack-ru',
-      '@codingame/monaco-vscode-language-pack-tr',
-      '@codingame/monaco-vscode-language-pack-zh-hans',
-      '@codingame/monaco-vscode-language-pack-zh-hant',
       '@codingame/monaco-vscode-languages-service-override',
       '@codingame/monaco-vscode-localization-service-override',
       '@codingame/monaco-vscode-log-service-override',
