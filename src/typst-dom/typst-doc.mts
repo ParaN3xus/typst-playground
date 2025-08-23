@@ -1,4 +1,5 @@
 import type { RenderSession } from "@myriaddreamin/typst.ts/dist/esm/renderer.mjs";
+import { TypstPreviewHookedElement, TypstPreviewWindowElement } from "../typst-preview/types";
 
 export interface ContainerDOMState {
   /// cached `hookedElem.offsetWidth` or `hookedElem.innerWidth`
@@ -21,8 +22,8 @@ export enum PreviewMode {
 }
 
 export interface Options {
-  windowElem: HTMLElement;
-  hookedElem: HTMLElement;
+  windowElem: TypstPreviewWindowElement;
+  hookedElem: TypstPreviewHookedElement;
   kModule: RenderSession;
   renderMode?: RenderMode;
   previewMode?: PreviewMode;
@@ -40,8 +41,8 @@ interface TypstDocumentFacade {
 }
 
 export class TypstDocumentContext<O = any> {
-  public hookedElem: HTMLElement;
-  public windowElem: HTMLElement;
+  public hookedElem: TypstPreviewHookedElement;
+  public windowElem: TypstPreviewWindowElement;
   public kModule: RenderSession;
   public opts: O;
   modes: [string, TypstDocumentFacade][] = [];

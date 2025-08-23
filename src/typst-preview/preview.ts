@@ -54,7 +54,7 @@ export function usePreviewComponent(
       send: (data: string | ArrayBuffer) => sendWebSocketMessage(writer, data)
     }
 
-    const resizeTarget = document.getElementById("typst-container-main")!;
+    const resizeTarget = outerElem.value;
 
     svgDoc = new TypstDocument({
       windowElem: windowElem.value,

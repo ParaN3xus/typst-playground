@@ -1,3 +1,4 @@
+import { TypstPreviewWindowElement } from "../typst-preview/types";
 import type { GConstructor, TypstDocumentContext } from "./typst-doc.mjs";
 import {
   OriginViewInstruction,
@@ -86,9 +87,9 @@ class GenContext {
   parent: GenElem;
   lastVisit?: GenElem;
   allElemList: GenElem[] = [];
-  windowElem: Element;
+  windowElem: TypstPreviewWindowElement;
 
-  constructor(public pages: CanvasPage[], windowElem: Element) {
+  constructor(public pages: CanvasPage[], windowElem: TypstPreviewWindowElement) {
     this.insertionPoint = new GenElem("outline", document.createElement("div"));
     this.parent = this.insertionPoint;
     this.windowElem = windowElem;
@@ -174,7 +175,7 @@ export function patchOutlineEntry(
   prev: HTMLDivElement,
   pages: CanvasPage[],
   items: OutlineItemData[],
-  windowElem: Element
+  windowElem: TypstPreviewWindowElement
 ) {
   const ctx = new GenContext(pages, windowElem);
   // the root element of the generated outline
