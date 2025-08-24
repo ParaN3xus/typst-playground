@@ -146,9 +146,9 @@ async function loadExtensionAssets() {
     './syntaxes/typst-markdown-injection.json': () => import('./assets/tinymist-assets/syntaxes/typst-markdown-injection.json?raw'),
     './out/typst.tmLanguage.json': () => import('./assets/tinymist-assets/out/typst.tmLanguage.json?raw'),
     './out/typst-code.tmLanguage.json': () => import('./assets/tinymist-assets/out/typst-code.tmLanguage.json?raw'),
-    './icons/ti-white.png': () => import('./assets/tinymist-assets/icons/ti-white.png?raw'),
-    './icons/ti.png': () => import('./assets/tinymist-assets/icons/ti.png?raw'),
-    './icons/typst-small.png': () => import('./assets/tinymist-assets/icons/typst-small.png?raw'),
+    // './icons/ti-white.png': () => import('./assets/tinymist-assets/icons/ti-white.png?raw'),
+    // './icons/ti.png': () => import('./assets/tinymist-assets/icons/ti.png?raw'),
+    // './icons/typst-small.png': () => import('./assets/tinymist-assets/icons/typst-small.png?raw'),
   };
 
   const extensionFilesOrContents = new Map();
