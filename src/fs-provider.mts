@@ -22,14 +22,14 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
 
   async addFileToWorkspace(
     uriString: string,
-    content: string,
+    content: Uint8Array<ArrayBuffer>,
   ): Promise<vscode.Uri> {
     const uri = vscode.Uri.file(uriString);
 
     await this.createDirectory(uri);
     await this.writeFile(
       uri,
-      this.textEncoder.encode(content),
+      content,
       {
         atomic: false,
         unlock: false,

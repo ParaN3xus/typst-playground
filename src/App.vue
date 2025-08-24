@@ -55,7 +55,7 @@ import tinymistPackage from './assets/tinymist-assets/package.json';
 
 import { createFileSystemProvider } from "./fs-provider.mts";
 import TypstPreview from './typst-preview/TypstPreview.vue';
-import typFiles from 'virtual:typ-files'
+import defaultWorkspaceFiles from 'virtual:default-workspace'
 
 import { resolve } from 'pathe';
 
@@ -224,12 +224,12 @@ const viewsInit = async () => {
 async function loadDefaultWorkspace(fileSystemProvider) {
   await fileSystemProvider.createDirectory(workspaceUri);
   let res = null;
-  for (const typFile of typFiles) {
+  for (const defaultWorkspaceFile of defaultWorkspaceFiles) {
     let doc = await fileSystemProvider.addFileToWorkspace(
-      resolve(workspacePath, typFile.path),
-      typFile.content
+      resolve(workspacePath, defaultWorkspaceFile.path),
+      await defaultWorkspaceFile.getData()
     );
-    if (typFile.path === "main.typ") {
+    if (defaultWorkspaceFile.path === "main.typ") {
       res = doc
     }
   }
