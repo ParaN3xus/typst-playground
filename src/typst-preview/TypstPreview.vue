@@ -59,7 +59,6 @@ async function initPreview(path) {
         if (e.kind != 2) {
             return
         }
-        // console.warn("111111")
         await runLSPCommand("tinymist.scrollPreview", [
             "default_preview",
             {

@@ -288,7 +288,6 @@ async function loadWorkspace(fileSystemProvider) {
       resolve(defaultWorkspacePath, workspaceFile.path),
       workspaceFile.data
     );
-    console.warn(workspaceFile.path)
     if (workspaceFile.path === defaultEntryFilePath) {
       res = doc
     }
