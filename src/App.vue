@@ -2,7 +2,7 @@
   <LoadingScreen />
 
   <div v-show="resourcesLoaded" class="flex flex-col h-screen w-full">
-    <div class="">
+    <div class="hidden">
       <button @click="doPreview">do preview</button>
       <button @click="printMain">print main</button>
     </div>
@@ -66,7 +66,7 @@ import tinymistPackage from './assets/tinymist-assets/package.json';
 
 import TypstPreview from './typst-preview/TypstPreview.vue';
 import LoadingScreen from './LoadingScreen.vue';
-import { createFileSystemProvider } from "./fs-provider.mts";
+import { createFileSystemProvider, defaultEntryFilePath, defaultEntryFileUri, defaultWorkspacePath, defaultWorkspaceUri } from "./fs-provider.mts";
 import resourceLoader from "./resource-loader.mjs"
 import { TinymistLSPWorker } from "./lsp-worker.mjs"
 import { uploadToPastebin } from './pastebin';
@@ -85,10 +85,6 @@ const writer = ref(null)
 let wrapper = null;
 let fileSystemProvider = null
 
-const workspacePath = "/workspace"
-const workspaceUri = vscode.Uri.file(workspacePath);
-const defaultFilePath = "/workspace/main.typ"
-
 const isSharing = ref(false);
 const shareButtonText = ref('Share');
 
@@ -97,11 +93,11 @@ const code = urlParams.get('code')
 
 async function printMain() {
   const decoder = new TextDecoder('utf-8');
-  console.log(decoder.decode(await fileSystemProvider.readFile(vscode.Uri.file(defaultFilePath))))
+  console.log(decoder.decode(await fileSystemProvider.readFile(defaultEntryFileUri)))
 }
 
 async function doPreview() {
-  preview.value.initPreview(defaultFilePath)
+  preview.value.initPreview(defaultEntryFilePath)
 }
 
 async function handleShareClicked() {
@@ -201,7 +197,7 @@ async function getClientConfig() {
             return true;
           },
           workspace: {
-            folderUri: workspaceUri,
+            folderUri: defaultWorkspaceUri,
           },
         },
       }
@@ -285,15 +281,15 @@ const viewsInit = async () => {
 };
 
 async function loadWorkspace(fileSystemProvider) {
-  await fileSystemProvider.createDirectory(workspaceUri);
+  await fileSystemProvider.createDirectory(defaultWorkspaceUri);
   let res = null;
   for (const workspaceFile of resourceLoader.getWorkspaceFiles()) {
     let doc = await fileSystemProvider.addFileToWorkspace(
-      resolve(workspacePath, workspaceFile.path),
+      resolve(defaultWorkspacePath, workspaceFile.path),
       workspaceFile.data
     );
     console.warn(workspaceFile.path)
-    if (workspaceFile.path === defaultFilePath) {
+    if (workspaceFile.path === defaultEntryFilePath) {
       res = doc
     }
   }

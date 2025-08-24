@@ -7,6 +7,11 @@ import {
 import { URI } from "@codingame/monaco-vscode-api/vscode/vs/base/common/uri";
 import { Buffer } from "buffer";
 
+export const defaultWorkspacePath = "/workspace"
+export const defaultWorkspaceUri = vscode.Uri.file(defaultWorkspacePath);
+export const defaultEntryFilePath = `${defaultWorkspacePath}/main.typ`
+export const defaultEntryFileUri = vscode.Uri.file(defaultEntryFilePath);
+
 export class FileSystemProvider extends InMemoryFileSystemProvider {
   protected textEncoder = new TextEncoder();
 
@@ -124,7 +129,7 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
 
   async empty(): Promise<URI> {
     await this.delete(
-      vscode.Uri.file("/workspace"),
+      defaultWorkspaceUri,
       {
         recursive: true,
         useTrash: false,
@@ -132,7 +137,7 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
       }
     )
     return this.addFileToWorkspace(
-      "/workspace/main.typ",
+      defaultEntryFilePath,
       new Uint8Array(0)
     )
   }

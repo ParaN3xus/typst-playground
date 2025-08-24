@@ -1,5 +1,5 @@
 import { Buffer } from "buffer";
-import { FileSystemProvider } from "./fs-provider.mts";
+import { defaultWorkspacePath, FileSystemProvider } from "./fs-provider.mts";
 
 // shz.al API base URL
 const PASTEBIN_API = "https://shz.al";
@@ -11,10 +11,10 @@ export async function uploadToPastebin(
   fs: FileSystemProvider,
 ): Promise<string | null> {
   try {
-    const content = await fs.getAllFilesAsJSON("/workspace");
+    const content = await fs.getAllFilesAsJSON(defaultWorkspacePath);
 
     if (!content) {
-      console.warn("No content found in /workspace directory");
+      console.warn(`No content found in ${defaultWorkspacePath} directory`);
       return null;
     }
     const formData = new FormData();

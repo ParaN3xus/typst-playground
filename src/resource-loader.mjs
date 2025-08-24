@@ -1,5 +1,6 @@
 import { resolve } from 'pathe';
 import { fetchFromPastebin } from './pastebin';
+import { defaultWorkspacePath } from './fs-provider.mjs';
 
 class ResourceLoader {
     constructor() {
@@ -123,7 +124,7 @@ class ResourceLoader {
                     completedCount++;
                     const progress = 50 + (completedCount / totalFiles) * 50;
                     this.updateProgress('workspaceFiles', progress);
-                    return { ...file, data, path: resolve("/workspace", file.path) };
+                    return { ...file, data, path: resolve(defaultWorkspacePath, file.path) };
                 })
             );
             this.resources.workspaceFiles = loadedFiles;
