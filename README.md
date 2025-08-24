@@ -18,7 +18,7 @@ Try it now: https://paran3xus.github.io/typst-playground/
 - [ ] Eliminate tinymist compilation warnings
 - [ ] Merge changes into tinymist mainline
 - [ ] Automated build
-- [ ] Save workspace to pastebin and load workspace from pastebin
+- [x] Save workspace to pastebin and load workspace from pastebin
 - [ ] Multi-user editing
 
 ## Build

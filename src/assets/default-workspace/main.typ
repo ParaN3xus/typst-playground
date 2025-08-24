@@ -20,7 +20,7 @@ Current Status:
 - [ ] Eliminate tinymist compilation warnings
 - [ ] Merge changes into tinymist mainline
 - [ ] Automated build
-- [ ] Save workspace to pastebin and load workspace from pastebin
+- [x] Save workspace to pastebin and load workspace from pastebin
 - [ ] Multi-user editing
 
 = 欢迎
@@ -40,7 +40,7 @@ Current Status:
 - [ ] tinymist 编译警告消除
 - [ ] 将更改合入 tinymist 主线
 - [ ] 自动化构建
-- [ ] 将 workspace 保存至 pastebin 及从 pastebin 加载 workspace
+- [x] 将 workspace 保存至 pastebin 及从 pastebin 加载 workspace
 - [ ] 多人编辑
 
 #pagebreak()

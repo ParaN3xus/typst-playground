@@ -1,23 +1,34 @@
 <template>
   <LoadingScreen />
 
-  <div v-show="resourcesLoaded" id="workbench-container" ref="workbenchContainer">
-    <div class="control-bar" style="display: none;">
-      <button class="control-btn" @click="doPreview">do preview</button>
+  <div v-show="resourcesLoaded" class="flex flex-col h-screen w-full">
+    <div class="hidden">
+      <button @click="doPreview">do preview</button>
+    </div>
+    <div class="flex justify-between bg-base">
+      <div class="mx-2">
+        <button class="menu-btn" @click="handleEmptyClicked">Empty workspace</button>
+      </div>
+      <div class="mx-2">
+        <button class="menu-btn" :class="{ 'opacity-50 cursor-not-allowed': isSharing }" :disabled="isSharing"
+          @click="handleShareClicked">
+          {{ shareButtonText }}
+        </button>
+      </div>
     </div>
     <Splitpanes :maximize-panes="false">
       <Pane :size="20" min-size="15" max-size="50">
-        <div id="sidebar" ref="sidebarContainer">
+        <div ref="sidebarContainer" class="h-full">
         </div>
       </Pane>
       <Pane :size="40">
         <Splitpanes :horizontal="true" :maximize-panes="false">
           <Pane :size="65" min-size="30">
-            <div id="editors" ref="editorsContainer">
+            <div ref="editorsContainer" class="h-full">
             </div>
           </Pane>
           <Pane :size="35" min-size="20" max-size="50">
-            <div id="panel" ref="panelContainer">
+            <div ref="panelContainer" class="h-full">
             </div>
           </Pane>
         </Splitpanes>
@@ -31,6 +42,7 @@
 <script setup>
 
 import { ref, onMounted, onUnmounted } from 'vue'
+import { resolve } from 'pathe';
 
 import { Splitpanes, Pane } from 'splitpanes'
 import 'splitpanes/dist/splitpanes.css'
@@ -49,7 +61,6 @@ import getKeybindingsServiceOverride from '@codingame/monaco-vscode-keybindings-
 import getMarkersServiceOverride from '@codingame/monaco-vscode-markers-service-override';
 import getExplorerServiceOverride from '@codingame/monaco-vscode-explorer-service-override'
 
-
 import tinymistPackage from './assets/tinymist-assets/package.json';
 
 import TypstPreview from './typst-preview/TypstPreview.vue';
@@ -57,11 +68,8 @@ import LoadingScreen from './LoadingScreen.vue';
 import { createFileSystemProvider } from "./fs-provider.mts";
 import resourceLoader from "./resource-loader.mjs"
 import { TinymistLSPWorker } from "./lsp-worker.mjs"
+import { uploadToPastebin } from './pastebin';
 
-import { resolve } from 'pathe';
-
-
-const workbenchContainer = ref(null)
 const sidebarContainer = ref(null)
 const editorsContainer = ref(null)
 const panelContainer = ref(null)
@@ -73,13 +81,56 @@ const reader = ref(null)
 const writer = ref(null)
 
 let wrapper = null;
+let fileSystemProvider = null
 
 const workspacePath = "/workspace"
 const workspaceUri = vscode.Uri.file(workspacePath);
 const defaultFilePath = "/workspace/main.typ"
 
+const isSharing = ref(false);
+const shareButtonText = ref('Share');
+
+const urlParams = new URLSearchParams(window.location.search)
+const code = urlParams.get('code')
+
 async function doPreview() {
   preview.value.initPreview(defaultFilePath)
+}
+
+async function handleShareClicked() {
+  if (isSharing.value) return;
+
+  try {
+    isSharing.value = true;
+    shareButtonText.value = 'Sharing...';
+
+    let code = await uploadToPastebin(fileSystemProvider);
+
+    const shareUrl = `${window.location.origin}${window.location.pathname}?code=${code}`;
+    await navigator.clipboard.writeText(shareUrl);
+
+    shareButtonText.value = 'URL Copied!';
+
+    setTimeout(() => {
+      isSharing.value = false;
+      shareButtonText.value = 'Share';
+    }, 2000);
+
+  } catch (error) {
+    console.error('Share failed:', error);
+
+    shareButtonText.value = 'Failed';
+    setTimeout(() => {
+      isSharing.value = false;
+      shareButtonText.value = 'Share';
+    }, 2000);
+  }
+}
+
+async function handleEmptyClicked() {
+  if (confirm(`Are you sure to empty current workspace? This cannot be reverted.`)) {
+    await fileSystemProvider.empty()
+  }
 }
 
 async function loadExtensionAssets() {
@@ -111,7 +162,6 @@ async function getClientConfig() {
   const config = {
     $type: 'extended',
     logLevel: LogLevel.Debug,
-    htmlContainer: workbenchContainer.value,
     automaticallyDispose: true,
     vscodeApiConfig: {
       serviceOverrides: {
@@ -223,21 +273,26 @@ const viewsInit = async () => {
   }
 };
 
-async function loadDefaultWorkspace(fileSystemProvider) {
+async function loadWorkspace(fileSystemProvider) {
   await fileSystemProvider.createDirectory(workspaceUri);
   let res = null;
-  for (const defaultWorkspaceFile of resourceLoader.getWorkspaceFiles()) {
+  for (const workspaceFile of resourceLoader.getWorkspaceFiles()) {
     let doc = await fileSystemProvider.addFileToWorkspace(
-      resolve(workspacePath, defaultWorkspaceFile.path),
-      await defaultWorkspaceFile.getData()
+      resolve(workspacePath, workspaceFile.path),
+      workspaceFile.data
     );
-    if (defaultWorkspaceFile.path === "main.typ") {
+    console.warn(workspaceFile.path)
+    if (workspaceFile.path === defaultFilePath) {
       res = doc
     }
   }
+
+  if (!res) {
+    return await fileSystemProvider.empty()
+  }
+
   return res
 }
-
 
 async function startTinymistClient() {
   const { reader: tmpReader, writer: tmpWriter } = await worker.startTinymistServer();
@@ -247,11 +302,11 @@ async function startTinymistClient() {
   const config = await getClientConfig();
 
   wrapper = new MonacoEditorLanguageClientWrapper();
-  const fileSystemProvider = await createFileSystemProvider();
+  fileSystemProvider = await createFileSystemProvider();
 
   await wrapper.init(config);
 
-  let defaultDocument = await loadDefaultWorkspace(fileSystemProvider);
+  let defaultDocument = await loadWorkspace(fileSystemProvider);
   await vscode.window.showTextDocument(defaultDocument, { preserveFocus: true });
 
   await wrapper.startLanguageClients();
@@ -274,7 +329,7 @@ onMounted(async () => {
   worker = new TinymistLSPWorker()
   worker.startWorker();
   try {
-    await resourceLoader.loadAll(worker);
+    await resourceLoader.loadAll(worker, code);
     resourcesLoaded.value = true;
   } catch (error) {
     console.error('Failed to load resources:', error);
@@ -286,23 +341,3 @@ onUnmounted(() => {
   wrapper.dispose();
 })
 </script>
-
-<style>
-#workbench-container {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-}
-
-#editors {
-  height: 100%;
-}
-
-#panel {
-  height: 100%;
-}
-
-#sidebar {
-  height: 100%;
-}
-</style>

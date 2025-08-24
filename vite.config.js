@@ -4,13 +4,15 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import importMetaUrlPlugin from '@codingame/esbuild-import-meta-url-plugin';
 import { assetsLoader } from './utils/load-assets.mjs'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   base: process.env.BUILD_PATH || '/',
   plugins: [
     vue(),
     vueDevTools(),
-    assetsLoader()
+    assetsLoader(),
+    tailwindcss()
   ],
   optimizeDeps: {
     rollupOptions: {

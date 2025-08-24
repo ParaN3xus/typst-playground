@@ -1,14 +1,21 @@
 <template>
-    <div v-if="!allLoaded" class="loading-screen">
-        <div class="loading-content">
-            <h2>Loading Resources...</h2>
-            <div class="loading-items">
-                <div v-for="(item, key) in loadingProgress" :key="key" class="loading-item">
-                    <div class="item-info">
-                        <span class="item-name">{{ item.name }}</span>
-                        <span class="item-status">{{ item.loaded ? 'Done' : 'Loading...' }}</span>
+    <div v-if="!allLoaded"
+        class="fixed inset-0 w-screen h-screen bg-base flex justify-center items-center z-[9999] font-mono">
+        <div class="max-w-2xl w-[90%] text-center">
+            <h2 class="text-2xl mb-8 text-main">
+                Loading Resources...
+            </h2>
+            <div class="flex flex-col gap-4 text-left">
+                <div v-for="(item, key) in loadingProgress" :key="key" class="bg-surface p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-bold text-main">{{ item.name }}</span>
+                        <span class="opacity-80 text-main">
+                            {{ item.loaded ? 'Done' : 'Loading...' }}
+                        </span>
                     </div>
-                    <div class="ascii-progress">{{ getAsciiProgress(item.progress) }}</div>
+                    <div class="text-sm whitespace-nowrap text-main">
+                        {{ getAsciiProgress(item.progress) }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,66 +55,3 @@ onUnmounted(() => {
     resourceLoader.removeProgressListener(progressListener);
 });
 </script>
-
-<style scoped>
-.loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    color: #ffffff;
-    font-family: monospace;
-}
-
-.loading-content {
-    max-width: 600px;
-    width: 90%;
-    text-align: center;
-}
-
-.loading-content h2 {
-    margin: 0 0 2rem 0;
-    font-size: 1.5rem;
-    font-weight: normal;
-}
-
-.loading-items {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: left;
-}
-
-.loading-item {
-    font-size: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-}
-
-.item-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-
-.item-name {
-    font-weight: bold;
-}
-
-.item-status {
-    opacity: 0.8;
-}
-
-.ascii-progress {
-    font-family: monospace;
-    font-size: 0.9rem;
-    white-space: nowrap;
-}
-</style>

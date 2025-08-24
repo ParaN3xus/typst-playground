@@ -1,3 +1,47 @@
+@import "tailwindcss";
+@layer base {
+  :root {
+    --color-base: 248 248 248;
+    --color-surface: 255 255 255;
+    --color-text: 30 30 30;
+    --color-btn-hover: 228 228 228;
+    --color-btn-active: 222 222 222;
+  }
+  [data-theme="dark"] {
+    --color-base: 24 24 24;
+    --color-surface: 31 31 31;
+    --color-text: 204 204 204;
+    --color-btn-hover: 45 46 46;
+    --color-btn-active: 48 49 49;
+  }
+}
+@layer components {
+  .bg-base {
+    background-color: rgb(var(--color-base));
+  }
+
+  .bg-surface {
+    background-color: rgb(var(--color-surface));
+  }
+
+  .text-main {
+    color: rgb(var(--color-text));
+  }
+
+  .menu-btn {
+    @apply px-3 my-2 font-medium rounded-sm h-8 text-xs;
+    background-color: rgb(var(--color-base));
+    color: rgb(var(--color-text));
+    border-radius: 0.5rem;
+  }
+  .menu-btn:hover {
+    background-color: rgb(var(--color-btn-hover));
+  }
+  .menu-btn:active {
+    background-color: rgb(var(--color-btn-active));
+  }
+}
+
 html,
 body {
   margin: 0;

@@ -1,3 +1,6 @@
+import { resolve } from 'pathe';
+import { fetchFromPastebin } from './pastebin';
+
 class ResourceLoader {
     constructor() {
         if (ResourceLoader.instance) {
@@ -94,22 +97,35 @@ class ResourceLoader {
         }
     }
 
-    async loadWorkspaceFiles() {
+    async loadWorkspaceFiles(code) {
         if (this.resources.workspaceFiles) return this.resources.workspaceFiles;
 
         try {
             this.updateProgress('workspaceFiles', 10);
+
+            if (code) {
+                const pastebinFiles = await fetchFromPastebin(code);
+                if (pastebinFiles) {
+                    this.resources.workspaceFiles = pastebinFiles;
+                    this.markComplete('workspaceFiles');
+                    return pastebinFiles;
+                }
+            }
+
+            // load default workspace
             const defaultWorkspaceFiles = await import('virtual:default-workspace');
             this.updateProgress('workspaceFiles', 50);
-
+            let completedCount = 0;
+            const totalFiles = defaultWorkspaceFiles.default.length;
             const loadedFiles = await Promise.all(
-                defaultWorkspaceFiles.default.map(async (file, index) => {
+                defaultWorkspaceFiles.default.map(async (file) => {
                     const data = await file.getData();
-                    this.updateProgress('workspaceFiles', 50 + (index + 1) / defaultWorkspaceFiles.default.length * 50);
-                    return { ...file, data };
+                    completedCount++;
+                    const progress = 50 + (completedCount / totalFiles) * 50;
+                    this.updateProgress('workspaceFiles', progress);
+                    return { ...file, data, path: resolve("/workspace", file.path) };
                 })
             );
-
             this.resources.workspaceFiles = loadedFiles;
             this.markComplete('workspaceFiles');
             return loadedFiles;
@@ -119,11 +135,11 @@ class ResourceLoader {
         }
     }
 
-    async loadAll(worker) {
+    async loadAll(worker, code) {
         const promises = [
             this.loadFonts(worker),
             this.loadWasm(worker),
-            this.loadWorkspaceFiles(),
+            this.loadWorkspaceFiles(code),
         ];
 
         await Promise.all(promises);
