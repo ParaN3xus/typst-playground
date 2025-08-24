@@ -2,8 +2,9 @@
   <LoadingScreen />
 
   <div v-show="resourcesLoaded" class="flex flex-col h-screen w-full">
-    <div class="hidden">
+    <div class="">
       <button @click="doPreview">do preview</button>
+      <button @click="printMain">print main</button>
     </div>
     <div class="flex justify-between bg-base">
       <div class="mx-2">
@@ -69,6 +70,7 @@ import { createFileSystemProvider } from "./fs-provider.mts";
 import resourceLoader from "./resource-loader.mjs"
 import { TinymistLSPWorker } from "./lsp-worker.mjs"
 import { uploadToPastebin } from './pastebin';
+import { AutoSaveConfiguration } from '@codingame/monaco-vscode-api/vscode/vs/platform/files/common/files';
 
 const sidebarContainer = ref(null)
 const editorsContainer = ref(null)
@@ -92,6 +94,11 @@ const shareButtonText = ref('Share');
 
 const urlParams = new URLSearchParams(window.location.search)
 const code = urlParams.get('code')
+
+async function printMain() {
+  const decoder = new TextDecoder('utf-8');
+  console.log(decoder.decode(await fileSystemProvider.readFile(vscode.Uri.file(defaultFilePath))))
+}
 
 async function doPreview() {
   preview.value.initPreview(defaultFilePath)
@@ -178,6 +185,7 @@ async function getClientConfig() {
           'editor.experimental.asyncTokenization': false,
           'vitest.disableWorkspaceWarning': true,
           'editor.codeLens': false,
+          'files.autoSave': AutoSaveConfiguration.OFF
         })
       },
       viewsConfig: {
