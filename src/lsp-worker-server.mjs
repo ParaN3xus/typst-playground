@@ -291,12 +291,7 @@ class TinymistServer {
         };
 
         this.connection.onInitialize((params) =>
-            handleResponse(this.bridge?.on_request(InitializeRequest.method, {
-                ...params,
-                initializationOptions: {
-                    formatterMode: "typstyle"
-                }
-            }))
+            handleResponse(this.bridge?.on_request(InitializeRequest.method, params))
         );
 
         this.connection.onRequest((method, params) => {

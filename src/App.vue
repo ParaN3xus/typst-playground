@@ -235,7 +235,10 @@ async function getClientConfig() {
           clientOptions: {
             documentSelector: [
               'typst'
-            ]
+            ],
+            initializationOptions: {
+              formatterMode: "typstyle"
+            }
           },
           connection: {
             options: {
