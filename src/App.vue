@@ -1,5 +1,7 @@
 <template>
-  <div id="workbench-container" ref="workbenchContainer">
+  <LoadingScreen />
+
+  <div v-show="resourcesLoaded" id="workbench-container" ref="workbenchContainer">
     <div class="control-bar" style="display: none;">
       <button class="control-btn" @click="doPreview">do preview</button>
     </div>
@@ -8,21 +10,18 @@
         <div id="sidebar" ref="sidebarContainer">
         </div>
       </Pane>
-
       <Pane :size="40">
         <Splitpanes :horizontal="true" :maximize-panes="false">
           <Pane :size="65" min-size="30">
             <div id="editors" ref="editorsContainer">
             </div>
           </Pane>
-
           <Pane :size="35" min-size="20" max-size="50">
             <div id="panel" ref="panelContainer">
             </div>
           </Pane>
         </Splitpanes>
       </Pane>
-
       <Pane :size="40" min-size="20" max-size="50">
         <TypstPreview ref="preview" :reader="reader" :writer="writer" />
       </Pane>
@@ -30,6 +29,7 @@
   </div>
 </template>
 <script setup>
+
 import { ref, onMounted, onUnmounted } from 'vue'
 
 import { Splitpanes, Pane } from 'splitpanes'
@@ -49,13 +49,14 @@ import getKeybindingsServiceOverride from '@codingame/monaco-vscode-keybindings-
 import getMarkersServiceOverride from '@codingame/monaco-vscode-markers-service-override';
 import getExplorerServiceOverride from '@codingame/monaco-vscode-explorer-service-override'
 
-import workerUrl from './lsp-worker.mjs?worker&url';
 
 import tinymistPackage from './assets/tinymist-assets/package.json';
 
-import { createFileSystemProvider } from "./fs-provider.mts";
 import TypstPreview from './typst-preview/TypstPreview.vue';
-import defaultWorkspaceFiles from 'virtual:default-workspace'
+import LoadingScreen from './LoadingScreen.vue';
+import { createFileSystemProvider } from "./fs-provider.mts";
+import resourceLoader from "./resource-loader.mjs"
+import { TinymistLSPWorker } from "./lsp-worker.mjs"
 
 import { resolve } from 'pathe';
 
@@ -65,7 +66,9 @@ const sidebarContainer = ref(null)
 const editorsContainer = ref(null)
 const panelContainer = ref(null)
 const preview = ref(null)
+const resourcesLoaded = ref(false);
 
+let worker = null
 const reader = ref(null)
 const writer = ref(null)
 
@@ -103,12 +106,8 @@ async function loadExtensionAssets() {
   return extensionFilesOrContents;
 }
 
-async function getClientConfig(
-  worker,
-  messageTransports
-) {
+async function getClientConfig() {
   const extensionFilesOrContents = await loadExtensionAssets();
-
   const config = {
     $type: 'extended',
     logLevel: LogLevel.Debug,
@@ -183,9 +182,12 @@ async function getClientConfig(
           connection: {
             options: {
               $type: 'WorkerDirect',
-              worker: worker
+              worker: worker.worker
             },
-            messageTransports: messageTransports
+            messageTransports: {
+              reader: reader.value,
+              writer: writer.value
+            }
           }
         }
       }
@@ -224,7 +226,7 @@ const viewsInit = async () => {
 async function loadDefaultWorkspace(fileSystemProvider) {
   await fileSystemProvider.createDirectory(workspaceUri);
   let res = null;
-  for (const defaultWorkspaceFile of defaultWorkspaceFiles) {
+  for (const defaultWorkspaceFile of resourceLoader.getWorkspaceFiles()) {
     let doc = await fileSystemProvider.addFileToWorkspace(
       resolve(workspacePath, defaultWorkspaceFile.path),
       await defaultWorkspaceFile.getData()
@@ -236,43 +238,13 @@ async function loadDefaultWorkspace(fileSystemProvider) {
   return res
 }
 
+
 async function startTinymistClient() {
-  let worker = new Worker(workerUrl, {
-    type: 'module',
-    name: 'Tinymist LS',
-  });
+  const { reader: tmpReader, writer: tmpWriter } = await worker.startTinymistServer();
+  reader.value = tmpReader;
+  writer.value = tmpWriter
 
-  /// Waits for the server worker to be ready before returning the client
-  await new Promise((resolve, reject) => {
-    function onReady(e) {
-      if (e.data.method !== "serverWorkerReady") return;
-      worker.removeEventListener("message", onReady);
-      resolve(true);
-      clearTimeout(workerTimeout);
-    }
-
-    const workerTimeout = setTimeout(() => {
-      worker.removeEventListener("message", onReady);
-      reject(new Error("failed to initialize server worker: timeout"));
-    }, 60000 * 5);
-
-    worker.addEventListener("message", onReady);
-  });
-
-  reader.value = new BrowserMessageReader(worker);
-  writer.value = new BrowserMessageWriter(worker);
-  reader.value.listen((message) => {
-    if ('method' in message && message.method == 'tmLog') {
-      console.log('[Tinymist WASM Log]', message.params.data)
-      return
-    }
-    console.log('LSP -> Editor:', message);
-  });
-
-  const config = await getClientConfig(
-    worker,
-    { reader: reader.value, writer: writer.value }
-  );
+  const config = await getClientConfig();
 
   wrapper = new MonacoEditorLanguageClientWrapper();
   const fileSystemProvider = await createFileSystemProvider();
@@ -284,25 +256,10 @@ async function startTinymistClient() {
 
   await wrapper.startLanguageClients();
 
-  await new Promise((resolve, reject) => {
-    let count = 0;
-    function onReady(e) {
-      if (e.data.method !== "client/registerCapability") return;
-      count++;
-      if (count >= 3) {
-        worker.removeEventListener("message", onReady);
-        resolve(true);
-        clearTimeout(workerTimeout);
-      }
-    }
+  await worker.waitRegisterCapability();
+  await worker.waitRegisterCapability();
+  await worker.waitRegisterCapability();
 
-    const workerTimeout = setTimeout(() => {
-      worker.removeEventListener("message", onReady);
-      reject(new Error("failed to initialize preview: waiting for final registerCapability timeout"));
-    }, 60000 * 5);
-
-    worker.addEventListener("message", onReady);
-  });
   await doPreview();
 };
 
@@ -314,7 +271,14 @@ function handleBeforeUnload(event) {
 
 onMounted(async () => {
   window.addEventListener('beforeunload', handleBeforeUnload)
-
+  worker = new TinymistLSPWorker()
+  worker.startWorker();
+  try {
+    await resourceLoader.loadAll(worker);
+    resourcesLoaded.value = true;
+  } catch (error) {
+    console.error('Failed to load resources:', error);
+  }
   startTinymistClient()
 })
 
