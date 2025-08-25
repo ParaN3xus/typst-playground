@@ -27,7 +27,7 @@ const COMMA = enc.encode(",");
 import { triggerRipple } from "../typst-dom/typst-animation.mts";
 import { createResizeObservable, getRelatedElements, ignoredEvent, INVERT_COLORS_STRATEGY, isTypstPreviewPageInner, sendWebSocketMessage, isTypstPreviewMessage } from "./utils.mts"
 import { Ref } from "vue";
-import { StrategyKey, StrategyMap, TypstPosition, TypstPreviewDocumentRootElement, TypstPreviewHookedElement, TypstPreviewWindowElement } from "./types";
+import { StrategyKey, StrategyMap, TypstPosition, TypstPreviewDocumentRootElement, TypstPreviewHookedElement, TypstPreviewPageInner, TypstPreviewWindowElement } from "./types";
 
 
 export function usePreviewComponent(
@@ -330,7 +330,9 @@ export function usePreviewComponent(
   function handleTypstLocation(pageNo: number, x: number, y: number): void {
     pageNo = pageNo - 1;
 
-    const pageInner = Array.from(rootElem!.children).find(isTypstPreviewPageInner);
+    const pageInner: TypstPreviewPageInner = Array.from(rootElem!.children)
+      .filter(isTypstPreviewPageInner)
+      .find(x => x.getAttribute('data-page-number') === pageNo.toString())!
 
     if (!pageInner) {
       console.warn("Can't find located typst page!")
