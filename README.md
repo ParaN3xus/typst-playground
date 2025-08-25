@@ -2,7 +2,7 @@
 
 This is `typst-playground`, a project that attempts to recreate the online editing experience of [typst.app]("https://typst.app/") based on [tinymist]("https://github.com/myriad-dreamin/tinymist") and [typst.ts]("https://github.com/Myriad-Dreamin/typst.ts").
 
-Try it now: https://paran3xus.github.io/typst-playground/
+Try it now: https://play.typs.town/
 
 > [!NOTE]
 > It takes time to load fonts on your first visit.
