@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!allLoaded || true"
+    <div v-if="!allLoaded"
         class="fixed inset-0 w-screen h-screen bg-base flex justify-center items-center z-[9999] font-mono">
         <div class="max-w-2xl w-[90%] text-center">
             <h2 class="text-2xl mb-8 text-main">
