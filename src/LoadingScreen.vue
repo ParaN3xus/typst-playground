@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!allLoaded"
+    <div v-if="!allLoaded || true"
         class="fixed inset-0 w-screen h-screen bg-base flex justify-center items-center z-[9999] font-mono">
         <div class="max-w-2xl w-[90%] text-center">
             <h2 class="text-2xl mb-8 text-main">
@@ -13,7 +13,7 @@
                             {{ item.loaded ? 'Done' : 'Loading...' }}
                         </span>
                     </div>
-                    <div class="text-sm whitespace-nowrap text-main">
+                    <div ref="progressContainer" class="text-sm text-main overflow-hidden">
                         {{ getAsciiProgress(item.progress) }}
                     </div>
                 </div>
@@ -23,14 +23,52 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import resourceLoader from './resource-loader.mjs';
 
 const loadingProgress = ref({});
 const allLoaded = ref(false);
+const progressContainer = ref([]);
+const progressBarWidth = ref(30);
+
+const calculateProgressBarWidth = () => {
+    const container = progressContainer.value?.[0];
+    if (!container) return 30;
+
+    const testElement = document.createElement('span');
+    testElement.style.visibility = 'hidden';
+    testElement.style.position = 'absolute';
+    testElement.style.whiteSpace = 'nowrap';
+    testElement.textContent = '█'.repeat(10);
+
+    const computedStyle = window.getComputedStyle(container);
+    testElement.style.fontFamily = computedStyle.fontFamily;
+    testElement.style.fontSize = computedStyle.fontSize;
+    testElement.style.fontWeight = computedStyle.fontWeight;
+
+    container.appendChild(testElement);
+    const actualCharWidth = testElement.offsetWidth / 10;
+    container.removeChild(testElement);
+
+    const containerWidth = container.clientWidth;
+    const reservedSpace = actualCharWidth * 10;
+    const availableWidth = containerWidth - reservedSpace;
+    const maxChars = Math.floor(availableWidth / actualCharWidth);
+
+    return maxChars;
+};
+
+const updateProgressBarWidth = () => {
+    const newWidth = calculateProgressBarWidth();
+    if (newWidth !== progressBarWidth.value) {
+        progressBarWidth.value = newWidth;
+    }
+};
 
 const getAsciiProgress = (progress) => {
-    const width = 30;
+    const width = progressBarWidth.value;
     const filled = Math.round((progress / 100) * width);
     const empty = width - filled;
     return '[' + '█'.repeat(filled) + '░'.repeat(empty) + '] ' + Math.round(progress) + '%';
@@ -38,7 +76,6 @@ const getAsciiProgress = (progress) => {
 
 const progressListener = (progress) => {
     loadingProgress.value = { ...progress };
-
     if (resourceLoader.isAllLoaded()) {
         setTimeout(() => {
             allLoaded.value = true;
@@ -46,12 +83,26 @@ const progressListener = (progress) => {
     }
 };
 
-onMounted(() => {
+let resizeSubscription = null;
+
+onMounted(async () => {
     resourceLoader.addProgressListener(progressListener);
     loadingProgress.value = { ...resourceLoader.loadingProgress };
+
+    await nextTick();
+    setTimeout(() => {
+        updateProgressBarWidth();
+
+        resizeSubscription = fromEvent(window, 'resize')
+            .pipe(debounceTime(100))
+            .subscribe(updateProgressBarWidth);
+    }, 50);
 });
 
 onUnmounted(() => {
     resourceLoader.removeProgressListener(progressListener);
+    if (resizeSubscription) {
+        resizeSubscription.unsubscribe();
+    }
 });
 </script>
