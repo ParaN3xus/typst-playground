@@ -8,34 +8,44 @@
     </div>
     <div class="flex justify-between bg-base">
       <div class="mx-2">
-        <button class="menu-btn" @click="handleEmptyClicked">Empty workspace</button>
+        <button v-if="isMobile" class="menu-btn" @click="toggleSidebar">
+          <Icon icon="heroicons:archive-box" class="text-lg" />
+        </button>
+        <button class="menu-btn" @click="handleEmptyClicked">
+          <Icon icon="heroicons:trash" class="text-lg" />
+        </button>
       </div>
       <div class="mx-2">
         <button class="menu-btn" :class="{ 'opacity-50 cursor-not-allowed': isSharing }" :disabled="isSharing"
           @click="handleShareClicked">
-          {{ shareButtonText }}
+          <Icon v-if="!shareButtonText" icon="heroicons:share" class="text-lg" />
+          <span v-else>{{ shareButtonText }}</span>
         </button>
       </div>
     </div>
     <Splitpanes :maximize-panes="false">
-      <Pane :size="20" min-size="15" max-size="50">
+      <Pane :size="isSidebarOpen ? (isMobile ? 50 : 20) : 0" :min-size="isMobile ? 0 : 15"
+        :max-size="isSidebarOpen ? 50 : 0">
         <div ref="sidebarContainer" class="h-full">
         </div>
       </Pane>
-      <Pane :size="40">
-        <Splitpanes :horizontal="true" :maximize-panes="false">
-          <Pane :size="65" min-size="30">
-            <div ref="editorsContainer" class="h-full">
-            </div>
+      <Pane :size="isSidebarOpen ? 80 : 100" min-size="15">
+        <Splitpanes :horizontal="isMobile" :maximize-panes="false">
+          <Pane :size="40">
+            <Splitpanes :horizontal="true" :maximize-panes="false">
+              <Pane :size="isMobile ? 100 : 65" min-size="30">
+                <div ref="editorsContainer" class="h-full">
+                </div>
+              </Pane>
+              <Pane :size="35" :min-size="isMobile ? 0 : 20" :max-size="isMobile ? 0 : 50">
+                <div ref="panelContainer" class="h-full"></div>
+              </Pane>
+            </Splitpanes>
           </Pane>
-          <Pane :size="35" min-size="20" max-size="50">
-            <div ref="panelContainer" class="h-full">
-            </div>
+          <Pane :size="40" min-size="20" max-size="50">
+            <TypstPreview ref="preview" :reader="reader" :writer="writer" />
           </Pane>
         </Splitpanes>
-      </Pane>
-      <Pane :size="40" min-size="20" max-size="50">
-        <TypstPreview ref="preview" :reader="reader" :writer="writer" />
       </Pane>
     </Splitpanes>
   </div>
@@ -45,6 +55,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { resolve } from 'pathe';
 
+import { Icon } from "@iconify/vue";
 import { Splitpanes, Pane } from 'splitpanes'
 import 'splitpanes/dist/splitpanes.css'
 
@@ -72,6 +83,23 @@ import { TinymistLSPWorker } from "./lsp-worker.mjs"
 import { uploadToPastebin } from './pastebin';
 import { AutoSaveConfiguration } from '@codingame/monaco-vscode-api/vscode/vs/platform/files/common/files';
 
+const isMobile = ref(false)
+const isSidebarOpen = ref(true)
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value
+}
+
+const checkMobile = () => {
+  const before = isMobile.value
+  const after = window.innerWidth < 768
+  if (!before && after) {
+    isSidebarOpen.value = false
+  } else if (before && !after) {
+    isSidebarOpen.value = true
+  }
+  isMobile.value = after
+}
+
 const sidebarContainer = ref(null)
 const editorsContainer = ref(null)
 const panelContainer = ref(null)
@@ -85,12 +113,6 @@ const writer = ref(null)
 let wrapper = null;
 let fileSystemProvider = null
 
-const isSharing = ref(false);
-const shareButtonText = ref('Share');
-
-const urlParams = new URLSearchParams(window.location.search)
-const code = urlParams.get('code')
-
 async function printMain() {
   const decoder = new TextDecoder('utf-8');
   console.log(decoder.decode(await fileSystemProvider.readFile(defaultEntryFileUri)))
@@ -100,6 +122,8 @@ async function doPreview() {
   preview.value.initPreview(defaultEntryFilePath)
 }
 
+const isSharing = ref(false);
+const shareButtonText = ref(null);
 async function handleShareClicked() {
   if (isSharing.value) return;
 
@@ -116,7 +140,7 @@ async function handleShareClicked() {
 
     setTimeout(() => {
       isSharing.value = false;
-      shareButtonText.value = 'Share';
+      shareButtonText.value = null;
     }, 2000);
 
   } catch (error) {
@@ -125,7 +149,7 @@ async function handleShareClicked() {
     shareButtonText.value = 'Failed';
     setTimeout(() => {
       isSharing.value = false;
-      shareButtonText.value = 'Share';
+      shareButtonText.value = null;
     }, 2000);
   }
 }
@@ -330,7 +354,11 @@ function handleBeforeUnload(event) {
   return 'Are you sure to leave? You changes won\'t be saved.'
 }
 
+const urlParams = new URLSearchParams(window.location.search)
+const code = urlParams.get('code')
 onMounted(async () => {
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
   window.addEventListener('beforeunload', handleBeforeUnload)
   worker = new TinymistLSPWorker()
   worker.startWorker();
@@ -344,6 +372,7 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
+  window.removeEventListener('resize', checkMobile)
   wrapper.dispose();
 })
 </script>
