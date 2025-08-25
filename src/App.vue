@@ -7,7 +7,7 @@
       <button @click="printMain">print main</button>
     </div>
     <div class="flex justify-between bg-base">
-      <div class="mx-2">
+      <div class="mx-2 flex">
         <button v-if="isMobile" class="menu-btn" @click="toggleSidebar">
           <Icon icon="heroicons:archive-box" class="text-lg" />
         </button>

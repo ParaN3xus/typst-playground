@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 @layer base {
   :root {
     --color-base: 248 248 248;
@@ -29,10 +31,9 @@
   }
 
   .menu-btn {
-    @apply px-3 my-2 rounded-sm h-8 text-sm;
+    @apply px-3 my-2 rounded-lg h-8 text-sm flex items-center justify-center border-0;
     background-color: rgb(var(--color-base));
     color: rgb(var(--color-text));
-    border-radius: 0.5rem;
   }
   .menu-btn:hover {
     background-color: rgb(var(--color-btn-hover));
