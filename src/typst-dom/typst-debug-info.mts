@@ -1,5 +1,13 @@
+import {
+  TypstPreviewHookedElement,
+  TypstPreviewWindowElement,
+} from "../typst-preview/types";
 import { triggerRipple } from "./typst-animation.mjs";
-import { PreviewMode, type GConstructor, type TypstDocumentContext } from "./typst-doc.mjs";
+import {
+  PreviewMode,
+  type GConstructor,
+  type TypstDocumentContext,
+} from "./typst-doc.mjs";
 
 const enum SourceMappingType {
   Text = 0,
@@ -32,7 +40,7 @@ const CssClassToType = [
 ] as const;
 
 function castToSourceMappingElement(
-  elem: Element,
+  elem: Element
 ): [SourceMappingType, Element, string] | undefined {
   if (elem.classList.length === 0) {
     return undefined;
@@ -46,14 +54,14 @@ function castToSourceMappingElement(
 }
 
 function castToNestSourceMappingElement(
-  elem: Element,
+  elem: Element
 ): [SourceMappingType, Element, string] | undefined {
   while (elem) {
     const result = castToSourceMappingElement(elem);
     if (result) {
       return result;
     }
-    let chs = elem.children;
+    const chs = elem.children;
     if (chs.length !== 1) {
       return undefined;
     }
@@ -63,24 +71,26 @@ function castToNestSourceMappingElement(
   return undefined;
 }
 
-function castChildrenToSourceMappingElement(elem: Element): [SourceMappingType, Element, string][] {
+function castChildrenToSourceMappingElement(
+  elem: Element
+): [SourceMappingType, Element, string][] {
   return Array.from(elem.children)
     .map(castToNestSourceMappingElement)
     .filter((x) => x) as [SourceMappingType, Element, string][];
 }
 
-export function removeSourceMappingHandler(docRoot: HTMLElement) {
-  const prevSourceMappingHandler = (docRoot as any).sourceMappingHandler;
+export function removeSourceMappingHandler(docRoot: TypstPreviewHookedElement) {
+  const prevSourceMappingHandler = docRoot.sourceMappingHandler;
   if (prevSourceMappingHandler) {
     docRoot.removeEventListener("click", prevSourceMappingHandler);
-    delete (docRoot as any).sourceMappingHandler;
+    delete docRoot.sourceMappingHandler;
     // console.log("remove removeSourceMappingHandler");
   }
 }
 
 export function resolveSourceLeaf(
   elem: Element,
-  path: ElementPoint[],
+  path: ElementPoint[]
 ): [Element, number] | undefined {
   const page = elem.getElementsByClassName("typst-page")[0];
   let curElem = page;
@@ -105,7 +115,10 @@ export function resolveSourceLeaf(
   return [curElem, 0];
 }
 
-export function installEditorJumpToHandler(windowElem: HTMLElement, docRoot: HTMLElement) {
+export function installEditorJumpToHandler(
+  windowElem: TypstPreviewWindowElement,
+  docRoot: TypstPreviewHookedElement
+) {
   const getNthBackgroundRect = (elem: Element, pageNumber: string) => {
     let curElem: Element | null = elem;
     while (curElem) {
@@ -125,7 +138,8 @@ export function installEditorJumpToHandler(windowElem: HTMLElement, docRoot: HTM
     const x = event.clientX;
     const y = event.clientY;
 
-    let mayPageElem: [SourceMappingType, Element, string] | undefined = undefined;
+    let mayPageElem: [SourceMappingType, Element, string] | undefined =
+      undefined;
 
     while (elem) {
       mayPageElem = castToSourceMappingElement(elem);
@@ -175,10 +189,10 @@ export function installEditorJumpToHandler(windowElem: HTMLElement, docRoot: HTM
   };
 
   removeSourceMappingHandler(docRoot);
-  const sourceMappingHandler = ((docRoot as any).sourceMappingHandler = async (
-    event: MouseEvent,
+  const sourceMappingHandler = (docRoot.sourceMappingHandler = async (
+    event: MouseEvent
   ) => {
-    let elem = event.target! as Element;
+    const elem = event.target! as Element;
 
     const frameLoc = await resolveFrameLoc(event, elem);
     if (!frameLoc) {
@@ -199,7 +213,7 @@ export function installEditorJumpToHandler(windowElem: HTMLElement, docRoot: HTM
       left,
       top,
       "typst-debug-react-ripple",
-      "typst-debug-react-ripple-effect .4s linear",
+      "typst-debug-react-ripple-effect .4s linear"
     );
 
     return;
@@ -208,11 +222,11 @@ export function installEditorJumpToHandler(windowElem: HTMLElement, docRoot: HTM
   docRoot.addEventListener("click", sourceMappingHandler);
 }
 
-export interface TypstDebugJumpDocument { }
+export interface TypstDebugJumpDocument {}
 
-export function provideDebugJumpDoc<TBase extends GConstructor<TypstDocumentContext>>(
-  Base: TBase,
-): TBase & GConstructor<TypstDebugJumpDocument> {
+export function provideDebugJumpDoc<
+  TBase extends GConstructor<TypstDocumentContext>
+>(Base: TBase): TBase & GConstructor<TypstDebugJumpDocument> {
   return class DebugJumpDocument extends Base {
     constructor(...args: any[]) {
       super(...args);
@@ -226,7 +240,12 @@ export function provideDebugJumpDoc<TBase extends GConstructor<TypstDocumentCont
       }
     }
 
-    scrollTo(pageRect: ScrollRect, pageNo: number, innerLeft: number, innerTop: number) {
+    scrollTo(
+      pageRect: ScrollRect,
+      pageNo: number,
+      innerLeft: number,
+      innerTop: number
+    ) {
       if (this.previewMode === PreviewMode.Slide) {
         this.setPartialPageNumber(pageNo);
         return;
@@ -251,18 +270,28 @@ export function provideDebugJumpDoc<TBase extends GConstructor<TypstDocumentCont
       const widthOccupied = (100 * 100 * pw) / pageRect.width;
 
       const pageAdjustLeft = pageRect.left - basePos.left - 5 * pw;
-      const pageAdjust = pageRect.left - basePos.left + pageRect.width - 95 * pw;
+      const pageAdjust =
+        pageRect.left - basePos.left + pageRect.width - 95 * pw;
 
       // default single-column or multi-column layout
       if (widthOccupied >= 90 || widthOccupied < 50) {
-        this.windowElem.scrollTo({ behavior: "smooth", left: xOffset, top: yOffset });
+        this.windowElem.scrollTo({
+          behavior: "smooth",
+          left: xOffset,
+          top: yOffset,
+        });
       } else {
         // for double-column layout
         // console.log('occupied adjustment', widthOccupied, page);
 
-        const xOffsetAdjsut = xOffset > pageAdjust ? pageAdjust : pageAdjustLeft;
+        const xOffsetAdjsut =
+          xOffset > pageAdjust ? pageAdjust : pageAdjustLeft;
 
-        this.windowElem.scrollTo({ behavior: "smooth", left: xOffsetAdjsut, top: yOffset });
+        this.windowElem.scrollTo({
+          behavior: "smooth",
+          left: xOffsetAdjsut,
+          top: yOffset,
+        });
       }
 
       // grid ripple for debug vw
@@ -298,7 +327,7 @@ export function provideDebugJumpDoc<TBase extends GConstructor<TypstDocumentCont
         left,
         top,
         "typst-jump-ripple",
-        "typst-jump-ripple-effect .4s linear",
+        "typst-jump-ripple-effect .4s linear"
       );
     }
   };

@@ -1,8 +1,15 @@
 // mostly from myriad-dreamin/tinymist/tools/typst-preview-frontend/ws.ts
 
 import { PreviewMode } from "../typst-dom/typst-doc.mjs";
-import { TypstPreviewDocument as TypstDocument, TypstPreviewDocument } from "../typst-dom/index.preview.mjs";
-import { createTypstRenderer, rendererBuildInfo, RenderSession } from "@myriaddreamin/typst.ts/dist/esm/renderer.mjs";
+import {
+  TypstPreviewDocument as TypstDocument,
+  TypstPreviewDocument,
+} from "../typst-dom/index.preview.mjs";
+import {
+  createTypstRenderer,
+  rendererBuildInfo,
+  RenderSession,
+} from "@myriaddreamin/typst.ts/dist/esm/renderer.mjs";
 import {
   Subject,
   Subscription,
@@ -11,24 +18,41 @@ import {
   fromEvent,
   tap,
 } from "rxjs";
-import { BrowserMessageReader, BrowserMessageWriter } from 'vscode-languageclient/browser';
+import {
+  BrowserMessageReader,
+  BrowserMessageWriter,
+} from "vscode-languageclient/browser";
 
 // @ts-ignore
 import renderModule from "@myriaddreamin/typst-ts-renderer/pkg/typst_ts_renderer_bg.wasm?url";
 
-import { Buffer } from 'buffer';
+import { Buffer } from "buffer";
 
 const NOT_AVAILABLE = "current not available";
 const enc = new TextEncoder();
 const dec = new TextDecoder();
 const COMMA = enc.encode(",");
 
-
 import { triggerRipple } from "../typst-dom/typst-animation.mts";
-import { createResizeObservable, getRelatedElements, ignoredEvent, INVERT_COLORS_STRATEGY, isTypstPreviewPageInner, sendWebSocketMessage, isTypstPreviewMessage } from "./utils.mts"
+import {
+  createResizeObservable,
+  getRelatedElements,
+  ignoredEvent,
+  INVERT_COLORS_STRATEGY,
+  isTypstPreviewPageInner,
+  sendWebSocketMessage,
+  isTypstPreviewMessage,
+} from "./utils.mts";
 import { Ref } from "vue";
-import { StrategyKey, StrategyMap, TypstPosition, TypstPreviewDocumentRootElement, TypstPreviewHookedElement, TypstPreviewPageInner, TypstPreviewWindowElement } from "./types";
-
+import {
+  StrategyKey,
+  StrategyMap,
+  TypstPosition,
+  TypstPreviewDocumentRootElement,
+  TypstPreviewHookedElement,
+  TypstPreviewPageInner,
+  TypstPreviewWindowElement,
+} from "./types";
 
 export function usePreviewComponent(
   reader: BrowserMessageReader,
@@ -37,12 +61,12 @@ export function usePreviewComponent(
   windowElem: Ref<TypstPreviewWindowElement>,
   outerElem: Ref<HTMLElement>
 ) {
-  let svgDoc: TypstPreviewDocument | null = null
+  let svgDoc: TypstPreviewDocument | null = null;
   let rootElem: TypstPreviewDocumentRootElement | null = null;
 
   const subsribes: Subscription[] = [];
 
-  let disposed = false;
+  let _disposed = false;
 
   function createSvgDocument(kModule: RenderSession) {
     if (hookedElem.value.firstElementChild?.tagName !== "svg") {
@@ -51,8 +75,8 @@ export function usePreviewComponent(
 
     windowElem.value.initTypstSvg = initTypstSvg;
     windowElem.value.typstWebsocket = {
-      send: (data: string | ArrayBuffer) => sendWebSocketMessage(writer, data)
-    }
+      send: (data: string | ArrayBuffer) => sendWebSocketMessage(writer, data),
+    };
 
     const resizeTarget = outerElem.value;
 
@@ -84,21 +108,23 @@ export function usePreviewComponent(
       fromEvent(windowElem.value, "scroll")
         .pipe(debounceTime(500))
         .subscribe(() => {
-          svgDoc?.addViewportChange()
+          svgDoc?.addViewportChange();
         })
     );
 
     // Handle messages sent from the extension to the webview
     subsribes.push(
-      fromEvent<MessageEvent>(windowElem.value, "message").subscribe((event) => {
-        const message = event.data; // The json data that the extension sent
-        switch (message.type) {
-          case "outline": {
-            svgDoc!.setOutineData(message.outline);
-            break;
+      fromEvent<MessageEvent>(windowElem.value, "message").subscribe(
+        (event) => {
+          const message = event.data; // The json data that the extension sent
+          switch (message.type) {
+            case "outline": {
+              svgDoc!.setOutineData(message.outline);
+              break;
+            }
           }
         }
-      })
+      )
     );
     return svgDoc;
   }
@@ -129,7 +155,7 @@ export function usePreviewComponent(
 
       currentPageNumber = currentPosition()?.page || 1;
 
-      let positions = dec
+      const positions = dec
         .decode((message[1] as any).buffer)
         .split(",")
         .map((t: string) => t.trim())
@@ -152,13 +178,13 @@ export function usePreviewComponent(
       );
       // console.log("resolved", page, x, y, "from", currentPageNumber);
 
-      let pageToJump = page;
+      const pageToJump = page;
       if (pageToJump === Number.MAX_SAFE_INTEGER) {
         return;
       }
 
       if (!rootElem) {
-        console.warn("null root elem")
+        console.warn("null root elem");
       }
       if (rootElem) {
         /// Note: when it is really scrolled, it will trigger `svgDoc.addViewportChange`
@@ -211,7 +237,7 @@ export function usePreviewComponent(
     hookedElem.value.document = svgDoc!;
 
     const dispose = () => {
-      disposed = true;
+      _disposed = true;
       svgDoc?.dispose();
 
       for (const sub of subsribes.splice(0, subsribes.length)) {
@@ -223,11 +249,11 @@ export function usePreviewComponent(
       if (isTypstPreviewMessage(message)) {
         const { content } = message.params;
 
-        console.log("Preview -> Webview:", content)
+        console.log("Preview -> Webview:", content);
 
         let data: ArrayBuffer;
-        if (content.format === 'binary') {
-          data = Buffer.from(content.data, 'base64').buffer;
+        if (content.format === "binary") {
+          data = Buffer.from(content.data, "base64").buffer;
         } else {
           data = new TextEncoder().encode(content.data).buffer;
         }
@@ -287,10 +313,16 @@ export function usePreviewComponent(
         case "always":
           return true;
       }
-    };
+    }
 
-    hookedElem.value.classList.toggle("invert-colors", decide(strategy?.rest || "never"));
-    hookedElem.value.classList.toggle("normal-image", !decide(strategy?.image || strategy?.rest || "never"));
+    hookedElem.value.classList.toggle(
+      "invert-colors",
+      decide(strategy?.rest || "never")
+    );
+    hookedElem.value.classList.toggle(
+      "normal-image",
+      !decide(strategy?.image || strategy?.rest || "never")
+    );
   }
 
   function currentPosition(): TypstPosition | undefined {
@@ -325,32 +357,37 @@ export function usePreviewComponent(
       }
     }
     return result;
-  };
+  }
 
   function handleTypstLocation(pageNo: number, x: number, y: number): void {
     pageNo = pageNo - 1;
 
     const pageInner: TypstPreviewPageInner = Array.from(rootElem!.children)
       .filter(isTypstPreviewPageInner)
-      .find(x => x.getAttribute('data-page-number') === pageNo.toString())!
+      .find((x) => x.getAttribute("data-page-number") === pageNo.toString())!;
 
     if (!pageInner) {
-      console.warn("Can't find located typst page!")
-      return
+      console.warn("Can't find located typst page!");
+      return;
     }
 
-    const scale_x = rootElem!.getAttribute('width') / rootElem!.getAttribute('data-width')
-    const scale_y = rootElem!.getAttribute('height') / rootElem!.getAttribute('data-height')
+    const scale_x =
+      rootElem!.getAttribute("width") / rootElem!.getAttribute("data-width");
+    const scale_y =
+      rootElem!.getAttribute("height") / rootElem!.getAttribute("data-height");
 
-    const raw_y = y + pageInner.transform.baseVal[0].matrix.f
+    const raw_y = y + pageInner.transform.baseVal[0].matrix.f;
 
-    const scaled_x = x * scale_x + hookedElem.value.getBoundingClientRect().x - outerElem.value.getBoundingClientRect().x
-    const scaled_y = raw_y * scale_y
+    const scaled_x =
+      x * scale_x +
+      hookedElem.value.getBoundingClientRect().x -
+      outerElem.value.getBoundingClientRect().x;
+    const scaled_y = raw_y * scale_y;
 
     outerElem.value.scrollTo({
       behavior: "smooth",
       left: scaled_x - 32,
-      top: scaled_y - 32
+      top: scaled_y - 32,
     });
 
     triggerRipple(
@@ -358,17 +395,17 @@ export function usePreviewComponent(
       scaled_x,
       scaled_y,
       "typst-jump-ripple",
-      "typst-jump-ripple-effect .4s linear",
+      "typst-jump-ripple-effect .4s linear"
     );
-  };
+  }
 
   function initTypstSvg(docRoot: SVGElement) {
     rootElem = docRoot as TypstPreviewDocumentRootElement;
 
     /// initialize pseudo links
-    var elements = docRoot.getElementsByClassName("pseudo-link");
-    for (var i = 0; i < elements.length; i++) {
-      let elem = elements[i] as SVGAElement;
+    const elements = docRoot.getElementsByClassName("pseudo-link");
+    for (let i = 0; i < elements.length; i++) {
+      const elem = elements[i] as SVGAElement;
       elem.addEventListener("mousemove", mouseMoveToLink);
       elem.addEventListener("mouseleave", mouseLeaveFromLink);
     }
@@ -382,8 +419,8 @@ export function usePreviewComponent(
           if (elements === undefined || elements === null) {
             return;
           }
-          for (var i = 0; i < elements.length; i++) {
-            var elem = elements[i];
+          for (let i = 0; i < elements.length; i++) {
+            const elem = elements[i];
             if (elem.classList.contains("hover")) {
               continue;
             }
@@ -391,7 +428,7 @@ export function usePreviewComponent(
           }
         },
         200,
-        "mouse-move",
+        "mouse-move"
       );
     }
 
@@ -400,20 +437,20 @@ export function usePreviewComponent(
       if (elements === undefined || elements === null) {
         return;
       }
-      for (var i = 0; i < elements.length; i++) {
-        var elem = elements[i];
+      for (let i = 0; i < elements.length; i++) {
+        const elem = elements[i];
         if (!elem.classList.contains("hover")) {
           continue;
         }
         elem.classList.remove("hover");
       }
     }
-  };
+  }
 
   function setupDrag() {
     let lastPos = { x: 0, y: 0 };
     let moved = false;
-    let containerElement = outerElem.value;
+    const containerElement = outerElem.value;
     const mouseMoveHandler = function (e: MouseEvent) {
       // How far the mouse has been moved
       const dx = e.clientX - lastPos.x;
@@ -441,8 +478,8 @@ export function usePreviewComponent(
       outerElem.value.removeEventListener("mousemove", mouseMoveHandler);
       outerElem.value.removeEventListener("mouseup", mouseUpHandler);
       if (!goodDrag(containerElement)) {
-        return
-      };
+        return;
+      }
       if (!moved) {
         document.getSelection()?.removeAllRanges();
       }
@@ -456,7 +493,10 @@ export function usePreviewComponent(
       };
       if (!goodDrag(containerElement)) return;
       const elementUnderMouse = e.target as HTMLElement | null;
-      if (elementUnderMouse !== null && elementUnderMouse.classList.contains("tsel")) {
+      if (
+        elementUnderMouse !== null &&
+        elementUnderMouse.classList.contains("tsel")
+      ) {
         return;
       }
       e.preventDefault();
@@ -471,29 +511,35 @@ export function usePreviewComponent(
   }
 
   async function initPreviewInner() {
-    let plugin = createTypstRenderer();
+    const plugin = createTypstRenderer();
     await plugin.init({ getModule: () => renderModule });
 
-    setupDrag()
+    setupDrag();
 
-    return new Promise<() => void>(
-      (resolveDispose) =>
-        plugin.runWithSession((kModule) /* module kernel from wasm */ => {
-          return new Promise(async (kernelDispose) => {
-            console.log("plugin initialized, build info:", await rendererBuildInfo());
+    return new Promise<() => void>((resolveDispose) =>
+      plugin.runWithSession((kModule) /* module kernel from wasm */ => {
+        const initializePlugin = async () => {
+          console.log(
+            "plugin initialized, build info:",
+            await rendererBuildInfo()
+          );
 
-            createSvgDocument(kModule)
-            const wsDispose = setupSocket();
+          createSvgDocument(kModule);
+          const wsDispose = setupSocket();
 
+          return new Promise((resolve) => {
             // todo: plugin init and setup socket at the same time
             resolveDispose(() => {
               // dispose ws first
               wsDispose();
               // dispose kernel then
-              kernelDispose(undefined);
+              resolve(undefined);
             });
           });
-        }),
+        };
+
+        return initializePlugin();
+      })
     );
   }
 

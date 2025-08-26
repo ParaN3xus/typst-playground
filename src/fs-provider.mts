@@ -7,9 +7,9 @@ import {
 import { URI } from "@codingame/monaco-vscode-api/vscode/vs/base/common/uri";
 import { Buffer } from "buffer";
 
-export const defaultWorkspacePath = "/workspace"
+export const defaultWorkspacePath = "/workspace";
 export const defaultWorkspaceUri = vscode.Uri.file(defaultWorkspacePath);
-export const defaultEntryFilePath = `${defaultWorkspacePath}/main.typ`
+export const defaultEntryFilePath = `${defaultWorkspacePath}/main.typ`;
 export const defaultEntryFileUri = vscode.Uri.file(defaultEntryFilePath);
 
 export class FileSystemProvider extends InMemoryFileSystemProvider {
@@ -23,28 +23,24 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
     try {
       await this.stat(uri);
       return true;
-    } catch (error) {
+    } catch (_) {
       return false;
     }
   }
 
   async addFileToWorkspace(
     uriString: string,
-    content: Uint8Array<ArrayBuffer>,
+    content: Uint8Array<ArrayBuffer>
   ): Promise<vscode.Uri> {
     const uri = vscode.Uri.file(uriString);
 
     await this.createDirectory(uri);
-    await this.writeFile(
-      uri,
-      content,
-      {
-        atomic: false,
-        unlock: false,
-        create: true,
-        overwrite: true,
-      },
-    );
+    await this.writeFile(uri, content, {
+      atomic: false,
+      unlock: false,
+      create: true,
+      overwrite: true,
+    });
 
     await vscode.workspace.openTextDocument(uri);
     return uri;
@@ -67,10 +63,13 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
     try {
       await this.readDirectoryRecursively(dirPath, files);
 
-      return JSON.stringify({
-        files: files
-      }, null, 2);
-
+      return JSON.stringify(
+        {
+          files: files,
+        },
+        null,
+        2
+      );
     } catch (error) {
       console.error("Error reading directory files:", error);
       return JSON.stringify({ version: "1.0", files: {} });
@@ -92,7 +91,7 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
         if (type === FileType.File) {
           try {
             const fileContent = await this.readFile(fileUri);
-            const base64Content = Buffer.from(fileContent).toString('base64');
+            const base64Content = Buffer.from(fileContent).toString("base64");
             files[fullPath] = base64Content;
           } catch (error) {
             console.warn(`Failed to read file ${fullPath}:`, error);
@@ -110,12 +109,14 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
     try {
       const data = JSON.parse(jsonContent);
 
-      if (!data.files || typeof data.files !== 'object') {
+      if (!data.files || typeof data.files !== "object") {
         throw new Error("Invalid JSON format: missing files object");
       }
       for (const [filePath, base64Content] of Object.entries(data.files)) {
         try {
-          const fileContent = new Uint8Array(Buffer.from(base64Content as string, 'base64'));
+          const fileContent = new Uint8Array(
+            Buffer.from(base64Content as string, "base64")
+          );
           await this.addFileToWorkspace(filePath, fileContent);
         } catch (error) {
           console.warn(`Failed to restore file ${filePath}:`, error);
@@ -128,18 +129,12 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
   }
 
   async empty(): Promise<URI> {
-    await this.delete(
-      defaultWorkspaceUri,
-      {
-        recursive: true,
-        useTrash: false,
-        atomic: false,
-      }
-    )
-    return this.addFileToWorkspace(
-      defaultEntryFilePath,
-      new Uint8Array(0)
-    )
+    await this.delete(defaultWorkspaceUri, {
+      recursive: true,
+      useTrash: false,
+      atomic: false,
+    });
+    return this.addFileToWorkspace(defaultEntryFilePath, new Uint8Array(0));
   }
 }
 

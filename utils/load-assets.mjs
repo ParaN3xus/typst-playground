@@ -1,103 +1,108 @@
-import fs from 'fs/promises'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import fs from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const FONT_EXTENSIONS = ['.ttc', '.ttf', '.otf', '.otc']
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const FONT_EXTENSIONS = [".ttc", ".ttf", ".otf", ".otc"];
 
 async function getAllFiles(dir, extensions) {
-    const files = []
+  const files = [];
 
-    async function scan(directory) {
-        const entries = await fs.readdir(directory, { withFileTypes: true })
+  async function scan(directory) {
+    const entries = await fs.readdir(directory, { withFileTypes: true });
 
-        for (const entry of entries) {
-            const fullPath = path.join(directory, entry.name)
-            if (entry.isDirectory()) {
-                await scan(fullPath)
-            } else if (!extensions || extensions.some(ext => entry.name.toLowerCase().endsWith(ext))) {
-                files.push(fullPath)
-            }
-        }
+    for (const entry of entries) {
+      const fullPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        await scan(fullPath);
+      } else if (
+        !extensions ||
+        extensions.some((ext) => entry.name.toLowerCase().endsWith(ext))
+      ) {
+        files.push(fullPath);
+      }
     }
-    await scan(dir)
-    return files
+  }
+  await scan(dir);
+  return files;
 }
 
 async function getAllFontFiles(dir) {
-    return getAllFiles(dir, FONT_EXTENSIONS)
+  return getAllFiles(dir, FONT_EXTENSIONS);
 }
 
 async function getAllDefaultWorkspaceFiles(dir) {
-    return getAllFiles(dir, null)
+  return getAllFiles(dir, null);
 }
 
 export function assetsLoader() {
-    return {
-        name: 'assets-loader',
-        resolveId(id) {
-            if (id === 'virtual:fonts' || id === 'virtual:default-workspace') return id
-        },
-        async load(id) {
-            if (id === 'virtual:fonts') {
-                return generateVirtualModule({
-                    dir: path.resolve(__dirname, '../src/assets/fonts'),
-                    getFiles: getAllFontFiles,
-                    prefix: 'font',
-                    suffix: '?url',
-                    getPathFromFile: (file, _) => file,
-                })
-            }
+  return {
+    name: "assets-loader",
+    resolveId(id) {
+      if (id === "virtual:fonts" || id === "virtual:default-workspace")
+        return id;
+    },
+    async load(id) {
+      if (id === "virtual:fonts") {
+        return generateVirtualModule({
+          dir: path.resolve(__dirname, "../src/assets/fonts"),
+          getFiles: getAllFontFiles,
+          prefix: "font",
+          suffix: "?url",
+          getPathFromFile: (file, _) => file,
+        });
+      }
 
-            if (id === 'virtual:default-workspace') {
-                const defaultWorkspaceDir = path.resolve(__dirname, '../src/assets/default-workspace')
-                return generateVirtualModule({
-                    dir: defaultWorkspaceDir,
-                    getFiles: getAllDefaultWorkspaceFiles,
-                    prefix: 'ws',
-                    suffix: '?url',
-                    getPathFromFile: (file, dir) => path.relative(dir, file),
-                })
-            }
-        },
-    }
+      if (id === "virtual:default-workspace") {
+        const defaultWorkspaceDir = path.resolve(
+          __dirname,
+          "../src/assets/default-workspace"
+        );
+        return generateVirtualModule({
+          dir: defaultWorkspaceDir,
+          getFiles: getAllDefaultWorkspaceFiles,
+          prefix: "ws",
+          suffix: "?url",
+          getPathFromFile: (file, dir) => path.relative(dir, file),
+        });
+      }
+    },
+  };
 }
 
 async function generateVirtualModule(options) {
-    const {
-        dir,
-        getFiles,
-        prefix,
-        suffix,
-        getPathFromFile,
-    } = options
+  const { dir, getFiles, prefix, suffix, getPathFromFile } = options;
 
-    const files = await getFiles(dir)
+  const files = await getFiles(dir);
 
-    const imports = files.map((file, index) => {
-        const absolutePath = path.resolve(file)
-        return `import ${prefix}${index}Url from '${absolutePath}${suffix}'`
-    }).join('\n')
+  const imports = files
+    .map((file, index) => {
+      const absolutePath = path.resolve(file);
+      return `import ${prefix}${index}Url from '${absolutePath}${suffix}'`;
+    })
+    .join("\n");
 
-    const exports = files.map((file, index) => {
-        const name = path.basename(file)
-        const pathProp = `path: "${getPathFromFile(file, dir)}",`
-        const urlVariable = prefix + index
-        const getData = `async getData() {
+  const exports = files
+    .map((file, index) => {
+      const name = path.basename(file);
+      const pathProp = `path: "${getPathFromFile(file, dir)}",`;
+      const urlVariable = prefix + index;
+      const getData = `async getData() {
             const response = await fetch(${urlVariable}Url)
             return new Uint8Array(await response.arrayBuffer())
-        }`
+        }`;
 
-        return `{
+      return `{
             name: "${name}",
             ${pathProp}
             url: ${prefix}${index}Url,
             ${getData}
-        }`
-    }).join(',')
+        }`;
+    })
+    .join(",");
 
-    return `
+  return `
         ${imports}
         export default [${exports}]
-    `
+    `;
 }

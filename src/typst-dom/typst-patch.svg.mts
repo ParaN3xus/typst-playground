@@ -31,10 +31,10 @@ function patchChildren(prev: Element, next: Element) {
     prev.children as unknown as SVGGElement[],
     next.children as unknown as SVGGElement[],
     true,
-    isGElem,
+    isGElem
   );
 
-  for (let [prevChild, nextChild] of toPatch) {
+  for (const [prevChild, nextChild] of toPatch) {
     reuseOrPatchElem(prevChild, nextChild);
   }
 
@@ -43,7 +43,7 @@ function patchChildren(prev: Element, next: Element) {
   const originView = changeViewPerspective(
     prev.children as unknown as SVGGElement[],
     targetView,
-    isGElem,
+    isGElem
   );
 
   runOriginViewInstructions(prev, originView);
@@ -76,7 +76,10 @@ interface FrozenReplacement {
   debug?: string;
 }
 
-function preReplaceNonSVGElements(prev: Element, next: Element): FrozenReplacement {
+function preReplaceNonSVGElements(
+  prev: Element,
+  next: Element
+): FrozenReplacement {
   const removedIndices: number[] = [];
   const frozenReplacement: FrozenReplacement = {
     inserts: [],
@@ -117,7 +120,9 @@ function postReplaceNonSVGElements(prev: Element, frozen: FrozenReplacement) {
   if (gElements.length + 1 !== frozen.inserts.length) {
     throw new Error(`invalid frozen replacement: gElements.length (${
       gElements.length
-    }) + 1 !=== frozen.inserts.length (${frozen.inserts.length}) ${frozen.debug || ""}
+    }) + 1 !=== frozen.inserts.length (${frozen.inserts.length}) ${
+      frozen.debug || ""
+    }
   current: ${prev.outerHTML}`);
   }
 
@@ -153,7 +158,10 @@ function initOrPatchSvgHeader(svg: SVGElement) {
   }
 
   /// Create a global resource header
-  const resourceHeader = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  const resourceHeader = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg"
+  );
   resourceHeader.id = "typst-svg-resources";
   // set viewbox, width, and height
   resourceHeader.setAttribute("viewBox", "0 0 0 0");
@@ -189,14 +197,17 @@ function patchSvgHeader(prev: SVGElement, next: SVGElement) {
         // todo: gc
         prevChild.append(...nextChild.children);
       }
-    } else if (prevChild.tagName === "style" && nextChild.getAttribute("data-reuse") !== "1") {
+    } else if (
+      prevChild.tagName === "style" &&
+      nextChild.getAttribute("data-reuse") !== "1"
+    ) {
       // console.log("replace extra style", prevChild, nextChild);
 
       // todo: gc
       if (nextChild.textContent) {
         // todo: looks slow
         // https://stackoverflow.com/questions/3326494/parsing-css-in-javascript-jquery
-        var doc = document.implementation.createHTMLDocument(""),
+        const doc = document.implementation.createHTMLDocument(""),
           styleElement = document.createElement("style");
 
         styleElement.textContent = nextChild.textContent;
@@ -205,7 +216,7 @@ function patchSvgHeader(prev: SVGElement, next: SVGElement) {
 
         const currentSvgSheet = (prevChild as HTMLStyleElement).sheet!;
 
-        let rules = new Set<string>();
+        const rules = new Set<string>();
         for (const rule of currentSvgSheet.cssRules) {
           rules.add(rule.cssText);
         }
@@ -231,7 +242,7 @@ function patchSvgHeader(prev: SVGElement, next: SVGElement) {
 export function patchSvgToContainer(
   hookedElem: Element,
   patchStr: string,
-  decorateSvgElement: (elem: SVGElement) => void = () => void 0,
+  decorateSvgElement: (elem: SVGElement) => void = () => void 0
 ) {
   if (hookedElem.firstElementChild) {
     const elem = document.createElement("div");
