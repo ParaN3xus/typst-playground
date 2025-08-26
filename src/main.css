@@ -6,15 +6,19 @@
     --color-base: 248 248 248;
     --color-surface: 255 255 255;
     --color-text: 30 30 30;
-    --color-btn-hover: 228 228 228;
-    --color-btn-active: 222 222 222;
+    --color-ghost-btn-hover: 228 228 228;
+    --color-ghost-btn-active: 222 222 222;
   }
   [data-theme="dark"] {
     --color-base: 24 24 24;
     --color-surface: 31 31 31;
     --color-text: 204 204 204;
-    --color-btn-hover: 45 46 46;
-    --color-btn-active: 48 49 49;
+    --color-ghost-btn-hover: 45 46 46;
+    --color-ghost-btn-active: 48 49 49;
+    --color-primary-btn: 0 120 212;
+    --color-primary-btn-text: 255 255 255;
+    --color-primary-btn-hover: 2 110 193;
+    --color-primary-btn-active: 2 110 193;
   }
 }
 @layer components {
@@ -30,16 +34,32 @@
     color: rgb(var(--color-text));
   }
 
+  .btn-ghost {
+    @apply border-0;
+    background-color: rgb(var(--color-base));
+    color: rgb(var(--color-primary-btn-text));
+  }
+  .btn-ghost:hover {
+    background-color: rgb(var(--color-ghost-btn-hover));
+  }
+  .btn-ghost:active {
+    background-color: rgb(var(--color-ghost-btn-active));
+  }
+
   .menu-btn {
     @apply px-3 my-2 rounded-lg h-8 text-sm flex items-center justify-center border-0;
-    background-color: rgb(var(--color-base));
-    color: rgb(var(--color-text));
   }
-  .menu-btn:hover {
-    background-color: rgb(var(--color-btn-hover));
+
+  .btn {
+    @apply border-0;
+    background-color: rgb(var(--color-primary-btn));
+    color: rgb(var(--color-primary-btn-text));
   }
-  .menu-btn:active {
-    background-color: rgb(var(--color-btn-active));
+  .btn:hover {
+    background-color: rgb(var(--color-primary-btn-hover));
+  }
+  .btn:active {
+    background-color: rgb(var(--color-primary-btn-active));
   }
 }
 

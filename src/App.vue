@@ -8,15 +8,15 @@
     </div>
     <div class="flex justify-between bg-base">
       <div class="mx-2 flex">
-        <button v-if="isMobile" class="menu-btn" @click="toggleSidebar">
+        <button v-if="isMobile" class="menu-btn btn-ghost" @click="toggleSidebar">
           <Icon icon="heroicons:archive-box" class="text-lg" />
         </button>
-        <button class="menu-btn" @click="handleEmptyClicked">
+        <button class="menu-btn btn-ghost" @click="handleEmptyClicked">
           <Icon icon="heroicons:trash" class="text-lg" />
         </button>
       </div>
       <div class="mx-2">
-        <button class="menu-btn" :class="{ 'opacity-50 cursor-not-allowed': isSharing }" :disabled="isSharing"
+        <button class="menu-btn btn-ghost" :class="{ 'opacity-50 cursor-not-allowed': isSharing }" :disabled="isSharing"
           @click="handleShareClicked">
           <Icon v-if="!shareButtonText" icon="heroicons:share" class="text-lg" />
           <span v-else>{{ shareButtonText }}</span>
@@ -49,8 +49,8 @@
         </Pane>
       </Splitpanes>
     </div>
+    <ModalsContainer />
   </div>
-
 </template>
 <script setup>
 
@@ -84,6 +84,9 @@ import resourceLoader from "./resource-loader.mjs"
 import { TinymistLSPWorker } from "./lsp-worker.mjs"
 import { uploadToPastebin } from './pastebin';
 import { AutoSaveConfiguration } from '@codingame/monaco-vscode-api/vscode/vs/platform/files/common/files';
+
+import { ModalsContainer, useModal } from 'vue-final-modal'
+import 'vue-final-modal/style.css'
 
 const isMobile = ref(false)
 const isSidebarOpen = ref(true)
@@ -124,27 +127,41 @@ async function doPreview() {
   preview.value.initPreview(defaultEntryFilePath)
 }
 
+
+import YesOrNoModal from './Modals/YesOrNoModal.vue';
+const { open, close } = useModal({
+  component: YesOrNoModal,
+  attrs: {
+    title: 'Unsaved Changes',
+    async onYes() {
+      await close()
+
+      // save all
+      await vscode.commands.executeCommand('workbench.action.files.saveAll')
+
+      share()
+    },
+    async onNo() {
+      await close()
+    },
+  },
+  slots: {
+    default: '<p>You have unsaved changes. Do you want to save them before sharing?</p>',
+  },
+})
 const isSharing = ref(false);
 const shareButtonText = ref(null);
 async function handleShareClicked() {
   if (isSharing.value) return;
-
   try {
-    isSharing.value = true;
-    shareButtonText.value = 'Sharing...';
+    if (vscode.window.tabGroups.all.some(
+      group => group.tabs.some(tab => tab.isDirty))
+    ) {
+      let res = await open()
+      return
+    }
 
-    let code = await uploadToPastebin(fileSystemProvider);
-
-    const shareUrl = `${window.location.origin}${window.location.pathname}?code=${code}`;
-    await navigator.clipboard.writeText(shareUrl);
-
-    shareButtonText.value = 'URL Copied!';
-
-    setTimeout(() => {
-      isSharing.value = false;
-      shareButtonText.value = null;
-    }, 2000);
-
+    await share()
   } catch (error) {
     console.error('Share failed:', error);
 
@@ -154,6 +171,22 @@ async function handleShareClicked() {
       shareButtonText.value = null;
     }, 2000);
   }
+}
+async function share() {
+  isSharing.value = true;
+  shareButtonText.value = 'Sharing...';
+
+  let code = await uploadToPastebin(fileSystemProvider);
+
+  const shareUrl = `${window.location.origin}${window.location.pathname}?code=${code}`;
+  await navigator.clipboard.writeText(shareUrl);
+
+  shareButtonText.value = 'URL Copied!';
+
+  setTimeout(() => {
+    isSharing.value = false;
+    shareButtonText.value = null;
+  }, 2000);
 }
 
 async function handleEmptyClicked() {
