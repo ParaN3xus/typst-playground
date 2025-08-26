@@ -1,13 +1,14 @@
-# Typst Playground
+# tyraria
 
-This is `typst-playground`, a project that attempts to recreate the online editing experience of [typst.app]("https://typst.app/") based on [tinymist]("https://github.com/myriad-dreamin/tinymist") and [typst.ts]("https://github.com/Myriad-Dreamin/typst.ts").
+This is `tyraria`, a project that attempts to recreate the online editing experience of [typst.app]("https://typst.app/") based on [tinymist]("https://github.com/myriad-dreamin/tinymist") and [typst.ts]("https://github.com/Myriad-Dreamin/typst.ts").
 
-Try it now: https://play.typs.town/
+Try it now: https://tyraria.typs.town/
 
 > [!NOTE]
 > It takes time to load fonts on your first visit.
 
 ## Current Status:
+
 - [x] Monaco Editor basic editing functionality
 - [x] tinymist LSP language service
 - [x] typst-preview preview functionality
@@ -22,7 +23,9 @@ Try it now: https://play.typs.town/
 - [ ] Multi-user editing
 
 ## Build
+
 ### Build Tinymist WASM
+
 ```sh
 git clone -b tinymist-wasm https://github.com/ParaN3xus/tinymist.git
 cd tinymist-wasm/crates/tinymist
@@ -31,14 +34,16 @@ yarn build
 yarn link
 ```
 
-### Build typst-playground
+### Build tyraria
+
 ```sh
-git clone https://github.com/ParaN3xus/typst-playground/
-cd typst-playground
+git clone https://github.com/ParaN3xus/tyraria/
+cd tyraria
 yarn
 yarn link tinymist
 yarn build
 ```
+
 ## License
 
 This project is licensed under GPLv3.

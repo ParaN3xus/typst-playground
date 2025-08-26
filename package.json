@@ -1,9 +1,9 @@
 {
-  "name": "typst-playground",
+  "name": "tyraria",
   "version": "0.0.0",
   "private": false,
   "main": "src/main.mjs",
-  "repository": "https://github.com/ParaN3xus/typst-playground.git",
+  "repository": "https://github.com/ParaN3xus/tyraria.git",
   "author": "paran3xus <paran3xus007@gmail.com>",
   "license": "GPLv3",
   "type": "module",
@@ -14,7 +14,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "dist:ghpages": "BUILD_PATH=/typst-playground/ vite build && gh-pages -d dist",
+    "dist:ghpages": "BUILD_PATH=/tyraria/ vite build && gh-pages -d dist",
     "dist:cfpages": "BUILD_PATH=/ vite build && npx wrangler pages deploy dist"
   },
   "dependencies": {
