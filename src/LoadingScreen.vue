@@ -1,25 +1,25 @@
 <template>
   <div
-    v-if="!allLoaded"
-    class="fixed inset-0 w-screen h-screen bg-base flex justify-center items-center z-[9999] font-mono"
+    v-if="!allLoaded || true"
+    class="fixed inset-0 w-screen h-screen manual-bg-base flex justify-center items-center z-[9999] font-mono"
   >
     <div class="max-w-2xl w-[90%] text-center">
-      <h2 class="text-2xl mb-8 text-main">Loading Resources...</h2>
+      <h2 class="text-2xl mb-8 manual-text-main">Loading Resources...</h2>
       <div class="flex flex-col gap-4 text-left">
         <div
           v-for="(item, key) in loadingProgress"
           :key="key"
-          class="bg-surface p-4"
+          class="manual-bg-surface p-4"
         >
           <div class="flex justify-between items-center mb-2">
-            <span class="font-bold text-main">{{ item.name }}</span>
-            <span class="opacity-80 text-main">
+            <span class="font-bold manual-text-main">{{ item.name }}</span>
+            <span class="opacity-80 manual-text-main">
               {{ item.loaded ? "Done" : "Loading..." }}
             </span>
           </div>
           <div
             ref="progressContainer"
-            class="text-sm text-main overflow-hidden"
+            class="text-sm manual-text-main overflow-hidden"
           >
             {{ getAsciiProgress(item.progress) }}
           </div>
@@ -120,3 +120,17 @@ onUnmounted(() => {
   }
 });
 </script>
+
+<style>
+.manual-bg-base {
+  background: rgb(24, 24, 24);
+}
+
+.manual-bg-surface {
+  background: rgb(31, 31, 31);
+}
+
+.manual-text-main {
+  color: rgb(204, 204, 204);
+}
+</style>
