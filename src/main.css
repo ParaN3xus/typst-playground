@@ -1,66 +1,9 @@
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
-@layer base {
-  :root {
-    --color-base: 248 248 248;
-    --color-surface: 255 255 255;
-    --color-text: 30 30 30;
-    --color-ghost-btn-hover: 228 228 228;
-    --color-ghost-btn-active: 222 222 222;
-  }
-  [data-theme="dark"] {
-    --color-base: 24 24 24;
-    --color-surface: 31 31 31;
-    --color-text: 204 204 204;
-    --color-ghost-btn-hover: 45 46 46;
-    --color-ghost-btn-active: 48 49 49;
-    --color-primary-btn: 0 120 212;
-    --color-primary-btn-text: 255 255 255;
-    --color-primary-btn-hover: 2 110 193;
-    --color-primary-btn-active: 2 110 193;
-  }
-}
-@layer components {
-  .bg-base {
-    background-color: rgb(var(--color-base));
-  }
 
-  .bg-surface {
-    background-color: rgb(var(--color-surface));
-  }
-
-  .text-main {
-    color: rgb(var(--color-text));
-  }
-
-  .btn-ghost {
-    @apply border-0;
-    background-color: rgb(var(--color-base));
-    color: rgb(var(--color-primary-btn-text));
-  }
-  .btn-ghost:hover {
-    background-color: rgb(var(--color-ghost-btn-hover));
-  }
-  .btn-ghost:active {
-    background-color: rgb(var(--color-ghost-btn-active));
-  }
-
-  .menu-btn {
-    @apply px-3 my-2 rounded-lg h-8 text-sm flex items-center justify-center border-0;
-  }
-
-  .btn {
-    @apply border-0;
-    background-color: rgb(var(--color-primary-btn));
-    color: rgb(var(--color-primary-btn-text));
-  }
-  .btn:hover {
-    background-color: rgb(var(--color-primary-btn-hover));
-  }
-  .btn:active {
-    background-color: rgb(var(--color-primary-btn-active));
-  }
+:root {
+  --vscode-font-size: 13px;
 }
 
 html,
@@ -73,12 +16,30 @@ body {
   font-family: sans-serif;
 }
 
+.bg-base {
+  background-color: var(--vscode-panel-background);
+  border: 1px solid var(--vscode-panel-border);
+}
+
+.bg-surface {
+  background-color: var(--vscode-editor-background);
+}
+
+.text-main {
+  color: var(--vscode-foreground);
+}
+
+.menu-btn-icon {
+  @apply text-lg mx-3 my-1;
+}
+
 .splitpanes {
-  background-color: #2b2b2b;
+  background-color: var(--vscode-panel-background);
 }
 
 .splitpanes__splitter {
   position: relative;
+  border: 0px;
 }
 
 .splitpanes--vertical > .splitpanes__splitter:before {
@@ -111,12 +72,12 @@ body {
 }
 
 .splitpanes--vertical > .splitpanes__splitter {
-  width: 0.5px;
-  min-width: 0.5px;
-  max-width: 0.5px;
+  width: 0px;
+  min-width: 0px;
+  max-width: 0px;
 }
 .splitpanes--horizontal > .splitpanes__splitter {
-  height: 0.5px;
-  min-height: 0.5px;
-  max-height: 0.5px;
+  height: 0px;
+  min-height: 0px;
+  max-height: 0px;
 }

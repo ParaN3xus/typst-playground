@@ -45,6 +45,7 @@
     "@iconify/vue": "^5.0.0",
     "@tailwindcss/vite": "^4.1.12",
     "@vitejs/plugin-vue": "^6.0.1",
+    "@vscode-elements/elements-lite": "^0.4.0",
     "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",

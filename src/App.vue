@@ -10,18 +10,24 @@
       <div class="mx-2 flex">
         <button
           v-if="isMobile"
-          class="menu-btn btn-ghost"
+          class="vscode-action-button my-2"
+          title="Toggle explorer"
           @click="toggleSidebar"
         >
-          <Icon icon="heroicons:archive-box" class="text-lg" />
+          <Icon icon="heroicons:archive-box" class="menu-btn-icon" />
         </button>
-        <button class="menu-btn btn-ghost" @click="handleEmptyClicked">
-          <Icon icon="heroicons:trash" class="text-lg" />
+        <button
+          class="vscode-action-button my-2"
+          title="Empty workspace"
+          @click="handleEmptyClicked"
+        >
+          <Icon icon="heroicons:trash" class="menu-btn-icon" />
         </button>
       </div>
-      <div class="mx-2">
+      <div class="mx-2 flex">
         <button
-          class="menu-btn btn-ghost"
+          class="vscode-action-button my-2"
+          title="Share workspace"
           :class="{ 'opacity-50 cursor-not-allowed': isSharing }"
           :disabled="isSharing"
           @click="handleShareClicked"
@@ -29,9 +35,9 @@
           <Icon
             v-if="!shareButtonText"
             icon="heroicons:share"
-            class="text-lg"
+            class="menu-btn-icon"
           />
-          <span v-else>{{ shareButtonText }}</span>
+          <span v-else class="mx-3 my-1">{{ shareButtonText }}</span>
         </button>
       </div>
     </div>
@@ -62,7 +68,13 @@
               </Splitpanes>
             </Pane>
             <Pane :size="40" min-size="20" max-size="50" class="h-full">
-              <TypstPreview ref="preview" :reader="reader" :writer="writer" />
+              <TypstPreview
+                class="bg-base"
+                ref="preview"
+                :reader="reader"
+                :writer="writer"
+                style="margin-top: -1px"
+              />
             </Pane>
           </Splitpanes>
         </Pane>
@@ -171,6 +183,7 @@ const { open, close } = useModal({
     },
     async onNo() {
       await close();
+      share();
     },
   },
   slots: {
@@ -179,7 +192,7 @@ const { open, close } = useModal({
   },
 });
 const isSharing = ref(false);
-const shareButtonText = ref(null);
+const shareButtonText = ref(false);
 async function handleShareClicked() {
   if (isSharing.value) return;
   try {
@@ -451,3 +464,5 @@ onUnmounted(() => {
   wrapper.dispose();
 });
 </script>
+
+<style></style>
