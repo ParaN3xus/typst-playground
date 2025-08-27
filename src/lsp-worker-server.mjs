@@ -240,10 +240,20 @@ class TinymistServer {
     });
   }
 
+  handleResponse = (res) => {
+    for (const event of this.events.splice(0)) {
+      this.bridge?.on_event(event);
+    }
+    return res;
+  };
+
   initializeBridge() {
     this.bridge = new TinymistLanguageServer({
       sendEvent: (event) => {
         this.events.push(event);
+        queueMicrotask(() => {
+          this.handleResponse(null);
+        });
       },
       sendRequest: ({ id, method, params }) => {
         this.connection
@@ -269,7 +279,6 @@ class TinymistServer {
     console.log("Reading file", path);
 
     try {
-      console.log("file exists, returning", path);
       if (this.vfs.has(path)) {
         const content = this.vfs.get(path).content;
         const base64String = Buffer.from(content).toString("base64");
@@ -284,23 +293,19 @@ class TinymistServer {
       return { content: "" };
     }
 
+    console.info("file doesn't exist");
     return { content: "", exists: false };
   }
 
   setupConnectionHandlers() {
-    const handleResponse = (res) => {
-      for (const event of this.events.splice(0)) {
-        this.bridge?.on_event(event);
-      }
-      return res;
-    };
-
     this.connection.onInitialize((params) =>
-      handleResponse(this.bridge?.on_request(InitializeRequest.method, params))
+      this.handleResponse(
+        this.bridge?.on_request(InitializeRequest.method, params)
+      )
     );
 
     this.connection.onRequest((method, params) => {
-      return handleResponse(this.bridge?.on_request(method, params));
+      return this.handleResponse(this.bridge?.on_request(method, params));
     });
 
     this.connection.onNotification((method, params) => {
@@ -312,7 +317,7 @@ class TinymistServer {
         console.log("worker msg, skipping");
         return;
       }
-      return handleResponse(this.bridge?.on_notification(method, params));
+      return this.handleResponse(this.bridge?.on_notification(method, params));
     });
   }
 }

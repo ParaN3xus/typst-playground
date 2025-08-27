@@ -49,7 +49,9 @@ async function initPreview(path) {
     outerElem
   );
 
+  runLSPCommand("tinymist.doStartPreview", [[path]]);
   await initPreviewInner();
+
   vscode.window.onDidChangeTextEditorSelection(async (e) => {
     if (e.kind != 2) {
       return;
@@ -64,8 +66,6 @@ async function initPreview(path) {
       },
     ]);
   });
-
-  runLSPCommand("tinymist.doStartPreview", [[path]]);
 }
 
 defineExpose({

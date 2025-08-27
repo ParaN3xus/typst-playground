@@ -86,14 +86,4 @@ export class TinymistLSPWorker {
 
     return this._waitWorkerMessageInner(condition, timeout, errorMessage);
   }
-  waitRegisterCapability(timeout = 5000) {
-    const condition = (data) => {
-      return data.method === "client/registerCapability";
-    };
-
-    const errorMessage =
-      "Waiting for client/registerCapability failed: timeout";
-
-    return this._waitWorkerMessageInner(condition, timeout, errorMessage);
-  }
 }

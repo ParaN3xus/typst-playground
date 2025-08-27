@@ -428,11 +428,6 @@ async function startTinymistClient() {
   });
 
   await wrapper.startLanguageClients();
-
-  await worker.waitRegisterCapability();
-  await worker.waitRegisterCapability();
-  await worker.waitRegisterCapability();
-
   await doPreview();
 }
 
