@@ -240,8 +240,9 @@ class TinymistServer {
     });
   }
 
-  handleResponse = (res) => {
-    for (const event of this.events.splice(0)) {
+  handleEvents = (res) => {
+    while (this.events.length > 0) {
+      const event = this.events.shift();
       this.bridge?.on_event(event);
     }
     return res;
@@ -252,7 +253,8 @@ class TinymistServer {
       sendEvent: (event) => {
         this.events.push(event);
         queueMicrotask(() => {
-          this.handleResponse(null);
+          this.handleEvents(null);
+          this.bridge.schedule_async();
         });
       },
       sendRequest: ({ id, method, params }) => {
@@ -299,13 +301,13 @@ class TinymistServer {
 
   setupConnectionHandlers() {
     this.connection.onInitialize((params) =>
-      this.handleResponse(
+      this.handleEvents(
         this.bridge?.on_request(InitializeRequest.method, params)
       )
     );
 
     this.connection.onRequest((method, params) => {
-      return this.handleResponse(this.bridge?.on_request(method, params));
+      return this.handleEvents(this.bridge?.on_request(method, params));
     });
 
     this.connection.onNotification((method, params) => {
@@ -317,7 +319,7 @@ class TinymistServer {
         console.log("worker msg, skipping");
         return;
       }
-      return this.handleResponse(this.bridge?.on_notification(method, params));
+      return this.handleEvents(this.bridge?.on_notification(method, params));
     });
   }
 }
