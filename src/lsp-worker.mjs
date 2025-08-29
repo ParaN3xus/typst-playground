@@ -15,7 +15,7 @@ export class TinymistLSPWorker {
       type: "module",
       name: "Tinymist LS",
     });
-    await this.waitWorkerMessage("serverWorkerInited");
+    await this.waitWorkerMessage("serverWorkerInited", 1000 * 60);
     return this.worker;
   }
   async loadWasm() {
@@ -40,7 +40,7 @@ export class TinymistLSPWorker {
     });
 
     this.sendWorkerMessage("start", null);
-    await this.waitWorkerMessage("serverWorkerReady");
+    await this.waitWorkerMessage("serverWorkerReady", 1000 * 60);
 
     return { reader: this.reader, writer: this.writer };
   }

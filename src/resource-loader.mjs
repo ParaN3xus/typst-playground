@@ -36,8 +36,11 @@ class ResourceLoader {
     this.listeners.forEach((callback) => callback(this.loadingProgress));
   }
 
-  updateProgress(type, progress) {
+  updateProgress(type, progress, error = null) {
     this.loadingProgress[type].progress = progress;
+    if (error) {
+      this.loadingProgress[type].error = error;
+    }
     this.notifyProgress();
   }
 
@@ -76,6 +79,11 @@ class ResourceLoader {
       return loadedFonts;
     } catch (error) {
       console.error("Failed to load fonts:", error);
+      this.updateProgress(
+        "fonts",
+        this.loadingProgress.fonts.progress,
+        error.message
+      );
       throw error;
     }
   }
@@ -93,6 +101,11 @@ class ResourceLoader {
       return true;
     } catch (error) {
       console.error("Failed to load WASM module:", error);
+      this.updateProgress(
+        "wasm",
+        this.loadingProgress.wasm.progress,
+        error.message
+      );
       throw error;
     }
   }
@@ -135,6 +148,11 @@ class ResourceLoader {
       return loadedFiles;
     } catch (error) {
       console.error("Failed to load workspace", error);
+      this.updateProgress(
+        "workspaceFiles",
+        this.loadingProgress.workspaceFiles.progress,
+        error.message
+      );
       throw error;
     }
   }

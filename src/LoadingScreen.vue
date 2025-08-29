@@ -14,7 +14,7 @@
           <div class="flex justify-between items-center mb-2">
             <span class="font-bold manual-text-main">{{ item.name }}</span>
             <span class="opacity-80 manual-text-main">
-              {{ item.loaded ? "Done" : "Loading..." }}
+              {{ item.error ? "Error" : item.loaded ? "Done" : "Loading..." }}
             </span>
           </div>
           <div
@@ -22,6 +22,9 @@
             class="text-sm manual-text-main overflow-hidden"
           >
             {{ getAsciiProgress(item.progress) }}
+          </div>
+          <div v-if="item.error" class="text-red-400 mt-2">
+            Error: {{ item.error }}
           </div>
         </div>
       </div>
