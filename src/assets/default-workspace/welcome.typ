@@ -1,5 +1,4 @@
 #import "@preview/tiaoma:0.3.0"
-#import "typst-guy.typ": typst-guy
 
 // https://github.com/ParaN3xus/typst-snippets/tree/main/welcome
 
@@ -60,7 +59,7 @@
         dy: -230pt,
         rotate(
           -30deg,
-          image(bytes(typst-guy), width: 150pt, format: "svg"),
+          image("typst-guy.svg", width: 150pt, format: "svg"),
         ),
       )
 

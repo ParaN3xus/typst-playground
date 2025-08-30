@@ -1,5 +1,6 @@
 import { Buffer } from "buffer";
-import { defaultWorkspacePath, FileSystemProvider } from "./fs-provider.mts";
+import { FileSystemProvider } from "./fs-provider/fs-provider.mts";
+import { defaultWorkspacePath } from "./fs-provider/path-constants.mts";
 
 // shz.al API base URL
 const PASTEBIN_API = "https://shz.al";

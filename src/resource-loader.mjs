@@ -1,6 +1,6 @@
 import { resolve } from "pathe";
 import { fetchFromPastebin } from "./pastebin";
-import { defaultWorkspacePath } from "./fs-provider.mjs";
+import { defaultWorkspacePath } from "./fs-provider/path-constants.mjs";
 
 class ResourceLoader {
   constructor() {

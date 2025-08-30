@@ -6,11 +6,8 @@ import {
 } from "@codingame/monaco-vscode-files-service-override";
 import { URI } from "@codingame/monaco-vscode-api/vscode/vs/base/common/uri";
 import { Buffer } from "buffer";
-
-export const defaultWorkspacePath = "/workspace";
-export const defaultWorkspaceUri = vscode.Uri.file(defaultWorkspacePath);
-export const defaultEntryFilePath = `${defaultWorkspacePath}/main.typ`;
-export const defaultEntryFileUri = vscode.Uri.file(defaultEntryFilePath);
+import { defaultEntryFilePath } from "./path-constants.mts";
+import { defaultWorkspaceUri } from "./uri-constants.mjs";
 
 export class FileSystemProvider extends InMemoryFileSystemProvider {
   protected textEncoder = new TextEncoder();
@@ -30,7 +27,8 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
 
   async addFileToWorkspace(
     uriString: string,
-    content: Uint8Array<ArrayBuffer>
+    content: Uint8Array<ArrayBuffer>,
+    open?: boolean
   ): Promise<vscode.Uri> {
     const uri = vscode.Uri.file(uriString);
 
@@ -42,7 +40,9 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
       overwrite: true,
     });
 
-    await vscode.workspace.openTextDocument(uri);
+    if (open) {
+      await vscode.workspace.openTextDocument(uri);
+    }
     return uri;
   }
 
@@ -117,7 +117,7 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
           const fileContent = new Uint8Array(
             Buffer.from(base64Content as string, "base64")
           );
-          await this.addFileToWorkspace(filePath, fileContent);
+          await this.addFileToWorkspace(filePath, fileContent, true);
         } catch (error) {
           console.warn(`Failed to restore file ${filePath}:`, error);
         }
@@ -134,7 +134,11 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
       useTrash: false,
       atomic: false,
     });
-    return this.addFileToWorkspace(defaultEntryFilePath, new Uint8Array(0));
+    return this.addFileToWorkspace(
+      defaultEntryFilePath,
+      new Uint8Array(0),
+      true
+    );
   }
 }
 

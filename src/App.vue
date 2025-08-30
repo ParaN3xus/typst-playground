@@ -112,15 +112,17 @@ import tinymistPackage from "./assets/tinymist-assets/package.json";
 
 import TypstPreview from "./typst-preview/TypstPreview.vue";
 import LoadingScreen from "./LoadingScreen.vue";
+import { createFileSystemProvider } from "./fs-provider/fs-provider.mts";
 import {
-  createFileSystemProvider,
   defaultEntryFilePath,
-  defaultEntryFileUri,
   defaultWorkspacePath,
+} from "./fs-provider/path-constants.mjs";
+import {
+  defaultEntryFileUri,
   defaultWorkspaceUri,
-} from "./fs-provider.mts";
+} from "./fs-provider/uri-constants.mjs";
 import resourceLoader from "./resource-loader.mjs";
-import { TinymistLSPWorker } from "./lsp-worker.mjs";
+import { TinymistLS } from "./tinymist-ls/ls.mts";
 import { uploadToPastebin } from "./pastebin";
 import { AutoSaveConfiguration } from "@codingame/monaco-vscode-api/vscode/vs/platform/files/common/files";
 
@@ -395,7 +397,8 @@ async function loadWorkspace(fileSystemProvider) {
   for (const workspaceFile of resourceLoader.getWorkspaceFiles()) {
     let doc = await fileSystemProvider.addFileToWorkspace(
       resolve(defaultWorkspacePath, workspaceFile.path),
-      workspaceFile.data
+      workspaceFile.data,
+      false
     );
     if (workspaceFile.path === defaultEntryFilePath) {
       res = doc;
@@ -419,15 +422,19 @@ async function startTinymistClient() {
 
   wrapper = new MonacoEditorLanguageClientWrapper();
   fileSystemProvider = await createFileSystemProvider();
+  worker.fsProvider = fileSystemProvider;
 
   await wrapper.init(config);
+
+  await wrapper.startLanguageClients();
+  worker.lsClient = wrapper.getLanguageClient("typst");
+  await worker.initWatcher();
 
   let defaultDocument = await loadWorkspace(fileSystemProvider);
   await vscode.window.showTextDocument(defaultDocument, {
     preserveFocus: true,
   });
 
-  await wrapper.startLanguageClients();
   await doPreview();
 }
 
@@ -443,7 +450,7 @@ onMounted(async () => {
   checkMobile();
   window.addEventListener("resize", checkMobile);
   window.addEventListener("beforeunload", handleBeforeUnload);
-  worker = new TinymistLSPWorker();
+  worker = new TinymistLS();
   worker.startWorker();
   try {
     await resourceLoader.loadAll(worker, code);
