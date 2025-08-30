@@ -28,9 +28,10 @@ Try it now: https://tyraria.typs.town/
 
 ```sh
 git clone -b tinymist-wasm https://github.com/ParaN3xus/tinymist.git
-cd tinymist-wasm/crates/tinymist
+cd tinymist/crates/tinymist
 yarn
 yarn build
+cd pkg
 yarn link
 ```
 
