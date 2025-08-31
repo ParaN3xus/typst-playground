@@ -87,7 +87,11 @@ export default defineConfig({
   },
   server: {
     fs: {
-      allow: [".", "../../rust/tinymist/crates/tinymist/pkg/"],
+      allow: [
+        ".",
+        "../tinymist/crates/tinymist/pkg/",
+        "../../rust/tinymist/crates/tinymist/pkg/",
+      ],
     },
   },
 });
