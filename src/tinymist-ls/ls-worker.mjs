@@ -78,7 +78,7 @@ class TinymistServer {
       );
       sendWorkerMessage("WASMLoaded", null);
     } catch (e) {
-      console.err(e);
+      console.error(e);
     }
   }
 
