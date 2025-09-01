@@ -107,6 +107,7 @@ import {
 import getKeybindingsServiceOverride from "@codingame/monaco-vscode-keybindings-service-override";
 import getMarkersServiceOverride from "@codingame/monaco-vscode-markers-service-override";
 import getExplorerServiceOverride from "@codingame/monaco-vscode-explorer-service-override";
+import getThemeServiceOverride from "@codingame/monaco-vscode-theme-service-override";
 
 import tinymistPackage from "./assets/tinymist-assets/package.json";
 
@@ -287,6 +288,7 @@ async function getClientConfig() {
         ...getKeybindingsServiceOverride(),
         ...getExplorerServiceOverride(),
         ...getMarkersServiceOverride(),
+        ...getThemeServiceOverride(),
       },
       userConfiguration: {
         json: JSON.stringify({

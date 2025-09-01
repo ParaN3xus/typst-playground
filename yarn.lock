@@ -1186,7 +1186,7 @@
   resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-ff9fa663-eae3-5274-8573-c2b918871e4b-common/-/monaco-vscode-ff9fa663-eae3-5274-8573-c2b918871e4b-common-20.1.1.tgz#065b729a18ab917606cc89c4e28a77744971293c"
   integrity sha512-JIo4TwK0jroW3FFNdfNtkcDM+1S/FS8q2k2Wgv7dx5iKmRIIDNPeXKJYe4rAaYRs+sOwCJR7dawBf3H7iJM6rA==
 
-"@codingame/monaco-vscode-files-service-override@20.1.1":
+"@codingame/monaco-vscode-files-service-override@20.1.1", "@codingame/monaco-vscode-files-service-override@~20.1.1":
   version "20.1.1"
   resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-files-service-override/-/monaco-vscode-files-service-override-20.1.1.tgz#0c192c321a2be2dd566e7375dd6dfe8279a21602"
   integrity sha512-pOhn4DfATQiHs22tTb9Y+MmLA3ZKfHffrtqNzJ4R5+p2VoZgP2X4Z9nX/vGze3lQcoWuuIyGjcMcjsKY8lp+LA==
