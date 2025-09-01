@@ -14,7 +14,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "dist": "BUILD_PATH=/ vite build && npx wrangler pages deploy dist"
+    "dist": "BUILD_PATH=/ vite build && npx wrangler pages deploy dist --project-name tyraria"
   },
   "dependencies": {
     "@codingame/monaco-vscode-api": "~20.1.1",
