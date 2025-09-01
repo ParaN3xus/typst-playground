@@ -85,13 +85,4 @@ export default defineConfig({
     plugins: () => [assetsLoader()],
     format: "es",
   },
-  server: {
-    fs: {
-      allow: [
-        ".",
-        "../tinymist/crates/tinymist/pkg/",
-        "../../rust/tinymist/crates/tinymist/pkg/",
-      ],
-    },
-  },
 });
