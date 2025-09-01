@@ -14,8 +14,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "dist:ghpages": "BUILD_PATH=/tyraria/ vite build && gh-pages -d dist",
-    "dist:cfpages": "BUILD_PATH=/ vite build && npx wrangler pages deploy dist"
+    "dist": "BUILD_PATH=/ vite build && npx wrangler pages deploy dist"
   },
   "dependencies": {
     "@codingame/monaco-vscode-api": "~20.1.1",
@@ -53,7 +52,6 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-vue": "^10.4.0",
-    "gh-pages": "^6.3.0",
     "globals": "^16.3.0",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2",
