@@ -115,6 +115,7 @@ import LoadingScreen from "./LoadingScreen.vue";
 import { createFileSystemProvider } from "./fs-provider/fs-provider.mts";
 import {
   defaultEntryFilePath,
+  defaultHiddenFolderName,
   defaultWorkspacePath,
 } from "./fs-provider/path-constants.mjs";
 import {
@@ -297,6 +298,9 @@ async function getClientConfig() {
           "vitest.disableWorkspaceWarning": true,
           "editor.codeLens": false,
           "files.autoSave": AutoSaveConfiguration.OFF,
+          "files.exclude": {
+            [defaultHiddenFolderName]: true,
+          },
         }),
       },
       viewsConfig: {
@@ -400,6 +404,7 @@ async function loadWorkspace(fileSystemProvider) {
       workspaceFile.data,
       false
     );
+    console.log(`workspace: loaded ${workspaceFile.path} to workspace`);
     if (workspaceFile.path === defaultEntryFilePath) {
       res = doc;
     }

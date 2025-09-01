@@ -6,7 +6,7 @@ import {
 } from "@codingame/monaco-vscode-files-service-override";
 import { URI } from "@codingame/monaco-vscode-api/vscode/vs/base/common/uri";
 import { Buffer } from "buffer";
-import { defaultEntryFilePath } from "./path-constants.mts";
+import { defaultEntryFilePath, defaultHiddenPath } from "./path-constants.mts";
 import { defaultWorkspaceUri } from "./uri-constants.mjs";
 
 export class FileSystemProvider extends InMemoryFileSystemProvider {
@@ -97,6 +97,9 @@ export class FileSystemProvider extends InMemoryFileSystemProvider {
             console.warn(`Failed to read file ${fullPath}:`, error);
           }
         } else if (type === FileType.Directory) {
+          if (fullPath === defaultHiddenPath) {
+            continue;
+          }
           await this.readDirectoryRecursively(fullPath, files);
         }
       }

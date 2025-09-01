@@ -39,6 +39,7 @@ export class TinymistLS {
     return resolvePromise;
   }
   async _doResolvePackage(url: string, packageRoot: string) {
+    console.log(`Downloading from: ${url}`);
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

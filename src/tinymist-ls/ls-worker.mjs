@@ -84,6 +84,7 @@ class TinymistServer {
 
   initializePackageRegistry() {
     this.resolvePackage = (spec) => {
+      console.log("resolving package", spec);
       const packageRoot = `${defaultPackagePath}/${spec.namespace}/${spec.name}/${spec.version}`;
       const url = `https://packages.typst.org/${spec.namespace}/${spec.name}-${spec.version}.tar.gz`;
 
