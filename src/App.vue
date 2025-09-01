@@ -46,7 +46,7 @@
       <Splitpanes :maximize-panes="false">
         <Pane
           :size="isSidebarOpen ? (isMobile ? 50 : 20) : 0"
-          :min-size="isMobile ? 0 : 15"
+          :min-size="isMobile ? (isSidebarOpen ? 10 : 0) : 15"
           :max-size="isSidebarOpen ? 50 : 0"
         >
           <div ref="sidebarContainer" class="h-full"></div>
