@@ -1,19 +1,4 @@
 /*.otf.br
   Content-Type: font/otf
   Content-Encoding: br
-  Cache-Control: public, max-age=31536000
-
-/*.ttf.br
-  Content-Type: font/ttf
-  Content-Encoding: br
-  Cache-Control: public, max-age=31536000
-
-/*.otc.br
-  Content-Type: font/otc
-  Content-Encoding: br
-  Cache-Control: public, max-age=31536000
-
-/*.ttc.br
-  Content-Type: font/ttc
-  Content-Encoding: br
-  Cache-Control: public, max-age=31536000
+  Cache-Control: no-transform, public, max-age=31536000
