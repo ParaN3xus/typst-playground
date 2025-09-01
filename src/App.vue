@@ -6,7 +6,7 @@
       <button @click="doPreview">do preview</button>
       <button @click="printMain">print main</button>
     </div>
-    <div class="flex justify-between bg-base">
+    <div class="flex justify-between !border-x-0 bg-base">
       <div class="mx-2 flex">
         <button
           v-if="isMobile"
