@@ -297,8 +297,9 @@ async function getClientConfig() {
           "editor.guides.bracketPairsHorizontal": "active",
           "editor.wordBasedSuggestions": "off",
           "editor.experimental.asyncTokenization": false,
-          "vitest.disableWorkspaceWarning": true,
           "editor.codeLens": false,
+          "editor.formatOnSave": true,
+          "vitest.disableWorkspaceWarning": true,
           "files.autoSave": AutoSaveConfiguration.OFF,
           "files.exclude": {
             [defaultHiddenFolderName]: true,
