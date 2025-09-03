@@ -103,7 +103,7 @@ class TinymistServer {
     this.connection = createConnection(reader, writer);
 
     reader.listen((message) => {
-      console.log("Editor -> LSP:", message);
+      console.debug("Editor -> LSP:", message);
     });
   }
 
@@ -156,7 +156,7 @@ class TinymistServer {
 
     this.connection.onNotification((method, params) => {
       if (method === "workspace/didChangeConfiguration") {
-        console.log("skipping");
+        console.log("didChangeCOnfiguration, skipping");
         return;
       }
       if (method === "worker") {

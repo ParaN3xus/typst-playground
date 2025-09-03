@@ -17,7 +17,7 @@ Current Status:
 - [ ] Load fonts from workspace
 - [ ] Optimize startup speed
 - [ ] Clean up redundant logs
-- [ ] Eliminate tinymist compilation warnings
+- [x] Eliminate tinymist compilation warnings
 - [ ] Merge changes into tinymist mainline
 - [ ] Automated build
 - [x] Save workspace to pastebin and load workspace from pastebin

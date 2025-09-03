@@ -249,7 +249,7 @@ export function usePreviewComponent(
       if (isTypstPreviewMessage(message)) {
         const { content } = message.params;
 
-        console.log("Preview -> Webview:", content);
+        console.debug("Preview -> Webview:", content);
 
         let data: ArrayBuffer;
         if (content.format === "binary") {

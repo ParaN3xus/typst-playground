@@ -37,7 +37,7 @@ export async function sendWebSocketMessage(
           data: Buffer.from(data).toString("base64"),
         };
 
-  console.log("Webview -> Preview:", content);
+  console.debug("Webview -> Preview:", content);
   const msg: TypstPreviewMessage = {
     jsonrpc: "2.0",
     method: "typst-preview",

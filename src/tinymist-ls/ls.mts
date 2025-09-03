@@ -83,7 +83,7 @@ export class TinymistLS {
         console.log("[Tinymist WASM Log]", message.params.data);
         return;
       }
-      console.log("LSP -> Editor:", message);
+      console.debug("LSP -> Editor:", message);
     });
 
     this.reader.listen(async (message) => {
@@ -172,17 +172,17 @@ export class TinymistLS {
 
       this.watcher?.onDidChange((uri) => {
         const currentClock = watchClock++;
-        console.log("fs change", uri, currentClock);
+        console.debug("fs change", uri, currentClock);
         watchRead(currentClock, uri);
       });
       this.watcher?.onDidCreate((uri) => {
         const currentClock = watchClock++;
-        console.log("fs create", uri, currentClock);
+        console.debug("fs create", uri, currentClock);
         watchRead(currentClock, uri);
       });
       this.watcher?.onDidDelete((uri) => {
         const currentClock = watchClock++;
-        console.log("fs delete", uri, currentClock);
+        console.debug("fs delete", uri, currentClock);
         watchRead(currentClock, uri);
       });
 
