@@ -1,4 +1,5 @@
-// from myriad-dreamin/typst/tools/typst-dom
+// from myriad-dreamin/typst/tools/typst-dom, licensed under Apache 2.0
+// originally from enter-tainer/typst-preview/addons/typst-dom, licensed under MIT
 
 export * from "./typst-doc.mjs";
 import { provideSvgDoc } from "./typst-doc.svg.mjs";
