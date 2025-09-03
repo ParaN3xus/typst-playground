@@ -161,6 +161,8 @@ const writer = ref(null);
 let wrapper = null;
 let fileSystemProvider = null;
 
+let isWorkspaceChanged = false;
+
 async function printMain() {
   const decoder = new TextDecoder("utf-8");
   console.log(
@@ -170,6 +172,12 @@ async function printMain() {
 
 async function doPreview() {
   preview.value.initPreview(defaultEntryFilePath);
+}
+
+function isDirty() {
+  return vscode.window.tabGroups.all.some((group) =>
+    group.tabs.some((tab) => tab.isDirty)
+  );
 }
 
 import YesOrNoModal from "./Modals/YesOrNoModal.vue";
@@ -200,11 +208,7 @@ const shareButtonText = ref(false);
 async function handleShareClicked() {
   if (isSharing.value) return;
   try {
-    if (
-      vscode.window.tabGroups.all.some((group) =>
-        group.tabs.some((tab) => tab.isDirty)
-      )
-    ) {
+    if (isDirty()) {
       await open();
       return;
     }
@@ -439,6 +443,8 @@ async function startTinymistClient() {
   await worker.initWatcher();
 
   let defaultDocument = await loadWorkspace(fileSystemProvider);
+  initWorkspaceChangesListener();
+
   await vscode.window.showTextDocument(defaultDocument, {
     preserveFocus: true,
   });
@@ -447,9 +453,29 @@ async function startTinymistClient() {
 }
 
 function handleBeforeUnload(event) {
-  event.preventDefault();
-  event.returnValue = "";
-  return "Are you sure to leave? You changes won't be saved.";
+  console.warn("isDirty", isDirty(), "isChanged", isWorkspaceChanged);
+  if (isDirty() || isWorkspaceChanged) {
+    event.preventDefault();
+    event.returnValue = "";
+    return "Are you sure to leave? You changes won't be saved.";
+  }
+}
+
+function initWorkspaceChangesListener() {
+  let disposables = [];
+  const eventTypes = [
+    vscode.workspace.onDidChangeWorkspaceFolders,
+    vscode.workspace.onDidCreateFiles,
+    vscode.workspace.onDidDeleteFiles,
+    vscode.workspace.onDidRenameFiles,
+    vscode.workspace.onDidSaveTextDocument,
+  ];
+  disposables = eventTypes.map((eventType) =>
+    eventType(() => {
+      isWorkspaceChanged = true;
+      disposables.forEach((disposable) => disposable.dispose());
+    })
+  );
 }
 
 const urlParams = new URLSearchParams(window.location.search);
