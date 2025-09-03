@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import {
   FileType,
+  IFileChange,
   InMemoryFileSystemProvider,
   registerFileSystemOverlay,
 } from "@codingame/monaco-vscode-files-service-override";
@@ -11,9 +12,37 @@ import { defaultWorkspaceUri } from "./uri-constants.mjs";
 
 export class FileSystemProvider extends InMemoryFileSystemProvider {
   protected textEncoder = new TextEncoder();
+  private _isChanged: boolean = false;
 
   constructor() {
     super();
+    this.initChangedListner()
+  }
+
+  initChangedListner() {
+    this.onDidChangeFile((changes: readonly IFileChange[]) => {
+      const validChanges = changes.filter(change => {
+        const notInHiddenPath = !change.resource.path.startsWith(defaultHiddenPath);
+        const isValidChange = change.type !== undefined && change.resource !== undefined;
+        
+        const res = notInHiddenPath && isValidChange;
+        if (res) {
+          console.warn(change)
+        }
+        return res;
+      });
+      
+      if (validChanges.length > 0) {
+        this._isChanged = true;
+      }
+    });
+  }
+  clearChanged() {
+    console.warn("cleared")
+    this._isChanged = false;
+  }
+  isChanged(): boolean {
+    return this._isChanged;
   }
 
   async fileExists(uri: vscode.Uri) {

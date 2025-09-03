@@ -8,35 +8,17 @@
     </div>
     <div class="flex justify-between !border-x-0 bg-base">
       <div class="mx-2 flex">
-        <button
-          v-if="isMobile"
-          class="vscode-action-button my-2"
-          title="Toggle explorer"
-          @click="toggleSidebar"
-        >
+        <button v-if="isMobile" class="vscode-action-button my-2" title="Toggle explorer" @click="toggleSidebar">
           <Icon icon="heroicons:archive-box" class="menu-btn-icon" />
         </button>
-        <button
-          class="vscode-action-button my-2"
-          title="Empty workspace"
-          @click="handleEmptyClicked"
-        >
+        <button class="vscode-action-button my-2" title="Empty workspace" @click="handleEmptyClicked">
           <Icon icon="heroicons:trash" class="menu-btn-icon" />
         </button>
       </div>
       <div class="mx-2 flex">
-        <button
-          class="vscode-action-button my-2"
-          title="Share workspace"
-          :class="{ 'opacity-50 cursor-not-allowed': isSharing }"
-          :disabled="isSharing"
-          @click="handleShareClicked"
-        >
-          <Icon
-            v-if="!shareButtonText"
-            icon="heroicons:share"
-            class="menu-btn-icon"
-          />
+        <button class="vscode-action-button my-2" title="Share workspace"
+          :class="{ 'opacity-50 cursor-not-allowed': isSharing }" :disabled="isSharing" @click="handleShareClicked">
+          <Icon v-if="!shareButtonText" icon="heroicons:share" class="menu-btn-icon" />
           <span v-else class="mx-3 my-1">{{ shareButtonText }}</span>
         </button>
       </div>
@@ -44,11 +26,8 @@
 
     <div class="flex-1 min-h-0">
       <Splitpanes :maximize-panes="false">
-        <Pane
-          :size="isSidebarOpen ? (isMobile ? 50 : 20) : 0"
-          :min-size="isMobile ? (isSidebarOpen ? 10 : 0) : 15"
-          :max-size="isSidebarOpen ? 50 : 0"
-        >
+        <Pane :size="isSidebarOpen ? (isMobile ? 50 : 20) : 0" :min-size="isMobile ? (isSidebarOpen ? 10 : 0) : 15"
+          :max-size="isSidebarOpen ? 50 : 0">
           <div ref="sidebarContainer" class="h-full"></div>
         </Pane>
         <Pane :size="isSidebarOpen ? 80 : 100" min-size="15">
@@ -58,23 +37,13 @@
                 <Pane :size="isMobile ? 100 : 65" min-size="30">
                   <div ref="editorsContainer" class="h-full"></div>
                 </Pane>
-                <Pane
-                  :size="35"
-                  :min-size="isMobile ? 0 : 20"
-                  :max-size="isMobile ? 0 : 50"
-                >
+                <Pane :size="35" :min-size="isMobile ? 0 : 20" :max-size="isMobile ? 0 : 50">
                   <div ref="panelContainer" class="h-full"></div>
                 </Pane>
               </Splitpanes>
             </Pane>
             <Pane :size="40" min-size="20" max-size="50" class="h-full">
-              <TypstPreview
-                class="bg-base"
-                ref="preview"
-                :reader="reader"
-                :writer="writer"
-                style="margin-top: -1px"
-              />
+              <TypstPreview class="bg-base" ref="preview" :reader="reader" :writer="writer" style="margin-top: -1px" />
             </Pane>
           </Splitpanes>
         </Pane>
@@ -172,6 +141,12 @@ async function doPreview() {
   preview.value.initPreview(defaultEntryFilePath);
 }
 
+function isDirty() {
+  return vscode.window.tabGroups.all.some((group) =>
+    group.tabs.some((tab) => tab.isDirty)
+  )
+}
+
 import YesOrNoModal from "./Modals/YesOrNoModal.vue";
 const { open, close } = useModal({
   component: YesOrNoModal,
@@ -200,11 +175,7 @@ const shareButtonText = ref(false);
 async function handleShareClicked() {
   if (isSharing.value) return;
   try {
-    if (
-      vscode.window.tabGroups.all.some((group) =>
-        group.tabs.some((tab) => tab.isDirty)
-      )
-    ) {
+    if (isDirty()) {
       await open();
       return;
     }
@@ -439,6 +410,8 @@ async function startTinymistClient() {
   await worker.initWatcher();
 
   let defaultDocument = await loadWorkspace(fileSystemProvider);
+  await new Promise(resolve => setTimeout(resolve, 0));
+  fileSystemProvider.clearChanged();
   await vscode.window.showTextDocument(defaultDocument, {
     preserveFocus: true,
   });
@@ -447,9 +420,12 @@ async function startTinymistClient() {
 }
 
 function handleBeforeUnload(event) {
-  event.preventDefault();
-  event.returnValue = "";
-  return "Are you sure to leave? You changes won't be saved.";
+  console.warn("isDirty", isDirty(), "isChanged", worker.fsProvider.isChanged())
+  if (isDirty() || worker.fsProvider.isChanged()) {
+    event.preventDefault();
+    event.returnValue = "";
+    return "Are you sure to leave? You changes won't be saved.";
+  }
 }
 
 const urlParams = new URLSearchParams(window.location.search);
