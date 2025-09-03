@@ -16,7 +16,7 @@ Current Status:
 - [x] typst-preview componentization
 - [ ] Load fonts from workspace
 - [ ] Optimize startup speed
-- [ ] Clean up redundant logs
+- [x] Clean up redundant logs
 - [x] Eliminate tinymist compilation warnings
 - [ ] Merge changes into tinymist mainline
 - [ ] Automated build
@@ -36,8 +36,8 @@ Current Status:
 - [x] typst-preview 组件化
 - [ ] 从 workspace 加载字体
 - [ ] 优化启动速度
-- [ ] 多余日志清理
-- [ ] tinymist 编译警告消除
+- [x] 多余日志清理
+- [x] tinymist 编译警告消除
 - [ ] 将更改合入 tinymist 主线
 - [ ] 自动化构建
 - [x] 将 workspace 保存至 pastebin 及从 pastebin 加载 workspace

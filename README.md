@@ -15,8 +15,8 @@ Try it now: https://tyraria.typs.town/
 - [x] typst-preview componentization
 - [ ] Load fonts from workspace
 - [ ] Optimize startup speed
-- [ ] Clean up redundant logs
-- [ ] Eliminate tinymist compilation warnings
+- [x] Clean up redundant logs
+- [x] Eliminate tinymist compilation warnings
 - [ ] Merge changes into tinymist mainline
 - [ ] Automated build
 - [x] Save workspace to pastebin and load workspace from pastebin
