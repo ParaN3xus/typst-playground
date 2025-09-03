@@ -7,7 +7,7 @@ Try it now: https://tyraria.typs.town/
 > [!NOTE]
 > It takes time to load fonts on your first visit.
 
-## Current Status:
+## TODO
 
 - [x] Monaco Editor basic editing functionality
 - [x] tinymist LSP language service
@@ -45,6 +45,15 @@ yarn link tinymist
 yarn build
 ```
 
+## Acknowledgements
+- [Tinymist](https://github.com/Myriad-Dreamin/tinymist): Tinymist provides typst language services
+- [typst.ts](https://github.com/Myriad-Dreamin/typst.ts): typst.ts provides incremental SVG rendering
+- [typst-preview](https://github.com/Enter-tainer/typst-preview): The live preview feature of tinymist originally derived from typst-preview
+
 ## License
 
 This project is licensed under GPLv3.
+
+## Legal
+
+This project is not affiliated with, created by, or endorsed by Typst the brand.
