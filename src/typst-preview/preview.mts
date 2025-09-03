@@ -1,4 +1,5 @@
-// mostly from myriad-dreamin/tinymist/tools/typst-preview-frontend/ws.ts
+// mostly from myriad-dreamin/tinymist/tools/typst-preview-frontend/ws.ts, licensed under Apache 2.0
+// originally from enter-tainer/typst-preview/addons/frontend/src/ws.ts, licensed under MIT
 
 import { PreviewMode } from "../typst-dom/typst-doc.mjs";
 import {
