@@ -245,6 +245,7 @@ async function handleEmptyClicked() {
   if (
     confirm(`Are you sure to empty current workspace? This cannot be reverted.`)
   ) {
+    await vscode.commands.executeCommand("workbench.action.files.saveAll");
     await fileSystemProvider.empty();
   }
 }
