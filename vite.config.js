@@ -18,7 +18,7 @@ export default defineConfig({
     tailwindcss(),
     compression({
       threshold: 1024 * 1024,
-      include: /\.(html|xml|css|js|mjs|wasm|json|svg|otf|ttf|otc|ttc)$/,
+      include: /\.(html|xml|css|js|mjs|json|svg|otf|ttf|otc|ttc)$/,
       algorithm: [
         defineAlgorithm("brotliCompress", {
           params: {
