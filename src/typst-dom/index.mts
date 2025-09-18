@@ -2,8 +2,9 @@
 // originally from enter-tainer/typst-preview/addons/typst-dom, licensed under MIT
 
 export * from "./typst-doc.mjs";
+
+import { composeDoc, provideDoc, TypstDocumentContext } from "./typst-doc.mjs";
 import { provideSvgDoc } from "./typst-doc.svg.mjs";
-import { TypstDocumentContext, composeDoc, provideDoc } from "./typst-doc.mjs";
 
 // export class TypstDocument extends provideDoc(
 //   provideCanvasDoc(TypstDocumentContext)
@@ -23,5 +24,5 @@ import { TypstDocumentContext, composeDoc, provideDoc } from "./typst-doc.mjs";
  * ) {}
  */
 export class TypstDocument extends provideDoc(
-  composeDoc(TypstDocumentContext, provideSvgDoc)
+	composeDoc(TypstDocumentContext, provideSvgDoc),
 ) {}

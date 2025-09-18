@@ -2,12 +2,12 @@
 import { VueFinalModal } from "vue-final-modal";
 
 defineProps<{
-  title?: string;
+	title?: string;
 }>();
 
 const emit = defineEmits<{
-  (e: "yes"): void;
-  (e: "no"): void;
+	(e: "yes"): void;
+	(e: "no"): void;
 }>();
 </script>
 

@@ -84,68 +84,63 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import { resolve } from "pathe";
-
 import { Icon } from "@iconify/vue";
-import { Splitpanes, Pane } from "splitpanes";
+import { resolve } from "pathe";
+import { Pane, Splitpanes } from "splitpanes";
+import { onMounted, onUnmounted, ref } from "vue";
 import "splitpanes/dist/splitpanes.css";
 
-import * as vscode from "vscode";
 import { LogLevel } from "@codingame/monaco-vscode-api";
-
 import { MonacoEditorLanguageClientWrapper } from "monaco-editor-wrapper";
 import { configureDefaultWorkerFactory } from "monaco-editor-wrapper/workers/workerLoaders";
+import * as vscode from "vscode";
 
 import "@codingame/monaco-vscode-theme-defaults-default-extension";
 
-import {
-  Parts,
-  attachPart,
-  onDidChangeSideBarPosition,
-} from "@codingame/monaco-vscode-views-service-override";
+import { AutoSaveConfiguration } from "@codingame/monaco-vscode-api/vscode/vs/platform/files/common/files";
+import getExplorerServiceOverride from "@codingame/monaco-vscode-explorer-service-override";
 import getKeybindingsServiceOverride from "@codingame/monaco-vscode-keybindings-service-override";
 import getMarkersServiceOverride from "@codingame/monaco-vscode-markers-service-override";
-import getExplorerServiceOverride from "@codingame/monaco-vscode-explorer-service-override";
 import getThemeServiceOverride from "@codingame/monaco-vscode-theme-service-override";
-
+import {
+	attachPart,
+	onDidChangeSideBarPosition,
+	Parts,
+} from "@codingame/monaco-vscode-views-service-override";
+import { ModalsContainer, useModal } from "vue-final-modal";
 import tinymistPackage from "./assets/tinymist-assets/package.json";
-
-import TypstPreview from "./typst-preview/TypstPreview.vue";
-import LoadingScreen from "./LoadingScreen.vue";
 import { createFileSystemProvider } from "./fs-provider/fs-provider.mts";
 import {
-  defaultEntryFilePath,
-  defaultHiddenFolderName,
-  defaultWorkspacePath,
+	defaultEntryFilePath,
+	defaultHiddenFolderName,
+	defaultWorkspacePath,
 } from "./fs-provider/path-constants.mjs";
 import {
-  defaultEntryFileUri,
-  defaultWorkspaceUri,
+	defaultEntryFileUri,
+	defaultWorkspaceUri,
 } from "./fs-provider/uri-constants.mjs";
+import LoadingScreen from "./LoadingScreen.vue";
+import { uploadToPastebin } from "./pastebin";
 import resourceLoader from "./resource-loader.mjs";
 import { TinymistLS } from "./tinymist-ls/ls.mts";
-import { uploadToPastebin } from "./pastebin";
-import { AutoSaveConfiguration } from "@codingame/monaco-vscode-api/vscode/vs/platform/files/common/files";
-
-import { ModalsContainer, useModal } from "vue-final-modal";
+import TypstPreview from "./typst-preview/TypstPreview.vue";
 import "vue-final-modal/style.css";
 
 const isMobile = ref(false);
 const isSidebarOpen = ref(true);
 const toggleSidebar = () => {
-  isSidebarOpen.value = !isSidebarOpen.value;
+	isSidebarOpen.value = !isSidebarOpen.value;
 };
 
 const checkMobile = () => {
-  const before = isMobile.value;
-  const after = window.innerWidth < 768;
-  if (!before && after) {
-    isSidebarOpen.value = false;
-  } else if (before && !after) {
-    isSidebarOpen.value = true;
-  }
-  isMobile.value = after;
+	const before = isMobile.value;
+	const after = window.innerWidth < 768;
+	if (!before && after) {
+		isSidebarOpen.value = false;
+	} else if (before && !after) {
+		isSidebarOpen.value = true;
+	}
+	isMobile.value = after;
 };
 
 const sidebarContainer = ref(null);
@@ -164,341 +159,342 @@ let fileSystemProvider = null;
 let isWorkspaceChanged = false;
 
 async function printMain() {
-  const decoder = new TextDecoder("utf-8");
-  console.log(
-    decoder.decode(await fileSystemProvider.readFile(defaultEntryFileUri))
-  );
+	const decoder = new TextDecoder("utf-8");
+	console.log(
+		decoder.decode(await fileSystemProvider.readFile(defaultEntryFileUri)),
+	);
 }
 
 async function doPreview() {
-  preview.value.initPreview(defaultEntryFilePath);
+	preview.value.initPreview(defaultEntryFilePath);
 }
 
 function isDirty() {
-  return vscode.window.tabGroups.all.some((group) =>
-    group.tabs.some((tab) => tab.isDirty)
-  );
+	return vscode.window.tabGroups.all.some((group) =>
+		group.tabs.some((tab) => tab.isDirty),
+	);
 }
 
 import YesOrNoModal from "./Modals/YesOrNoModal.vue";
+
 const { open, close } = useModal({
-  component: YesOrNoModal,
-  attrs: {
-    title: "Unsaved Changes",
-    async onYes() {
-      await close();
+	component: YesOrNoModal,
+	attrs: {
+		title: "Unsaved Changes",
+		async onYes() {
+			await close();
 
-      // save all
-      await vscode.commands.executeCommand("workbench.action.files.saveAll");
+			// save all
+			await vscode.commands.executeCommand("workbench.action.files.saveAll");
 
-      share();
-    },
-    async onNo() {
-      await close();
-      share();
-    },
-  },
-  slots: {
-    default:
-      "<p>You have unsaved changes. Do you want to save them before sharing?</p>",
-  },
+			share();
+		},
+		async onNo() {
+			await close();
+			share();
+		},
+	},
+	slots: {
+		default:
+			"<p>You have unsaved changes. Do you want to save them before sharing?</p>",
+	},
 });
 const isSharing = ref(false);
 const shareButtonText = ref(false);
 async function handleShareClicked() {
-  if (isSharing.value) return;
-  try {
-    if (isDirty()) {
-      await open();
-      return;
-    }
+	if (isSharing.value) return;
+	try {
+		if (isDirty()) {
+			await open();
+			return;
+		}
 
-    await share();
-  } catch (error) {
-    console.error("Share failed:", error);
+		await share();
+	} catch (error) {
+		console.error("Share failed:", error);
 
-    shareButtonText.value = "Failed";
-    setTimeout(() => {
-      isSharing.value = false;
-      shareButtonText.value = null;
-    }, 2000);
-  }
+		shareButtonText.value = "Failed";
+		setTimeout(() => {
+			isSharing.value = false;
+			shareButtonText.value = null;
+		}, 2000);
+	}
 }
 async function share() {
-  isSharing.value = true;
-  shareButtonText.value = "Sharing...";
+	isSharing.value = true;
+	shareButtonText.value = "Sharing...";
 
-  let code = await uploadToPastebin(fileSystemProvider);
+	let code = await uploadToPastebin(fileSystemProvider);
 
-  const shareUrl = `${window.location.origin}${window.location.pathname}?code=${code}`;
-  await navigator.clipboard.writeText(shareUrl);
+	const shareUrl = `${window.location.origin}${window.location.pathname}?code=${code}`;
+	await navigator.clipboard.writeText(shareUrl);
 
-  shareButtonText.value = "URL Copied!";
+	shareButtonText.value = "URL Copied!";
 
-  setTimeout(() => {
-    isSharing.value = false;
-    shareButtonText.value = null;
-  }, 2000);
+	setTimeout(() => {
+		isSharing.value = false;
+		shareButtonText.value = null;
+	}, 2000);
 }
 
 async function handleEmptyClicked() {
-  if (
-    confirm(`Are you sure to empty current workspace? This cannot be reverted.`)
-  ) {
-    await vscode.commands.executeCommand("workbench.action.files.saveAll");
-    await fileSystemProvider.empty();
-  }
+	if (
+		confirm(`Are you sure to empty current workspace? This cannot be reverted.`)
+	) {
+		await vscode.commands.executeCommand("workbench.action.files.saveAll");
+		await fileSystemProvider.empty();
+	}
 }
 
 async function loadExtensionAssets() {
-  const assetMap = {
-    "./syntaxes/language-configuration.json": () =>
-      import(
-        "./assets/tinymist-assets/syntaxes/language-configuration.json?raw"
-      ),
-    "./syntaxes/typst-markdown-injection.json": () =>
-      import(
-        "./assets/tinymist-assets/syntaxes/typst-markdown-injection.json?raw"
-      ),
-    "./out/typst.tmLanguage.json": () =>
-      import("./assets/tinymist-assets/out/typst.tmLanguage.json?raw"),
-    "./out/typst-code.tmLanguage.json": () =>
-      import("./assets/tinymist-assets/out/typst-code.tmLanguage.json?raw"),
-    // './icons/ti-white.png': () => import('./assets/tinymist-assets/icons/ti-white.png?raw'),
-    // './icons/ti.png': () => import('./assets/tinymist-assets/icons/ti.png?raw'),
-    // './icons/typst-small.png': () => import('./assets/tinymist-assets/icons/typst-small.png?raw'),
-  };
+	const assetMap = {
+		"./syntaxes/language-configuration.json": () =>
+			import(
+				"./assets/tinymist-assets/syntaxes/language-configuration.json?raw"
+			),
+		"./syntaxes/typst-markdown-injection.json": () =>
+			import(
+				"./assets/tinymist-assets/syntaxes/typst-markdown-injection.json?raw"
+			),
+		"./out/typst.tmLanguage.json": () =>
+			import("./assets/tinymist-assets/out/typst.tmLanguage.json?raw"),
+		"./out/typst-code.tmLanguage.json": () =>
+			import("./assets/tinymist-assets/out/typst-code.tmLanguage.json?raw"),
+		// './icons/ti-white.png': () => import('./assets/tinymist-assets/icons/ti-white.png?raw'),
+		// './icons/ti.png': () => import('./assets/tinymist-assets/icons/ti.png?raw'),
+		// './icons/typst-small.png': () => import('./assets/tinymist-assets/icons/typst-small.png?raw'),
+	};
 
-  const extensionFilesOrContents = new Map();
+	const extensionFilesOrContents = new Map();
 
-  await Promise.all(
-    Object.entries(assetMap).map(async ([key, importFn]) => {
-      const { default: content } = await importFn();
-      extensionFilesOrContents.set(key, content);
-      // console.log("loaded", key)
-    })
-  );
+	await Promise.all(
+		Object.entries(assetMap).map(async ([key, importFn]) => {
+			const { default: content } = await importFn();
+			extensionFilesOrContents.set(key, content);
+			// console.log("loaded", key)
+		}),
+	);
 
-  return extensionFilesOrContents;
+	return extensionFilesOrContents;
 }
 
 async function getClientConfig() {
-  const extensionFilesOrContents = await loadExtensionAssets();
-  const config = {
-    $type: "extended",
-    logLevel: LogLevel.Debug,
-    automaticallyDispose: true,
-    vscodeApiConfig: {
-      serviceOverrides: {
-        ...getKeybindingsServiceOverride(),
-        ...getExplorerServiceOverride(),
-        ...getMarkersServiceOverride(),
-        ...getThemeServiceOverride(),
-      },
-      userConfiguration: {
-        json: JSON.stringify({
-          "workbench.colorTheme": "Default Dark Modern",
-          "workbench.iconTheme": "vs-minimal",
-          "editor.guides.bracketPairsHorizontal": "active",
-          "editor.wordBasedSuggestions": "off",
-          "editor.experimental.asyncTokenization": false,
-          "editor.codeLens": false,
-          "editor.formatOnSave": true,
-          "vitest.disableWorkspaceWarning": true,
-          "files.autoSave": AutoSaveConfiguration.OFF,
-          "files.exclude": {
-            [defaultHiddenFolderName]: true,
-          },
-        }),
-      },
-      viewsConfig: {
-        viewServiceType: "ViewsService",
-        viewsInitFunc: viewsInit,
-      },
-      workspaceConfig: {
-        enableWorkspaceTrust: true,
-        workspaceProvider: {
-          trusted: true,
-          async open() {
-            window.open(window.location.href);
-            return true;
-          },
-          workspace: {
-            folderUri: defaultWorkspaceUri,
-          },
-        },
-      },
-    },
-    extensions: [
-      {
-        config: {
-          name: "tinymist-wasm",
-          publisher: tinymistPackage.publisher,
-          version: tinymistPackage.version,
-          engines: {
-            vscode: "*",
-          },
-          contributes: {
-            configuration: tinymistPackage.contributes.configuration,
-            configurationDefaults:
-              tinymistPackage.contributes.configurationDefaults,
-            languages: tinymistPackage.contributes.languages,
-            grammars: tinymistPackage.contributes.grammars,
-            // semanticTokenTypes: tinymistPackage.contributes.semanticTokenTypes,
-            // semanticTokenModifiers: tinymistPackage.contributes.semanticTokenModifiers,
-            semanticTokenScopes:
-              tinymistPackage.contributes.semanticTokenScopes,
-          },
-        },
-        filesOrContents: extensionFilesOrContents,
-      },
-    ],
-    editorAppConfig: {
-      monacoWorkerFactory: configureDefaultWorkerFactory,
-    },
-    languageClientConfigs: {
-      configs: {
-        typst: {
-          clientOptions: {
-            documentSelector: ["typst"],
-            initializationOptions: {
-              formatterMode: "typstyle",
-            },
-          },
-          connection: {
-            options: {
-              $type: "WorkerDirect",
-              worker: worker.worker,
-            },
-            messageTransports: {
-              reader: reader.value,
-              writer: writer.value,
-            },
-          },
-        },
-      },
-    },
-  };
+	const extensionFilesOrContents = await loadExtensionAssets();
+	const config = {
+		$type: "extended",
+		logLevel: LogLevel.Debug,
+		automaticallyDispose: true,
+		vscodeApiConfig: {
+			serviceOverrides: {
+				...getKeybindingsServiceOverride(),
+				...getExplorerServiceOverride(),
+				...getMarkersServiceOverride(),
+				...getThemeServiceOverride(),
+			},
+			userConfiguration: {
+				json: JSON.stringify({
+					"workbench.colorTheme": "Default Dark Modern",
+					"workbench.iconTheme": "vs-minimal",
+					"editor.guides.bracketPairsHorizontal": "active",
+					"editor.wordBasedSuggestions": "off",
+					"editor.experimental.asyncTokenization": false,
+					"editor.codeLens": false,
+					"editor.formatOnSave": true,
+					"vitest.disableWorkspaceWarning": true,
+					"files.autoSave": AutoSaveConfiguration.OFF,
+					"files.exclude": {
+						[defaultHiddenFolderName]: true,
+					},
+				}),
+			},
+			viewsConfig: {
+				viewServiceType: "ViewsService",
+				viewsInitFunc: viewsInit,
+			},
+			workspaceConfig: {
+				enableWorkspaceTrust: true,
+				workspaceProvider: {
+					trusted: true,
+					async open() {
+						window.open(window.location.href);
+						return true;
+					},
+					workspace: {
+						folderUri: defaultWorkspaceUri,
+					},
+				},
+			},
+		},
+		extensions: [
+			{
+				config: {
+					name: "tinymist-wasm",
+					publisher: tinymistPackage.publisher,
+					version: tinymistPackage.version,
+					engines: {
+						vscode: "*",
+					},
+					contributes: {
+						configuration: tinymistPackage.contributes.configuration,
+						configurationDefaults:
+							tinymistPackage.contributes.configurationDefaults,
+						languages: tinymistPackage.contributes.languages,
+						grammars: tinymistPackage.contributes.grammars,
+						// semanticTokenTypes: tinymistPackage.contributes.semanticTokenTypes,
+						// semanticTokenModifiers: tinymistPackage.contributes.semanticTokenModifiers,
+						semanticTokenScopes:
+							tinymistPackage.contributes.semanticTokenScopes,
+					},
+				},
+				filesOrContents: extensionFilesOrContents,
+			},
+		],
+		editorAppConfig: {
+			monacoWorkerFactory: configureDefaultWorkerFactory,
+		},
+		languageClientConfigs: {
+			configs: {
+				typst: {
+					clientOptions: {
+						documentSelector: ["typst"],
+						initializationOptions: {
+							formatterMode: "typstyle",
+						},
+					},
+					connection: {
+						options: {
+							$type: "WorkerDirect",
+							worker: worker.worker,
+						},
+						messageTransports: {
+							reader: reader.value,
+							writer: writer.value,
+						},
+					},
+				},
+			},
+		},
+	};
 
-  return config;
+	return config;
 }
 
 const viewsInit = async () => {
-  for (const config of [
-    {
-      part: Parts.SIDEBAR_PART,
-      get element() {
-        return sidebarContainer.value;
-      },
-      onDidElementChange: onDidChangeSideBarPosition,
-    },
-    { part: Parts.EDITOR_PART, element: editorsContainer.value },
-    { part: Parts.PANEL_PART, element: panelContainer.value },
-  ]) {
-    attachPart(config.part, config.element);
+	for (const config of [
+		{
+			part: Parts.SIDEBAR_PART,
+			get element() {
+				return sidebarContainer.value;
+			},
+			onDidElementChange: onDidChangeSideBarPosition,
+		},
+		{ part: Parts.EDITOR_PART, element: editorsContainer.value },
+		{ part: Parts.PANEL_PART, element: panelContainer.value },
+	]) {
+		attachPart(config.part, config.element);
 
-    config.onDidElementChange?.(() => {
-      attachPart(config.part, config.element);
-    });
-  }
+		config.onDidElementChange?.(() => {
+			attachPart(config.part, config.element);
+		});
+	}
 };
 
 async function loadWorkspace(fileSystemProvider) {
-  await fileSystemProvider.createDirectory(defaultWorkspaceUri);
-  let res = null;
-  for (const workspaceFile of resourceLoader.getWorkspaceFiles()) {
-    let doc = await fileSystemProvider.addFileToWorkspace(
-      resolve(defaultWorkspacePath, workspaceFile.path),
-      workspaceFile.data,
-      false
-    );
-    console.log(`workspace: loaded ${workspaceFile.path} to workspace`);
-    if (workspaceFile.path === defaultEntryFilePath) {
-      res = doc;
-    }
-  }
+	await fileSystemProvider.createDirectory(defaultWorkspaceUri);
+	let res = null;
+	for (const workspaceFile of resourceLoader.getWorkspaceFiles()) {
+		let doc = await fileSystemProvider.addFileToWorkspace(
+			resolve(defaultWorkspacePath, workspaceFile.path),
+			workspaceFile.data,
+			false,
+		);
+		console.log(`workspace: loaded ${workspaceFile.path} to workspace`);
+		if (workspaceFile.path === defaultEntryFilePath) {
+			res = doc;
+		}
+	}
 
-  if (!res) {
-    return await fileSystemProvider.empty();
-  }
+	if (!res) {
+		return await fileSystemProvider.empty();
+	}
 
-  return res;
+	return res;
 }
 
 async function startTinymistClient() {
-  const { reader: tmpReader, writer: tmpWriter } =
-    await worker.startTinymistServer();
-  reader.value = tmpReader;
-  writer.value = tmpWriter;
+	const { reader: tmpReader, writer: tmpWriter } =
+		await worker.startTinymistServer();
+	reader.value = tmpReader;
+	writer.value = tmpWriter;
 
-  const config = await getClientConfig();
+	const config = await getClientConfig();
 
-  wrapper = new MonacoEditorLanguageClientWrapper();
-  fileSystemProvider = await createFileSystemProvider();
-  worker.fsProvider = fileSystemProvider;
+	wrapper = new MonacoEditorLanguageClientWrapper();
+	fileSystemProvider = await createFileSystemProvider();
+	worker.fsProvider = fileSystemProvider;
 
-  await wrapper.init(config);
+	await wrapper.init(config);
 
-  await wrapper.startLanguageClients();
-  worker.lsClient = wrapper.getLanguageClient("typst");
-  await worker.initWatcher();
+	await wrapper.startLanguageClients();
+	worker.lsClient = wrapper.getLanguageClient("typst");
+	await worker.initWatcher();
 
-  let defaultDocument = await loadWorkspace(fileSystemProvider);
-  initWorkspaceChangesListener();
+	let defaultDocument = await loadWorkspace(fileSystemProvider);
+	initWorkspaceChangesListener();
 
-  await vscode.window.showTextDocument(defaultDocument, {
-    preserveFocus: true,
-  });
+	await vscode.window.showTextDocument(defaultDocument, {
+		preserveFocus: true,
+	});
 
-  await doPreview();
+	await doPreview();
 }
 
 function handleBeforeUnload(event) {
-  console.warn("isDirty", isDirty(), "isChanged", isWorkspaceChanged);
-  if (isDirty() || isWorkspaceChanged) {
-    event.preventDefault();
-    event.returnValue = "";
-    return "Are you sure to leave? You changes won't be saved.";
-  }
+	console.warn("isDirty", isDirty(), "isChanged", isWorkspaceChanged);
+	if (isDirty() || isWorkspaceChanged) {
+		event.preventDefault();
+		event.returnValue = "";
+		return "Are you sure to leave? You changes won't be saved.";
+	}
 }
 
 function initWorkspaceChangesListener() {
-  let disposables = [];
-  const eventTypes = [
-    vscode.workspace.onDidChangeWorkspaceFolders,
-    vscode.workspace.onDidCreateFiles,
-    vscode.workspace.onDidDeleteFiles,
-    vscode.workspace.onDidRenameFiles,
-    vscode.workspace.onDidSaveTextDocument,
-  ];
-  disposables = eventTypes.map((eventType) =>
-    eventType(() => {
-      isWorkspaceChanged = true;
-      disposables.forEach((disposable) => disposable.dispose());
-    })
-  );
+	let disposables = [];
+	const eventTypes = [
+		vscode.workspace.onDidChangeWorkspaceFolders,
+		vscode.workspace.onDidCreateFiles,
+		vscode.workspace.onDidDeleteFiles,
+		vscode.workspace.onDidRenameFiles,
+		vscode.workspace.onDidSaveTextDocument,
+	];
+	disposables = eventTypes.map((eventType) =>
+		eventType(() => {
+			isWorkspaceChanged = true;
+			disposables.forEach((disposable) => disposable.dispose());
+		}),
+	);
 }
 
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get("code");
 onMounted(async () => {
-  checkMobile();
-  window.addEventListener("resize", checkMobile);
-  window.addEventListener("beforeunload", handleBeforeUnload);
-  worker = new TinymistLS();
-  worker.startWorker();
-  try {
-    await resourceLoader.loadAll(worker, code);
-    resourcesLoaded.value = true;
-  } catch (error) {
-    console.error("Failed to load resources:", error);
-  }
-  startTinymistClient();
+	checkMobile();
+	window.addEventListener("resize", checkMobile);
+	window.addEventListener("beforeunload", handleBeforeUnload);
+	worker = new TinymistLS();
+	worker.startWorker();
+	try {
+		await resourceLoader.loadAll(worker, code);
+		resourcesLoaded.value = true;
+	} catch (error) {
+		console.error("Failed to load resources:", error);
+	}
+	startTinymistClient();
 });
 
 onUnmounted(() => {
-  window.removeEventListener("resize", checkMobile);
-  wrapper.dispose();
+	window.removeEventListener("resize", checkMobile);
+	wrapper.dispose();
 });
 </script>
 

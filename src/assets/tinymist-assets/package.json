@@ -1,1472 +1,1472 @@
 {
-  "name": "tinymist",
-  "version": "0.13.24",
-  "description": "%description%",
-  "keywords": [
-    "typst",
-    "lsp",
-    "language-server"
-  ],
-  "categories": [
-    "Programming Languages",
-    "Debuggers",
-    "Formatters"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Myriad-Dreamin/tinymist.git"
-  },
-  "displayName": "Tinymist Typst",
-  "author": "Myriad-Dreamin",
-  "contributors": [
-    "Myriad-Dreamin",
-    "Nathan Varner"
-  ],
-  "publisher": "myriad-dreamin",
-  "license": "Apache-2.0",
-  "engines": {
-    "vscode": "^1.97.0"
-  },
-  "main": "./out/extension.js",
-  "browser": "./out/extension.web.js",
-  "icon": "./icons/ti-white.png",
-  "l10n": "./l10n",
-  "contributes": {
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "tinymist-activitybar",
-          "title": "Tinymist",
-          "icon": "./icons/ti.png"
-        }
-      ]
-    },
-    "views": {
-      "tinymist-activitybar": [
-        {
-          "id": "tinymist.side-symbol-view",
-          "type": "webview",
-          "name": "Symbol",
-          "when": "ext.tinymistActivated"
-        },
-        {
-          "id": "tinymist.dev-kit",
-          "name": "DevKit View",
-          "when": "ext.tinymistActivated && ext.tinymistDevKit"
-        },
-        {
-          "id": "tinymist.tool-view",
-          "name": "Tool",
-          "when": "ext.tinymistActivated"
-        },
-        {
-          "id": "tinymist.package-view",
-          "name": "Package",
-          "when": "ext.tinymistActivated"
-        },
-        {
-          "id": "tinymist.preview.content-preview",
-          "type": "webview",
-          "name": "Content",
-          "when": "ext.tinymistActivated"
-        },
-        {
-          "id": "tinymist.label-view",
-          "name": "Label",
-          "when": "ext.tinymistActivated"
-        },
-        {
-          "id": "tinymist.preview.outline",
-          "name": "Outline",
-          "when": "ext.tinymistActivated"
-        }
-      ]
-    },
-    "taskDefinitions": [
-      {
-        "type": "typst",
-        "required": [
-          "command"
-        ],
-        "properties": {
-          "command": {
-            "type": "string",
-            "default": "export",
-            "description": "The command to run.",
-            "enum": [
-              "export"
-            ],
-            "enumDescriptions": [
-              "Export the document to specific format."
-            ]
-          },
-          "export": {
-            "type": "object",
-            "description": "Arguments for `export` command.",
-            "properties": {
-              "format": {
-                "description": "The format(s) to export the document to.",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "description": "The format to export the document to.",
-                    "enum": [
-                      "pdf",
-                      "png",
-                      "svg",
-                      "html",
-                      "markdown",
-                      "tex",
-                      "text",
-                      "query",
-                      "pdfpc"
-                    ],
-                    "enumDescriptions": [
-                      "PDF",
-                      "PNG",
-                      "SVG",
-                      "HTML",
-                      "Markdown",
-                      "TeX",
-                      "Plain Text",
-                      "Query Result",
-                      "Pdfpc (From Query)"
-                    ],
-                    "default": "pdf"
-                  },
-                  {
-                    "type": "array",
-                    "description": "The formats to export the document to.",
-                    "items": {
-                      "type": "string",
-                      "description": "The format to export the document to.",
-                      "enum": [
-                        "pdf",
-                        "png",
-                        "svg",
-                        "html",
-                        "markdown",
-                        "tex",
-                        "text",
-                        "query",
-                        "pdfpc"
-                      ],
-                      "enumDescriptions": [
-                        "PDF",
-                        "PNG",
-                        "SVG",
-                        "HTML",
-                        "Markdown",
-                        "TeX",
-                        "Plain Text",
-                        "Query Result",
-                        "Pdfpc (From Query)"
-                      ],
-                      "default": "pdf"
-                    }
-                  }
-                ]
-              },
-              "inputPath": {
-                "title": "Input path",
-                "description": "The path pattern to the entry file (main) for compilation, you can use `$focused`, `$root`, `$dir`, `$name` to do magic configuration, e.g. `$dir/$name` (default) and `$root/target/$dir/$name`. A special value `$focused` is used to point to the currently focused file in the editor.",
-                "type": "string",
-                "default": "$focused"
-              },
-              "metadata": {
-                "type": "boolean",
-                "description": "Whether to generate metadata containing export arguments."
-              },
-              "pdf.creationTimestamp": {
-                "type": [
-                  "string"
-                ],
-                "description": "The unix timestamp of the PDF creation. If not specified, the current time is used."
-              },
-              "png.ppi": {
-                "type": "number",
-                "description": "The PPI (pixels per inch) to use for PNG export",
-                "default": 144
-              },
-              "fill": {
-                "type": "string",
-                "description": "The fill color. Affected formats: `png`",
-                "examples": [
-                  "white",
-                  "#ffffff",
-                  "#00000000"
-                ]
-              },
-              "png.fill": {
-                "type": "string",
-                "description": "The fill color. Affected formats: `png`",
-                "examples": [
-                  "white",
-                  "#ffffff",
-                  "#00000000"
-                ],
-                "default": "white"
-              },
-              "merged": {
-                "type": "boolean",
-                "description": "Merge the pages into a single image. Affected formats: `png`, `svg`"
-              },
-              "svg.merged": {
-                "type": "boolean",
-                "description": "Merge the pages into a single SVG. Affected formats: `svg`"
-              },
-              "png.merged": {
-                "type": "boolean",
-                "description": "Merge the pages into a single PNG. Affected formats: `png`"
-              },
-              "merged.gap": {
-                "type": "string",
-                "description": "The gap between the pages when merging **with absolute typst unit**. Affected formats: `png`, `svg`",
-                "default": "0pt"
-              },
-              "svg.merged.gap": {
-                "type": "string",
-                "description": "The gap between the pages when merging **with absolute typst unit**. Affected formats: `svg`",
-                "default": "0pt"
-              },
-              "png.merged.gap": {
-                "type": "string",
-                "description": "The gap between the pages when merging **with absolute typst unit**. Affected formats: `png`",
-                "default": "0pt"
-              },
-              "query.format": {
-                "type": "string",
-                "description": "The format of the query output. Defaults to `json`.",
-                "default": "json",
-                "enum": [
-                  "json",
-                  "yaml",
-                  "txt"
-                ],
-                "enumDescriptions": [
-                  "JSON",
-                  "YAML",
-                  "Plain Text if the result is a string, otherwise raises an error. You may specific the field to use for the query with `query.field` and assert that there is only one result with `query.one`."
-                ]
-              },
-              "query.outputExtension": {
-                "type": "string",
-                "description": "The extension of the query output. Inferring from `query.format` if not specified."
-              },
-              "query.strict": {
-                "type": "boolean",
-                "description": "Whether to strictly check the query format. Defaults to `true`."
-              },
-              "query.pretty": {
-                "type": "boolean",
-                "description": "Whether to pretty print the query output. Defaults to `true`."
-              },
-              "query.selector": {
-                "type": "string",
-                "description": "The selector to use for the query. Must specified if `format`."
-              },
-              "query.field": {
-                "type": "string",
-                "description": "The field to use for the query."
-              },
-              "query.one": {
-                "type": "boolean",
-                "description": "Whether to only return one result. Defaults to `false`."
-              },
-              "processor": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "The processor to use for the markdown or TeX export.",
-                "default": null
-              },
-              "tex.processor": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "The processor to use for the TeX export.",
-                "default": null
-              },
-              "markdown.processor": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "The processor to use for the markdown export.",
-                "default": null
-              },
-              "assetsPath": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "The path to output assets to use for the markdown or TeX export.",
-                "default": null
-              },
-              "tex.assetsPath": {
-                "type": "string",
-                "description": "The path to output assets to use for the TeX export.",
-                "default": "target"
-              },
-              "markdown.assetsPath": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "The path to output assets to use for the markdown export.",
-                "default": null
-              }
-            }
-          }
-        }
-      }
-    ],
-    "configuration": {
-      "type": "object",
-      "title": "Tinymist Typst LSP",
-      "properties": {
-        "tinymist.projectResolution": {
-          "title": "%extension.tinymist.config.tinymist.projectResolution.title%",
-          "type": "string",
-          "default": "singleFile",
-          "markdownDescription": "%extension.tinymist.config.tinymist.projectResolution.desc%",
-          "enum": [
-            "singleFile",
-            "lockDatabase"
-          ],
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.projectResolution.string.enum.singleFile%",
-            "%extension.tinymist.config.tinymist.projectResolution.string.enum.lockDatabase%"
-          ]
-        },
-        "tinymist.outputPath": {
-          "title": "%extension.tinymist.config.tinymist.outputPath.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.outputPath.desc%",
-          "type": "string",
-          "default": ""
-        },
-        "tinymist.exportTarget": {
-          "title": "%extension.tinymist.config.tinymist.exportTarget.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.exportTarget.desc%",
-          "type": "string",
-          "default": "paged",
-          "enum": [
-            "paged",
-            "html"
-          ],
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.exportTarget.string.enum.paged%",
-            "%extension.tinymist.config.tinymist.exportTarget.string.enum.html%"
-          ]
-        },
-        "tinymist.exportPdf": {
-          "title": "%extension.tinymist.config.tinymist.exportPdf.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.exportPdf.desc%",
-          "type": "string",
-          "default": "never",
-          "enum": [
-            "never",
-            "onSave",
-            "onType",
-            "onDocumentHasTitle"
-          ],
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.exportPdf.string.enum.never%",
-            "%extension.tinymist.config.tinymist.exportPdf.string.enum.onSave%",
-            "%extension.tinymist.config.tinymist.exportPdf.string.enum.onType%",
-            "%extension.tinymist.config.tinymist.exportPdf.string.enum.onDocumentHasTitle%"
-          ]
-        },
-        "tinymist.rootPath": {
-          "title": "%extension.tinymist.config.tinymist.rootPath.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.rootPath.desc%",
-          "type": [
-            "string",
-            "null"
-          ],
-          "default": null
-        },
-        "tinymist.configureDefaultWordSeparator": {
-          "title": "%extension.tinymist.config.tinymist.configureDefaultWordSeparator.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.configureDefaultWordSeparator.string.desc%",
-          "type": "string",
-          "default": "disable",
-          "enum": [
-            "enable",
-            "disable"
-          ],
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.configureDefaultWordSeparator.string.enum.enable%",
-            "%extension.tinymist.config.tinymist.configureDefaultWordSeparator.string.enum.disable%"
-          ]
-        },
-        "tinymist.semanticTokens": {
-          "title": "%extension.tinymist.config.tinymist.semanticTokens.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.semanticTokens.desc%",
-          "type": "string",
-          "default": "enable",
-          "enum": [
-            "enable",
-            "disable"
-          ],
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.semanticTokens.string.enum.enable%",
-            "%extension.tinymist.config.tinymist.semanticTokens.string.enum.disable%"
-          ]
-        },
-        "tinymist.lint.enabled": {
-          "title": "%extension.tinymist.config.tinymist.lint.enabled.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.lint.enabled.desc%",
-          "type": "boolean",
-          "default": false
-        },
-        "tinymist.lint.when": {
-          "title": "%extension.tinymist.config.tinymist.lint.when.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.lint.when.desc%",
-          "type": "string",
-          "enum": [
-            "onSave",
-            "onType"
-          ],
-          "default": "onSave",
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.lint.when.string.enum.onSave%",
-            "%extension.tinymist.config.tinymist.lint.when.string.enum.onType%"
-          ]
-        },
-        "tinymist.typingContinueCommentsOnNewline": {
-          "title": "%extension.tinymist.config.tinymist.typingContinueCommentsOnNewline.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.typingContinueCommentsOnNewline.desc%",
-          "type": "boolean",
-          "default": true
-        },
-        "tinymist.onEnterEvent": {
-          "title": "%extension.tinymist.config.tinymist.onEnterEvent.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.onEnterEvent.desc%",
-          "type": "boolean",
-          "default": true
-        },
-        "tinymist.systemFonts": {
-          "title": "%extension.tinymist.config.tinymist.systemFonts.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.systemFonts.desc%",
-          "type": "boolean",
-          "default": true
-        },
-        "tinymist.fontPaths": {
-          "title": "%extension.tinymist.config.tinymist.fontPaths.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.fontPaths.desc%",
-          "type": [
-            "array",
-            "null"
-          ],
-          "default": null
-        },
-        "tinymist.compileStatus": {
-          "title": "%extension.tinymist.config.tinymist.compileStatus.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.compileStatus.desc%",
-          "type": "string",
-          "default": "enable",
-          "enum": [
-            "enable",
-            "disable"
-          ]
-        },
-        "tinymist.statusBarFormat": {
-          "title": "%extension.tinymist.config.tinymist.statusBarFormat.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.statusBarFormat.desc%",
-          "type": "string",
-          "default": "{compileStatusIcon} {wordCount} [{fileName}]"
-        },
-        "tinymist.typstExtraArgs": {
-          "title": "%extension.tinymist.config.tinymist.typstExtraArgs.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.typstExtraArgs.desc%",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "title": "%extension.tinymist.config.tinymist.typstExtraArgs.items.title%",
-            "description": "%extension.tinymist.config.tinymist.typstExtraArgs.items.desc%"
-          },
-          "default": []
-        },
-        "tinymist.serverPath": {
-          "title": "%extension.tinymist.config.tinymist.serverPath.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.serverPath.desc%",
-          "type": [
-            "string",
-            "null"
-          ],
-          "default": null
-        },
-        "tinymist.trace.server": {
-          "title": "%extension.tinymist.config.tinymist.trace.server.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.trace.server.desc%",
-          "scope": "window",
-          "type": "string",
-          "enum": [
-            "off",
-            "messages",
-            "verbose"
-          ],
-          "default": "off"
-        },
-        "tinymist.formatterMode": {
-          "title": "%extension.tinymist.config.tinymist.formatterMode.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.formatterMode.desc%",
-          "type": "string",
-          "default": "typstyle",
-          "enum": [
-            "disable",
-            "typstyle",
-            "typstfmt"
-          ],
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.formatterMode.string.enum.disable%",
-            "%extension.tinymist.config.tinymist.formatterMode.string.enum.typstyle%",
-            "%extension.tinymist.config.tinymist.formatterMode.string.enum.typstfmt%"
-          ]
-        },
-        "tinymist.formatterPrintWidth": {
-          "title": "%extension.tinymist.config.tinymist.formatterPrintWidth.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.formatterPrintWidth.desc%",
-          "type": "number",
-          "default": 120
-        },
-        "tinymist.formatterIndentSize": {
-          "title": "%extension.tinymist.config.tinymist.formatterIndentSize.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.formatterIndentSize.desc%",
-          "type": "number",
-          "default": 2
-        },
-        "tinymist.formatterProseWrap": {
-          "title": "%extension.tinymist.config.tinymist.formatterProseWrap.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.formatterProseWrap.desc%",
-          "type": "boolean",
-          "default": false
-        },
-        "tinymist.showExportFileIn": {
-          "title": "%extension.tinymist.config.tinymist.showExportFileIn.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.showExportFileIn.desc%",
-          "anyOf": [
-            {
-              "title": "%extension.tinymist.config.tinymist.showExportFileIn.anyOf.string.title%",
-              "markdownDescription": "%extension.tinymist.config.tinymist.showExportFileIn.anyOf.string.desc%",
-              "type": "string",
-              "enum": [
-                "editorTab",
-                "systemDefault"
-              ],
-              "default": "editorTab",
-              "enumDescriptions": [
-                "%extension.tinymist.config.tinymist.showExportFileIn.anyOf.string.enum.editorTab%",
-                "%extension.tinymist.config.tinymist.showExportFileIn.anyOf.string.enum.systemDefault%"
-              ]
-            }
-          ]
-        },
-        "tinymist.dragAndDrop": {
-          "title": "%extension.tinymist.config.tinymist.dragAndDrop.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.dragAndDrop.desc%",
-          "type": "string",
-          "default": "enable",
-          "enum": [
-            "enable",
-            "disable"
-          ],
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.dragAndDrop.string.enum.enable%",
-            "%extension.tinymist.config.tinymist.dragAndDrop.string.enum.disable%"
-          ]
-        },
-        "tinymist.copyAndPaste": {
-          "title": "%extension.tinymist.config.tinymist.copyAndPaste.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.copyAndPaste.desc%",
-          "type": "string",
-          "default": "enable",
-          "enum": [
-            "enable",
-            "disable"
-          ],
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.copyAndPaste.string.enum.enable%",
-            "%extension.tinymist.config.tinymist.copyAndPaste.string.enum.disable%"
-          ]
-        },
-        "tinymist.renderDocs": {
-          "title": "%extension.tinymist.config.tinymist.renderDocs.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.renderDocs.desc%",
-          "type": "string",
-          "default": "enable",
-          "enum": [
-            "enable",
-            "disable"
-          ],
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.renderDocs.string.enum.enable%",
-            "%extension.tinymist.config.tinymist.renderDocs.string.enum.disable%"
-          ]
-        },
-        "tinymist.completion.triggerOnSnippetPlaceholders": {
-          "title": "%extension.tinymist.config.tinymist.completion.triggerOnSnippetPlaceholders.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.completion.triggerOnSnippetPlaceholders.desc%",
-          "type": "boolean",
-          "default": false
-        },
-        "tinymist.completion.symbol": {
-          "title": "The Way to complete symbols",
-          "markdownDescription": "Whether to make symbol completion stepless. For example, `$ar|$` will be completed to `$arrow.r$`. Hint: Restarting the editor is required to change this setting.",
-          "type": "string",
-          "default": "step",
-          "enum": [
-            "step",
-            "stepless"
-          ],
-          "enumDescriptions": [
-            "Complete symbols step by step",
-            "Complete symbols steplessly"
-          ]
-        },
-        "tinymist.completion.postfix": {
-          "title": "%extension.tinymist.config.tinymist.completion.postfix.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.completion.postfix.desc%",
-          "type": "boolean",
-          "default": true
-        },
-        "tinymist.completion.postfixUfcs": {
-          "title": "%extension.tinymist.config.tinymist.completion.postfixUfcs.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.completion.postfixUfcs.desc%",
-          "type": "boolean",
-          "default": true
-        },
-        "tinymist.completion.postfixUfcsLeft": {
-          "title": "%extension.tinymist.config.tinymist.completion.postfixUfcsLeft.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.completion.postfixUfcsLeft.desc%",
-          "type": "boolean",
-          "default": true
-        },
-        "tinymist.completion.postfixUfcsRight": {
-          "title": "%extension.tinymist.config.tinymist.completion.postfixUfcsRight.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.completion.postfixUfcsRight.desc%",
-          "type": "boolean",
-          "default": true
-        },
-        "tinymist.previewFeature": {
-          "title": "%extension.tinymist.config.tinymist.previewFeature.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.previewFeature.desc%",
-          "type": "string",
-          "default": "enable",
-          "enum": [
-            "enable",
-            "disable"
-          ],
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.previewFeature.string.enum.enable%",
-            "%extension.tinymist.config.tinymist.previewFeature.string.enum.disable%"
-          ]
-        },
-        "tinymist.preview.sysInputs": {
-          "title": "%extension.tinymist.config.tinymist.preview.sysInputs.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.preview.sysInputs.desc%",
-          "markdownDeprecationMessage": "%extension.tinymist.config.tinymist.preview.sysInputs.deprecation%",
-          "type": "object",
-          "items": {
-            "type": "string"
-          },
-          "default": {}
-        },
-        "tinymist.preview.systemFonts": {
-          "title": "%extension.tinymist.config.tinymist.preview.systemFonts.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.preview.systemFonts.desc%",
-          "markdownDeprecationMessage": "%extension.tinymist.config.tinymist.preview.systemFonts.deprecation%",
-          "type": "boolean",
-          "default": true
-        },
-        "tinymist.preview.fontPaths": {
-          "title": "%extension.tinymist.config.tinymist.preview.fontPaths.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.preview.fontPaths.desc%",
-          "markdownDeprecationMessage": "%extension.tinymist.config.tinymist.preview.fontPaths.deprecation%",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "title": "Font path",
-            "markdownDescription": "%extension.tinymist.config.tinymist.preview.fontPaths.items.desc%"
-          },
-          "default": []
-        },
-        "tinymist.preview.refresh": {
-          "title": "%extension.tinymist.config.tinymist.preview.refresh.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.preview.refresh.desc%",
-          "type": "string",
-          "enum": [
-            "onSave",
-            "onType"
-          ],
-          "default": "onType",
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.preview.refresh.string.enum.onSave%",
-            "%extension.tinymist.config.tinymist.preview.refresh.string.enum.onType%"
-          ]
-        },
-        "tinymist.preview.scrollSync": {
-          "title": "%extension.tinymist.config.tinymist.preview.scrollSync.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.preview.scrollSync.desc%",
-          "type": "string",
-          "enum": [
-            "never",
-            "onSelectionChangeByMouse",
-            "onSelectionChange"
-          ],
-          "default": "onSelectionChangeByMouse",
-          "enumDescriptions": [
-            "%extension.tinymist.config.tinymist.preview.scrollSync.string.enum.never%",
-            "%extension.tinymist.config.tinymist.preview.scrollSync.string.enum.onSelectionChangeByMouse%",
-            "%extension.tinymist.config.tinymist.preview.scrollSync.string.enum.onSelectionChange%"
-          ]
-        },
-        "tinymist.preview.partialRendering": {
-          "title": "%extension.tinymist.config.tinymist.preview.partialRendering.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.preview.partialRendering.desc%",
-          "type": "boolean",
-          "default": true
-        },
-        "tinymist.preview.invertColors": {
-          "title": "%extension.tinymist.config.tinymist.preview.invertColors.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.desc%",
-          "default": "never",
-          "anyOf": [
-            {
-              "title": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.string.title%",
-              "markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.string.desc%",
-              "type": "string",
-              "enum": [
-                "never",
-                "auto",
-                "always"
-              ],
-              "enumDescriptions": [
-                "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.string.enum.never%",
-                "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.string.enum.auto%",
-                "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.string.enum.always%"
-              ]
-            },
-            {
-              "title": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.title%",
-              "markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.desc%",
-              "type": "object",
-              "properties": {
-                "rest": {
-                  "title": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.rest.title%",
-                  "markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.rest.desc%",
-                  "type": "string",
-                  "enum": [
-                    "never",
-                    "auto",
-                    "always"
-                  ],
-                  "default": "never",
-                  "enumDescriptions": [
-                    "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.rest.enum.never%",
-                    "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.rest.enum.auto%",
-                    "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.rest.enum.always%"
-                  ]
-                },
-                "image": {
-                  "title": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.image.title%",
-                  "markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.image.desc%",
-                  "type": "string",
-                  "enum": [
-                    "never",
-                    "auto",
-                    "always"
-                  ],
-                  "default": "never",
-                  "enumDescriptions": [
-                    "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.image.string.enum.never%",
-                    "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.image.string.enum.auto%",
-                    "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.image.string.enum.always%"
-                  ]
-                }
-              }
-            }
-          ]
-        },
-        "tinymist.preview.cursorIndicator": {
-          "title": "%extension.tinymist.config.tinymist.preview.cursorIndicator.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.preview.cursorIndicator.desc%",
-          "type": "boolean",
-          "default": false
-        },
-        "tinymist.preview.pinPreviewFile": {
-          "title": "%extension.tinymist.config.tinymist.preview.pinPreviewFile.title%",
-          "markdownDescription": "%extension.tinymist.config.tinymist.preview.pinPreviewFile.desc%",
-          "markdownDeprecationMessage": "%extension.tinymist.config.tinymist.preview.pinPreviewFile.deprecation%",
-          "type": "boolean",
-          "default": false
-        }
-      }
-    },
-    "configurationDefaults": {
-      "[typst][typst-code]": {
-        "editor.wordWrap": "on",
-        "editor.semanticHighlighting.enabled": true,
-        "editor.tabSize": 2,
-        "editor.inlayHints.enabled": "off"
-      }
-    },
-    "languages": [
-      {
-        "id": "toml",
-        "extensions": [
-          "tinymist.lock"
-        ]
-      },
-      {
-        "id": "typst",
-        "configuration": "./syntaxes/language-configuration.json",
-        "extensions": [
-          ".typ"
-        ],
-        "aliases": [
-          "Typst",
-          "typst",
-          "typ"
-        ],
-        "firstLine": "^#!/.*\\b(typst)[0-9.-]*\\b",
-        "icon": {
-          "light": "./icons/typst-small.png",
-          "dark": "./icons/typst-small.png"
-        }
-      },
-      {
-        "id": "typst-code",
-        "configuration": "./syntaxes/language-configuration.json",
-        "extensions": [
-          ".typc"
-        ],
-        "aliases": [
-          "Typst (Code Mode)",
-          "typc"
-        ],
-        "icon": {
-          "light": "./icons/typst-small.png",
-          "dark": "./icons/typst-small.png"
-        }
-      },
-      {
-        "id": "typst-markdown-injection"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "typst",
-        "scopeName": "source.typst",
-        "path": "./out/typst.tmLanguage.json",
-        "tokenTypes": {
-          "punctuation.definition.string.begin.math.typst": "other",
-          "punctuation.definition.string.end.math.typst": "other"
-        },
-        "balancedBracketScopes": [
-          "meta.expr",
-          "meta.brace",
-          "markup.math.typst"
-        ],
-        "unbalancedBracketScopes": [
-          "markup.content.brace.typst",
-          "markup.raw.block.typst",
-          "markup.raw.inline.typst",
-          "string.other.label.typst",
-          "string.quoted.double.typst",
-          "constant.other.symbol.typst",
-          "constant.character.escape",
-          "comment.block.typst",
-          "comment.line.double-slash.typst"
-        ]
-      },
-      {
-        "language": "typst-code",
-        "scopeName": "source.typst-code",
-        "path": "./out/typst-code.tmLanguage.json",
-        "tokenTypes": {
-          "punctuation.definition.string.begin.math.typst": "other",
-          "punctuation.definition.string.end.math.typst": "other"
-        },
-        "balancedBracketScopes": [
-          "meta.expr",
-          "meta.brace",
-          "markup.math.typst"
-        ],
-        "unbalancedBracketScopes": [
-          "markup.content.brace.typst",
-          "markup.raw.block.typst",
-          "markup.raw.inline.typst",
-          "string.other.label.typst",
-          "string.quoted.double.typst",
-          "constant.other.symbol.typst",
-          "constant.character.escape",
-          "comment.block.typst",
-          "comment.line.double-slash.typst"
-        ]
-      },
-      {
-        "language": "typst-markdown-injection",
-        "scopeName": "markdown.typst.codeblock",
-        "path": "./syntaxes/typst-markdown-injection.json",
-        "injectTo": [
-          "text.html.markdown"
-        ],
-        "embeddedLanguages": {
-          "meta.embedded.block.typst": "typst",
-          "meta.embedded.block.typst-code": "typst-code"
-        }
-      }
-    ],
-    "semanticTokenTypes": [
-      {
-        "id": "bool",
-        "description": "A boolean literal"
-      },
-      {
-        "id": "punct",
-        "description": "Punctuation in code"
-      },
-      {
-        "id": "escape",
-        "description": "Escape sequence"
-      },
-      {
-        "id": "link",
-        "description": "Hyperlink"
-      },
-      {
-        "id": "raw",
-        "description": "Raw text"
-      },
-      {
-        "id": "label",
-        "description": "Label"
-      },
-      {
-        "id": "ref",
-        "description": "Reference to a label"
-      },
-      {
-        "id": "heading",
-        "description": "Heading"
-      },
-      {
-        "id": "marker",
-        "description": "List, enum, or term list marker"
-      },
-      {
-        "id": "term",
-        "description": "Term in a term list"
-      },
-      {
-        "id": "delim",
-        "description": "Delimiter of a different type of markup"
-      },
-      {
-        "id": "pol",
-        "description": "Interpolated variable"
-      },
-      {
-        "id": "error",
-        "description": "Syntax error"
-      },
-      {
-        "id": "text",
-        "description": "Text"
-      }
-    ],
-    "semanticTokenModifiers": [
-      {
-        "id": "math",
-        "description": "Math mode markup"
-      },
-      {
-        "id": "strong",
-        "description": "Strong (usually bolded) text"
-      },
-      {
-        "id": "emph",
-        "description": "Emphasized (usually italicized) text"
-      }
-    ],
-    "semanticTokenScopes": [
-      {
-        "language": "typst",
-        "scopes": {
-          "*.strong.emph": [
-            "markup.bold.typst markup.italic.typst"
-          ],
-          "*.strong": [
-            "markup.bold.typst"
-          ],
-          "*.emph": [
-            "markup.italic.typst"
-          ],
-          "*.math": [
-            "markup.math.typst"
-          ],
-          "bool": [
-            "constant.language.boolean.typst"
-          ],
-          "punct": [
-            "punctuation.typst",
-            "punctuation.definition.typst"
-          ],
-          "escape": [
-            "constant.character.escape.typst",
-            "keyword.operator.typst",
-            "punctuation.definition.typst"
-          ],
-          "link": [
-            "markup.underline.link.typst"
-          ],
-          "raw": [
-            "markup.other.raw.typst"
-          ],
-          "delim.math": [
-            "punctuation.definition.math.typst",
-            "punctuation.definition.string.end.math.typst",
-            "string.quoted.other.typst"
-          ],
-          "operator.math": [
-            "keyword.operator.math.typst"
-          ],
-          "heading": [
-            "markup.heading.typst"
-          ],
-          "marker": [
-            "markup.list.typst punctuation.definition.list.begin.typst",
-            "markup.list.typst",
-            "punctuation.definition.list.begin.typst"
-          ],
-          "term": [
-            "markup.list.term.typst",
-            "markup.bold.term.typst"
-          ],
-          "label": [
-            "string.other.link.title.typst",
-            "entity.name.label.typst",
-            "meta.link.inline.typst",
-            "markup.underline.link.typst"
-          ],
-          "ref": [
-            "string.other.link.typst",
-            "markup.other.reference.typst",
-            "entity.name.label.typst",
-            "meta.link.inline.typst",
-            "markup.underline.link.typst"
-          ],
-          "pol": [
-            "meta.interpolation.typst",
-            "variable.typst"
-          ],
-          "error": [
-            "invalid.typst"
-          ]
-        }
-      }
-    ],
-    "breakpoints": [
-      {
-        "language": "typst"
-      }
-    ],
-    "debuggers": [
-      {
-        "type": "myriaddreamin.typst-debugger",
-        "languages": [
-          "typst"
-        ],
-        "label": "Typst Debug",
-        "program": "./out/tinymist",
-        "windows": {
-          "program": "./out/tinymist.exe"
-        },
-        "configurationAttributes": {
-          "launch": {
-            "required": [
-              "program"
-            ],
-            "properties": {
-              "program": {
-                "type": "string",
-                "description": "Absolute path to a text file.",
-                "default": "${workspaceFolder}/${command:AskForProgramName}"
-              },
-              "stopOnEntry": {
-                "type": "boolean",
-                "description": "Automatically stop after launch.",
-                "default": true
-              },
-              "trace": {
-                "type": "boolean",
-                "description": "Enable logging of the Debug Adapter Protocol.",
-                "default": true
-              },
-              "compileError": {
-                "type": "string",
-                "description": "Simulates a compile error in 'launch' request.",
-                "enum": [
-                  "default",
-                  "show",
-                  "hide"
-                ],
-                "enumDescriptions": [
-                  "default: show fake compile error to user",
-                  "show fake compile error to user",
-                  "do not show fake compile error to user"
-                ]
-              }
-            }
-          }
-        },
-        "initialConfigurations": [
-          {
-            "type": "myriaddreamin.typst-debugger",
-            "request": "launch",
-            "name": "Ask for file name",
-            "program": "${workspaceFolder}/${command:AskForProgramName}",
-            "stopOnEntry": true
-          }
-        ],
-        "configurationSnippets": [
-          {
-            "label": "Typst Debug: Launch",
-            "description": "A new configuration for 'debugging' a user selected typst file.",
-            "body": {
-              "type": "myriaddreamin.typst-debugger",
-              "request": "launch",
-              "name": "Ask for file name",
-              "program": "^\"\\${workspaceFolder}/\\${command:AskForProgramName}\"",
-              "stopOnEntry": true
-            }
-          }
-        ],
-        "variables": {
-          "AskForProgramName": "tinymist.debuggerGetProgramName"
-        }
-      }
-    ],
-    "commands": [
-      {
-        "command": "tinymist.exportCurrentFile",
-        "title": "%extension.tinymist.command.tinymist.exportCurrentFile%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.exportCurrentPdf",
-        "title": "%extension.tinymist.command.tinymist.exportCurrentPdf%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.pinMainToCurrent",
-        "title": "%extension.tinymist.command.tinymist.pinMainToCurrent%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.unpinMain",
-        "title": "%extension.tinymist.command.tinymist.unpinMain%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.showPdf",
-        "title": "%extension.tinymist.command.tinymist.showPdf%",
-        "category": "Typst",
-        "icon": "$(file-pdf)"
-      },
-      {
-        "command": "tinymist.exportCurrentFileAndShow",
-        "title": "%extension.tinymist.command.tinymist.exportCurrentFileAndShow%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.copyAnsiHighlight",
-        "title": "%extension.tinymist.command.tinymist.copyAnsiHighlight%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.viewAst",
-        "title": "%extension.tinymist.command.tinymist.viewAst%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.showLog",
-        "title": "%extension.tinymist.command.tinymist.showLog%",
-        "description": "Show log of the language server",
-        "category": "Typst",
-        "icon": "$(list-flat)"
-      },
-      {
-        "command": "tinymist.restartServer",
-        "title": "%extension.tinymist.command.tinymist.restartServer%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.clearCache",
-        "title": "%extension.tinymist.command.tinymist.clearCache%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.initTemplate",
-        "title": "%extension.tinymist.command.tinymist.initTemplate%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.initTemplateInPlace",
-        "title": "%extension.tinymist.command.tinymist.initTemplateInPlace%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.showTemplateGallery",
-        "title": "%extension.tinymist.command.tinymist.showTemplateGallery%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.createLocalPackage",
-        "title": "%extension.tinymist.command.tinymist.createLocalPackage%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.openLocalPackage",
-        "title": "%extension.tinymist.command.tinymist.openLocalPackage%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.showSummary",
-        "title": "%extension.tinymist.command.tinymist.showSummary%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.showSymbolView",
-        "title": "%extension.tinymist.command.tinymist.showSymbolView%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.showFontView",
-        "title": "%extension.tinymist.command.tinymist.showFontView%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.profileCurrentFile",
-        "title": "%extension.tinymist.command.tinymist.profileCurrentFile%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.profileCurrentFileCoverage",
-        "title": "%extension.tinymist.command.tinymist.profileCurrentFileCoverage%",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.profileCurrentTestCoverage",
-        "title": "Profile coverage of the current test module",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.profileServer",
-        "title": "Profile the entire language server",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.syncLabel",
-        "title": "%extension.tinymist.command.tinymist.syncLabel%",
-        "icon": "$(extensions-sync-enabled)",
-        "category": "Typst"
-      },
-      {
-        "command": "tinymist.browsingPreview",
-        "title": "%extension.tinymist.command.tinymist.browsingPreview%",
-        "description": "Open a preview panel to browsing through documents. The preview panel will pick a main file when switching between files. By default, every single file is a document. This doesn't work well with multiple-files projects. To allow tinymist learn the structure of your projects, please configure `tinymist.projectResolution` as `lockDatabase`.",
-        "icon": "$(open-preview)"
-      },
-      {
-        "command": "typst-preview.preview",
-        "title": "%extension.tinymist.command.typst-preview.preview%",
-        "description": "Launch typst-preview server",
-        "icon": "$(open-preview)",
-        "when": "resourceLangId == typst && editorTextFocus"
-      },
-      {
-        "command": "typst-preview.browser",
-        "title": "%extension.tinymist.command.typst-preview.browser%",
-        "description": "Launch typst-preview server and open the preview in your browser",
-        "icon": "$(open-preview)",
-        "when": "resourceLangId == typst && editorTextFocus"
-      },
-      {
-        "command": "typst-preview.preview-slide",
-        "title": "%extension.tinymist.command.typst-preview.preview-slide%",
-        "description": "Launch typst-preview server in slide mode",
-        "icon": "$(open-preview)",
-        "when": "resourceLangId == typst && editorTextFocus"
-      },
-      {
-        "command": "typst-preview.browser-slide",
-        "title": "%extension.tinymist.command.typst-preview.browser-slide%",
-        "description": "Launch typst-preview server in slide mode and open the preview in your browser",
-        "icon": "$(open-preview)",
-        "when": "resourceLangId == typst && editorTextFocus"
-      },
-      {
-        "command": "typst-preview.eject",
-        "title": "%extension.tinymist.command.typst-preview.eject%",
-        "description": "Eject the preview panel to browser to get better performance",
-        "icon": "$(link-external)"
-      },
-      {
-        "command": "typst-preview.sync",
-        "title": "%extension.tinymist.command.typst-preview.sync%",
-        "description": "Scroll preview to current cursor position",
-        "icon": "$(sync)",
-        "when": "resourceLangId == typst && editorTextFocus"
-      },
-      {
-        "command": "typst-preview.noteOutline",
-        "title": "%extension.tinymist.command.typst-preview.noteOutline%",
-        "description": "...",
-        "icon": "$(extensions-info-message)"
-      },
-      {
-        "command": "tinymist.debugCurrentFile",
-        "title": "Execute Current File for Debugging",
-        "category": "Typst",
-        "enablement": "!inDebugMode",
-        "icon": "$(debug-alt)"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "tinymist.onEnter",
-        "key": "enter",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible && !editorHasMultipleSelections && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine' && vim.mode != 'SearchInProgressMode' && vim.mode != 'CommandlineInProgress' && vim.mode != 'Replace' && vim.mode != 'EasyMotionMode' && vim.mode != 'EasyMotionInputMode' && vim.mode != 'SurroundInputMode'"
-      },
-      {
-        "command": "typst-preview.preview",
-        "key": "ctrl+k v",
-        "mac": "cmd+k v",
-        "when": "editorLangId == typst"
-      }
-    ],
-    "menus": {
-      "commandPalette": [
-        {
-          "command": "tinymist.exportCurrentPdf",
-          "when": "editorLangId == typst"
-        },
-        {
-          "command": "tinymist.clearCache",
-          "when": "editorLangId == typst"
-        },
-        {
-          "command": "tinymist.debugCurrentFile",
-          "when": "resourceLangId == typst"
-        },
-        {
-          "command": "tinymist.restartServer",
-          "when": "ext.tinymistActivated"
-        },
-        {
-          "command": "typst-preview.eject",
-          "when": "activeWebviewPanelId == 'typst-preview'"
-        }
-      ],
-      "editor/title": [
-        {
-          "command": "tinymist.showPdf",
-          "when": "resourceLangId == typst && editorTextFocus",
-          "group": "navigation"
-        },
-        {
-          "command": "typst-preview.preview",
-          "when": "resourceLangId == typst",
-          "group": "navigation"
-        },
-        {
-          "command": "typst-preview.eject",
-          "when": "activeWebviewPanelId == 'typst-preview'",
-          "group": "navigation"
-        }
-      ],
-      "editor/title/run": [
-        {
-          "command": "tinymist.debugCurrentFile",
-          "when": "resourceLangId == typst",
-          "group": "navigation@2"
-        }
-      ],
-      "editor/context": [
-        {
-          "command": "tinymist.copyAnsiHighlight",
-          "when": "resourceLangId == typst && editorTextFocus",
-          "group": "9_cutcopypaste"
-        }
-      ],
-      "view/title": [
-        {
-          "command": "typst-preview.noteOutline",
-          "when": "view == tinymist.preview.outline",
-          "group": "navigation"
-        },
-        {
-          "command": "tinymist.syncLabel",
-          "when": "view == tinymist.label-view",
-          "group": "navigation"
-        }
-      ]
-    }
-  },
-  "activationEvents": [
-    "onWebviewPanel:typst-preview"
-  ],
-  "scripts": {
-    "build:frontend": "cd ../../ && yarn build:preview && yarn build:editor-tools",
-    "build:syntax": "cd ../../syntaxes/textmate && yarn run compile && yarn run bundle",
-    "build:l10n": "cd ../../ && yarn build:l10n",
-    "build-web-base": "node esbuild.web.mjs && node esbuild.web-server.mjs",
-    "build-system-base": "node esbuild.system.mjs",
-    "build-base": "yarn run build-web-base && yarn run build-system-base",
-    "compile-shared": "yarn run build:syntax && yarn run build:l10n && yarn run build:frontend && node scripts/check-version.mjs && node scripts/postinstall.cjs",
-    "compile:web": "yarn run build-web-base -- --minify && yarn run compile-shared",
-    "compile:system": "yarn run build-system-base -- --minify && yarn run compile-shared",
-    "package": "npx @vscode/vsce package --yarn",
-    "compile": "yarn run compile:system",
-    "watch": "yarn run build-system-base -- --sourcemap --watch",
-    "type-check": "tsc --noEmit",
-    "format-check": "prettier --check .",
-    "format": "prettier --write .",
-    "test:unit": "vitest",
-    "test": "vitest && rimraf test-dist/ && tsc -p tsconfig.test.json && node test-dist/test/runTests.js"
-  },
-  "dependencies": {
-    "cpr": "^3.0.1",
-    "esbuild-plugin-polyfill-node": "^0.3.0",
-    "node-fetch": "^3.3.2",
-    "vscode-languageclient": "^9.0.0",
-    "tinymist-web": "link:../../crates/tinymist",
-    "ws": "^8.13.0"
-  },
-  "devDependencies": {
-    "@types/chai": "^5.0.1",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "^22.13.4",
-    "@types/vscode": "^1.97.0",
-    "@types/ws": "^8.5.5",
-    "@typescript-eslint/eslint-plugin": "^8.24.0",
-    "@typescript-eslint/parser": "^8.2.4",
-    "@vscode/test-electron": "^2.3.9",
-    "@vscode/vsce": "^2.22.0",
-    "chai": "^5.2.0",
-    "esbuild": "^0.24.2",
-    "eslint": "^9.20.1",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-n": "^17.15.1",
-    "eslint-plugin-promise": "^7.2.1",
-    "mocha": "^10.2.0",
-    "ovsx": "^0.8.3",
-    "typescript": "^5.2.2"
-  }
+	"name": "tinymist",
+	"version": "0.13.24",
+	"description": "%description%",
+	"keywords": [
+		"typst",
+		"lsp",
+		"language-server"
+	],
+	"categories": [
+		"Programming Languages",
+		"Debuggers",
+		"Formatters"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Myriad-Dreamin/tinymist.git"
+	},
+	"displayName": "Tinymist Typst",
+	"author": "Myriad-Dreamin",
+	"contributors": [
+		"Myriad-Dreamin",
+		"Nathan Varner"
+	],
+	"publisher": "myriad-dreamin",
+	"license": "Apache-2.0",
+	"engines": {
+		"vscode": "^1.97.0"
+	},
+	"main": "./out/extension.js",
+	"browser": "./out/extension.web.js",
+	"icon": "./icons/ti-white.png",
+	"l10n": "./l10n",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "tinymist-activitybar",
+					"title": "Tinymist",
+					"icon": "./icons/ti.png"
+				}
+			]
+		},
+		"views": {
+			"tinymist-activitybar": [
+				{
+					"id": "tinymist.side-symbol-view",
+					"type": "webview",
+					"name": "Symbol",
+					"when": "ext.tinymistActivated"
+				},
+				{
+					"id": "tinymist.dev-kit",
+					"name": "DevKit View",
+					"when": "ext.tinymistActivated && ext.tinymistDevKit"
+				},
+				{
+					"id": "tinymist.tool-view",
+					"name": "Tool",
+					"when": "ext.tinymistActivated"
+				},
+				{
+					"id": "tinymist.package-view",
+					"name": "Package",
+					"when": "ext.tinymistActivated"
+				},
+				{
+					"id": "tinymist.preview.content-preview",
+					"type": "webview",
+					"name": "Content",
+					"when": "ext.tinymistActivated"
+				},
+				{
+					"id": "tinymist.label-view",
+					"name": "Label",
+					"when": "ext.tinymistActivated"
+				},
+				{
+					"id": "tinymist.preview.outline",
+					"name": "Outline",
+					"when": "ext.tinymistActivated"
+				}
+			]
+		},
+		"taskDefinitions": [
+			{
+				"type": "typst",
+				"required": [
+					"command"
+				],
+				"properties": {
+					"command": {
+						"type": "string",
+						"default": "export",
+						"description": "The command to run.",
+						"enum": [
+							"export"
+						],
+						"enumDescriptions": [
+							"Export the document to specific format."
+						]
+					},
+					"export": {
+						"type": "object",
+						"description": "Arguments for `export` command.",
+						"properties": {
+							"format": {
+								"description": "The format(s) to export the document to.",
+								"oneOf": [
+									{
+										"type": "string",
+										"description": "The format to export the document to.",
+										"enum": [
+											"pdf",
+											"png",
+											"svg",
+											"html",
+											"markdown",
+											"tex",
+											"text",
+											"query",
+											"pdfpc"
+										],
+										"enumDescriptions": [
+											"PDF",
+											"PNG",
+											"SVG",
+											"HTML",
+											"Markdown",
+											"TeX",
+											"Plain Text",
+											"Query Result",
+											"Pdfpc (From Query)"
+										],
+										"default": "pdf"
+									},
+									{
+										"type": "array",
+										"description": "The formats to export the document to.",
+										"items": {
+											"type": "string",
+											"description": "The format to export the document to.",
+											"enum": [
+												"pdf",
+												"png",
+												"svg",
+												"html",
+												"markdown",
+												"tex",
+												"text",
+												"query",
+												"pdfpc"
+											],
+											"enumDescriptions": [
+												"PDF",
+												"PNG",
+												"SVG",
+												"HTML",
+												"Markdown",
+												"TeX",
+												"Plain Text",
+												"Query Result",
+												"Pdfpc (From Query)"
+											],
+											"default": "pdf"
+										}
+									}
+								]
+							},
+							"inputPath": {
+								"title": "Input path",
+								"description": "The path pattern to the entry file (main) for compilation, you can use `$focused`, `$root`, `$dir`, `$name` to do magic configuration, e.g. `$dir/$name` (default) and `$root/target/$dir/$name`. A special value `$focused` is used to point to the currently focused file in the editor.",
+								"type": "string",
+								"default": "$focused"
+							},
+							"metadata": {
+								"type": "boolean",
+								"description": "Whether to generate metadata containing export arguments."
+							},
+							"pdf.creationTimestamp": {
+								"type": [
+									"string"
+								],
+								"description": "The unix timestamp of the PDF creation. If not specified, the current time is used."
+							},
+							"png.ppi": {
+								"type": "number",
+								"description": "The PPI (pixels per inch) to use for PNG export",
+								"default": 144
+							},
+							"fill": {
+								"type": "string",
+								"description": "The fill color. Affected formats: `png`",
+								"examples": [
+									"white",
+									"#ffffff",
+									"#00000000"
+								]
+							},
+							"png.fill": {
+								"type": "string",
+								"description": "The fill color. Affected formats: `png`",
+								"examples": [
+									"white",
+									"#ffffff",
+									"#00000000"
+								],
+								"default": "white"
+							},
+							"merged": {
+								"type": "boolean",
+								"description": "Merge the pages into a single image. Affected formats: `png`, `svg`"
+							},
+							"svg.merged": {
+								"type": "boolean",
+								"description": "Merge the pages into a single SVG. Affected formats: `svg`"
+							},
+							"png.merged": {
+								"type": "boolean",
+								"description": "Merge the pages into a single PNG. Affected formats: `png`"
+							},
+							"merged.gap": {
+								"type": "string",
+								"description": "The gap between the pages when merging **with absolute typst unit**. Affected formats: `png`, `svg`",
+								"default": "0pt"
+							},
+							"svg.merged.gap": {
+								"type": "string",
+								"description": "The gap between the pages when merging **with absolute typst unit**. Affected formats: `svg`",
+								"default": "0pt"
+							},
+							"png.merged.gap": {
+								"type": "string",
+								"description": "The gap between the pages when merging **with absolute typst unit**. Affected formats: `png`",
+								"default": "0pt"
+							},
+							"query.format": {
+								"type": "string",
+								"description": "The format of the query output. Defaults to `json`.",
+								"default": "json",
+								"enum": [
+									"json",
+									"yaml",
+									"txt"
+								],
+								"enumDescriptions": [
+									"JSON",
+									"YAML",
+									"Plain Text if the result is a string, otherwise raises an error. You may specific the field to use for the query with `query.field` and assert that there is only one result with `query.one`."
+								]
+							},
+							"query.outputExtension": {
+								"type": "string",
+								"description": "The extension of the query output. Inferring from `query.format` if not specified."
+							},
+							"query.strict": {
+								"type": "boolean",
+								"description": "Whether to strictly check the query format. Defaults to `true`."
+							},
+							"query.pretty": {
+								"type": "boolean",
+								"description": "Whether to pretty print the query output. Defaults to `true`."
+							},
+							"query.selector": {
+								"type": "string",
+								"description": "The selector to use for the query. Must specified if `format`."
+							},
+							"query.field": {
+								"type": "string",
+								"description": "The field to use for the query."
+							},
+							"query.one": {
+								"type": "boolean",
+								"description": "Whether to only return one result. Defaults to `false`."
+							},
+							"processor": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "The processor to use for the markdown or TeX export.",
+								"default": null
+							},
+							"tex.processor": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "The processor to use for the TeX export.",
+								"default": null
+							},
+							"markdown.processor": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "The processor to use for the markdown export.",
+								"default": null
+							},
+							"assetsPath": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "The path to output assets to use for the markdown or TeX export.",
+								"default": null
+							},
+							"tex.assetsPath": {
+								"type": "string",
+								"description": "The path to output assets to use for the TeX export.",
+								"default": "target"
+							},
+							"markdown.assetsPath": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "The path to output assets to use for the markdown export.",
+								"default": null
+							}
+						}
+					}
+				}
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Tinymist Typst LSP",
+			"properties": {
+				"tinymist.projectResolution": {
+					"title": "%extension.tinymist.config.tinymist.projectResolution.title%",
+					"type": "string",
+					"default": "singleFile",
+					"markdownDescription": "%extension.tinymist.config.tinymist.projectResolution.desc%",
+					"enum": [
+						"singleFile",
+						"lockDatabase"
+					],
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.projectResolution.string.enum.singleFile%",
+						"%extension.tinymist.config.tinymist.projectResolution.string.enum.lockDatabase%"
+					]
+				},
+				"tinymist.outputPath": {
+					"title": "%extension.tinymist.config.tinymist.outputPath.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.outputPath.desc%",
+					"type": "string",
+					"default": ""
+				},
+				"tinymist.exportTarget": {
+					"title": "%extension.tinymist.config.tinymist.exportTarget.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.exportTarget.desc%",
+					"type": "string",
+					"default": "paged",
+					"enum": [
+						"paged",
+						"html"
+					],
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.exportTarget.string.enum.paged%",
+						"%extension.tinymist.config.tinymist.exportTarget.string.enum.html%"
+					]
+				},
+				"tinymist.exportPdf": {
+					"title": "%extension.tinymist.config.tinymist.exportPdf.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.exportPdf.desc%",
+					"type": "string",
+					"default": "never",
+					"enum": [
+						"never",
+						"onSave",
+						"onType",
+						"onDocumentHasTitle"
+					],
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.exportPdf.string.enum.never%",
+						"%extension.tinymist.config.tinymist.exportPdf.string.enum.onSave%",
+						"%extension.tinymist.config.tinymist.exportPdf.string.enum.onType%",
+						"%extension.tinymist.config.tinymist.exportPdf.string.enum.onDocumentHasTitle%"
+					]
+				},
+				"tinymist.rootPath": {
+					"title": "%extension.tinymist.config.tinymist.rootPath.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.rootPath.desc%",
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null
+				},
+				"tinymist.configureDefaultWordSeparator": {
+					"title": "%extension.tinymist.config.tinymist.configureDefaultWordSeparator.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.configureDefaultWordSeparator.string.desc%",
+					"type": "string",
+					"default": "disable",
+					"enum": [
+						"enable",
+						"disable"
+					],
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.configureDefaultWordSeparator.string.enum.enable%",
+						"%extension.tinymist.config.tinymist.configureDefaultWordSeparator.string.enum.disable%"
+					]
+				},
+				"tinymist.semanticTokens": {
+					"title": "%extension.tinymist.config.tinymist.semanticTokens.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.semanticTokens.desc%",
+					"type": "string",
+					"default": "enable",
+					"enum": [
+						"enable",
+						"disable"
+					],
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.semanticTokens.string.enum.enable%",
+						"%extension.tinymist.config.tinymist.semanticTokens.string.enum.disable%"
+					]
+				},
+				"tinymist.lint.enabled": {
+					"title": "%extension.tinymist.config.tinymist.lint.enabled.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.lint.enabled.desc%",
+					"type": "boolean",
+					"default": false
+				},
+				"tinymist.lint.when": {
+					"title": "%extension.tinymist.config.tinymist.lint.when.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.lint.when.desc%",
+					"type": "string",
+					"enum": [
+						"onSave",
+						"onType"
+					],
+					"default": "onSave",
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.lint.when.string.enum.onSave%",
+						"%extension.tinymist.config.tinymist.lint.when.string.enum.onType%"
+					]
+				},
+				"tinymist.typingContinueCommentsOnNewline": {
+					"title": "%extension.tinymist.config.tinymist.typingContinueCommentsOnNewline.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.typingContinueCommentsOnNewline.desc%",
+					"type": "boolean",
+					"default": true
+				},
+				"tinymist.onEnterEvent": {
+					"title": "%extension.tinymist.config.tinymist.onEnterEvent.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.onEnterEvent.desc%",
+					"type": "boolean",
+					"default": true
+				},
+				"tinymist.systemFonts": {
+					"title": "%extension.tinymist.config.tinymist.systemFonts.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.systemFonts.desc%",
+					"type": "boolean",
+					"default": true
+				},
+				"tinymist.fontPaths": {
+					"title": "%extension.tinymist.config.tinymist.fontPaths.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.fontPaths.desc%",
+					"type": [
+						"array",
+						"null"
+					],
+					"default": null
+				},
+				"tinymist.compileStatus": {
+					"title": "%extension.tinymist.config.tinymist.compileStatus.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.compileStatus.desc%",
+					"type": "string",
+					"default": "enable",
+					"enum": [
+						"enable",
+						"disable"
+					]
+				},
+				"tinymist.statusBarFormat": {
+					"title": "%extension.tinymist.config.tinymist.statusBarFormat.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.statusBarFormat.desc%",
+					"type": "string",
+					"default": "{compileStatusIcon} {wordCount} [{fileName}]"
+				},
+				"tinymist.typstExtraArgs": {
+					"title": "%extension.tinymist.config.tinymist.typstExtraArgs.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.typstExtraArgs.desc%",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"title": "%extension.tinymist.config.tinymist.typstExtraArgs.items.title%",
+						"description": "%extension.tinymist.config.tinymist.typstExtraArgs.items.desc%"
+					},
+					"default": []
+				},
+				"tinymist.serverPath": {
+					"title": "%extension.tinymist.config.tinymist.serverPath.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.serverPath.desc%",
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null
+				},
+				"tinymist.trace.server": {
+					"title": "%extension.tinymist.config.tinymist.trace.server.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.trace.server.desc%",
+					"scope": "window",
+					"type": "string",
+					"enum": [
+						"off",
+						"messages",
+						"verbose"
+					],
+					"default": "off"
+				},
+				"tinymist.formatterMode": {
+					"title": "%extension.tinymist.config.tinymist.formatterMode.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.formatterMode.desc%",
+					"type": "string",
+					"default": "typstyle",
+					"enum": [
+						"disable",
+						"typstyle",
+						"typstfmt"
+					],
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.formatterMode.string.enum.disable%",
+						"%extension.tinymist.config.tinymist.formatterMode.string.enum.typstyle%",
+						"%extension.tinymist.config.tinymist.formatterMode.string.enum.typstfmt%"
+					]
+				},
+				"tinymist.formatterPrintWidth": {
+					"title": "%extension.tinymist.config.tinymist.formatterPrintWidth.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.formatterPrintWidth.desc%",
+					"type": "number",
+					"default": 120
+				},
+				"tinymist.formatterIndentSize": {
+					"title": "%extension.tinymist.config.tinymist.formatterIndentSize.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.formatterIndentSize.desc%",
+					"type": "number",
+					"default": 2
+				},
+				"tinymist.formatterProseWrap": {
+					"title": "%extension.tinymist.config.tinymist.formatterProseWrap.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.formatterProseWrap.desc%",
+					"type": "boolean",
+					"default": false
+				},
+				"tinymist.showExportFileIn": {
+					"title": "%extension.tinymist.config.tinymist.showExportFileIn.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.showExportFileIn.desc%",
+					"anyOf": [
+						{
+							"title": "%extension.tinymist.config.tinymist.showExportFileIn.anyOf.string.title%",
+							"markdownDescription": "%extension.tinymist.config.tinymist.showExportFileIn.anyOf.string.desc%",
+							"type": "string",
+							"enum": [
+								"editorTab",
+								"systemDefault"
+							],
+							"default": "editorTab",
+							"enumDescriptions": [
+								"%extension.tinymist.config.tinymist.showExportFileIn.anyOf.string.enum.editorTab%",
+								"%extension.tinymist.config.tinymist.showExportFileIn.anyOf.string.enum.systemDefault%"
+							]
+						}
+					]
+				},
+				"tinymist.dragAndDrop": {
+					"title": "%extension.tinymist.config.tinymist.dragAndDrop.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.dragAndDrop.desc%",
+					"type": "string",
+					"default": "enable",
+					"enum": [
+						"enable",
+						"disable"
+					],
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.dragAndDrop.string.enum.enable%",
+						"%extension.tinymist.config.tinymist.dragAndDrop.string.enum.disable%"
+					]
+				},
+				"tinymist.copyAndPaste": {
+					"title": "%extension.tinymist.config.tinymist.copyAndPaste.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.copyAndPaste.desc%",
+					"type": "string",
+					"default": "enable",
+					"enum": [
+						"enable",
+						"disable"
+					],
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.copyAndPaste.string.enum.enable%",
+						"%extension.tinymist.config.tinymist.copyAndPaste.string.enum.disable%"
+					]
+				},
+				"tinymist.renderDocs": {
+					"title": "%extension.tinymist.config.tinymist.renderDocs.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.renderDocs.desc%",
+					"type": "string",
+					"default": "enable",
+					"enum": [
+						"enable",
+						"disable"
+					],
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.renderDocs.string.enum.enable%",
+						"%extension.tinymist.config.tinymist.renderDocs.string.enum.disable%"
+					]
+				},
+				"tinymist.completion.triggerOnSnippetPlaceholders": {
+					"title": "%extension.tinymist.config.tinymist.completion.triggerOnSnippetPlaceholders.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.completion.triggerOnSnippetPlaceholders.desc%",
+					"type": "boolean",
+					"default": false
+				},
+				"tinymist.completion.symbol": {
+					"title": "The Way to complete symbols",
+					"markdownDescription": "Whether to make symbol completion stepless. For example, `$ar|$` will be completed to `$arrow.r$`. Hint: Restarting the editor is required to change this setting.",
+					"type": "string",
+					"default": "step",
+					"enum": [
+						"step",
+						"stepless"
+					],
+					"enumDescriptions": [
+						"Complete symbols step by step",
+						"Complete symbols steplessly"
+					]
+				},
+				"tinymist.completion.postfix": {
+					"title": "%extension.tinymist.config.tinymist.completion.postfix.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.completion.postfix.desc%",
+					"type": "boolean",
+					"default": true
+				},
+				"tinymist.completion.postfixUfcs": {
+					"title": "%extension.tinymist.config.tinymist.completion.postfixUfcs.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.completion.postfixUfcs.desc%",
+					"type": "boolean",
+					"default": true
+				},
+				"tinymist.completion.postfixUfcsLeft": {
+					"title": "%extension.tinymist.config.tinymist.completion.postfixUfcsLeft.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.completion.postfixUfcsLeft.desc%",
+					"type": "boolean",
+					"default": true
+				},
+				"tinymist.completion.postfixUfcsRight": {
+					"title": "%extension.tinymist.config.tinymist.completion.postfixUfcsRight.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.completion.postfixUfcsRight.desc%",
+					"type": "boolean",
+					"default": true
+				},
+				"tinymist.previewFeature": {
+					"title": "%extension.tinymist.config.tinymist.previewFeature.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.previewFeature.desc%",
+					"type": "string",
+					"default": "enable",
+					"enum": [
+						"enable",
+						"disable"
+					],
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.previewFeature.string.enum.enable%",
+						"%extension.tinymist.config.tinymist.previewFeature.string.enum.disable%"
+					]
+				},
+				"tinymist.preview.sysInputs": {
+					"title": "%extension.tinymist.config.tinymist.preview.sysInputs.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.preview.sysInputs.desc%",
+					"markdownDeprecationMessage": "%extension.tinymist.config.tinymist.preview.sysInputs.deprecation%",
+					"type": "object",
+					"items": {
+						"type": "string"
+					},
+					"default": {}
+				},
+				"tinymist.preview.systemFonts": {
+					"title": "%extension.tinymist.config.tinymist.preview.systemFonts.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.preview.systemFonts.desc%",
+					"markdownDeprecationMessage": "%extension.tinymist.config.tinymist.preview.systemFonts.deprecation%",
+					"type": "boolean",
+					"default": true
+				},
+				"tinymist.preview.fontPaths": {
+					"title": "%extension.tinymist.config.tinymist.preview.fontPaths.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.preview.fontPaths.desc%",
+					"markdownDeprecationMessage": "%extension.tinymist.config.tinymist.preview.fontPaths.deprecation%",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"title": "Font path",
+						"markdownDescription": "%extension.tinymist.config.tinymist.preview.fontPaths.items.desc%"
+					},
+					"default": []
+				},
+				"tinymist.preview.refresh": {
+					"title": "%extension.tinymist.config.tinymist.preview.refresh.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.preview.refresh.desc%",
+					"type": "string",
+					"enum": [
+						"onSave",
+						"onType"
+					],
+					"default": "onType",
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.preview.refresh.string.enum.onSave%",
+						"%extension.tinymist.config.tinymist.preview.refresh.string.enum.onType%"
+					]
+				},
+				"tinymist.preview.scrollSync": {
+					"title": "%extension.tinymist.config.tinymist.preview.scrollSync.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.preview.scrollSync.desc%",
+					"type": "string",
+					"enum": [
+						"never",
+						"onSelectionChangeByMouse",
+						"onSelectionChange"
+					],
+					"default": "onSelectionChangeByMouse",
+					"enumDescriptions": [
+						"%extension.tinymist.config.tinymist.preview.scrollSync.string.enum.never%",
+						"%extension.tinymist.config.tinymist.preview.scrollSync.string.enum.onSelectionChangeByMouse%",
+						"%extension.tinymist.config.tinymist.preview.scrollSync.string.enum.onSelectionChange%"
+					]
+				},
+				"tinymist.preview.partialRendering": {
+					"title": "%extension.tinymist.config.tinymist.preview.partialRendering.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.preview.partialRendering.desc%",
+					"type": "boolean",
+					"default": true
+				},
+				"tinymist.preview.invertColors": {
+					"title": "%extension.tinymist.config.tinymist.preview.invertColors.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.desc%",
+					"default": "never",
+					"anyOf": [
+						{
+							"title": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.string.title%",
+							"markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.string.desc%",
+							"type": "string",
+							"enum": [
+								"never",
+								"auto",
+								"always"
+							],
+							"enumDescriptions": [
+								"%extension.tinymist.config.tinymist.preview.invertColors.anyOf.string.enum.never%",
+								"%extension.tinymist.config.tinymist.preview.invertColors.anyOf.string.enum.auto%",
+								"%extension.tinymist.config.tinymist.preview.invertColors.anyOf.string.enum.always%"
+							]
+						},
+						{
+							"title": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.title%",
+							"markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.desc%",
+							"type": "object",
+							"properties": {
+								"rest": {
+									"title": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.rest.title%",
+									"markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.rest.desc%",
+									"type": "string",
+									"enum": [
+										"never",
+										"auto",
+										"always"
+									],
+									"default": "never",
+									"enumDescriptions": [
+										"%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.rest.enum.never%",
+										"%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.rest.enum.auto%",
+										"%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.rest.enum.always%"
+									]
+								},
+								"image": {
+									"title": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.image.title%",
+									"markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.image.desc%",
+									"type": "string",
+									"enum": [
+										"never",
+										"auto",
+										"always"
+									],
+									"default": "never",
+									"enumDescriptions": [
+										"%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.image.string.enum.never%",
+										"%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.image.string.enum.auto%",
+										"%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.properties.image.string.enum.always%"
+									]
+								}
+							}
+						}
+					]
+				},
+				"tinymist.preview.cursorIndicator": {
+					"title": "%extension.tinymist.config.tinymist.preview.cursorIndicator.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.preview.cursorIndicator.desc%",
+					"type": "boolean",
+					"default": false
+				},
+				"tinymist.preview.pinPreviewFile": {
+					"title": "%extension.tinymist.config.tinymist.preview.pinPreviewFile.title%",
+					"markdownDescription": "%extension.tinymist.config.tinymist.preview.pinPreviewFile.desc%",
+					"markdownDeprecationMessage": "%extension.tinymist.config.tinymist.preview.pinPreviewFile.deprecation%",
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"configurationDefaults": {
+			"[typst][typst-code]": {
+				"editor.wordWrap": "on",
+				"editor.semanticHighlighting.enabled": true,
+				"editor.tabSize": 2,
+				"editor.inlayHints.enabled": "off"
+			}
+		},
+		"languages": [
+			{
+				"id": "toml",
+				"extensions": [
+					"tinymist.lock"
+				]
+			},
+			{
+				"id": "typst",
+				"configuration": "./syntaxes/language-configuration.json",
+				"extensions": [
+					".typ"
+				],
+				"aliases": [
+					"Typst",
+					"typst",
+					"typ"
+				],
+				"firstLine": "^#!/.*\\b(typst)[0-9.-]*\\b",
+				"icon": {
+					"light": "./icons/typst-small.png",
+					"dark": "./icons/typst-small.png"
+				}
+			},
+			{
+				"id": "typst-code",
+				"configuration": "./syntaxes/language-configuration.json",
+				"extensions": [
+					".typc"
+				],
+				"aliases": [
+					"Typst (Code Mode)",
+					"typc"
+				],
+				"icon": {
+					"light": "./icons/typst-small.png",
+					"dark": "./icons/typst-small.png"
+				}
+			},
+			{
+				"id": "typst-markdown-injection"
+			}
+		],
+		"grammars": [
+			{
+				"language": "typst",
+				"scopeName": "source.typst",
+				"path": "./out/typst.tmLanguage.json",
+				"tokenTypes": {
+					"punctuation.definition.string.begin.math.typst": "other",
+					"punctuation.definition.string.end.math.typst": "other"
+				},
+				"balancedBracketScopes": [
+					"meta.expr",
+					"meta.brace",
+					"markup.math.typst"
+				],
+				"unbalancedBracketScopes": [
+					"markup.content.brace.typst",
+					"markup.raw.block.typst",
+					"markup.raw.inline.typst",
+					"string.other.label.typst",
+					"string.quoted.double.typst",
+					"constant.other.symbol.typst",
+					"constant.character.escape",
+					"comment.block.typst",
+					"comment.line.double-slash.typst"
+				]
+			},
+			{
+				"language": "typst-code",
+				"scopeName": "source.typst-code",
+				"path": "./out/typst-code.tmLanguage.json",
+				"tokenTypes": {
+					"punctuation.definition.string.begin.math.typst": "other",
+					"punctuation.definition.string.end.math.typst": "other"
+				},
+				"balancedBracketScopes": [
+					"meta.expr",
+					"meta.brace",
+					"markup.math.typst"
+				],
+				"unbalancedBracketScopes": [
+					"markup.content.brace.typst",
+					"markup.raw.block.typst",
+					"markup.raw.inline.typst",
+					"string.other.label.typst",
+					"string.quoted.double.typst",
+					"constant.other.symbol.typst",
+					"constant.character.escape",
+					"comment.block.typst",
+					"comment.line.double-slash.typst"
+				]
+			},
+			{
+				"language": "typst-markdown-injection",
+				"scopeName": "markdown.typst.codeblock",
+				"path": "./syntaxes/typst-markdown-injection.json",
+				"injectTo": [
+					"text.html.markdown"
+				],
+				"embeddedLanguages": {
+					"meta.embedded.block.typst": "typst",
+					"meta.embedded.block.typst-code": "typst-code"
+				}
+			}
+		],
+		"semanticTokenTypes": [
+			{
+				"id": "bool",
+				"description": "A boolean literal"
+			},
+			{
+				"id": "punct",
+				"description": "Punctuation in code"
+			},
+			{
+				"id": "escape",
+				"description": "Escape sequence"
+			},
+			{
+				"id": "link",
+				"description": "Hyperlink"
+			},
+			{
+				"id": "raw",
+				"description": "Raw text"
+			},
+			{
+				"id": "label",
+				"description": "Label"
+			},
+			{
+				"id": "ref",
+				"description": "Reference to a label"
+			},
+			{
+				"id": "heading",
+				"description": "Heading"
+			},
+			{
+				"id": "marker",
+				"description": "List, enum, or term list marker"
+			},
+			{
+				"id": "term",
+				"description": "Term in a term list"
+			},
+			{
+				"id": "delim",
+				"description": "Delimiter of a different type of markup"
+			},
+			{
+				"id": "pol",
+				"description": "Interpolated variable"
+			},
+			{
+				"id": "error",
+				"description": "Syntax error"
+			},
+			{
+				"id": "text",
+				"description": "Text"
+			}
+		],
+		"semanticTokenModifiers": [
+			{
+				"id": "math",
+				"description": "Math mode markup"
+			},
+			{
+				"id": "strong",
+				"description": "Strong (usually bolded) text"
+			},
+			{
+				"id": "emph",
+				"description": "Emphasized (usually italicized) text"
+			}
+		],
+		"semanticTokenScopes": [
+			{
+				"language": "typst",
+				"scopes": {
+					"*.strong.emph": [
+						"markup.bold.typst markup.italic.typst"
+					],
+					"*.strong": [
+						"markup.bold.typst"
+					],
+					"*.emph": [
+						"markup.italic.typst"
+					],
+					"*.math": [
+						"markup.math.typst"
+					],
+					"bool": [
+						"constant.language.boolean.typst"
+					],
+					"punct": [
+						"punctuation.typst",
+						"punctuation.definition.typst"
+					],
+					"escape": [
+						"constant.character.escape.typst",
+						"keyword.operator.typst",
+						"punctuation.definition.typst"
+					],
+					"link": [
+						"markup.underline.link.typst"
+					],
+					"raw": [
+						"markup.other.raw.typst"
+					],
+					"delim.math": [
+						"punctuation.definition.math.typst",
+						"punctuation.definition.string.end.math.typst",
+						"string.quoted.other.typst"
+					],
+					"operator.math": [
+						"keyword.operator.math.typst"
+					],
+					"heading": [
+						"markup.heading.typst"
+					],
+					"marker": [
+						"markup.list.typst punctuation.definition.list.begin.typst",
+						"markup.list.typst",
+						"punctuation.definition.list.begin.typst"
+					],
+					"term": [
+						"markup.list.term.typst",
+						"markup.bold.term.typst"
+					],
+					"label": [
+						"string.other.link.title.typst",
+						"entity.name.label.typst",
+						"meta.link.inline.typst",
+						"markup.underline.link.typst"
+					],
+					"ref": [
+						"string.other.link.typst",
+						"markup.other.reference.typst",
+						"entity.name.label.typst",
+						"meta.link.inline.typst",
+						"markup.underline.link.typst"
+					],
+					"pol": [
+						"meta.interpolation.typst",
+						"variable.typst"
+					],
+					"error": [
+						"invalid.typst"
+					]
+				}
+			}
+		],
+		"breakpoints": [
+			{
+				"language": "typst"
+			}
+		],
+		"debuggers": [
+			{
+				"type": "myriaddreamin.typst-debugger",
+				"languages": [
+					"typst"
+				],
+				"label": "Typst Debug",
+				"program": "./out/tinymist",
+				"windows": {
+					"program": "./out/tinymist.exe"
+				},
+				"configurationAttributes": {
+					"launch": {
+						"required": [
+							"program"
+						],
+						"properties": {
+							"program": {
+								"type": "string",
+								"description": "Absolute path to a text file.",
+								"default": "${workspaceFolder}/${command:AskForProgramName}"
+							},
+							"stopOnEntry": {
+								"type": "boolean",
+								"description": "Automatically stop after launch.",
+								"default": true
+							},
+							"trace": {
+								"type": "boolean",
+								"description": "Enable logging of the Debug Adapter Protocol.",
+								"default": true
+							},
+							"compileError": {
+								"type": "string",
+								"description": "Simulates a compile error in 'launch' request.",
+								"enum": [
+									"default",
+									"show",
+									"hide"
+								],
+								"enumDescriptions": [
+									"default: show fake compile error to user",
+									"show fake compile error to user",
+									"do not show fake compile error to user"
+								]
+							}
+						}
+					}
+				},
+				"initialConfigurations": [
+					{
+						"type": "myriaddreamin.typst-debugger",
+						"request": "launch",
+						"name": "Ask for file name",
+						"program": "${workspaceFolder}/${command:AskForProgramName}",
+						"stopOnEntry": true
+					}
+				],
+				"configurationSnippets": [
+					{
+						"label": "Typst Debug: Launch",
+						"description": "A new configuration for 'debugging' a user selected typst file.",
+						"body": {
+							"type": "myriaddreamin.typst-debugger",
+							"request": "launch",
+							"name": "Ask for file name",
+							"program": "^\"\\${workspaceFolder}/\\${command:AskForProgramName}\"",
+							"stopOnEntry": true
+						}
+					}
+				],
+				"variables": {
+					"AskForProgramName": "tinymist.debuggerGetProgramName"
+				}
+			}
+		],
+		"commands": [
+			{
+				"command": "tinymist.exportCurrentFile",
+				"title": "%extension.tinymist.command.tinymist.exportCurrentFile%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.exportCurrentPdf",
+				"title": "%extension.tinymist.command.tinymist.exportCurrentPdf%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.pinMainToCurrent",
+				"title": "%extension.tinymist.command.tinymist.pinMainToCurrent%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.unpinMain",
+				"title": "%extension.tinymist.command.tinymist.unpinMain%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.showPdf",
+				"title": "%extension.tinymist.command.tinymist.showPdf%",
+				"category": "Typst",
+				"icon": "$(file-pdf)"
+			},
+			{
+				"command": "tinymist.exportCurrentFileAndShow",
+				"title": "%extension.tinymist.command.tinymist.exportCurrentFileAndShow%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.copyAnsiHighlight",
+				"title": "%extension.tinymist.command.tinymist.copyAnsiHighlight%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.viewAst",
+				"title": "%extension.tinymist.command.tinymist.viewAst%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.showLog",
+				"title": "%extension.tinymist.command.tinymist.showLog%",
+				"description": "Show log of the language server",
+				"category": "Typst",
+				"icon": "$(list-flat)"
+			},
+			{
+				"command": "tinymist.restartServer",
+				"title": "%extension.tinymist.command.tinymist.restartServer%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.clearCache",
+				"title": "%extension.tinymist.command.tinymist.clearCache%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.initTemplate",
+				"title": "%extension.tinymist.command.tinymist.initTemplate%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.initTemplateInPlace",
+				"title": "%extension.tinymist.command.tinymist.initTemplateInPlace%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.showTemplateGallery",
+				"title": "%extension.tinymist.command.tinymist.showTemplateGallery%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.createLocalPackage",
+				"title": "%extension.tinymist.command.tinymist.createLocalPackage%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.openLocalPackage",
+				"title": "%extension.tinymist.command.tinymist.openLocalPackage%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.showSummary",
+				"title": "%extension.tinymist.command.tinymist.showSummary%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.showSymbolView",
+				"title": "%extension.tinymist.command.tinymist.showSymbolView%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.showFontView",
+				"title": "%extension.tinymist.command.tinymist.showFontView%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.profileCurrentFile",
+				"title": "%extension.tinymist.command.tinymist.profileCurrentFile%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.profileCurrentFileCoverage",
+				"title": "%extension.tinymist.command.tinymist.profileCurrentFileCoverage%",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.profileCurrentTestCoverage",
+				"title": "Profile coverage of the current test module",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.profileServer",
+				"title": "Profile the entire language server",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.syncLabel",
+				"title": "%extension.tinymist.command.tinymist.syncLabel%",
+				"icon": "$(extensions-sync-enabled)",
+				"category": "Typst"
+			},
+			{
+				"command": "tinymist.browsingPreview",
+				"title": "%extension.tinymist.command.tinymist.browsingPreview%",
+				"description": "Open a preview panel to browsing through documents. The preview panel will pick a main file when switching between files. By default, every single file is a document. This doesn't work well with multiple-files projects. To allow tinymist learn the structure of your projects, please configure `tinymist.projectResolution` as `lockDatabase`.",
+				"icon": "$(open-preview)"
+			},
+			{
+				"command": "typst-preview.preview",
+				"title": "%extension.tinymist.command.typst-preview.preview%",
+				"description": "Launch typst-preview server",
+				"icon": "$(open-preview)",
+				"when": "resourceLangId == typst && editorTextFocus"
+			},
+			{
+				"command": "typst-preview.browser",
+				"title": "%extension.tinymist.command.typst-preview.browser%",
+				"description": "Launch typst-preview server and open the preview in your browser",
+				"icon": "$(open-preview)",
+				"when": "resourceLangId == typst && editorTextFocus"
+			},
+			{
+				"command": "typst-preview.preview-slide",
+				"title": "%extension.tinymist.command.typst-preview.preview-slide%",
+				"description": "Launch typst-preview server in slide mode",
+				"icon": "$(open-preview)",
+				"when": "resourceLangId == typst && editorTextFocus"
+			},
+			{
+				"command": "typst-preview.browser-slide",
+				"title": "%extension.tinymist.command.typst-preview.browser-slide%",
+				"description": "Launch typst-preview server in slide mode and open the preview in your browser",
+				"icon": "$(open-preview)",
+				"when": "resourceLangId == typst && editorTextFocus"
+			},
+			{
+				"command": "typst-preview.eject",
+				"title": "%extension.tinymist.command.typst-preview.eject%",
+				"description": "Eject the preview panel to browser to get better performance",
+				"icon": "$(link-external)"
+			},
+			{
+				"command": "typst-preview.sync",
+				"title": "%extension.tinymist.command.typst-preview.sync%",
+				"description": "Scroll preview to current cursor position",
+				"icon": "$(sync)",
+				"when": "resourceLangId == typst && editorTextFocus"
+			},
+			{
+				"command": "typst-preview.noteOutline",
+				"title": "%extension.tinymist.command.typst-preview.noteOutline%",
+				"description": "...",
+				"icon": "$(extensions-info-message)"
+			},
+			{
+				"command": "tinymist.debugCurrentFile",
+				"title": "Execute Current File for Debugging",
+				"category": "Typst",
+				"enablement": "!inDebugMode",
+				"icon": "$(debug-alt)"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "tinymist.onEnter",
+				"key": "enter",
+				"when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible && !editorHasMultipleSelections && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine' && vim.mode != 'SearchInProgressMode' && vim.mode != 'CommandlineInProgress' && vim.mode != 'Replace' && vim.mode != 'EasyMotionMode' && vim.mode != 'EasyMotionInputMode' && vim.mode != 'SurroundInputMode'"
+			},
+			{
+				"command": "typst-preview.preview",
+				"key": "ctrl+k v",
+				"mac": "cmd+k v",
+				"when": "editorLangId == typst"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "tinymist.exportCurrentPdf",
+					"when": "editorLangId == typst"
+				},
+				{
+					"command": "tinymist.clearCache",
+					"when": "editorLangId == typst"
+				},
+				{
+					"command": "tinymist.debugCurrentFile",
+					"when": "resourceLangId == typst"
+				},
+				{
+					"command": "tinymist.restartServer",
+					"when": "ext.tinymistActivated"
+				},
+				{
+					"command": "typst-preview.eject",
+					"when": "activeWebviewPanelId == 'typst-preview'"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "tinymist.showPdf",
+					"when": "resourceLangId == typst && editorTextFocus",
+					"group": "navigation"
+				},
+				{
+					"command": "typst-preview.preview",
+					"when": "resourceLangId == typst",
+					"group": "navigation"
+				},
+				{
+					"command": "typst-preview.eject",
+					"when": "activeWebviewPanelId == 'typst-preview'",
+					"group": "navigation"
+				}
+			],
+			"editor/title/run": [
+				{
+					"command": "tinymist.debugCurrentFile",
+					"when": "resourceLangId == typst",
+					"group": "navigation@2"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "tinymist.copyAnsiHighlight",
+					"when": "resourceLangId == typst && editorTextFocus",
+					"group": "9_cutcopypaste"
+				}
+			],
+			"view/title": [
+				{
+					"command": "typst-preview.noteOutline",
+					"when": "view == tinymist.preview.outline",
+					"group": "navigation"
+				},
+				{
+					"command": "tinymist.syncLabel",
+					"when": "view == tinymist.label-view",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"activationEvents": [
+		"onWebviewPanel:typst-preview"
+	],
+	"scripts": {
+		"build:frontend": "cd ../../ && yarn build:preview && yarn build:editor-tools",
+		"build:syntax": "cd ../../syntaxes/textmate && yarn run compile && yarn run bundle",
+		"build:l10n": "cd ../../ && yarn build:l10n",
+		"build-web-base": "node esbuild.web.mjs && node esbuild.web-server.mjs",
+		"build-system-base": "node esbuild.system.mjs",
+		"build-base": "yarn run build-web-base && yarn run build-system-base",
+		"compile-shared": "yarn run build:syntax && yarn run build:l10n && yarn run build:frontend && node scripts/check-version.mjs && node scripts/postinstall.cjs",
+		"compile:web": "yarn run build-web-base -- --minify && yarn run compile-shared",
+		"compile:system": "yarn run build-system-base -- --minify && yarn run compile-shared",
+		"package": "npx @vscode/vsce package --yarn",
+		"compile": "yarn run compile:system",
+		"watch": "yarn run build-system-base -- --sourcemap --watch",
+		"type-check": "tsc --noEmit",
+		"format-check": "prettier --check .",
+		"format": "prettier --write .",
+		"test:unit": "vitest",
+		"test": "vitest && rimraf test-dist/ && tsc -p tsconfig.test.json && node test-dist/test/runTests.js"
+	},
+	"dependencies": {
+		"cpr": "^3.0.1",
+		"esbuild-plugin-polyfill-node": "^0.3.0",
+		"node-fetch": "^3.3.2",
+		"vscode-languageclient": "^9.0.0",
+		"tinymist-web": "link:../../crates/tinymist",
+		"ws": "^8.13.0"
+	},
+	"devDependencies": {
+		"@types/chai": "^5.0.1",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "^22.13.4",
+		"@types/vscode": "^1.97.0",
+		"@types/ws": "^8.5.5",
+		"@typescript-eslint/eslint-plugin": "^8.24.0",
+		"@typescript-eslint/parser": "^8.2.4",
+		"@vscode/test-electron": "^2.3.9",
+		"@vscode/vsce": "^2.22.0",
+		"chai": "^5.2.0",
+		"esbuild": "^0.24.2",
+		"eslint": "^9.20.1",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-n": "^17.15.1",
+		"eslint-plugin-promise": "^7.2.1",
+		"mocha": "^10.2.0",
+		"ovsx": "^0.8.3",
+		"typescript": "^5.2.2"
+	}
 }

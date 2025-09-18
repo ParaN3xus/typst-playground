@@ -33,9 +33,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import { fromEvent } from "rxjs";
 import { debounceTime } from "rxjs/operators";
+import { nextTick, onMounted, onUnmounted, ref } from "vue";
 import resourceLoader from "./resource-loader.mjs";
 
 const loadingProgress = ref({});
@@ -44,83 +44,83 @@ const progressContainer = ref([]);
 const progressBarWidth = ref(30);
 
 const calculateProgressBarWidth = () => {
-  const container = progressContainer.value?.[0];
-  if (!container) return 30;
+	const container = progressContainer.value?.[0];
+	if (!container) return 30;
 
-  const testElement = document.createElement("span");
-  testElement.style.visibility = "hidden";
-  testElement.style.position = "absolute";
-  testElement.style.whiteSpace = "nowrap";
-  testElement.textContent = "█".repeat(10);
+	const testElement = document.createElement("span");
+	testElement.style.visibility = "hidden";
+	testElement.style.position = "absolute";
+	testElement.style.whiteSpace = "nowrap";
+	testElement.textContent = "█".repeat(10);
 
-  const computedStyle = window.getComputedStyle(container);
-  testElement.style.fontFamily = computedStyle.fontFamily;
-  testElement.style.fontSize = computedStyle.fontSize;
-  testElement.style.fontWeight = computedStyle.fontWeight;
+	const computedStyle = window.getComputedStyle(container);
+	testElement.style.fontFamily = computedStyle.fontFamily;
+	testElement.style.fontSize = computedStyle.fontSize;
+	testElement.style.fontWeight = computedStyle.fontWeight;
 
-  container.appendChild(testElement);
-  const actualCharWidth = testElement.offsetWidth / 10;
-  container.removeChild(testElement);
+	container.appendChild(testElement);
+	const actualCharWidth = testElement.offsetWidth / 10;
+	container.removeChild(testElement);
 
-  const containerWidth = container.clientWidth;
-  const reservedSpace = actualCharWidth * 10;
-  const availableWidth = containerWidth - reservedSpace;
-  const maxChars = Math.floor(availableWidth / actualCharWidth);
+	const containerWidth = container.clientWidth;
+	const reservedSpace = actualCharWidth * 10;
+	const availableWidth = containerWidth - reservedSpace;
+	const maxChars = Math.floor(availableWidth / actualCharWidth);
 
-  return maxChars;
+	return maxChars;
 };
 
 const updateProgressBarWidth = () => {
-  const newWidth = calculateProgressBarWidth();
-  if (newWidth !== progressBarWidth.value) {
-    progressBarWidth.value = newWidth;
-  }
+	const newWidth = calculateProgressBarWidth();
+	if (newWidth !== progressBarWidth.value) {
+		progressBarWidth.value = newWidth;
+	}
 };
 
 const getAsciiProgress = (progress) => {
-  const width = progressBarWidth.value;
-  const filled = Math.round((progress / 100) * width);
-  const empty = width - filled;
-  return (
-    "[" +
-    "█".repeat(filled) +
-    "░".repeat(empty) +
-    "] " +
-    Math.round(progress) +
-    "%"
-  );
+	const width = progressBarWidth.value;
+	const filled = Math.round((progress / 100) * width);
+	const empty = width - filled;
+	return (
+		"[" +
+		"█".repeat(filled) +
+		"░".repeat(empty) +
+		"] " +
+		Math.round(progress) +
+		"%"
+	);
 };
 
 const progressListener = (progress) => {
-  loadingProgress.value = { ...progress };
-  if (resourceLoader.isAllLoaded()) {
-    setTimeout(() => {
-      allLoaded.value = true;
-    }, 500);
-  }
+	loadingProgress.value = { ...progress };
+	if (resourceLoader.isAllLoaded()) {
+		setTimeout(() => {
+			allLoaded.value = true;
+		}, 500);
+	}
 };
 
 let resizeSubscription = null;
 
 onMounted(async () => {
-  resourceLoader.addProgressListener(progressListener);
-  loadingProgress.value = { ...resourceLoader.loadingProgress };
+	resourceLoader.addProgressListener(progressListener);
+	loadingProgress.value = { ...resourceLoader.loadingProgress };
 
-  await nextTick();
-  setTimeout(() => {
-    updateProgressBarWidth();
+	await nextTick();
+	setTimeout(() => {
+		updateProgressBarWidth();
 
-    resizeSubscription = fromEvent(window, "resize")
-      .pipe(debounceTime(100))
-      .subscribe(updateProgressBarWidth);
-  }, 50);
+		resizeSubscription = fromEvent(window, "resize")
+			.pipe(debounceTime(100))
+			.subscribe(updateProgressBarWidth);
+	}, 50);
 });
 
 onUnmounted(() => {
-  resourceLoader.removeProgressListener(progressListener);
-  if (resizeSubscription) {
-    resizeSubscription.unsubscribe();
-  }
+	resourceLoader.removeProgressListener(progressListener);
+	if (resizeSubscription) {
+		resizeSubscription.unsubscribe();
+	}
 });
 </script>
 

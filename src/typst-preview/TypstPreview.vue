@@ -7,20 +7,19 @@
   </div>
 </template>
 <script setup>
+import { normalize } from "pathe";
+import * as vscode from "vscode";
 import {
-  BrowserMessageReader,
-  BrowserMessageWriter,
+	BrowserMessageReader,
+	BrowserMessageWriter,
 } from "vscode-languageclient/browser";
 import { ref } from "vue";
-
-import * as vscode from "vscode";
-import { normalize } from "pathe";
 
 import { usePreviewComponent } from "./preview.mts";
 
 const props = defineProps({
-  reader: BrowserMessageReader,
-  writer: BrowserMessageWriter,
+	reader: BrowserMessageReader,
+	writer: BrowserMessageWriter,
 });
 
 const hookedElem = ref(null);
@@ -28,48 +27,48 @@ const windowElem = ref(null);
 const outerElem = ref(null);
 
 async function runLSPCommand(command, args) {
-  const request = {
-    jsonrpc: "2.0",
-    id: 1,
-    method: "workspace/executeCommand",
-    params: {
-      command: command,
-      arguments: args,
-    },
-  };
-  await props.writer.write(request);
+	const request = {
+		jsonrpc: "2.0",
+		id: 1,
+		method: "workspace/executeCommand",
+		params: {
+			command: command,
+			arguments: args,
+		},
+	};
+	await props.writer.write(request);
 }
 
 async function initPreview(path) {
-  const { initPreviewInner } = usePreviewComponent(
-    props.reader,
-    props.writer,
-    hookedElem,
-    windowElem,
-    outerElem
-  );
+	const { initPreviewInner } = usePreviewComponent(
+		props.reader,
+		props.writer,
+		hookedElem,
+		windowElem,
+		outerElem,
+	);
 
-  runLSPCommand("tinymist.doStartPreview", [[path]]);
-  await initPreviewInner();
+	runLSPCommand("tinymist.doStartPreview", [[path]]);
+	await initPreviewInner();
 
-  vscode.window.onDidChangeTextEditorSelection(async (e) => {
-    if (e.kind != 2) {
-      return;
-    }
-    await runLSPCommand("tinymist.scrollPreview", [
-      "default_preview",
-      {
-        event: "panelScrollTo",
-        filepath: normalize(e.textEditor.document.fileName),
-        line: e.selections[0].active.line,
-        character: e.selections[0].active.character,
-      },
-    ]);
-  });
+	vscode.window.onDidChangeTextEditorSelection(async (e) => {
+		if (e.kind != 2) {
+			return;
+		}
+		await runLSPCommand("tinymist.scrollPreview", [
+			"default_preview",
+			{
+				event: "panelScrollTo",
+				filepath: normalize(e.textEditor.document.fileName),
+				line: e.selections[0].active.line,
+				character: e.selections[0].active.character,
+			},
+		]);
+	});
 }
 
 defineExpose({
-  initPreview,
+	initPreview,
 });
 </script>
 
