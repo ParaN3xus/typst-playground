@@ -48,6 +48,10 @@ yarn build
 - [Tinymist](https://github.com/Myriad-Dreamin/tinymist): Tinymist provides typst language services
 - [typst.ts](https://github.com/Myriad-Dreamin/typst.ts): typst.ts provides incremental SVG rendering
 - [typst-preview](https://github.com/Enter-tainer/typst-preview): The live preview feature of tinymist originally derived from typst-preview
+- [typst](https://github.com/typst/typst): The Typst language and compiler.
+
+I deeply appreciate Typst and understand the value of Typst making its compiler open source. Therefore, this project exists solely as a proof-of-concept demo. I would not and do not wish to see others create products based on this project that could potentially harm Typst GmbH's business model.
+
 
 ## License
 
