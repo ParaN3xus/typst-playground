@@ -24,8 +24,8 @@ import {
 import {
 	TypstPreviewDocument as TypstDocument,
 	TypstPreviewDocument,
-} from "../typst-dom/index.preview.mjs";
-import { PreviewMode } from "../typst-dom/typst-doc.mjs";
+} from "typst-dom/index.preview.mjs";
+import { PreviewMode } from "typst-dom/typst-doc.mjs";
 
 const NOT_AVAILABLE = "current not available";
 const enc = new TextEncoder();
@@ -33,7 +33,7 @@ const dec = new TextDecoder();
 const COMMA = enc.encode(",");
 
 import { Ref } from "vue";
-import { triggerRipple } from "../typst-dom/typst-animation.mts";
+import { triggerRipple } from "typst-dom/typst-animation.mts";
 import {
 	StrategyKey,
 	StrategyMap,
