@@ -24,8 +24,8 @@ import {
 import {
 	TypstPreviewDocument as TypstDocument,
 	TypstPreviewDocument,
-} from "../typst-dom/index.preview.mjs";
-import { PreviewMode } from "../typst-dom/typst-doc.mjs";
+} from "typst-dom/index.preview.mjs";
+import { PreviewMode, TypstDomHookedElement, TypstDomWindowElement } from "typst-dom/typst-doc.mjs";
 
 const NOT_AVAILABLE = "current not available";
 const enc = new TextEncoder();
@@ -33,15 +33,13 @@ const dec = new TextDecoder();
 const COMMA = enc.encode(",");
 
 import { Ref } from "vue";
-import { triggerRipple } from "../typst-dom/typst-animation.mts";
+import { triggerRipple } from "typst-dom/typst-animation.mts";
 import {
 	StrategyKey,
 	StrategyMap,
 	TypstPosition,
 	TypstPreviewDocumentRootElement,
-	TypstPreviewHookedElement,
 	TypstPreviewPageInner,
-	TypstPreviewWindowElement,
 } from "./types";
 import {
 	createResizeObservable,
@@ -56,8 +54,8 @@ import {
 export function usePreviewComponent(
 	reader: BrowserMessageReader,
 	writer: BrowserMessageWriter,
-	hookedElem: Ref<TypstPreviewHookedElement>,
-	windowElem: Ref<TypstPreviewWindowElement>,
+	hookedElem: Ref<TypstDomHookedElement>,
+	windowElem: Ref<TypstDomWindowElement>,
 	outerElem: Ref<HTMLElement>,
 ) {
 	let svgDoc: TypstPreviewDocument | null = null;

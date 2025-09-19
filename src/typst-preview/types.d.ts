@@ -2,17 +2,6 @@ import { Message } from "vscode-jsonrpc/lib/common/messages";
 import { TypstPreviewDocument } from "../typst-dom/index.preview.mts";
 import { INVERT_COLORS_STRATEGY } from "./utils.mts";
 
-export interface TypstPreviewWindowElement extends HTMLElement {
-	initTypstSvg(docRoot: SVGElement): void;
-	handleTypstLocation(elem: Element, page: number, x: number, y: number): void;
-	typstWebsocket: Sendable;
-}
-
-export interface TypstPreviewHookedElement extends HTMLElement {
-	document: TypstPreviewDocument;
-	sourceMappingHandler?: (event: MouseEvent) => Promise<void>;
-}
-
 export type TypstPreviewMessageContent =
 	| { format: "text"; data: string }
 	| { format: "binary"; data: string };
