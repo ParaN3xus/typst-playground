@@ -95,7 +95,7 @@ defineExpose({
   width: fit-content;
   margin: 0;
   transform-origin: 0 0;
-  background-color: #2b2b2b;
+  background-color: var(--vscode-panel-background);
 }
 
 #typst-app.invert-colors {
@@ -113,7 +113,13 @@ defineExpose({
 }
 
 .typst-doc {
-  fill: #2b2b2b;
+  fill: var(--vscode-panel-background);
+}
+
+.typst-page-inner {
+  stroke: var(--vscode-widget-border);
+  stroke-width: 0.5;
+  vector-effect: non-scaling-stroke;
 }
 
 .hide-scrollbar-x {
