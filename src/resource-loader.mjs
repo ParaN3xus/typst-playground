@@ -2,6 +2,67 @@ import { resolve } from "pathe";
 import { defaultWorkspacePath } from "./fs-provider/path-constants.mjs";
 import { fetchFromPastebin } from "./pastebin";
 
+class FontCache {
+	constructor() {
+		this.dbName = 'FontCache';
+		this.dbVersion = 1;
+		this.storeName = 'fonts';
+		this.db = null;
+	}
+
+	async init() {
+		return new Promise((resolve, reject) => {
+			const request = indexedDB.open(this.dbName, this.dbVersion);
+			
+			request.onerror = () => reject(request.error);
+			request.onsuccess = () => {
+				this.db = request.result;
+				resolve(this.db);
+			};
+			
+			request.onupgradeneeded = (event) => {
+				const db = event.target.result;
+				if (!db.objectStoreNames.contains(this.storeName)) {
+					const store = db.createObjectStore(this.storeName, { keyPath: 'name' });
+				}
+			};
+		});
+	}
+
+	async getFont(name, hash) {
+		if (!this.db) await this.init();
+		
+		return new Promise((resolve, reject) => {
+			const transaction = this.db.transaction([this.storeName], 'readonly');
+			const store = transaction.objectStore(this.storeName);
+			const request = store.get(name);
+			
+			request.onerror = () => reject(request.error);
+			request.onsuccess = () => {
+				const result = request.result;
+				if (result && result.hash === hash) {
+					resolve(result.data);
+				} else {
+					resolve(null);
+				}
+			};
+		});
+	}
+
+	async setFont(name, hash, data) {
+		if (!this.db) await this.init();
+		
+		return new Promise((resolve, reject) => {
+			const transaction = this.db.transaction([this.storeName], 'readwrite');
+			const store = transaction.objectStore(this.storeName);
+			const request = store.put({ name, hash, data });
+			
+			request.onerror = () => reject(request.error);
+			request.onsuccess = () => resolve();
+		});
+	}
+}
+
 class ResourceLoader {
 	constructor() {
 		if (ResourceLoader.instance) {
@@ -21,6 +82,7 @@ class ResourceLoader {
 		};
 
 		this.listeners = [];
+		this.fontCache = new FontCache();
 		ResourceLoader.instance = this;
 	}
 
@@ -56,16 +118,25 @@ class ResourceLoader {
 		try {
 			this.updateProgress("fonts", 10);
 			const fonts = await import("virtual:fonts");
-			this.updateProgress("fonts", 50);
+			this.updateProgress("fonts", 30);
 
 			let completedCount = 0;
 			const totalFonts = fonts.default.length;
 
 			const loadedFonts = await Promise.all(
 				fonts.default.map(async (font) => {
-					const data = await font.getData();
+					let data = null;
+					if (font.hash) {
+						data = await this.fontCache.getFont(font.name, font.hash);
+					}
+
+					if (!data) {
+						data = await font.getData();
+						await this.fontCache.setFont(font.name, font.hash, data);
+					}
+
 					completedCount++;
-					const progress = 50 + (completedCount / totalFonts) * 40;
+					const progress = 30 + (completedCount / totalFonts) * 50;
 					this.updateProgress("fonts", progress);
 					return { ...font, data };
 				}),

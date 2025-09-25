@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import crypto from "crypto";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -35,6 +36,11 @@ async function getAllDefaultWorkspaceFiles(dir) {
 	return getAllFiles(dir, null);
 }
 
+async function calculateFileHash(filePath) {
+	const content = await fs.readFile(filePath);
+	return crypto.createHash('md5').update(content).digest('hex');
+}
+
 export function assetsLoader() {
 	return {
 		name: "assets-loader",
@@ -50,6 +56,7 @@ export function assetsLoader() {
 					prefix: "font",
 					suffix: "?url",
 					getPathFromFile: (file, _) => file,
+					hash: true,
 				});
 			}
 
@@ -64,6 +71,7 @@ export function assetsLoader() {
 					prefix: "ws",
 					suffix: "?url",
 					getPathFromFile: (file, dir) => path.relative(dir, file),
+					hash: false,
 				});
 			}
 		},
@@ -71,7 +79,7 @@ export function assetsLoader() {
 }
 
 async function generateVirtualModule(options) {
-	const { dir, getFiles, prefix, suffix, getPathFromFile } = options;
+	const { dir, getFiles, prefix, suffix, getPathFromFile, hash = false } = options;
 
 	const files = await getFiles(dir);
 
@@ -82,11 +90,12 @@ async function generateVirtualModule(options) {
 		})
 		.join("\n");
 
-	const exports = files
-		.map((file, index) => {
+	const exports = await Promise.all(files
+		.map(async (file, index) => {
 			const name = path.basename(file);
 			const pathProp = `path: "${getPathFromFile(file, dir)}",`;
 			const urlVariable = prefix + index;
+			const hashProp = hash ? `hash: "${await calculateFileHash(file)}",` : '';
 			const getData = `async getData() {
             const response = await fetch(${urlVariable}Url)
             return new Uint8Array(await response.arrayBuffer())
@@ -95,14 +104,14 @@ async function generateVirtualModule(options) {
 			return `{
             name: "${name}",
             ${pathProp}
+            ${hashProp}
             url: ${prefix}${index}Url,
             ${getData}
         }`;
-		})
-		.join(",");
+		}));
 
 	return `
         ${imports}
-        export default [${exports}]
+        export default [${exports.join(",")}]
     `;
 }
