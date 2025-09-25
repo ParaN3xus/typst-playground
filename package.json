@@ -25,6 +25,7 @@
 		"@codingame/monaco-vscode-theme-defaults-default-extension": "~20.1.1",
 		"@codingame/monaco-vscode-theme-service-override": "~20.1.1",
 		"@codingame/monaco-vscode-views-service-override": "~20.1.1",
+		"@codingame/monaco-vscode-textmate-service-override": "~20.1.1",
 		"@gera2ld/tarjs": "^0.3.1",
 		"@iconify-json/heroicons": "^1.2.2",
 		"@myriaddreamin/typst-ts-renderer": "=0.6.1-rc3",
