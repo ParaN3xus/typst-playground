@@ -374,11 +374,12 @@ export function usePreviewComponent(
 		const raw_y = y + pageInner.transform.baseVal[0].matrix.f;
 
 		const scaled_x =
-			x * scale_x +
-			hookedElem.value.getBoundingClientRect().x -
-			outerElem.value.getBoundingClientRect().x;
+			x * scale_x + Math.max(
+				hookedElem.value.getBoundingClientRect().x - outerElem.value.getBoundingClientRect().x,
+				0
+			);
 		const scaled_y = raw_y * scale_y;
-
+		
 		outerElem.value.scrollTo({
 			behavior: "smooth",
 			left: scaled_x - 32,
