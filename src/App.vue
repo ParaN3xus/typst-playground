@@ -96,6 +96,7 @@ import { configureDefaultWorkerFactory } from "monaco-editor-wrapper/workers/wor
 import * as vscode from "vscode";
 
 import "@codingame/monaco-vscode-theme-defaults-default-extension";
+import "@codingame/monaco-vscode-theme-seti-default-extension";
 
 import { AutoSaveConfiguration } from "@codingame/monaco-vscode-api/vscode/vs/platform/files/common/files";
 import getExplorerServiceOverride from "@codingame/monaco-vscode-explorer-service-override";
@@ -247,7 +248,7 @@ async function handleEmptyClicked() {
 }
 
 async function loadExtensionAssets() {
-	const assetMap = {
+	const assets = {
 		"./syntaxes/language-configuration.json": () =>
 			import(
 				"./assets/tinymist-assets/syntaxes/language-configuration.json?raw"
@@ -260,18 +261,28 @@ async function loadExtensionAssets() {
 			import("./assets/tinymist-assets/out/typst.tmLanguage.json?raw"),
 		"./out/typst-code.tmLanguage.json": () =>
 			import("./assets/tinymist-assets/out/typst-code.tmLanguage.json?raw"),
-		// './icons/ti-white.png': () => import('./assets/tinymist-assets/icons/ti-white.png?raw'),
-		// './icons/ti.png': () => import('./assets/tinymist-assets/icons/ti.png?raw'),
-		// './icons/typst-small.png': () => import('./assets/tinymist-assets/icons/typst-small.png?raw'),
+		"./icons/ti-white.png": () =>
+			new URL(
+				"./assets/tinymist-assets/icons/ti-white.png?raw",
+				import.meta.url,
+			),
+		"./icons/ti.png": () =>
+			new URL("./assets/tinymist-assets/icons/ti.png?raw", import.meta.url),
+		"./icons/typst-small.png": () =>
+			new URL(
+				"./assets/tinymist-assets/icons/typst-small.png?raw",
+				import.meta.url,
+			),
 	};
 
 	const extensionFilesOrContents = new Map();
 
 	await Promise.all(
-		Object.entries(assetMap).map(async ([key, importFn]) => {
-			const { default: content } = await importFn();
+		Object.entries(assets).map(async ([key, importFn]) => {
+			const result = await importFn();
+			const content = result.default || result;
 			extensionFilesOrContents.set(key, content);
-			// console.log("loaded", key)
+			// console.log("loaded", key);
 		}),
 	);
 
@@ -294,7 +305,6 @@ async function getClientConfig() {
 			userConfiguration: {
 				json: JSON.stringify({
 					"workbench.colorTheme": "Default Dark Modern",
-					"workbench.iconTheme": "vs-minimal",
 					"editor.guides.bracketPairsHorizontal": "active",
 					"editor.wordBasedSuggestions": "off",
 					"editor.experimental.asyncTokenization": false,

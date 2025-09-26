@@ -23,6 +23,7 @@
 		"@codingame/monaco-vscode-keybindings-service-override": "~20.1.1",
 		"@codingame/monaco-vscode-markers-service-override": "~20.1.1",
 		"@codingame/monaco-vscode-theme-defaults-default-extension": "~20.1.1",
+		"@codingame/monaco-vscode-theme-seti-default-extension": "~20.1.1",
 		"@codingame/monaco-vscode-theme-service-override": "~20.1.1",
 		"@codingame/monaco-vscode-views-service-override": "~20.1.1",
 		"@codingame/monaco-vscode-textmate-service-override": "~20.1.1",

@@ -1483,6 +1483,13 @@
     "@codingame/monaco-vscode-api" "20.1.1"
     "@codingame/monaco-vscode-files-service-override" "20.1.1"
 
+"@codingame/monaco-vscode-theme-seti-default-extension@~20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-theme-seti-default-extension/-/monaco-vscode-theme-seti-default-extension-20.1.1.tgz#8caecc597d3a287a592830a55a888b48998ae00a"
+  integrity sha512-pqSE/NiCkcz03InaupH/Yq8qzu8S8glopHpaLhuNgnxXTIS2V388Q4mLdF/7b8hY5iPC0FfGdDYad6jgCuwVAQ==
+  dependencies:
+    "@codingame/monaco-vscode-api" "20.1.1"
+
 "@codingame/monaco-vscode-view-banner-service-override@20.1.1":
   version "20.1.1"
   resolved "https://registry.yarnpkg.com/@codingame/monaco-vscode-view-banner-service-override/-/monaco-vscode-view-banner-service-override-20.1.1.tgz#f214f44b6c43ebc1958351e5efc2478351d3f47b"
