@@ -16,17 +16,21 @@ export default defineConfig({
 		vueDevTools(),
 		assetsLoader(),
 		tailwindcss(),
-		compression({
-			threshold: 1024 * 1024,
-			include: /\.(html|xml|css|js|mjs|json|svg|otf|ttf|otc|ttc)$/,
-			algorithm: [
-				defineAlgorithm("brotliCompress", {
-					params: {
-						[constants.BROTLI_PARAM_QUALITY]: 11,
-					},
-				}),
-			],
-		}),
+		...(process.env.ENABLE_COMPRESSION !== "false"
+			? [
+					compression({
+						threshold: 1024 * 1024,
+						include: /\.(html|xml|css|js|mjs|json|svg|otf|ttf|otc|ttc)$/,
+						algorithm: [
+							defineAlgorithm("brotliCompress", {
+								params: {
+									[constants.BROTLI_PARAM_QUALITY]: 11,
+								},
+							}),
+						],
+					}),
+				]
+			: []),
 	],
 	build: {
 		rollupOptions: {

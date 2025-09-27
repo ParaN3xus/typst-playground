@@ -9,19 +9,18 @@ import {
 	RequestType,
 } from "vscode-languageclient/browser";
 import { FileSystemProvider } from "../fs-provider/fs-provider.mts";
-import workerUrl from "./ls-worker.mjs?worker&url";
 
 export class TinymistLS {
 	public worker: Worker | null = null;
 	public lsClient: MonacoLanguageClient | null = null;
 	public fsProvider: FileSystemProvider | null = null;
-	private reader: BrowserMessageReader | null = null;
-	private writer: BrowserMessageWriter | null = null;
+	public reader: BrowserMessageReader | null = null;
+	public writer: BrowserMessageWriter | null = null;
 	private watcher: vscode.FileSystemWatcher | null = null;
 	private packagePromiseCache = new Map<string, Promise<void>>();
 	constructor() {}
 	async startWorker() {
-		this.worker = new Worker(workerUrl, {
+		this.worker = new Worker(new URL("./ls-worker.mjs", import.meta.url), {
 			type: "module",
 			name: "Tinymist LS",
 		});

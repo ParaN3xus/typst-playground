@@ -90,26 +90,9 @@ import { Pane, Splitpanes } from "splitpanes";
 import { onMounted, onUnmounted, ref } from "vue";
 import "splitpanes/dist/splitpanes.css";
 
-import { LogLevel } from "@codingame/monaco-vscode-api";
-import { MonacoEditorLanguageClientWrapper } from "monaco-editor-wrapper";
-import { configureDefaultWorkerFactory } from "monaco-editor-wrapper/workers/workerLoaders";
 import * as vscode from "vscode";
 
-import "@codingame/monaco-vscode-theme-defaults-default-extension";
-import "@codingame/monaco-vscode-theme-seti-default-extension";
-
-import { AutoSaveConfiguration } from "@codingame/monaco-vscode-api/vscode/vs/platform/files/common/files";
-import getExplorerServiceOverride from "@codingame/monaco-vscode-explorer-service-override";
-import getKeybindingsServiceOverride from "@codingame/monaco-vscode-keybindings-service-override";
-import getMarkersServiceOverride from "@codingame/monaco-vscode-markers-service-override";
-import getThemeServiceOverride from "@codingame/monaco-vscode-theme-service-override";
-import {
-	attachPart,
-	onDidChangeSideBarPosition,
-	Parts,
-} from "@codingame/monaco-vscode-views-service-override";
 import { ModalsContainer, useModal } from "vue-final-modal";
-import tinymistPackage from "./assets/tinymist-assets/package.json";
 import { createFileSystemProvider } from "./fs-provider/fs-provider.mts";
 import {
 	defaultEntryFilePath,
@@ -126,6 +109,8 @@ import resourceLoader from "./resource-loader.mjs";
 import { TinymistLS } from "./tinymist-ls/ls.mts";
 import TypstPreview from "./typst-preview/TypstPreview.vue";
 import "vue-final-modal/style.css";
+
+import { useMonacoVscodeApiComponent } from "./monaco.mts";
 
 const isMobile = ref(false);
 const isSidebarOpen = ref(true);
@@ -150,7 +135,7 @@ const panelContainer = ref(null);
 const preview = ref(null);
 const resourcesLoaded = ref(false);
 
-let worker = null;
+let ls = new TinymistLS();
 const reader = ref(null);
 const writer = ref(null);
 
@@ -247,168 +232,6 @@ async function handleEmptyClicked() {
 	}
 }
 
-async function loadExtensionAssets() {
-	const assets = {
-		"./syntaxes/language-configuration.json": () =>
-			import(
-				"./assets/tinymist-assets/syntaxes/language-configuration.json?raw"
-			),
-		"./syntaxes/typst-markdown-injection.json": () =>
-			import(
-				"./assets/tinymist-assets/syntaxes/typst-markdown-injection.json?raw"
-			),
-		"./out/typst.tmLanguage.json": () =>
-			import("./assets/tinymist-assets/out/typst.tmLanguage.json?raw"),
-		"./out/typst-code.tmLanguage.json": () =>
-			import("./assets/tinymist-assets/out/typst-code.tmLanguage.json?raw"),
-		"./icons/ti-white.png": () =>
-			new URL(
-				"./assets/tinymist-assets/icons/ti-white.png?raw",
-				import.meta.url,
-			),
-		"./icons/ti.png": () =>
-			new URL("./assets/tinymist-assets/icons/ti.png?raw", import.meta.url),
-		"./icons/typst-small.png": () =>
-			new URL(
-				"./assets/tinymist-assets/icons/typst-small.png?raw",
-				import.meta.url,
-			),
-	};
-
-	const extensionFilesOrContents = new Map();
-
-	await Promise.all(
-		Object.entries(assets).map(async ([key, importFn]) => {
-			const result = await importFn();
-			const content = result.default || result;
-			extensionFilesOrContents.set(key, content);
-			// console.log("loaded", key);
-		}),
-	);
-
-	return extensionFilesOrContents;
-}
-
-async function getClientConfig() {
-	const extensionFilesOrContents = await loadExtensionAssets();
-	const config = {
-		$type: "extended",
-		logLevel: LogLevel.Debug,
-		automaticallyDispose: true,
-		vscodeApiConfig: {
-			serviceOverrides: {
-				...getKeybindingsServiceOverride(),
-				...getExplorerServiceOverride(),
-				...getMarkersServiceOverride(),
-				...getThemeServiceOverride(),
-			},
-			userConfiguration: {
-				json: JSON.stringify({
-					"workbench.colorTheme": "Default Dark Modern",
-					"editor.guides.bracketPairsHorizontal": "active",
-					"editor.wordBasedSuggestions": "off",
-					"editor.experimental.asyncTokenization": false,
-					"editor.codeLens": false,
-					"editor.formatOnSave": true,
-					"vitest.disableWorkspaceWarning": true,
-					"files.autoSave": AutoSaveConfiguration.OFF,
-					"files.exclude": {
-						[defaultHiddenFolderName]: true,
-					},
-				}),
-			},
-			viewsConfig: {
-				viewServiceType: "ViewsService",
-				viewsInitFunc: viewsInit,
-			},
-			workspaceConfig: {
-				enableWorkspaceTrust: true,
-				workspaceProvider: {
-					trusted: true,
-					async open() {
-						window.open(window.location.href);
-						return true;
-					},
-					workspace: {
-						folderUri: defaultWorkspaceUri,
-					},
-				},
-			},
-		},
-		extensions: [
-			{
-				config: {
-					name: "tinymist-wasm",
-					publisher: tinymistPackage.publisher,
-					version: tinymistPackage.version,
-					engines: {
-						vscode: "*",
-					},
-					contributes: {
-						configuration: tinymistPackage.contributes.configuration,
-						configurationDefaults:
-							tinymistPackage.contributes.configurationDefaults,
-						languages: tinymistPackage.contributes.languages,
-						grammars: tinymistPackage.contributes.grammars,
-						// semanticTokenTypes: tinymistPackage.contributes.semanticTokenTypes,
-						// semanticTokenModifiers: tinymistPackage.contributes.semanticTokenModifiers,
-						semanticTokenScopes:
-							tinymistPackage.contributes.semanticTokenScopes,
-					},
-				},
-				filesOrContents: extensionFilesOrContents,
-			},
-		],
-		editorAppConfig: {
-			monacoWorkerFactory: configureDefaultWorkerFactory,
-		},
-		languageClientConfigs: {
-			configs: {
-				typst: {
-					clientOptions: {
-						documentSelector: ["typst"],
-						initializationOptions: {
-							formatterMode: "typstyle",
-						},
-					},
-					connection: {
-						options: {
-							$type: "WorkerDirect",
-							worker: worker.worker,
-						},
-						messageTransports: {
-							reader: reader.value,
-							writer: writer.value,
-						},
-					},
-				},
-			},
-		},
-	};
-
-	return config;
-}
-
-const viewsInit = async () => {
-	for (const config of [
-		{
-			part: Parts.SIDEBAR_PART,
-			get element() {
-				return sidebarContainer.value;
-			},
-			onDidElementChange: onDidChangeSideBarPosition,
-		},
-		{ part: Parts.EDITOR_PART, element: editorsContainer.value },
-		{ part: Parts.PANEL_PART, element: panelContainer.value },
-	]) {
-		attachPart(config.part, config.element);
-
-		config.onDidElementChange?.(() => {
-			attachPart(config.part, config.element);
-		});
-	}
-};
-
 async function loadWorkspace(fileSystemProvider) {
 	await fileSystemProvider.createDirectory(defaultWorkspaceUri);
 	let res = null;
@@ -433,23 +256,26 @@ async function loadWorkspace(fileSystemProvider) {
 
 async function startTinymistClient() {
 	const { reader: tmpReader, writer: tmpWriter } =
-		await worker.startTinymistServer();
+		await ls.startTinymistServer();
 	reader.value = tmpReader;
 	writer.value = tmpWriter;
 
-	const config = await getClientConfig();
-
-	wrapper = new MonacoEditorLanguageClientWrapper();
 	fileSystemProvider = await createFileSystemProvider();
-	worker.fsProvider = fileSystemProvider;
-
-	await wrapper.init(config);
-
-	await wrapper.startLanguageClients();
-	worker.lsClient = wrapper.getLanguageClient("typst");
-	await worker.initWatcher();
+	ls.fsProvider = fileSystemProvider;
 
 	let defaultDocument = await loadWorkspace(fileSystemProvider);
+
+	const { initMonacoVscodeApi } = useMonacoVscodeApiComponent(
+		ls,
+		document.body,
+		sidebarContainer,
+		editorsContainer,
+		panelContainer,
+	);
+	const [apiWrapper, lcWrapper] = await initMonacoVscodeApi();
+	ls.lsClient = lcWrapper.getLanguageClient("typst");
+	await ls.initWatcher();
+
 	initWorkspaceChangesListener();
 
 	await vscode.window.showTextDocument(defaultDocument, {
@@ -491,10 +317,9 @@ onMounted(async () => {
 	checkMobile();
 	window.addEventListener("resize", checkMobile);
 	window.addEventListener("beforeunload", handleBeforeUnload);
-	worker = new TinymistLS();
-	worker.startWorker();
+	ls.startWorker();
 	try {
-		await resourceLoader.loadAll(worker, code);
+		await resourceLoader.loadAll(ls, code);
 		resourcesLoaded.value = true;
 	} catch (error) {
 		console.error("Failed to load resources:", error);

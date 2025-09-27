@@ -25,7 +25,11 @@ import {
 	TypstPreviewDocument as TypstDocument,
 	TypstPreviewDocument,
 } from "typst-dom/index.preview.mjs";
-import { PreviewMode, TypstDomHookedElement, TypstDomWindowElement } from "typst-dom/typst-doc.mjs";
+import {
+	PreviewMode,
+	TypstDomHookedElement,
+	TypstDomWindowElement,
+} from "typst-dom/typst-doc.mjs";
 
 const NOT_AVAILABLE = "current not available";
 const enc = new TextEncoder();
@@ -85,7 +89,7 @@ export function usePreviewComponent(
 			// set rescale target to `body`
 			retrieveDOMState() {
 				return {
-					width: resizeTarget.clientWidth ,
+					width: resizeTarget.clientWidth,
 					height: resizeTarget.offsetHeight,
 					boundingRect: resizeTarget.getBoundingClientRect(),
 				};
@@ -374,12 +378,14 @@ export function usePreviewComponent(
 		const raw_y = y + pageInner.transform.baseVal[0].matrix.f;
 
 		const scaled_x =
-			x * scale_x + Math.max(
-				hookedElem.value.getBoundingClientRect().x - outerElem.value.getBoundingClientRect().x,
-				0
+			x * scale_x +
+			Math.max(
+				hookedElem.value.getBoundingClientRect().x -
+					outerElem.value.getBoundingClientRect().x,
+				0,
 			);
 		const scaled_y = raw_y * scale_y;
-		
+
 		outerElem.value.scrollTo({
 			behavior: "smooth",
 			left: scaled_x - 32,
